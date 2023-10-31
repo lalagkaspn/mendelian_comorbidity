@@ -25,20 +25,21 @@ umls_apiKey = "your_key"
 ## clinical trials data
 ## downloaded from the AACT: https://aact.ctti-clinicaltrials.org/
 ## data of download: November 4, 2022
-ct = fread("raw_data/AACT_studies.txt")
+## due to large file size, it was uploaded to Zenodo
+ct = fread("https://zenodo.org/records/10058991/files/AACT_studies.txt?download=1")
 
 # filter for interventional studies
 ct_filt = ct %>% filter(study_type == "Interventional")
 
 # filter for interventions that are biological, combination product, drug, genetic
-ct_interventions = fread("raw_data/AACT_interventions.txt")
+ct_interventions = fread("https://zenodo.org/records/10058991/files/AACT_interventions.txt?download=1")
 ct_interventions_filt = ct_interventions %>% filter(intervention_type %in% c("Biological", "Combination Product", "Drug", "Genetic"))
 ct_filt = ct_filt %>% filter(nct_id %in% ct_interventions_filt$nct_id)
 ct_filt = ct_filt %>% dplyr::select(nct_id, overall_status, last_known_status, phase)
 
 # filter for interventions and conditions with matched mesh terms
-ct_interventions_mesh = fread("raw_data/AACT_browse_interventions.txt")
-ct_conditions_mesh = fread("raw_data/AACT_browse_conditions.txt")
+ct_interventions_mesh = fread("https://zenodo.org/records/10058991/files/AACT_browse_interventions.txt?download=1")
+ct_conditions_mesh = fread("https://zenodo.org/records/10058991/files/AACT_browse_conditions.txt?download=1")
 ct_to_keep = intersect(ct_interventions_mesh$nct_id, ct_conditions_mesh$nct_id)
 ct_filt = ct_filt %>% filter(nct_id %in% ct_to_keep)
 ct_interventions_mesh = ct_interventions_mesh %>% filter(nct_id %in% ct_to_keep) %>% dplyr::select(-id)
