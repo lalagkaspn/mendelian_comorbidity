@@ -1,0 +1,2909 @@
+complex_disease	mendelian_disease	comorbidity
+Acne	Androgen Insensitivity Syndrome	1
+Acne	Anophthalmos/Micropthalmos	1
+Acne	Autoimmune Lymphoproliferative Syndrome	1
+Acne	Autoimmune Polyglandular Syndrome	1
+Acne	Cerebral Degeneration Due to Generalized Lipidoses	1
+Acne	Cerebral Lipidoses	1
+Acne	Chondrodystrophy	1
+Acne	Circulating Enzyme Deficiencies	1
+Acne	Combined Heart and Skeletal Defects	1
+Acne	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Acne	Congenital Ectodermal Dysplasia	1
+Acne	Congenital Hydrocephalus	1
+Acne	Congenital Hypogammaglobulinemia	1
+Acne	Congenital Ichthyosis	1
+Acne	Congenital Pigmentary Anomalies	1
+Acne	Cystic Fibrosis	1
+Acne	Disorders of Aromatic Amino Acid Metabolism	1
+Acne	Disorders of Branched Chain Amino Acid Metabolism	1
+Acne	Disorders of Copper Metabolism	1
+Acne	Disorders of Phosphorous Metabolism	1
+Acne	Dopa-Responsive Dystonia	1
+Acne	Erythromelalgia	1
+Acne	Facial and Skull Anomalies	1
+Acne	Familial Dysautonomia	1
+Acne	Fragile-X Syndrome	1
+Acne	Genetic Anomalies of Leukocytes	1
+Acne	Glycogenosis	1
+Acne	Haemophilia	1
+Acne	Hereditary Color Blindness	1
+Acne	Hereditary Hemorrhagic Telangiectasia	1
+Acne	Hereditary Muscular Dystrophy	1
+Acne	Holoprosencephaly	1
+Acne	Hypopituitarism	1
+Acne	Immunodeficiency with Increased IgM	1
+Acne	Inherited Adrenogenital Disorders	1
+Acne	Inherited Anomalies of the Skin	1
+Acne	Li Fraumeni and Related Syndromes	1
+Acne	Lipoprotein Deficiencies	1
+Acne	Long QT Syndrome	1
+Acne	Marfan Syndrome	1
+Acne	Neurofibromatosis	1
+Acne	Osteogenesis Imperfecta	1
+Acne	Other Specified Disorders of Amino Acid Metabolism	1
+Acne	Pervasive, Specified Congenital Anomalies	1
+Acne	Retinitis Pigmentosa	1
+Acne	Sensory Retina Dystropies	1
+Acne	Severe Combined Immunodeficiency	1
+Acne	Sickle Cell Anemia	1
+Acne	Specific Nail Anomalies	1
+Acne	Specified Anomalies of the Musculoskeletal System	1
+Acne	Specified Hamartoses	1
+Acne	Systemic Primary Carnitine Deficiency	1
+Acne	Thalassemia	1
+Acne	Tongue Tie	1
+Acne	Tuberous Sclerosis	1
+Acne	Wiskott-Aldrich Syndrome	1
+Acquired Hypothyroidism	Androgen Insensitivity Syndrome	1
+Acquired Hypothyroidism	Anophthalmos/Micropthalmos	1
+Acquired Hypothyroidism	Autoimmune Lymphoproliferative Syndrome	1
+Acquired Hypothyroidism	Autoimmune Polyglandular Syndrome	1
+Acquired Hypothyroidism	Bartter Syndrome	1
+Acquired Hypothyroidism	Cerebral Degeneration Due to Generalized Lipidoses	1
+Acquired Hypothyroidism	Cerebral Lipidoses	1
+Acquired Hypothyroidism	Chondrodystrophy	1
+Acquired Hypothyroidism	Chronic Granulomatous Disease	1
+Acquired Hypothyroidism	Chronic Progressive External Ophthalmoplegia	1
+Acquired Hypothyroidism	Circulating Enzyme Deficiencies	1
+Acquired Hypothyroidism	Combined Heart and Skeletal Defects	1
+Acquired Hypothyroidism	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Acquired Hypothyroidism	Congenital Hydrocephalus	1
+Acquired Hypothyroidism	Congenital Hypogammaglobulinemia	1
+Acquired Hypothyroidism	Congenital Ichthyosis	1
+Acquired Hypothyroidism	Cystic Fibrosis	1
+Acquired Hypothyroidism	Degenerative Diseases of the Basal Ganglia	1
+Acquired Hypothyroidism	Diamond-Blackfan Anemia	1
+Acquired Hypothyroidism	Disorders of Aromatic Amino Acid Metabolism	1
+Acquired Hypothyroidism	Disorders of Branched Chain Amino Acid Metabolism	1
+Acquired Hypothyroidism	Disorders of Copper Metabolism	1
+Acquired Hypothyroidism	Disorders of Fatty Acid Oxidation	1
+Acquired Hypothyroidism	Disorders of Phosphorous Metabolism	1
+Acquired Hypothyroidism	Disorders of Straight Chain Amino Acid Metabolism	1
+Acquired Hypothyroidism	Disorders of Urea Cycle Metabolism	1
+Acquired Hypothyroidism	Dopa-Responsive Dystonia	1
+Acquired Hypothyroidism	Erythromelalgia	1
+Acquired Hypothyroidism	Facial and Skull Anomalies	1
+Acquired Hypothyroidism	Familial Dysautonomia	1
+Acquired Hypothyroidism	Friedreich Ataxia	1
+Acquired Hypothyroidism	Genetic Anomalies of Leukocytes	1
+Acquired Hypothyroidism	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Acquired Hypothyroidism	Glycogenosis	1
+Acquired Hypothyroidism	Haemophilia	1
+Acquired Hypothyroidism	Hereditary Hemorrhagic Telangiectasia	1
+Acquired Hypothyroidism	Hereditary Muscular Dystrophy	1
+Acquired Hypothyroidism	Hereditary Sensory Neuropathy	1
+Acquired Hypothyroidism	Hereditary Thrombocytopenic Purpura	1
+Acquired Hypothyroidism	Holoprosencephaly	1
+Acquired Hypothyroidism	Huntington Disease	1
+Acquired Hypothyroidism	Hypopituitarism	1
+Acquired Hypothyroidism	Immunodeficiency with Increased IgM	1
+Acquired Hypothyroidism	Inherited Adrenogenital Disorders	1
+Acquired Hypothyroidism	Inherited Anomalies of the Skin	1
+Acquired Hypothyroidism	Li Fraumeni and Related Syndromes	1
+Acquired Hypothyroidism	Lipoprotein Deficiencies	1
+Acquired Hypothyroidism	Long QT Syndrome	1
+Acquired Hypothyroidism	Marfan Syndrome	1
+Acquired Hypothyroidism	Multiple Endocrine Neoplasia Type I	1
+Acquired Hypothyroidism	Multiple Endocrine Neoplasia Type IIA	1
+Acquired Hypothyroidism	Neurofibromatosis	1
+Acquired Hypothyroidism	Non-Specified Osteodystrophy	1
+Acquired Hypothyroidism	Osteogenesis Imperfecta	1
+Acquired Hypothyroidism	Other Specified Disorders of Amino Acid Metabolism	1
+Acquired Hypothyroidism	Peroxisomal Disorders	1
+Acquired Hypothyroidism	Pervasive, Specified Congenital Anomalies	1
+Acquired Hypothyroidism	Phenylketonuria	1
+Acquired Hypothyroidism	Polycystic Kidney, Autosomal Dominant	1
+Acquired Hypothyroidism	Retinitis Pigmentosa	1
+Acquired Hypothyroidism	Sensory Retina Dystropies	1
+Acquired Hypothyroidism	Severe Combined Immunodeficiency	1
+Acquired Hypothyroidism	Sickle Cell Anemia	1
+Acquired Hypothyroidism	Specific Nail Anomalies	1
+Acquired Hypothyroidism	Specified Anomalies of the Musculoskeletal System	1
+Acquired Hypothyroidism	Specified Hamartoses	1
+Acquired Hypothyroidism	Spinocerebellar Ataxia	1
+Acquired Hypothyroidism	Systemic Primary Carnitine Deficiency	1
+Acquired Hypothyroidism	Thalassemia	1
+Acquired Hypothyroidism	Tongue Tie	1
+Acquired Hypothyroidism	Tuberous Sclerosis	1
+Acquired Hypothyroidism	Velo-Cardio-Facial Syndrome	1
+Acute Glomerulonephritis	Cerebral Degeneration Due to Generalized Lipidoses	1
+Acute Glomerulonephritis	Chronic Granulomatous Disease	1
+Acute Glomerulonephritis	Combined Heart and Skeletal Defects	1
+Acute Glomerulonephritis	Disorders of Phosphorous Metabolism	1
+Acute Glomerulonephritis	Genetic Anomalies of Leukocytes	1
+Acute Glomerulonephritis	Glycogenosis	1
+Acute Glomerulonephritis	Haemophilia	1
+Acute Glomerulonephritis	Hereditary Sensory Neuropathy	1
+Acute Glomerulonephritis	Inherited Anomalies of the Skin	1
+Acute Glomerulonephritis	Lipoprotein Deficiencies	1
+Acute Glomerulonephritis	Long QT Syndrome	1
+Acute Glomerulonephritis	Pervasive, Specified Congenital Anomalies	1
+Acute Glomerulonephritis	Polycystic Kidney, Autosomal Dominant	1
+Acute Glomerulonephritis	Severe Combined Immunodeficiency	1
+Acute Glomerulonephritis	Sickle Cell Anemia	1
+Acute Glomerulonephritis	Thalassemia	1
+Acute Glomerulonephritis	Wiskott-Aldrich Syndrome	1
+Acute Myocardial Infarction	Cerebral Degeneration Due to Generalized Lipidoses	1
+Acute Myocardial Infarction	Chronic Granulomatous Disease	1
+Acute Myocardial Infarction	Circulating Enzyme Deficiencies	1
+Acute Myocardial Infarction	Combined Heart and Skeletal Defects	1
+Acute Myocardial Infarction	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Acute Myocardial Infarction	Congenital Ichthyosis	1
+Acute Myocardial Infarction	Congenital Pigmentary Anomalies	1
+Acute Myocardial Infarction	Degenerative Diseases of the Basal Ganglia	1
+Acute Myocardial Infarction	Diamond-Blackfan Anemia	1
+Acute Myocardial Infarction	Disorders of Aromatic Amino Acid Metabolism	1
+Acute Myocardial Infarction	Disorders of Copper Metabolism	1
+Acute Myocardial Infarction	Disorders of Phosphorous Metabolism	1
+Acute Myocardial Infarction	Disorders of Straight Chain Amino Acid Metabolism	1
+Acute Myocardial Infarction	Disorders of Urea Cycle Metabolism	1
+Acute Myocardial Infarction	Dopa-Responsive Dystonia	1
+Acute Myocardial Infarction	Erythromelalgia	1
+Acute Myocardial Infarction	Facial and Skull Anomalies	1
+Acute Myocardial Infarction	Friedreich Ataxia	1
+Acute Myocardial Infarction	Genetic Anomalies of Leukocytes	1
+Acute Myocardial Infarction	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Acute Myocardial Infarction	Glycogenosis	1
+Acute Myocardial Infarction	Haemophilia	1
+Acute Myocardial Infarction	Hereditary Hemorrhagic Telangiectasia	1
+Acute Myocardial Infarction	Hereditary Muscular Dystrophy	1
+Acute Myocardial Infarction	Hereditary Sensory Neuropathy	1
+Acute Myocardial Infarction	Holoprosencephaly	1
+Acute Myocardial Infarction	Huntington Disease	1
+Acute Myocardial Infarction	Hypopituitarism	1
+Acute Myocardial Infarction	Immunodeficiency with Increased IgM	1
+Acute Myocardial Infarction	Inherited Adrenogenital Disorders	1
+Acute Myocardial Infarction	Inherited Anomalies of the Skin	1
+Acute Myocardial Infarction	Lipoprotein Deficiencies	1
+Acute Myocardial Infarction	Long QT Syndrome	1
+Acute Myocardial Infarction	Marfan Syndrome	1
+Acute Myocardial Infarction	Neurofibromatosis	1
+Acute Myocardial Infarction	Non-Specified Osteodystrophy	1
+Acute Myocardial Infarction	Osteogenesis Imperfecta	1
+Acute Myocardial Infarction	Other Specified Disorders of Amino Acid Metabolism	1
+Acute Myocardial Infarction	Pervasive, Specified Congenital Anomalies	1
+Acute Myocardial Infarction	Phenylketonuria	1
+Acute Myocardial Infarction	Polycystic Kidney, Autosomal Dominant	1
+Acute Myocardial Infarction	Retinitis Pigmentosa	1
+Acute Myocardial Infarction	Severe Combined Immunodeficiency	1
+Acute Myocardial Infarction	Sickle Cell Anemia	1
+Acute Myocardial Infarction	Specific Nail Anomalies	1
+Acute Myocardial Infarction	Specified Anomalies of the Musculoskeletal System	1
+Acute Myocardial Infarction	Specified Hamartoses	1
+Acute Myocardial Infarction	Spinocerebellar Ataxia	1
+Acute Myocardial Infarction	Thalassemia	1
+Acute Myocardial Infarction	Tongue Tie	1
+Addisons Disease	Androgen Insensitivity Syndrome	1
+Addisons Disease	Anophthalmos/Micropthalmos	1
+Addisons Disease	Autoimmune Lymphoproliferative Syndrome	1
+Addisons Disease	Autoimmune Polyglandular Syndrome	1
+Addisons Disease	Bartter Syndrome	1
+Addisons Disease	Cerebral Degeneration Due to Generalized Lipidoses	1
+Addisons Disease	Chondrodystrophy	1
+Addisons Disease	Chronic Granulomatous Disease	1
+Addisons Disease	Circulating Enzyme Deficiencies	1
+Addisons Disease	Combined Heart and Skeletal Defects	1
+Addisons Disease	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Addisons Disease	Congenital Hirschsprung Disease	1
+Addisons Disease	Congenital Hydrocephalus	1
+Addisons Disease	Congenital Hypogammaglobulinemia	1
+Addisons Disease	Congenital Ichthyosis	1
+Addisons Disease	Congenital Pigmentary Anomalies	1
+Addisons Disease	Cystic Fibrosis	1
+Addisons Disease	Degenerative Diseases of the Basal Ganglia	1
+Addisons Disease	Diamond-Blackfan Anemia	1
+Addisons Disease	Disorders of Aromatic Amino Acid Metabolism	1
+Addisons Disease	Disorders of Branched Chain Amino Acid Metabolism	1
+Addisons Disease	Disorders of Copper Metabolism	1
+Addisons Disease	Disorders of Fatty Acid Oxidation	1
+Addisons Disease	Disorders of Phosphorous Metabolism	1
+Addisons Disease	Disorders of Straight Chain Amino Acid Metabolism	1
+Addisons Disease	Disorders of Urea Cycle Metabolism	1
+Addisons Disease	Dopa-Responsive Dystonia	1
+Addisons Disease	Erythromelalgia	1
+Addisons Disease	Facial and Skull Anomalies	1
+Addisons Disease	Familial Dysautonomia	1
+Addisons Disease	Friedreich Ataxia	1
+Addisons Disease	Genetic Anomalies of Leukocytes	1
+Addisons Disease	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Addisons Disease	Glycogenosis	1
+Addisons Disease	Haemophilia	1
+Addisons Disease	Hereditary Hemorrhagic Telangiectasia	1
+Addisons Disease	Hereditary Muscular Dystrophy	1
+Addisons Disease	Hereditary Sensory Neuropathy	1
+Addisons Disease	Hereditary Thrombocytopenic Purpura	1
+Addisons Disease	Holoprosencephaly	1
+Addisons Disease	Hypopituitarism	1
+Addisons Disease	Immunodeficiency with Increased IgM	1
+Addisons Disease	Indeterminate Sex and Pseudohermaphroditism	1
+Addisons Disease	Inherited Adrenogenital Disorders	1
+Addisons Disease	Inherited Anomalies of the Skin	1
+Addisons Disease	Li Fraumeni and Related Syndromes	1
+Addisons Disease	Lipoprotein Deficiencies	1
+Addisons Disease	Long QT Syndrome	1
+Addisons Disease	Marfan Syndrome	1
+Addisons Disease	Multiple Endocrine Neoplasia Type I	1
+Addisons Disease	Multiple Endocrine Neoplasia Type IIA	1
+Addisons Disease	Neurofibromatosis	1
+Addisons Disease	Non-Specified Osteodystrophy	1
+Addisons Disease	Osteogenesis Imperfecta	1
+Addisons Disease	Other Specified Disorders of Amino Acid Metabolism	1
+Addisons Disease	Peroxisomal Disorders	1
+Addisons Disease	Pervasive, Specified Congenital Anomalies	1
+Addisons Disease	Polycystic Kidney, Autosomal Dominant	1
+Addisons Disease	Retinitis Pigmentosa	1
+Addisons Disease	Rett Syndrome	1
+Addisons Disease	Sensory Retina Dystropies	1
+Addisons Disease	Severe Combined Immunodeficiency	1
+Addisons Disease	Sickle Cell Anemia	1
+Addisons Disease	Specified Hamartoses	1
+Addisons Disease	Spinocerebellar Ataxia	1
+Addisons Disease	Systemic Primary Carnitine Deficiency	1
+Addisons Disease	Thalassemia	1
+Addisons Disease	Tuberous Sclerosis	1
+Alopecia Areata	Autoimmune Lymphoproliferative Syndrome	1
+Alopecia Areata	Autoimmune Polyglandular Syndrome	1
+Alopecia Areata	Cerebral Degeneration Due to Generalized Lipidoses	1
+Alopecia Areata	Combined Heart and Skeletal Defects	1
+Alopecia Areata	Congenital Ichthyosis	1
+Alopecia Areata	Congenital Pigmentary Anomalies	1
+Alopecia Areata	Cystic Fibrosis	1
+Alopecia Areata	Disorders of Phosphorous Metabolism	1
+Alopecia Areata	Disorders of Straight Chain Amino Acid Metabolism	1
+Alopecia Areata	Dopa-Responsive Dystonia	1
+Alopecia Areata	Genetic Anomalies of Leukocytes	1
+Alopecia Areata	Haemophilia	1
+Alopecia Areata	Hereditary Hemorrhagic Telangiectasia	1
+Alopecia Areata	Hereditary Sensory Neuropathy	1
+Alopecia Areata	Hypopituitarism	1
+Alopecia Areata	Inherited Adrenogenital Disorders	1
+Alopecia Areata	Inherited Anomalies of the Skin	1
+Alopecia Areata	Lipoprotein Deficiencies	1
+Alopecia Areata	Pervasive, Specified Congenital Anomalies	1
+Alopecia Areata	Severe Combined Immunodeficiency	1
+Alopecia Areata	Sickle Cell Anemia	1
+Alopecia Areata	Specific Nail Anomalies	1
+Alopecia Areata	Specified Hamartoses	1
+Alopecia Areata	Thalassemia	1
+Alzheimers Disease	Cerebral Degeneration Due to Generalized Lipidoses	1
+Alzheimers Disease	Cerebral Lipidoses	1
+Alzheimers Disease	Chronic Granulomatous Disease	1
+Alzheimers Disease	Combined Heart and Skeletal Defects	1
+Alzheimers Disease	Congenital Hydrocephalus	1
+Alzheimers Disease	Congenital Ichthyosis	1
+Alzheimers Disease	Degenerative Diseases of the Basal Ganglia	1
+Alzheimers Disease	Disorders of Copper Metabolism	1
+Alzheimers Disease	Disorders of Phosphorous Metabolism	1
+Alzheimers Disease	Disorders of Straight Chain Amino Acid Metabolism	1
+Alzheimers Disease	Disorders of Urea Cycle Metabolism	1
+Alzheimers Disease	Dopa-Responsive Dystonia	1
+Alzheimers Disease	Friedreich Ataxia	1
+Alzheimers Disease	Haemophilia	1
+Alzheimers Disease	Hereditary Sensory Neuropathy	1
+Alzheimers Disease	Huntington Disease	1
+Alzheimers Disease	Inherited Anomalies of the Skin	1
+Alzheimers Disease	Lipoprotein Deficiencies	1
+Alzheimers Disease	Long QT Syndrome	1
+Alzheimers Disease	Spinocerebellar Ataxia	1
+Anxiety	Androgen Insensitivity Syndrome	1
+Anxiety	Anophthalmos/Micropthalmos	1
+Anxiety	Autoimmune Lymphoproliferative Syndrome	1
+Anxiety	Autoimmune Polyglandular Syndrome	1
+Anxiety	Bartter Syndrome	1
+Anxiety	Cerebral Degeneration Due to Generalized Lipidoses	1
+Anxiety	Cerebral Lipidoses	1
+Anxiety	Chondrodystrophy	1
+Anxiety	Chronic Granulomatous Disease	1
+Anxiety	Circulating Enzyme Deficiencies	1
+Anxiety	Combined Heart and Skeletal Defects	1
+Anxiety	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Anxiety	Congenital Ectodermal Dysplasia	1
+Anxiety	Congenital Hydrocephalus	1
+Anxiety	Congenital Hypogammaglobulinemia	1
+Anxiety	Congenital Ichthyosis	1
+Anxiety	Congenital Pigmentary Anomalies	1
+Anxiety	Cystic Fibrosis	1
+Anxiety	Degenerative Diseases of the Basal Ganglia	1
+Anxiety	Diamond-Blackfan Anemia	1
+Anxiety	Disorders of Aromatic Amino Acid Metabolism	1
+Anxiety	Disorders of Branched Chain Amino Acid Metabolism	1
+Anxiety	Disorders of Copper Metabolism	1
+Anxiety	Disorders of Fatty Acid Oxidation	1
+Anxiety	Disorders of Phosphorous Metabolism	1
+Anxiety	Disorders of Straight Chain Amino Acid Metabolism	1
+Anxiety	Disorders of Urea Cycle Metabolism	1
+Anxiety	Dopa-Responsive Dystonia	1
+Anxiety	Erythromelalgia	1
+Anxiety	Facial and Skull Anomalies	1
+Anxiety	Familial Dysautonomia	1
+Anxiety	Familial Mediterranean Fever	1
+Anxiety	Fragile-X Syndrome	1
+Anxiety	Friedreich Ataxia	1
+Anxiety	Genetic Anomalies of Leukocytes	1
+Anxiety	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Anxiety	Glycogenosis	1
+Anxiety	Haemophilia	1
+Anxiety	Hereditary Hemorrhagic Telangiectasia	1
+Anxiety	Hereditary Muscular Dystrophy	1
+Anxiety	Hereditary Sensory Neuropathy	1
+Anxiety	Holoprosencephaly	1
+Anxiety	Huntington Disease	1
+Anxiety	Hypopituitarism	1
+Anxiety	Immunodeficiency with Increased IgM	1
+Anxiety	Inherited Adrenogenital Disorders	1
+Anxiety	Inherited Anomalies of the Skin	1
+Anxiety	Li Fraumeni and Related Syndromes	1
+Anxiety	Lipoprotein Deficiencies	1
+Anxiety	Long QT Syndrome	1
+Anxiety	Marfan Syndrome	1
+Anxiety	Multiple Endocrine Neoplasia Type I	1
+Anxiety	Multiple Endocrine Neoplasia Type IIA	1
+Anxiety	Neurofibromatosis	1
+Anxiety	Non-Specified Osteodystrophy	1
+Anxiety	Osteogenesis Imperfecta	1
+Anxiety	Other Specified Disorders of Amino Acid Metabolism	1
+Anxiety	Pervasive, Specified Congenital Anomalies	1
+Anxiety	Phenylketonuria	1
+Anxiety	Polycystic Kidney, Autosomal Dominant	1
+Anxiety	Retinitis Pigmentosa	1
+Anxiety	Sensory Retina Dystropies	1
+Anxiety	Severe Combined Immunodeficiency	1
+Anxiety	Sickle Cell Anemia	1
+Anxiety	Specific Nail Anomalies	1
+Anxiety	Specified Anomalies of the Musculoskeletal System	1
+Anxiety	Specified Hamartoses	1
+Anxiety	Spinocerebellar Ataxia	1
+Anxiety	Systemic Primary Carnitine Deficiency	1
+Anxiety	Thalassemia	1
+Anxiety	Tongue Tie	1
+Anxiety	Tuberous Sclerosis	1
+Anxiety	Velo-Cardio-Facial Syndrome	1
+Asthma	Achromatopsia	1
+Asthma	Androgen Insensitivity Syndrome	1
+Asthma	Anophthalmos/Micropthalmos	1
+Asthma	Anterior Eye Anomalies	1
+Asthma	Autoimmune Lymphoproliferative Syndrome	1
+Asthma	Autoimmune Polyglandular Syndrome	1
+Asthma	Bartter Syndrome	1
+Asthma	Cerebral Degeneration Due to Generalized Lipidoses	1
+Asthma	Cerebral Lipidoses	1
+Asthma	Chondrodystrophy	1
+Asthma	Chronic Granulomatous Disease	1
+Asthma	Chronic Progressive External Ophthalmoplegia	1
+Asthma	Circulating Enzyme Deficiencies	1
+Asthma	Combined Heart and Skeletal Defects	1
+Asthma	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Asthma	Congenital Ectodermal Dysplasia	1
+Asthma	Congenital Fistula of the Lip	1
+Asthma	Congenital Hirschsprung Disease	1
+Asthma	Congenital Hydrocephalus	1
+Asthma	Congenital Hypogammaglobulinemia	1
+Asthma	Congenital Ichthyosis	1
+Asthma	Congenital Pigmentary Anomalies	1
+Asthma	Cri-Du-Chat Syndrome	1
+Asthma	Cystic Fibrosis	1
+Asthma	Degenerative Diseases of the Basal Ganglia	1
+Asthma	Diamond-Blackfan Anemia	1
+Asthma	Disorders of Aromatic Amino Acid Metabolism	1
+Asthma	Disorders of Branched Chain Amino Acid Metabolism	1
+Asthma	Disorders of Copper Metabolism	1
+Asthma	Disorders of Fatty Acid Oxidation	1
+Asthma	Disorders of Phosphorous Metabolism	1
+Asthma	Disorders of Straight Chain Amino Acid Metabolism	1
+Asthma	Disorders of Urea Cycle Metabolism	1
+Asthma	Dopa-Responsive Dystonia	1
+Asthma	Erythromelalgia	1
+Asthma	Facial and Skull Anomalies	1
+Asthma	Familial Dysautonomia	1
+Asthma	Familial Mediterranean Fever	1
+Asthma	Fragile-X Syndrome	1
+Asthma	Friedreich Ataxia	1
+Asthma	Genetic Anomalies of Leukocytes	1
+Asthma	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Asthma	Glycogenosis	1
+Asthma	Haemophilia	1
+Asthma	Hereditary Color Blindness	1
+Asthma	Hereditary Hemorrhagic Telangiectasia	1
+Asthma	Hereditary Muscular Dystrophy	1
+Asthma	Hereditary Sensory Neuropathy	1
+Asthma	Hereditary Thrombocytopenic Purpura	1
+Asthma	Holoprosencephaly	1
+Asthma	Huntington Disease	1
+Asthma	Hypopituitarism	1
+Asthma	Immunodeficiency with Increased IgM	1
+Asthma	Indeterminate Sex and Pseudohermaphroditism	1
+Asthma	Inherited Adrenogenital Disorders	1
+Asthma	Inherited Anomalies of the Skin	1
+Asthma	Li Fraumeni and Related Syndromes	1
+Asthma	Lipoprotein Deficiencies	1
+Asthma	Long QT Syndrome	1
+Asthma	Marfan Syndrome	1
+Asthma	Multiple Endocrine Neoplasia Type I	1
+Asthma	Neurofibromatosis	1
+Asthma	Non-Specific Autosomal Deletion Syndromes	1
+Asthma	Non-Specified Osteodystrophy	1
+Asthma	Osteogenesis Imperfecta	1
+Asthma	Other Specified Disorders of Amino Acid Metabolism	1
+Asthma	Peroxisomal Disorders	1
+Asthma	Pervasive, Specified Congenital Anomalies	1
+Asthma	Phenylketonuria	1
+Asthma	Polycystic Kidney, Autosomal Dominant	1
+Asthma	Retinitis Pigmentosa	1
+Asthma	Rett Syndrome	1
+Asthma	Sensory Retina Dystropies	1
+Asthma	Severe Combined Immunodeficiency	1
+Asthma	Sickle Cell Anemia	1
+Asthma	Smith-Magenis Syndrome	1
+Asthma	Specific Nail Anomalies	1
+Asthma	Specified Anomalies of the Musculoskeletal System	1
+Asthma	Specified Hamartoses	1
+Asthma	Spinocerebellar Ataxia	1
+Asthma	Systemic Primary Carnitine Deficiency	1
+Asthma	Thalassemia	1
+Asthma	Tongue Tie	1
+Asthma	Tuberous Sclerosis	1
+Asthma	Velo-Cardio-Facial Syndrome	1
+Asthma	Wiskott-Aldrich Syndrome	1
+Autism	Anophthalmos/Micropthalmos	1
+Autism	Anterior Eye Anomalies	1
+Autism	Chondrodystrophy	1
+Autism	Circulating Enzyme Deficiencies	1
+Autism	Combined Heart and Skeletal Defects	1
+Autism	Congenital Ectodermal Dysplasia	1
+Autism	Congenital Hirschsprung Disease	1
+Autism	Congenital Hydrocephalus	1
+Autism	Congenital Hypogammaglobulinemia	1
+Autism	Congenital Pigmentary Anomalies	1
+Autism	Cri-Du-Chat Syndrome	1
+Autism	Cystic Fibrosis	1
+Autism	Degenerative Diseases of the Basal Ganglia	1
+Autism	Disorders of Aromatic Amino Acid Metabolism	1
+Autism	Disorders of Branched Chain Amino Acid Metabolism	1
+Autism	Disorders of Copper Metabolism	1
+Autism	Disorders of Fatty Acid Oxidation	1
+Autism	Disorders of Phosphorous Metabolism	1
+Autism	Disorders of Urea Cycle Metabolism	1
+Autism	Dopa-Responsive Dystonia	1
+Autism	Facial and Skull Anomalies	1
+Autism	Familial Dysautonomia	1
+Autism	Familial Mediterranean Fever	1
+Autism	Fragile-X Syndrome	1
+Autism	Haemophilia	1
+Autism	Hereditary Muscular Dystrophy	1
+Autism	Hereditary Sensory Neuropathy	1
+Autism	Holoprosencephaly	1
+Autism	Hypopituitarism	1
+Autism	Immunodeficiency with Increased IgM	1
+Autism	Inherited Adrenogenital Disorders	1
+Autism	Inherited Anomalies of the Skin	1
+Autism	Long QT Syndrome	1
+Autism	Marfan Syndrome	1
+Autism	Neurofibromatosis	1
+Autism	Non-Specific Autosomal Deletion Syndromes	1
+Autism	Non-Specified Osteodystrophy	1
+Autism	Other Specified Disorders of Amino Acid Metabolism	1
+Autism	Pervasive, Specified Congenital Anomalies	1
+Autism	Phenylketonuria	1
+Autism	Retinitis Pigmentosa	1
+Autism	Rett Syndrome	1
+Autism	Severe Combined Immunodeficiency	1
+Autism	Sickle Cell Anemia	1
+Autism	Smith-Magenis Syndrome	1
+Autism	Specified Anomalies of the Musculoskeletal System	1
+Autism	Specified Hamartoses	1
+Autism	Spinocerebellar Ataxia	1
+Autism	Systemic Primary Carnitine Deficiency	1
+Autism	Tongue Tie	1
+Autism	Tuberous Sclerosis	1
+Autism	Velo-Cardio-Facial Syndrome	1
+Benign Brain Neoplasm	Anophthalmos/Micropthalmos	1
+Benign Brain Neoplasm	Autoimmune Lymphoproliferative Syndrome	1
+Benign Brain Neoplasm	Cerebral Degeneration Due to Generalized Lipidoses	1
+Benign Brain Neoplasm	Chondrodystrophy	1
+Benign Brain Neoplasm	Chronic Granulomatous Disease	1
+Benign Brain Neoplasm	Circulating Enzyme Deficiencies	1
+Benign Brain Neoplasm	Combined Heart and Skeletal Defects	1
+Benign Brain Neoplasm	Congenital Hydrocephalus	1
+Benign Brain Neoplasm	Congenital Ichthyosis	1
+Benign Brain Neoplasm	Cystic Fibrosis	1
+Benign Brain Neoplasm	Degenerative Diseases of the Basal Ganglia	1
+Benign Brain Neoplasm	Disorders of Copper Metabolism	1
+Benign Brain Neoplasm	Disorders of Phosphorous Metabolism	1
+Benign Brain Neoplasm	Disorders of Straight Chain Amino Acid Metabolism	1
+Benign Brain Neoplasm	Disorders of Urea Cycle Metabolism	1
+Benign Brain Neoplasm	Dopa-Responsive Dystonia	1
+Benign Brain Neoplasm	Facial and Skull Anomalies	1
+Benign Brain Neoplasm	Familial Dysautonomia	1
+Benign Brain Neoplasm	Friedreich Ataxia	1
+Benign Brain Neoplasm	Genetic Anomalies of Leukocytes	1
+Benign Brain Neoplasm	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Benign Brain Neoplasm	Haemophilia	1
+Benign Brain Neoplasm	Hereditary Muscular Dystrophy	1
+Benign Brain Neoplasm	Hereditary Sensory Neuropathy	1
+Benign Brain Neoplasm	Holoprosencephaly	1
+Benign Brain Neoplasm	Hypopituitarism	1
+Benign Brain Neoplasm	Inherited Adrenogenital Disorders	1
+Benign Brain Neoplasm	Inherited Anomalies of the Skin	1
+Benign Brain Neoplasm	Lipoprotein Deficiencies	1
+Benign Brain Neoplasm	Long QT Syndrome	1
+Benign Brain Neoplasm	Marfan Syndrome	1
+Benign Brain Neoplasm	Multiple Endocrine Neoplasia Type I	1
+Benign Brain Neoplasm	Neurofibromatosis	1
+Benign Brain Neoplasm	Other Specified Disorders of Amino Acid Metabolism	1
+Benign Brain Neoplasm	Pervasive, Specified Congenital Anomalies	1
+Benign Brain Neoplasm	Polycystic Kidney, Autosomal Dominant	1
+Benign Brain Neoplasm	Retinitis Pigmentosa	1
+Benign Brain Neoplasm	Severe Combined Immunodeficiency	1
+Benign Brain Neoplasm	Sickle Cell Anemia	1
+Benign Brain Neoplasm	Specified Hamartoses	1
+Benign Brain Neoplasm	Spinocerebellar Ataxia	1
+Benign Brain Neoplasm	Thalassemia	1
+Benign Brain Neoplasm	Tuberous Sclerosis	1
+Benign Brain Neoplasm	Wiskott-Aldrich Syndrome	1
+Bipolar Disorder	Androgen Insensitivity Syndrome	1
+Bipolar Disorder	Anophthalmos/Micropthalmos	1
+Bipolar Disorder	Autoimmune Lymphoproliferative Syndrome	1
+Bipolar Disorder	Autoimmune Polyglandular Syndrome	1
+Bipolar Disorder	Cerebral Degeneration Due to Generalized Lipidoses	1
+Bipolar Disorder	Chondrodystrophy	1
+Bipolar Disorder	Chronic Granulomatous Disease	1
+Bipolar Disorder	Circulating Enzyme Deficiencies	1
+Bipolar Disorder	Combined Heart and Skeletal Defects	1
+Bipolar Disorder	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Bipolar Disorder	Congenital Hydrocephalus	1
+Bipolar Disorder	Congenital Hypogammaglobulinemia	1
+Bipolar Disorder	Congenital Ichthyosis	1
+Bipolar Disorder	Cystic Fibrosis	1
+Bipolar Disorder	Degenerative Diseases of the Basal Ganglia	1
+Bipolar Disorder	Disorders of Aromatic Amino Acid Metabolism	1
+Bipolar Disorder	Disorders of Copper Metabolism	1
+Bipolar Disorder	Disorders of Phosphorous Metabolism	1
+Bipolar Disorder	Disorders of Straight Chain Amino Acid Metabolism	1
+Bipolar Disorder	Disorders of Urea Cycle Metabolism	1
+Bipolar Disorder	Dopa-Responsive Dystonia	1
+Bipolar Disorder	Facial and Skull Anomalies	1
+Bipolar Disorder	Familial Dysautonomia	1
+Bipolar Disorder	Fragile-X Syndrome	1
+Bipolar Disorder	Friedreich Ataxia	1
+Bipolar Disorder	Genetic Anomalies of Leukocytes	1
+Bipolar Disorder	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Bipolar Disorder	Glycogenosis	1
+Bipolar Disorder	Haemophilia	1
+Bipolar Disorder	Hereditary Hemorrhagic Telangiectasia	1
+Bipolar Disorder	Hereditary Muscular Dystrophy	1
+Bipolar Disorder	Hereditary Sensory Neuropathy	1
+Bipolar Disorder	Holoprosencephaly	1
+Bipolar Disorder	Huntington Disease	1
+Bipolar Disorder	Hypopituitarism	1
+Bipolar Disorder	Inherited Adrenogenital Disorders	1
+Bipolar Disorder	Inherited Anomalies of the Skin	1
+Bipolar Disorder	Li Fraumeni and Related Syndromes	1
+Bipolar Disorder	Lipoprotein Deficiencies	1
+Bipolar Disorder	Long QT Syndrome	1
+Bipolar Disorder	Marfan Syndrome	1
+Bipolar Disorder	Neurofibromatosis	1
+Bipolar Disorder	Non-Specified Osteodystrophy	1
+Bipolar Disorder	Osteogenesis Imperfecta	1
+Bipolar Disorder	Other Specified Disorders of Amino Acid Metabolism	1
+Bipolar Disorder	Pervasive, Specified Congenital Anomalies	1
+Bipolar Disorder	Phenylketonuria	1
+Bipolar Disorder	Polycystic Kidney, Autosomal Dominant	1
+Bipolar Disorder	Retinitis Pigmentosa	1
+Bipolar Disorder	Severe Combined Immunodeficiency	1
+Bipolar Disorder	Sickle Cell Anemia	1
+Bipolar Disorder	Specific Nail Anomalies	1
+Bipolar Disorder	Spinocerebellar Ataxia	1
+Bipolar Disorder	Systemic Primary Carnitine Deficiency	1
+Bipolar Disorder	Thalassemia	1
+Bipolar Disorder	Tongue Tie	1
+Bipolar Disorder	Tuberous Sclerosis	1
+Bladder Cancer	Cerebral Degeneration Due to Generalized Lipidoses	1
+Bladder Cancer	Chronic Granulomatous Disease	1
+Bladder Cancer	Circulating Enzyme Deficiencies	1
+Bladder Cancer	Combined Heart and Skeletal Defects	1
+Bladder Cancer	Congenital Ichthyosis	1
+Bladder Cancer	Degenerative Diseases of the Basal Ganglia	1
+Bladder Cancer	Diamond-Blackfan Anemia	1
+Bladder Cancer	Disorders of Phosphorous Metabolism	1
+Bladder Cancer	Disorders of Straight Chain Amino Acid Metabolism	1
+Bladder Cancer	Disorders of Urea Cycle Metabolism	1
+Bladder Cancer	Dopa-Responsive Dystonia	1
+Bladder Cancer	Genetic Anomalies of Leukocytes	1
+Bladder Cancer	Glycogenosis	1
+Bladder Cancer	Haemophilia	1
+Bladder Cancer	Hereditary Hemorrhagic Telangiectasia	1
+Bladder Cancer	Hereditary Sensory Neuropathy	1
+Bladder Cancer	Hypopituitarism	1
+Bladder Cancer	Inherited Anomalies of the Skin	1
+Bladder Cancer	Lipoprotein Deficiencies	1
+Bladder Cancer	Long QT Syndrome	1
+Bladder Cancer	Neurofibromatosis	1
+Bladder Cancer	Polycystic Kidney, Autosomal Dominant	1
+Bladder Cancer	Specified Hamartoses	1
+Bladder Cancer	Spinocerebellar Ataxia	1
+Bladder Cancer	Tongue Tie	1
+Female Breast Cancer	Androgen Insensitivity Syndrome	1
+Female Breast Cancer	Cerebral Degeneration Due to Generalized Lipidoses	1
+Female Breast Cancer	Chronic Granulomatous Disease	1
+Female Breast Cancer	Circulating Enzyme Deficiencies	1
+Female Breast Cancer	Combined Heart and Skeletal Defects	1
+Female Breast Cancer	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Female Breast Cancer	Congenital Ichthyosis	1
+Female Breast Cancer	Congenital Pigmentary Anomalies	1
+Female Breast Cancer	Cystic Fibrosis	1
+Female Breast Cancer	Degenerative Diseases of the Basal Ganglia	1
+Female Breast Cancer	Diamond-Blackfan Anemia	1
+Female Breast Cancer	Disorders of Copper Metabolism	1
+Female Breast Cancer	Disorders of Phosphorous Metabolism	1
+Female Breast Cancer	Disorders of Straight Chain Amino Acid Metabolism	1
+Female Breast Cancer	Disorders of Urea Cycle Metabolism	1
+Female Breast Cancer	Dopa-Responsive Dystonia	1
+Female Breast Cancer	Facial and Skull Anomalies	1
+Female Breast Cancer	Genetic Anomalies of Leukocytes	1
+Female Breast Cancer	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Female Breast Cancer	Haemophilia	1
+Female Breast Cancer	Hereditary Hemorrhagic Telangiectasia	1
+Female Breast Cancer	Hereditary Sensory Neuropathy	1
+Female Breast Cancer	Hypopituitarism	1
+Female Breast Cancer	Inherited Anomalies of the Skin	1
+Female Breast Cancer	Li Fraumeni and Related Syndromes	1
+Female Breast Cancer	Lipoprotein Deficiencies	1
+Female Breast Cancer	Long QT Syndrome	1
+Female Breast Cancer	Multiple Endocrine Neoplasia Type I	1
+Female Breast Cancer	Neurofibromatosis	1
+Female Breast Cancer	Non-Specified Osteodystrophy	1
+Female Breast Cancer	Pervasive, Specified Congenital Anomalies	1
+Female Breast Cancer	Phenylketonuria	1
+Female Breast Cancer	Polycystic Kidney, Autosomal Dominant	1
+Female Breast Cancer	Retinitis Pigmentosa	1
+Female Breast Cancer	Sensory Retina Dystropies	1
+Female Breast Cancer	Severe Combined Immunodeficiency	1
+Female Breast Cancer	Sickle Cell Anemia	1
+Female Breast Cancer	Specific Nail Anomalies	1
+Female Breast Cancer	Specified Hamartoses	1
+Female Breast Cancer	Spinocerebellar Ataxia	1
+Female Breast Cancer	Thalassemia	1
+Female Breast Cancer	Tongue Tie	1
+Bronchitis	Androgen Insensitivity Syndrome	1
+Bronchitis	Anophthalmos/Micropthalmos	1
+Bronchitis	Anterior Eye Anomalies	1
+Bronchitis	Autoimmune Lymphoproliferative Syndrome	1
+Bronchitis	Autoimmune Polyglandular Syndrome	1
+Bronchitis	Bartter Syndrome	1
+Bronchitis	Cerebral Degeneration Due to Generalized Lipidoses	1
+Bronchitis	Cerebral Lipidoses	1
+Bronchitis	Chondrodystrophy	1
+Bronchitis	Chronic Granulomatous Disease	1
+Bronchitis	Circulating Enzyme Deficiencies	1
+Bronchitis	Combined Heart and Skeletal Defects	1
+Bronchitis	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Bronchitis	Congenital Ectodermal Dysplasia	1
+Bronchitis	Congenital Hirschsprung Disease	1
+Bronchitis	Congenital Hydrocephalus	1
+Bronchitis	Congenital Hypogammaglobulinemia	1
+Bronchitis	Congenital Ichthyosis	1
+Bronchitis	Congenital Pigmentary Anomalies	1
+Bronchitis	Cri-Du-Chat Syndrome	1
+Bronchitis	Cystic Fibrosis	1
+Bronchitis	Degenerative Diseases of the Basal Ganglia	1
+Bronchitis	Diamond-Blackfan Anemia	1
+Bronchitis	Disorders of Aromatic Amino Acid Metabolism	1
+Bronchitis	Disorders of Branched Chain Amino Acid Metabolism	1
+Bronchitis	Disorders of Copper Metabolism	1
+Bronchitis	Disorders of Fatty Acid Oxidation	1
+Bronchitis	Disorders of Phosphorous Metabolism	1
+Bronchitis	Disorders of Straight Chain Amino Acid Metabolism	1
+Bronchitis	Disorders of Urea Cycle Metabolism	1
+Bronchitis	Dopa-Responsive Dystonia	1
+Bronchitis	Erythromelalgia	1
+Bronchitis	Facial and Skull Anomalies	1
+Bronchitis	Familial Dysautonomia	1
+Bronchitis	Familial Mediterranean Fever	1
+Bronchitis	Fragile-X Syndrome	1
+Bronchitis	Friedreich Ataxia	1
+Bronchitis	Genetic Anomalies of Leukocytes	1
+Bronchitis	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Bronchitis	Glycogenosis	1
+Bronchitis	Haemophilia	1
+Bronchitis	Hereditary Color Blindness	1
+Bronchitis	Hereditary Hemorrhagic Telangiectasia	1
+Bronchitis	Hereditary Muscular Dystrophy	1
+Bronchitis	Hereditary Sensory Neuropathy	1
+Bronchitis	Hereditary Thrombocytopenic Purpura	1
+Bronchitis	Holoprosencephaly	1
+Bronchitis	Huntington Disease	1
+Bronchitis	Hypopituitarism	1
+Bronchitis	Immunodeficiency with Increased IgM	1
+Bronchitis	Inherited Adrenogenital Disorders	1
+Bronchitis	Inherited Anomalies of the Skin	1
+Bronchitis	Li Fraumeni and Related Syndromes	1
+Bronchitis	Lipoprotein Deficiencies	1
+Bronchitis	Long QT Syndrome	1
+Bronchitis	Marfan Syndrome	1
+Bronchitis	Multiple Endocrine Neoplasia Type IIA	1
+Bronchitis	Neurofibromatosis	1
+Bronchitis	Non-Specific Autosomal Deletion Syndromes	1
+Bronchitis	Non-Specified Osteodystrophy	1
+Bronchitis	Osteogenesis Imperfecta	1
+Bronchitis	Other Specified Disorders of Amino Acid Metabolism	1
+Bronchitis	Peroxisomal Disorders	1
+Bronchitis	Pervasive, Specified Congenital Anomalies	1
+Bronchitis	Phenylketonuria	1
+Bronchitis	Polycystic Kidney, Autosomal Dominant	1
+Bronchitis	Retinitis Pigmentosa	1
+Bronchitis	Rett Syndrome	1
+Bronchitis	Sensory Retina Dystropies	1
+Bronchitis	Severe Combined Immunodeficiency	1
+Bronchitis	Sickle Cell Anemia	1
+Bronchitis	Smith-Magenis Syndrome	1
+Bronchitis	Specific Nail Anomalies	1
+Bronchitis	Specified Anomalies of the Musculoskeletal System	1
+Bronchitis	Specified Hamartoses	1
+Bronchitis	Spinocerebellar Ataxia	1
+Bronchitis	Systemic Primary Carnitine Deficiency	1
+Bronchitis	Thalassemia	1
+Bronchitis	Tongue Tie	1
+Bronchitis	Tuberous Sclerosis	1
+Bronchitis	Velo-Cardio-Facial Syndrome	1
+Bronchitis	Wiskott-Aldrich Syndrome	1
+Burkitts Lymphoma	Combined Heart and Skeletal Defects	1
+Burkitts Lymphoma	Congenital Hypogammaglobulinemia	1
+Burkitts Lymphoma	Diamond-Blackfan Anemia	1
+Burkitts Lymphoma	Disorders of Phosphorous Metabolism	1
+Burkitts Lymphoma	Genetic Anomalies of Leukocytes	1
+Burkitts Lymphoma	Haemophilia	1
+Burkitts Lymphoma	Lipoprotein Deficiencies	1
+Burkitts Lymphoma	Long QT Syndrome	1
+Burkitts Lymphoma	Pervasive, Specified Congenital Anomalies	1
+Burkitts Lymphoma	Severe Combined Immunodeficiency	1
+Burkitts Lymphoma	Sickle Cell Anemia	1
+Burkitts Lymphoma	Wiskott-Aldrich Syndrome	1
+Cataract	Androgen Insensitivity Syndrome	1
+Cataract	Anophthalmos/Micropthalmos	1
+Cataract	Anterior Eye Anomalies	1
+Cataract	Autoimmune Lymphoproliferative Syndrome	1
+Cataract	Autoimmune Polyglandular Syndrome	1
+Cataract	Bartter Syndrome	1
+Cataract	Cerebral Degeneration Due to Generalized Lipidoses	1
+Cataract	Chondrodystrophy	1
+Cataract	Chronic Granulomatous Disease	1
+Cataract	Chronic Progressive External Ophthalmoplegia	1
+Cataract	Circulating Enzyme Deficiencies	1
+Cataract	Combined Heart and Skeletal Defects	1
+Cataract	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Cataract	Congenital Hirschsprung Disease	1
+Cataract	Congenital Hypogammaglobulinemia	1
+Cataract	Congenital Ichthyosis	1
+Cataract	Congenital Pigmentary Anomalies	1
+Cataract	Degenerative Diseases of the Basal Ganglia	1
+Cataract	Diamond-Blackfan Anemia	1
+Cataract	Disorders of Aromatic Amino Acid Metabolism	1
+Cataract	Disorders of Copper Metabolism	1
+Cataract	Disorders of Phosphorous Metabolism	1
+Cataract	Disorders of Straight Chain Amino Acid Metabolism	1
+Cataract	Disorders of Urea Cycle Metabolism	1
+Cataract	Dopa-Responsive Dystonia	1
+Cataract	Erythromelalgia	1
+Cataract	Facial and Skull Anomalies	1
+Cataract	Familial Dysautonomia	1
+Cataract	Friedreich Ataxia	1
+Cataract	Genetic Anomalies of Leukocytes	1
+Cataract	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Cataract	Glycogenosis	1
+Cataract	Haemophilia	1
+Cataract	Hereditary Color Blindness	1
+Cataract	Hereditary Hemorrhagic Telangiectasia	1
+Cataract	Hereditary Muscular Dystrophy	1
+Cataract	Hereditary Sensory Neuropathy	1
+Cataract	Holoprosencephaly	1
+Cataract	Huntington Disease	1
+Cataract	Hypopituitarism	1
+Cataract	Immunodeficiency with Increased IgM	1
+Cataract	Inherited Adrenogenital Disorders	1
+Cataract	Inherited Anomalies of the Skin	1
+Cataract	Li Fraumeni and Related Syndromes	1
+Cataract	Lipoprotein Deficiencies	1
+Cataract	Long QT Syndrome	1
+Cataract	Marfan Syndrome	1
+Cataract	Multiple Endocrine Neoplasia Type I	1
+Cataract	Multiple Endocrine Neoplasia Type IIA	1
+Cataract	Neurofibromatosis	1
+Cataract	Non-Specified Osteodystrophy	1
+Cataract	Osteogenesis Imperfecta	1
+Cataract	Other Specified Disorders of Amino Acid Metabolism	1
+Cataract	Pervasive, Specified Congenital Anomalies	1
+Cataract	Phenylketonuria	1
+Cataract	Polycystic Kidney, Autosomal Dominant	1
+Cataract	Retinitis Pigmentosa	1
+Cataract	Sensory Retina Dystropies	1
+Cataract	Severe Combined Immunodeficiency	1
+Cataract	Sickle Cell Anemia	1
+Cataract	Specific Nail Anomalies	1
+Cataract	Specified Hamartoses	1
+Cataract	Spinocerebellar Ataxia	1
+Cataract	Systemic Primary Carnitine Deficiency	1
+Cataract	Thalassemia	1
+Cataract	Tongue Tie	1
+Cataract	Tuberous Sclerosis	1
+Celiac Disease	Autoimmune Lymphoproliferative Syndrome	1
+Celiac Disease	Autoimmune Polyglandular Syndrome	1
+Celiac Disease	Cerebral Degeneration Due to Generalized Lipidoses	1
+Celiac Disease	Chronic Granulomatous Disease	1
+Celiac Disease	Circulating Enzyme Deficiencies	1
+Celiac Disease	Combined Heart and Skeletal Defects	1
+Celiac Disease	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Celiac Disease	Congenital Hirschsprung Disease	1
+Celiac Disease	Congenital Hypogammaglobulinemia	1
+Celiac Disease	Congenital Ichthyosis	1
+Celiac Disease	Congenital Pigmentary Anomalies	1
+Celiac Disease	Cystic Fibrosis	1
+Celiac Disease	Disorders of Aromatic Amino Acid Metabolism	1
+Celiac Disease	Disorders of Copper Metabolism	1
+Celiac Disease	Disorders of Fatty Acid Oxidation	1
+Celiac Disease	Disorders of Phosphorous Metabolism	1
+Celiac Disease	Disorders of Straight Chain Amino Acid Metabolism	1
+Celiac Disease	Disorders of Urea Cycle Metabolism	1
+Celiac Disease	Dopa-Responsive Dystonia	1
+Celiac Disease	Erythromelalgia	1
+Celiac Disease	Facial and Skull Anomalies	1
+Celiac Disease	Familial Dysautonomia	1
+Celiac Disease	Genetic Anomalies of Leukocytes	1
+Celiac Disease	Glycogenosis	1
+Celiac Disease	Haemophilia	1
+Celiac Disease	Hereditary Hemorrhagic Telangiectasia	1
+Celiac Disease	Hereditary Muscular Dystrophy	1
+Celiac Disease	Hereditary Sensory Neuropathy	1
+Celiac Disease	Holoprosencephaly	1
+Celiac Disease	Hypopituitarism	1
+Celiac Disease	Immunodeficiency with Increased IgM	1
+Celiac Disease	Inherited Adrenogenital Disorders	1
+Celiac Disease	Inherited Anomalies of the Skin	1
+Celiac Disease	Li Fraumeni and Related Syndromes	1
+Celiac Disease	Lipoprotein Deficiencies	1
+Celiac Disease	Long QT Syndrome	1
+Celiac Disease	Marfan Syndrome	1
+Celiac Disease	Osteogenesis Imperfecta	1
+Celiac Disease	Other Specified Disorders of Amino Acid Metabolism	1
+Celiac Disease	Pervasive, Specified Congenital Anomalies	1
+Celiac Disease	Retinitis Pigmentosa	1
+Celiac Disease	Sensory Retina Dystropies	1
+Celiac Disease	Severe Combined Immunodeficiency	1
+Celiac Disease	Specific Nail Anomalies	1
+Celiac Disease	Specified Hamartoses	1
+Celiac Disease	Spinocerebellar Ataxia	1
+Celiac Disease	Systemic Primary Carnitine Deficiency	1
+Celiac Disease	Thalassemia	1
+Celiac Disease	Velo-Cardio-Facial Syndrome	1
+Cerebral Infarction	Androgen Insensitivity Syndrome	1
+Cerebral Infarction	Anophthalmos/Micropthalmos	1
+Cerebral Infarction	Autoimmune Lymphoproliferative Syndrome	1
+Cerebral Infarction	Autoimmune Polyglandular Syndrome	1
+Cerebral Infarction	Bartter Syndrome	1
+Cerebral Infarction	Cerebral Degeneration Due to Generalized Lipidoses	1
+Cerebral Infarction	Cerebral Lipidoses	1
+Cerebral Infarction	Chondrodystrophy	1
+Cerebral Infarction	Chronic Granulomatous Disease	1
+Cerebral Infarction	Chronic Progressive External Ophthalmoplegia	1
+Cerebral Infarction	Circulating Enzyme Deficiencies	1
+Cerebral Infarction	Combined Heart and Skeletal Defects	1
+Cerebral Infarction	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Cerebral Infarction	Congenital Hydrocephalus	1
+Cerebral Infarction	Congenital Hypogammaglobulinemia	1
+Cerebral Infarction	Congenital Ichthyosis	1
+Cerebral Infarction	Congenital Pigmentary Anomalies	1
+Cerebral Infarction	Cystic Fibrosis	1
+Cerebral Infarction	Degenerative Diseases of the Basal Ganglia	1
+Cerebral Infarction	Diamond-Blackfan Anemia	1
+Cerebral Infarction	Disorders of Aromatic Amino Acid Metabolism	1
+Cerebral Infarction	Disorders of Copper Metabolism	1
+Cerebral Infarction	Disorders of Phosphorous Metabolism	1
+Cerebral Infarction	Disorders of Straight Chain Amino Acid Metabolism	1
+Cerebral Infarction	Disorders of Urea Cycle Metabolism	1
+Cerebral Infarction	Dopa-Responsive Dystonia	1
+Cerebral Infarction	Erythromelalgia	1
+Cerebral Infarction	Facial and Skull Anomalies	1
+Cerebral Infarction	Familial Dysautonomia	1
+Cerebral Infarction	Friedreich Ataxia	1
+Cerebral Infarction	Genetic Anomalies of Leukocytes	1
+Cerebral Infarction	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Cerebral Infarction	Glycogenosis	1
+Cerebral Infarction	Haemophilia	1
+Cerebral Infarction	Hereditary Hemorrhagic Telangiectasia	1
+Cerebral Infarction	Hereditary Muscular Dystrophy	1
+Cerebral Infarction	Hereditary Sensory Neuropathy	1
+Cerebral Infarction	Hereditary Thrombocytopenic Purpura	1
+Cerebral Infarction	Holoprosencephaly	1
+Cerebral Infarction	Huntington Disease	1
+Cerebral Infarction	Hypopituitarism	1
+Cerebral Infarction	Immunodeficiency with Increased IgM	1
+Cerebral Infarction	Inherited Adrenogenital Disorders	1
+Cerebral Infarction	Inherited Anomalies of the Skin	1
+Cerebral Infarction	Li Fraumeni and Related Syndromes	1
+Cerebral Infarction	Lipoprotein Deficiencies	1
+Cerebral Infarction	Long QT Syndrome	1
+Cerebral Infarction	Marfan Syndrome	1
+Cerebral Infarction	Multiple Endocrine Neoplasia Type I	1
+Cerebral Infarction	Neurofibromatosis	1
+Cerebral Infarction	Non-Specified Osteodystrophy	1
+Cerebral Infarction	Osteogenesis Imperfecta	1
+Cerebral Infarction	Other Specified Disorders of Amino Acid Metabolism	1
+Cerebral Infarction	Pervasive, Specified Congenital Anomalies	1
+Cerebral Infarction	Polycystic Kidney, Autosomal Dominant	1
+Cerebral Infarction	Retinitis Pigmentosa	1
+Cerebral Infarction	Sensory Retina Dystropies	1
+Cerebral Infarction	Severe Combined Immunodeficiency	1
+Cerebral Infarction	Sickle Cell Anemia	1
+Cerebral Infarction	Specific Nail Anomalies	1
+Cerebral Infarction	Specified Anomalies of the Musculoskeletal System	1
+Cerebral Infarction	Specified Hamartoses	1
+Cerebral Infarction	Spinocerebellar Ataxia	1
+Cerebral Infarction	Systemic Primary Carnitine Deficiency	1
+Cerebral Infarction	Thalassemia	1
+Cerebral Infarction	Tongue Tie	1
+Cerebral Infarction	Tuberous Sclerosis	1
+Colorectal Cancer	Cerebral Degeneration Due to Generalized Lipidoses	1
+Colorectal Cancer	Chronic Granulomatous Disease	1
+Colorectal Cancer	Circulating Enzyme Deficiencies	1
+Colorectal Cancer	Combined Heart and Skeletal Defects	1
+Colorectal Cancer	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Colorectal Cancer	Congenital Hirschsprung Disease	1
+Colorectal Cancer	Congenital Hypogammaglobulinemia	1
+Colorectal Cancer	Congenital Pigmentary Anomalies	1
+Colorectal Cancer	Cystic Fibrosis	1
+Colorectal Cancer	Degenerative Diseases of the Basal Ganglia	1
+Colorectal Cancer	Disorders of Copper Metabolism	1
+Colorectal Cancer	Disorders of Phosphorous Metabolism	1
+Colorectal Cancer	Disorders of Straight Chain Amino Acid Metabolism	1
+Colorectal Cancer	Disorders of Urea Cycle Metabolism	1
+Colorectal Cancer	Dopa-Responsive Dystonia	1
+Colorectal Cancer	Facial and Skull Anomalies	1
+Colorectal Cancer	Genetic Anomalies of Leukocytes	1
+Colorectal Cancer	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Colorectal Cancer	Glycogenosis	1
+Colorectal Cancer	Haemophilia	1
+Colorectal Cancer	Hereditary Hemorrhagic Telangiectasia	1
+Colorectal Cancer	Hereditary Sensory Neuropathy	1
+Colorectal Cancer	Hypopituitarism	1
+Colorectal Cancer	Immunodeficiency with Increased IgM	1
+Colorectal Cancer	Inherited Adrenogenital Disorders	1
+Colorectal Cancer	Inherited Anomalies of the Skin	1
+Colorectal Cancer	Li Fraumeni and Related Syndromes	1
+Colorectal Cancer	Lipoprotein Deficiencies	1
+Colorectal Cancer	Long QT Syndrome	1
+Colorectal Cancer	Multiple Endocrine Neoplasia Type I	1
+Colorectal Cancer	Neurofibromatosis	1
+Colorectal Cancer	Polycystic Kidney, Autosomal Dominant	1
+Colorectal Cancer	Retinitis Pigmentosa	1
+Colorectal Cancer	Severe Combined Immunodeficiency	1
+Colorectal Cancer	Sickle Cell Anemia	1
+Colorectal Cancer	Specified Hamartoses	1
+Colorectal Cancer	Spinocerebellar Ataxia	1
+Colorectal Cancer	Thalassemia	1
+Colorectal Cancer	Tongue Tie	1
+Crohns Disease	Autoimmune Lymphoproliferative Syndrome	1
+Crohns Disease	Autoimmune Polyglandular Syndrome	1
+Crohns Disease	Bartter Syndrome	1
+Crohns Disease	Cerebral Degeneration Due to Generalized Lipidoses	1
+Crohns Disease	Chronic Granulomatous Disease	1
+Crohns Disease	Circulating Enzyme Deficiencies	1
+Crohns Disease	Combined Heart and Skeletal Defects	1
+Crohns Disease	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Crohns Disease	Congenital Hirschsprung Disease	1
+Crohns Disease	Congenital Hypogammaglobulinemia	1
+Crohns Disease	Congenital Ichthyosis	1
+Crohns Disease	Cystic Fibrosis	1
+Crohns Disease	Degenerative Diseases of the Basal Ganglia	1
+Crohns Disease	Disorders of Copper Metabolism	1
+Crohns Disease	Disorders of Phosphorous Metabolism	1
+Crohns Disease	Disorders of Straight Chain Amino Acid Metabolism	1
+Crohns Disease	Disorders of Urea Cycle Metabolism	1
+Crohns Disease	Dopa-Responsive Dystonia	1
+Crohns Disease	Erythromelalgia	1
+Crohns Disease	Familial Mediterranean Fever	1
+Crohns Disease	Genetic Anomalies of Leukocytes	1
+Crohns Disease	Glycogenosis	1
+Crohns Disease	Haemophilia	1
+Crohns Disease	Hereditary Hemorrhagic Telangiectasia	1
+Crohns Disease	Hereditary Sensory Neuropathy	1
+Crohns Disease	Holoprosencephaly	1
+Crohns Disease	Hypopituitarism	1
+Crohns Disease	Immunodeficiency with Increased IgM	1
+Crohns Disease	Inherited Adrenogenital Disorders	1
+Crohns Disease	Inherited Anomalies of the Skin	1
+Crohns Disease	Li Fraumeni and Related Syndromes	1
+Crohns Disease	Lipoprotein Deficiencies	1
+Crohns Disease	Long QT Syndrome	1
+Crohns Disease	Neurofibromatosis	1
+Crohns Disease	Pervasive, Specified Congenital Anomalies	1
+Crohns Disease	Polycystic Kidney, Autosomal Dominant	1
+Crohns Disease	Retinitis Pigmentosa	1
+Crohns Disease	Sensory Retina Dystropies	1
+Crohns Disease	Severe Combined Immunodeficiency	1
+Crohns Disease	Specified Hamartoses	1
+Crohns Disease	Spinocerebellar Ataxia	1
+Crohns Disease	Thalassemia	1
+Crohns Disease	Tongue Tie	1
+Cushings Syndrome	Autoimmune Lymphoproliferative Syndrome	1
+Cushings Syndrome	Autoimmune Polyglandular Syndrome	1
+Cushings Syndrome	Bartter Syndrome	1
+Cushings Syndrome	Cerebral Degeneration Due to Generalized Lipidoses	1
+Cushings Syndrome	Chronic Granulomatous Disease	1
+Cushings Syndrome	Circulating Enzyme Deficiencies	1
+Cushings Syndrome	Combined Heart and Skeletal Defects	1
+Cushings Syndrome	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Cushings Syndrome	Congenital Hydrocephalus	1
+Cushings Syndrome	Congenital Ichthyosis	1
+Cushings Syndrome	Cystic Fibrosis	1
+Cushings Syndrome	Degenerative Diseases of the Basal Ganglia	1
+Cushings Syndrome	Diamond-Blackfan Anemia	1
+Cushings Syndrome	Disorders of Copper Metabolism	1
+Cushings Syndrome	Disorders of Phosphorous Metabolism	1
+Cushings Syndrome	Disorders of Straight Chain Amino Acid Metabolism	1
+Cushings Syndrome	Disorders of Urea Cycle Metabolism	1
+Cushings Syndrome	Dopa-Responsive Dystonia	1
+Cushings Syndrome	Erythromelalgia	1
+Cushings Syndrome	Familial Dysautonomia	1
+Cushings Syndrome	Genetic Anomalies of Leukocytes	1
+Cushings Syndrome	Haemophilia	1
+Cushings Syndrome	Hereditary Muscular Dystrophy	1
+Cushings Syndrome	Hereditary Sensory Neuropathy	1
+Cushings Syndrome	Holoprosencephaly	1
+Cushings Syndrome	Hypopituitarism	1
+Cushings Syndrome	Immunodeficiency with Increased IgM	1
+Cushings Syndrome	Inherited Adrenogenital Disorders	1
+Cushings Syndrome	Inherited Anomalies of the Skin	1
+Cushings Syndrome	Lipoprotein Deficiencies	1
+Cushings Syndrome	Long QT Syndrome	1
+Cushings Syndrome	Multiple Endocrine Neoplasia Type I	1
+Cushings Syndrome	Multiple Endocrine Neoplasia Type IIA	1
+Cushings Syndrome	Neurofibromatosis	1
+Cushings Syndrome	Non-Specified Osteodystrophy	1
+Cushings Syndrome	Osteogenesis Imperfecta	1
+Cushings Syndrome	Other Specified Disorders of Amino Acid Metabolism	1
+Cushings Syndrome	Pervasive, Specified Congenital Anomalies	1
+Cushings Syndrome	Polycystic Kidney, Autosomal Dominant	1
+Cushings Syndrome	Severe Combined Immunodeficiency	1
+Cushings Syndrome	Sickle Cell Anemia	1
+Cushings Syndrome	Specified Anomalies of the Musculoskeletal System	1
+Cushings Syndrome	Specified Hamartoses	1
+Cushings Syndrome	Systemic Primary Carnitine Deficiency	1
+Cushings Syndrome	Thalassemia	1
+Deep Vein Thrombosis	Autoimmune Lymphoproliferative Syndrome	1
+Deep Vein Thrombosis	Autoimmune Polyglandular Syndrome	1
+Deep Vein Thrombosis	Bartter Syndrome	1
+Deep Vein Thrombosis	Cerebral Degeneration Due to Generalized Lipidoses	1
+Deep Vein Thrombosis	Chondrodystrophy	1
+Deep Vein Thrombosis	Circulating Enzyme Deficiencies	1
+Deep Vein Thrombosis	Combined Heart and Skeletal Defects	1
+Deep Vein Thrombosis	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Deep Vein Thrombosis	Congenital Hirschsprung Disease	1
+Deep Vein Thrombosis	Congenital Hydrocephalus	1
+Deep Vein Thrombosis	Congenital Hypogammaglobulinemia	1
+Deep Vein Thrombosis	Congenital Ichthyosis	1
+Deep Vein Thrombosis	Cystic Fibrosis	1
+Deep Vein Thrombosis	Degenerative Diseases of the Basal Ganglia	1
+Deep Vein Thrombosis	Diamond-Blackfan Anemia	1
+Deep Vein Thrombosis	Disorders of Aromatic Amino Acid Metabolism	1
+Deep Vein Thrombosis	Disorders of Branched Chain Amino Acid Metabolism	1
+Deep Vein Thrombosis	Disorders of Copper Metabolism	1
+Deep Vein Thrombosis	Disorders of Phosphorous Metabolism	1
+Deep Vein Thrombosis	Disorders of Straight Chain Amino Acid Metabolism	1
+Deep Vein Thrombosis	Disorders of Urea Cycle Metabolism	1
+Deep Vein Thrombosis	Dopa-Responsive Dystonia	1
+Deep Vein Thrombosis	Erythromelalgia	1
+Deep Vein Thrombosis	Facial and Skull Anomalies	1
+Deep Vein Thrombosis	Familial Dysautonomia	1
+Deep Vein Thrombosis	Familial Mediterranean Fever	1
+Deep Vein Thrombosis	Friedreich Ataxia	1
+Deep Vein Thrombosis	Genetic Anomalies of Leukocytes	1
+Deep Vein Thrombosis	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Deep Vein Thrombosis	Glycogenosis	1
+Deep Vein Thrombosis	Haemophilia	1
+Deep Vein Thrombosis	Hereditary Hemorrhagic Telangiectasia	1
+Deep Vein Thrombosis	Hereditary Muscular Dystrophy	1
+Deep Vein Thrombosis	Hereditary Sensory Neuropathy	1
+Deep Vein Thrombosis	Hereditary Thrombocytopenic Purpura	1
+Deep Vein Thrombosis	Holoprosencephaly	1
+Deep Vein Thrombosis	Huntington Disease	1
+Deep Vein Thrombosis	Hypopituitarism	1
+Deep Vein Thrombosis	Immunodeficiency with Increased IgM	1
+Deep Vein Thrombosis	Inherited Adrenogenital Disorders	1
+Deep Vein Thrombosis	Inherited Anomalies of the Skin	1
+Deep Vein Thrombosis	Li Fraumeni and Related Syndromes	1
+Deep Vein Thrombosis	Lipoprotein Deficiencies	1
+Deep Vein Thrombosis	Long QT Syndrome	1
+Deep Vein Thrombosis	Marfan Syndrome	1
+Deep Vein Thrombosis	Multiple Endocrine Neoplasia Type I	1
+Deep Vein Thrombosis	Neurofibromatosis	1
+Deep Vein Thrombosis	Non-Specified Osteodystrophy	1
+Deep Vein Thrombosis	Osteogenesis Imperfecta	1
+Deep Vein Thrombosis	Other Specified Disorders of Amino Acid Metabolism	1
+Deep Vein Thrombosis	Pervasive, Specified Congenital Anomalies	1
+Deep Vein Thrombosis	Polycystic Kidney, Autosomal Dominant	1
+Deep Vein Thrombosis	Retinitis Pigmentosa	1
+Deep Vein Thrombosis	Sensory Retina Dystropies	1
+Deep Vein Thrombosis	Severe Combined Immunodeficiency	1
+Deep Vein Thrombosis	Sickle Cell Anemia	1
+Deep Vein Thrombosis	Specific Nail Anomalies	1
+Deep Vein Thrombosis	Specified Anomalies of the Musculoskeletal System	1
+Deep Vein Thrombosis	Specified Hamartoses	1
+Deep Vein Thrombosis	Spinocerebellar Ataxia	1
+Deep Vein Thrombosis	Systemic Primary Carnitine Deficiency	1
+Deep Vein Thrombosis	Thalassemia	1
+Deep Vein Thrombosis	Tongue Tie	1
+Deep Vein Thrombosis	Tuberous Sclerosis	1
+Deep Vein Thrombosis	Velo-Cardio-Facial Syndrome	1
+Depression	Androgen Insensitivity Syndrome	1
+Depression	Anophthalmos/Micropthalmos	1
+Depression	Autoimmune Lymphoproliferative Syndrome	1
+Depression	Autoimmune Polyglandular Syndrome	1
+Depression	Bartter Syndrome	1
+Depression	Cerebral Degeneration Due to Generalized Lipidoses	1
+Depression	Cerebral Lipidoses	1
+Depression	Chondrodystrophy	1
+Depression	Chronic Granulomatous Disease	1
+Depression	Circulating Enzyme Deficiencies	1
+Depression	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Depression	Congenital Hydrocephalus	1
+Depression	Congenital Hypogammaglobulinemia	1
+Depression	Congenital Ichthyosis	1
+Depression	Cystic Fibrosis	1
+Depression	Degenerative Diseases of the Basal Ganglia	1
+Depression	Diamond-Blackfan Anemia	1
+Depression	Disorders of Aromatic Amino Acid Metabolism	1
+Depression	Disorders of Copper Metabolism	1
+Depression	Disorders of Phosphorous Metabolism	1
+Depression	Disorders of Straight Chain Amino Acid Metabolism	1
+Depression	Disorders of Urea Cycle Metabolism	1
+Depression	Dopa-Responsive Dystonia	1
+Depression	Erythromelalgia	1
+Depression	Facial and Skull Anomalies	1
+Depression	Familial Dysautonomia	1
+Depression	Fragile-X Syndrome	1
+Depression	Friedreich Ataxia	1
+Depression	Genetic Anomalies of Leukocytes	1
+Depression	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Depression	Glycogenosis	1
+Depression	Haemophilia	1
+Depression	Hereditary Hemorrhagic Telangiectasia	1
+Depression	Hereditary Muscular Dystrophy	1
+Depression	Hereditary Sensory Neuropathy	1
+Depression	Holoprosencephaly	1
+Depression	Huntington Disease	1
+Depression	Hypopituitarism	1
+Depression	Immunodeficiency with Increased IgM	1
+Depression	Inherited Adrenogenital Disorders	1
+Depression	Inherited Anomalies of the Skin	1
+Depression	Li Fraumeni and Related Syndromes	1
+Depression	Lipoprotein Deficiencies	1
+Depression	Long QT Syndrome	1
+Depression	Marfan Syndrome	1
+Depression	Multiple Endocrine Neoplasia Type I	1
+Depression	Multiple Endocrine Neoplasia Type IIA	1
+Depression	Neurofibromatosis	1
+Depression	Non-Specified Osteodystrophy	1
+Depression	Osteogenesis Imperfecta	1
+Depression	Other Specified Disorders of Amino Acid Metabolism	1
+Depression	Peroxisomal Disorders	1
+Depression	Pervasive, Specified Congenital Anomalies	1
+Depression	Phenylketonuria	1
+Depression	Polycystic Kidney, Autosomal Dominant	1
+Depression	Retinitis Pigmentosa	1
+Depression	Sensory Retina Dystropies	1
+Depression	Severe Combined Immunodeficiency	1
+Depression	Sickle Cell Anemia	1
+Depression	Specific Nail Anomalies	1
+Depression	Specified Anomalies of the Musculoskeletal System	1
+Depression	Specified Hamartoses	1
+Depression	Spinocerebellar Ataxia	1
+Depression	Systemic Primary Carnitine Deficiency	1
+Depression	Thalassemia	1
+Depression	Tongue Tie	1
+Depression	Tuberous Sclerosis	1
+Depression	Wiskott-Aldrich Syndrome	1
+Dermatitis Herpetiformis	Congenital Ichthyosis	1
+Dermatitis Herpetiformis	Inherited Anomalies of the Skin	1
+Diabetes Insipidus	Anophthalmos/Micropthalmos	1
+Diabetes Insipidus	Cerebral Degeneration Due to Generalized Lipidoses	1
+Diabetes Insipidus	Chronic Granulomatous Disease	1
+Diabetes Insipidus	Combined Heart and Skeletal Defects	1
+Diabetes Insipidus	Congenital Hydrocephalus	1
+Diabetes Insipidus	Cystic Fibrosis	1
+Diabetes Insipidus	Degenerative Diseases of the Basal Ganglia	1
+Diabetes Insipidus	Disorders of Phosphorous Metabolism	1
+Diabetes Insipidus	Disorders of Straight Chain Amino Acid Metabolism	1
+Diabetes Insipidus	Disorders of Urea Cycle Metabolism	1
+Diabetes Insipidus	Dopa-Responsive Dystonia	1
+Diabetes Insipidus	Facial and Skull Anomalies	1
+Diabetes Insipidus	Familial Dysautonomia	1
+Diabetes Insipidus	Haemophilia	1
+Diabetes Insipidus	Hereditary Muscular Dystrophy	1
+Diabetes Insipidus	Hereditary Sensory Neuropathy	1
+Diabetes Insipidus	Holoprosencephaly	1
+Diabetes Insipidus	Hypopituitarism	1
+Diabetes Insipidus	Inherited Adrenogenital Disorders	1
+Diabetes Insipidus	Inherited Anomalies of the Skin	1
+Diabetes Insipidus	Lipoprotein Deficiencies	1
+Diabetes Insipidus	Long QT Syndrome	1
+Diabetes Insipidus	Neurofibromatosis	1
+Diabetes Insipidus	Other Specified Disorders of Amino Acid Metabolism	1
+Diabetes Insipidus	Pervasive, Specified Congenital Anomalies	1
+Diabetes Insipidus	Sickle Cell Anemia	1
+Diabetes Insipidus	Specified Hamartoses	1
+Diabetes Insipidus	Spinocerebellar Ataxia	1
+Diabetes Insipidus	Systemic Primary Carnitine Deficiency	1
+Diabetes Mellitus Type 1	Androgen Insensitivity Syndrome	1
+Diabetes Mellitus Type 1	Anophthalmos/Micropthalmos	1
+Diabetes Mellitus Type 1	Autoimmune Polyglandular Syndrome	1
+Diabetes Mellitus Type 1	Cerebral Degeneration Due to Generalized Lipidoses	1
+Diabetes Mellitus Type 1	Chronic Granulomatous Disease	1
+Diabetes Mellitus Type 1	Circulating Enzyme Deficiencies	1
+Diabetes Mellitus Type 1	Combined Heart and Skeletal Defects	1
+Diabetes Mellitus Type 1	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Diabetes Mellitus Type 1	Congenital Hypogammaglobulinemia	1
+Diabetes Mellitus Type 1	Congenital Ichthyosis	1
+Diabetes Mellitus Type 1	Cystic Fibrosis	1
+Diabetes Mellitus Type 1	Degenerative Diseases of the Basal Ganglia	1
+Diabetes Mellitus Type 1	Diamond-Blackfan Anemia	1
+Diabetes Mellitus Type 1	Disorders of Aromatic Amino Acid Metabolism	1
+Diabetes Mellitus Type 1	Disorders of Branched Chain Amino Acid Metabolism	1
+Diabetes Mellitus Type 1	Disorders of Copper Metabolism	1
+Diabetes Mellitus Type 1	Disorders of Phosphorous Metabolism	1
+Diabetes Mellitus Type 1	Disorders of Straight Chain Amino Acid Metabolism	1
+Diabetes Mellitus Type 1	Disorders of Urea Cycle Metabolism	1
+Diabetes Mellitus Type 1	Dopa-Responsive Dystonia	1
+Diabetes Mellitus Type 1	Erythromelalgia	1
+Diabetes Mellitus Type 1	Facial and Skull Anomalies	1
+Diabetes Mellitus Type 1	Friedreich Ataxia	1
+Diabetes Mellitus Type 1	Genetic Anomalies of Leukocytes	1
+Diabetes Mellitus Type 1	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Diabetes Mellitus Type 1	Glycogenosis	1
+Diabetes Mellitus Type 1	Haemophilia	1
+Diabetes Mellitus Type 1	Hereditary Hemorrhagic Telangiectasia	1
+Diabetes Mellitus Type 1	Hereditary Muscular Dystrophy	1
+Diabetes Mellitus Type 1	Hereditary Sensory Neuropathy	1
+Diabetes Mellitus Type 1	Holoprosencephaly	1
+Diabetes Mellitus Type 1	Hypopituitarism	1
+Diabetes Mellitus Type 1	Immunodeficiency with Increased IgM	1
+Diabetes Mellitus Type 1	Inherited Adrenogenital Disorders	1
+Diabetes Mellitus Type 1	Inherited Anomalies of the Skin	1
+Diabetes Mellitus Type 1	Lipoprotein Deficiencies	1
+Diabetes Mellitus Type 1	Long QT Syndrome	1
+Diabetes Mellitus Type 1	Multiple Endocrine Neoplasia Type I	1
+Diabetes Mellitus Type 1	Multiple Endocrine Neoplasia Type IIA	1
+Diabetes Mellitus Type 1	Non-Specified Osteodystrophy	1
+Diabetes Mellitus Type 1	Osteogenesis Imperfecta	1
+Diabetes Mellitus Type 1	Other Specified Disorders of Amino Acid Metabolism	1
+Diabetes Mellitus Type 1	Pervasive, Specified Congenital Anomalies	1
+Diabetes Mellitus Type 1	Phenylketonuria	1
+Diabetes Mellitus Type 1	Polycystic Kidney, Autosomal Dominant	1
+Diabetes Mellitus Type 1	Retinitis Pigmentosa	1
+Diabetes Mellitus Type 1	Sensory Retina Dystropies	1
+Diabetes Mellitus Type 1	Severe Combined Immunodeficiency	1
+Diabetes Mellitus Type 1	Sickle Cell Anemia	1
+Diabetes Mellitus Type 1	Specific Nail Anomalies	1
+Diabetes Mellitus Type 1	Specified Anomalies of the Musculoskeletal System	1
+Diabetes Mellitus Type 1	Specified Hamartoses	1
+Diabetes Mellitus Type 1	Spinocerebellar Ataxia	1
+Diabetes Mellitus Type 1	Systemic Primary Carnitine Deficiency	1
+Diabetes Mellitus Type 1	Thalassemia	1
+Diabetes Mellitus Type 1	Tongue Tie	1
+Diabetes Mellitus Type 1	Tuberous Sclerosis	1
+Diabetes Mellitus Type 2	Androgen Insensitivity Syndrome	1
+Diabetes Mellitus Type 2	Anophthalmos/Micropthalmos	1
+Diabetes Mellitus Type 2	Autoimmune Lymphoproliferative Syndrome	1
+Diabetes Mellitus Type 2	Autoimmune Polyglandular Syndrome	1
+Diabetes Mellitus Type 2	Bartter Syndrome	1
+Diabetes Mellitus Type 2	Cerebral Degeneration Due to Generalized Lipidoses	1
+Diabetes Mellitus Type 2	Chronic Granulomatous Disease	1
+Diabetes Mellitus Type 2	Circulating Enzyme Deficiencies	1
+Diabetes Mellitus Type 2	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Diabetes Mellitus Type 2	Congenital Hirschsprung Disease	1
+Diabetes Mellitus Type 2	Congenital Hypogammaglobulinemia	1
+Diabetes Mellitus Type 2	Congenital Ichthyosis	1
+Diabetes Mellitus Type 2	Congenital Pigmentary Anomalies	1
+Diabetes Mellitus Type 2	Cystic Fibrosis	1
+Diabetes Mellitus Type 2	Degenerative Diseases of the Basal Ganglia	1
+Diabetes Mellitus Type 2	Diamond-Blackfan Anemia	1
+Diabetes Mellitus Type 2	Disorders of Aromatic Amino Acid Metabolism	1
+Diabetes Mellitus Type 2	Disorders of Branched Chain Amino Acid Metabolism	1
+Diabetes Mellitus Type 2	Disorders of Copper Metabolism	1
+Diabetes Mellitus Type 2	Disorders of Fatty Acid Oxidation	1
+Diabetes Mellitus Type 2	Disorders of Phosphorous Metabolism	1
+Diabetes Mellitus Type 2	Disorders of Straight Chain Amino Acid Metabolism	1
+Diabetes Mellitus Type 2	Disorders of Urea Cycle Metabolism	1
+Diabetes Mellitus Type 2	Dopa-Responsive Dystonia	1
+Diabetes Mellitus Type 2	Erythromelalgia	1
+Diabetes Mellitus Type 2	Facial and Skull Anomalies	1
+Diabetes Mellitus Type 2	Familial Dysautonomia	1
+Diabetes Mellitus Type 2	Familial Mediterranean Fever	1
+Diabetes Mellitus Type 2	Fragile-X Syndrome	1
+Diabetes Mellitus Type 2	Friedreich Ataxia	1
+Diabetes Mellitus Type 2	Genetic Anomalies of Leukocytes	1
+Diabetes Mellitus Type 2	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Diabetes Mellitus Type 2	Glycogenosis	1
+Diabetes Mellitus Type 2	Haemophilia	1
+Diabetes Mellitus Type 2	Hereditary Hemorrhagic Telangiectasia	1
+Diabetes Mellitus Type 2	Hereditary Muscular Dystrophy	1
+Diabetes Mellitus Type 2	Hereditary Sensory Neuropathy	1
+Diabetes Mellitus Type 2	Hereditary Thrombocytopenic Purpura	1
+Diabetes Mellitus Type 2	Holoprosencephaly	1
+Diabetes Mellitus Type 2	Huntington Disease	1
+Diabetes Mellitus Type 2	Hypopituitarism	1
+Diabetes Mellitus Type 2	Immunodeficiency with Increased IgM	1
+Diabetes Mellitus Type 2	Inherited Adrenogenital Disorders	1
+Diabetes Mellitus Type 2	Inherited Anomalies of the Skin	1
+Diabetes Mellitus Type 2	Li Fraumeni and Related Syndromes	1
+Diabetes Mellitus Type 2	Lipoprotein Deficiencies	1
+Diabetes Mellitus Type 2	Long QT Syndrome	1
+Diabetes Mellitus Type 2	Marfan Syndrome	1
+Diabetes Mellitus Type 2	Multiple Endocrine Neoplasia Type I	1
+Diabetes Mellitus Type 2	Multiple Endocrine Neoplasia Type IIA	1
+Diabetes Mellitus Type 2	Neurofibromatosis	1
+Diabetes Mellitus Type 2	Non-Specified Osteodystrophy	1
+Diabetes Mellitus Type 2	Osteogenesis Imperfecta	1
+Diabetes Mellitus Type 2	Other Specified Disorders of Amino Acid Metabolism	1
+Diabetes Mellitus Type 2	Polycystic Kidney, Autosomal Dominant	1
+Diabetes Mellitus Type 2	Retinitis Pigmentosa	1
+Diabetes Mellitus Type 2	Sensory Retina Dystropies	1
+Diabetes Mellitus Type 2	Severe Combined Immunodeficiency	1
+Diabetes Mellitus Type 2	Sickle Cell Anemia	1
+Diabetes Mellitus Type 2	Specific Nail Anomalies	1
+Diabetes Mellitus Type 2	Specified Anomalies of the Musculoskeletal System	1
+Diabetes Mellitus Type 2	Specified Hamartoses	1
+Diabetes Mellitus Type 2	Spinocerebellar Ataxia	1
+Diabetes Mellitus Type 2	Systemic Primary Carnitine Deficiency	1
+Diabetes Mellitus Type 2	Thalassemia	1
+Diabetes Mellitus Type 2	Tongue Tie	1
+Diabetes Mellitus Type 2	Velo-Cardio-Facial Syndrome	1
+Eczema	Androgen Insensitivity Syndrome	1
+Eczema	Anophthalmos/Micropthalmos	1
+Eczema	Anterior Eye Anomalies	1
+Eczema	Autoimmune Lymphoproliferative Syndrome	1
+Eczema	Autoimmune Polyglandular Syndrome	1
+Eczema	Bartter Syndrome	1
+Eczema	Cerebral Degeneration Due to Generalized Lipidoses	1
+Eczema	Cerebral Lipidoses	1
+Eczema	Chondrodystrophy	1
+Eczema	Chronic Granulomatous Disease	1
+Eczema	Chronic Progressive External Ophthalmoplegia	1
+Eczema	Circulating Enzyme Deficiencies	1
+Eczema	Combined Heart and Skeletal Defects	1
+Eczema	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Eczema	Congenital Ectodermal Dysplasia	1
+Eczema	Congenital Hirschsprung Disease	1
+Eczema	Congenital Hydrocephalus	1
+Eczema	Congenital Hypogammaglobulinemia	1
+Eczema	Congenital Ichthyosis	1
+Eczema	Congenital Pigmentary Anomalies	1
+Eczema	Cri-Du-Chat Syndrome	1
+Eczema	Cystic Fibrosis	1
+Eczema	Degenerative Diseases of the Basal Ganglia	1
+Eczema	Diamond-Blackfan Anemia	1
+Eczema	Disorders of Aromatic Amino Acid Metabolism	1
+Eczema	Disorders of Branched Chain Amino Acid Metabolism	1
+Eczema	Disorders of Copper Metabolism	1
+Eczema	Disorders of Fatty Acid Oxidation	1
+Eczema	Disorders of Phosphorous Metabolism	1
+Eczema	Disorders of Straight Chain Amino Acid Metabolism	1
+Eczema	Disorders of Urea Cycle Metabolism	1
+Eczema	Dopa-Responsive Dystonia	1
+Eczema	Erythromelalgia	1
+Eczema	Facial and Skull Anomalies	1
+Eczema	Familial Dysautonomia	1
+Eczema	Familial Mediterranean Fever	1
+Eczema	Fragile-X Syndrome	1
+Eczema	Friedreich Ataxia	1
+Eczema	Genetic Anomalies of Leukocytes	1
+Eczema	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Eczema	Glycogenosis	1
+Eczema	Haemophilia	1
+Eczema	Hereditary Color Blindness	1
+Eczema	Hereditary Hemorrhagic Telangiectasia	1
+Eczema	Hereditary Muscular Dystrophy	1
+Eczema	Hereditary Sensory Neuropathy	1
+Eczema	Hereditary Thrombocytopenic Purpura	1
+Eczema	Holoprosencephaly	1
+Eczema	Huntington Disease	1
+Eczema	Hypopituitarism	1
+Eczema	Immunodeficiency with Increased IgM	1
+Eczema	Inherited Adrenogenital Disorders	1
+Eczema	Inherited Anomalies of the Skin	1
+Eczema	Li Fraumeni and Related Syndromes	1
+Eczema	Lipoprotein Deficiencies	1
+Eczema	Long QT Syndrome	1
+Eczema	Marfan Syndrome	1
+Eczema	Multiple Endocrine Neoplasia Type I	1
+Eczema	Neurofibromatosis	1
+Eczema	Non-Specific Autosomal Deletion Syndromes	1
+Eczema	Non-Specified Osteodystrophy	1
+Eczema	Osteogenesis Imperfecta	1
+Eczema	Other Specified Disorders of Amino Acid Metabolism	1
+Eczema	Pervasive, Specified Congenital Anomalies	1
+Eczema	Phenylketonuria	1
+Eczema	Polycystic Kidney, Autosomal Dominant	1
+Eczema	Retinitis Pigmentosa	1
+Eczema	Rett Syndrome	1
+Eczema	Sensory Retina Dystropies	1
+Eczema	Severe Combined Immunodeficiency	1
+Eczema	Sickle Cell Anemia	1
+Eczema	Smith-Magenis Syndrome	1
+Eczema	Specific Nail Anomalies	1
+Eczema	Specified Anomalies of the Musculoskeletal System	1
+Eczema	Specified Hamartoses	1
+Eczema	Spinocerebellar Ataxia	1
+Eczema	Systemic Primary Carnitine Deficiency	1
+Eczema	Thalassemia	1
+Eczema	Tongue Tie	1
+Eczema	Tuberous Sclerosis	1
+Eczema	Velo-Cardio-Facial Syndrome	1
+Eczema	Wiskott-Aldrich Syndrome	1
+Emphysema	Cerebral Degeneration Due to Generalized Lipidoses	1
+Emphysema	Chronic Granulomatous Disease	1
+Emphysema	Circulating Enzyme Deficiencies	1
+Emphysema	Combined Heart and Skeletal Defects	1
+Emphysema	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Emphysema	Congenital Hydrocephalus	1
+Emphysema	Congenital Hypogammaglobulinemia	1
+Emphysema	Congenital Ichthyosis	1
+Emphysema	Cystic Fibrosis	1
+Emphysema	Degenerative Diseases of the Basal Ganglia	1
+Emphysema	Diamond-Blackfan Anemia	1
+Emphysema	Disorders of Copper Metabolism	1
+Emphysema	Disorders of Phosphorous Metabolism	1
+Emphysema	Disorders of Straight Chain Amino Acid Metabolism	1
+Emphysema	Disorders of Urea Cycle Metabolism	1
+Emphysema	Dopa-Responsive Dystonia	1
+Emphysema	Genetic Anomalies of Leukocytes	1
+Emphysema	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Emphysema	Haemophilia	1
+Emphysema	Hereditary Hemorrhagic Telangiectasia	1
+Emphysema	Hereditary Muscular Dystrophy	1
+Emphysema	Hereditary Sensory Neuropathy	1
+Emphysema	Holoprosencephaly	1
+Emphysema	Huntington Disease	1
+Emphysema	Hypopituitarism	1
+Emphysema	Immunodeficiency with Increased IgM	1
+Emphysema	Inherited Adrenogenital Disorders	1
+Emphysema	Inherited Anomalies of the Skin	1
+Emphysema	Lipoprotein Deficiencies	1
+Emphysema	Long QT Syndrome	1
+Emphysema	Marfan Syndrome	1
+Emphysema	Multiple Endocrine Neoplasia Type I	1
+Emphysema	Neurofibromatosis	1
+Emphysema	Non-Specified Osteodystrophy	1
+Emphysema	Osteogenesis Imperfecta	1
+Emphysema	Pervasive, Specified Congenital Anomalies	1
+Emphysema	Polycystic Kidney, Autosomal Dominant	1
+Emphysema	Retinitis Pigmentosa	1
+Emphysema	Severe Combined Immunodeficiency	1
+Emphysema	Sickle Cell Anemia	1
+Emphysema	Specific Nail Anomalies	1
+Emphysema	Specified Hamartoses	1
+Emphysema	Spinocerebellar Ataxia	1
+Emphysema	Thalassemia	1
+Emphysema	Tongue Tie	1
+Emphysema	Tuberous Sclerosis	1
+Epilepsy	Anophthalmos/Micropthalmos	1
+Epilepsy	Anterior Eye Anomalies	1
+Epilepsy	Autoimmune Lymphoproliferative Syndrome	1
+Epilepsy	Autoimmune Polyglandular Syndrome	1
+Epilepsy	Bartter Syndrome	1
+Epilepsy	Cerebral Degeneration Due to Generalized Lipidoses	1
+Epilepsy	Cerebral Lipidoses	1
+Epilepsy	Chondrodystrophy	1
+Epilepsy	Chronic Granulomatous Disease	1
+Epilepsy	Circulating Enzyme Deficiencies	1
+Epilepsy	Combined Heart and Skeletal Defects	1
+Epilepsy	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Epilepsy	Congenital Ectodermal Dysplasia	1
+Epilepsy	Congenital Hirschsprung Disease	1
+Epilepsy	Congenital Hydrocephalus	1
+Epilepsy	Congenital Hypogammaglobulinemia	1
+Epilepsy	Congenital Ichthyosis	1
+Epilepsy	Congenital Pigmentary Anomalies	1
+Epilepsy	Cri-Du-Chat Syndrome	1
+Epilepsy	Cystic Fibrosis	1
+Epilepsy	Degenerative Diseases of the Basal Ganglia	1
+Epilepsy	Diamond-Blackfan Anemia	1
+Epilepsy	Disorders of Aromatic Amino Acid Metabolism	1
+Epilepsy	Disorders of Branched Chain Amino Acid Metabolism	1
+Epilepsy	Disorders of Copper Metabolism	1
+Epilepsy	Disorders of Fatty Acid Oxidation	1
+Epilepsy	Disorders of Phosphorous Metabolism	1
+Epilepsy	Disorders of Straight Chain Amino Acid Metabolism	1
+Epilepsy	Disorders of Urea Cycle Metabolism	1
+Epilepsy	Dopa-Responsive Dystonia	1
+Epilepsy	Facial and Skull Anomalies	1
+Epilepsy	Familial Dysautonomia	1
+Epilepsy	Familial Mediterranean Fever	1
+Epilepsy	Fragile-X Syndrome	1
+Epilepsy	Friedreich Ataxia	1
+Epilepsy	Genetic Anomalies of Leukocytes	1
+Epilepsy	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Epilepsy	Glycogenosis	1
+Epilepsy	Haemophilia	1
+Epilepsy	Hereditary Hemorrhagic Telangiectasia	1
+Epilepsy	Hereditary Muscular Dystrophy	1
+Epilepsy	Hereditary Sensory Neuropathy	1
+Epilepsy	Hereditary Thrombocytopenic Purpura	1
+Epilepsy	Holoprosencephaly	1
+Epilepsy	Huntington Disease	1
+Epilepsy	Hypopituitarism	1
+Epilepsy	Immunodeficiency with Increased IgM	1
+Epilepsy	Indeterminate Sex and Pseudohermaphroditism	1
+Epilepsy	Inherited Adrenogenital Disorders	1
+Epilepsy	Inherited Anomalies of the Skin	1
+Epilepsy	Li Fraumeni and Related Syndromes	1
+Epilepsy	Lipoprotein Deficiencies	1
+Epilepsy	Long QT Syndrome	1
+Epilepsy	Marfan Syndrome	1
+Epilepsy	Neurofibromatosis	1
+Epilepsy	Non-Specific Autosomal Deletion Syndromes	1
+Epilepsy	Non-Specified Osteodystrophy	1
+Epilepsy	Osteogenesis Imperfecta	1
+Epilepsy	Other Specified Disorders of Amino Acid Metabolism	1
+Epilepsy	Peroxisomal Disorders	1
+Epilepsy	Pervasive, Specified Congenital Anomalies	1
+Epilepsy	Phenylketonuria	1
+Epilepsy	Polycystic Kidney, Autosomal Dominant	1
+Epilepsy	Retinitis Pigmentosa	1
+Epilepsy	Rett Syndrome	1
+Epilepsy	Sensory Retina Dystropies	1
+Epilepsy	Severe Combined Immunodeficiency	1
+Epilepsy	Sickle Cell Anemia	1
+Epilepsy	Smith-Magenis Syndrome	1
+Epilepsy	Specific Nail Anomalies	1
+Epilepsy	Specified Anomalies of the Musculoskeletal System	1
+Epilepsy	Specified Hamartoses	1
+Epilepsy	Spinocerebellar Ataxia	1
+Epilepsy	Systemic Primary Carnitine Deficiency	1
+Epilepsy	Thalassemia	1
+Epilepsy	Tongue Tie	1
+Epilepsy	Tuberous Sclerosis	1
+Epilepsy	Velo-Cardio-Facial Syndrome	1
+Epilepsy	Wiskott-Aldrich Syndrome	1
+Gastric Cancer	Cerebral Degeneration Due to Generalized Lipidoses	1
+Gastric Cancer	Chronic Granulomatous Disease	1
+Gastric Cancer	Combined Heart and Skeletal Defects	1
+Gastric Cancer	Disorders of Phosphorous Metabolism	1
+Gastric Cancer	Disorders of Straight Chain Amino Acid Metabolism	1
+Gastric Cancer	Disorders of Urea Cycle Metabolism	1
+Gastric Cancer	Genetic Anomalies of Leukocytes	1
+Gastric Cancer	Haemophilia	1
+Gastric Cancer	Hereditary Sensory Neuropathy	1
+Gastric Cancer	Li Fraumeni and Related Syndromes	1
+Gastric Cancer	Lipoprotein Deficiencies	1
+Gastric Cancer	Long QT Syndrome	1
+Gastric Cancer	Multiple Endocrine Neoplasia Type I	1
+Gastric Cancer	Neurofibromatosis	1
+Gastric Cancer	Sickle Cell Anemia	1
+Gastric Cancer	Specified Hamartoses	1
+Gastric Cancer	Thalassemia	1
+General Frontotemporal Dementia	Congenital Hydrocephalus	1
+General Frontotemporal Dementia	Degenerative Diseases of the Basal Ganglia	1
+General Frontotemporal Dementia	Disorders of Phosphorous Metabolism	1
+General Frontotemporal Dementia	Huntington Disease	1
+General Frontotemporal Dementia	Spinocerebellar Ataxia	1
+Glaucoma	Achromatopsia	1
+Glaucoma	Androgen Insensitivity Syndrome	1
+Glaucoma	Anophthalmos/Micropthalmos	1
+Glaucoma	Anterior Eye Anomalies	1
+Glaucoma	Autoimmune Lymphoproliferative Syndrome	1
+Glaucoma	Autoimmune Polyglandular Syndrome	1
+Glaucoma	Cerebral Degeneration Due to Generalized Lipidoses	1
+Glaucoma	Chronic Granulomatous Disease	1
+Glaucoma	Chronic Progressive External Ophthalmoplegia	1
+Glaucoma	Circulating Enzyme Deficiencies	1
+Glaucoma	Combined Heart and Skeletal Defects	1
+Glaucoma	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Glaucoma	Congenital Hypogammaglobulinemia	1
+Glaucoma	Congenital Ichthyosis	1
+Glaucoma	Cystic Fibrosis	1
+Glaucoma	Degenerative Diseases of the Basal Ganglia	1
+Glaucoma	Diamond-Blackfan Anemia	1
+Glaucoma	Disorders of Aromatic Amino Acid Metabolism	1
+Glaucoma	Disorders of Copper Metabolism	1
+Glaucoma	Disorders of Phosphorous Metabolism	1
+Glaucoma	Disorders of Straight Chain Amino Acid Metabolism	1
+Glaucoma	Disorders of Urea Cycle Metabolism	1
+Glaucoma	Dopa-Responsive Dystonia	1
+Glaucoma	Erythromelalgia	1
+Glaucoma	Facial and Skull Anomalies	1
+Glaucoma	Familial Dysautonomia	1
+Glaucoma	Friedreich Ataxia	1
+Glaucoma	Genetic Anomalies of Leukocytes	1
+Glaucoma	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Glaucoma	Glycogenosis	1
+Glaucoma	Haemophilia	1
+Glaucoma	Hereditary Color Blindness	1
+Glaucoma	Hereditary Hemorrhagic Telangiectasia	1
+Glaucoma	Hereditary Muscular Dystrophy	1
+Glaucoma	Hereditary Sensory Neuropathy	1
+Glaucoma	Holoprosencephaly	1
+Glaucoma	Huntington Disease	1
+Glaucoma	Hypopituitarism	1
+Glaucoma	Immunodeficiency with Increased IgM	1
+Glaucoma	Inherited Adrenogenital Disorders	1
+Glaucoma	Inherited Anomalies of the Skin	1
+Glaucoma	Li Fraumeni and Related Syndromes	1
+Glaucoma	Lipoprotein Deficiencies	1
+Glaucoma	Long QT Syndrome	1
+Glaucoma	Marfan Syndrome	1
+Glaucoma	Multiple Endocrine Neoplasia Type I	1
+Glaucoma	Neurofibromatosis	1
+Glaucoma	Non-Specified Osteodystrophy	1
+Glaucoma	Osteogenesis Imperfecta	1
+Glaucoma	Other Specified Disorders of Amino Acid Metabolism	1
+Glaucoma	Pervasive, Specified Congenital Anomalies	1
+Glaucoma	Phenylketonuria	1
+Glaucoma	Polycystic Kidney, Autosomal Dominant	1
+Glaucoma	Retinitis Pigmentosa	1
+Glaucoma	Sensory Retina Dystropies	1
+Glaucoma	Severe Combined Immunodeficiency	1
+Glaucoma	Sickle Cell Anemia	1
+Glaucoma	Specific Nail Anomalies	1
+Glaucoma	Specified Anomalies of the Musculoskeletal System	1
+Glaucoma	Specified Hamartoses	1
+Glaucoma	Spinocerebellar Ataxia	1
+Glaucoma	Thalassemia	1
+Glaucoma	Tongue Tie	1
+Gout	Androgen Insensitivity Syndrome	1
+Gout	Anophthalmos/Micropthalmos	1
+Gout	Autoimmune Lymphoproliferative Syndrome	1
+Gout	Bartter Syndrome	1
+Gout	Cerebral Degeneration Due to Generalized Lipidoses	1
+Gout	Chronic Granulomatous Disease	1
+Gout	Circulating Enzyme Deficiencies	1
+Gout	Combined Heart and Skeletal Defects	1
+Gout	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Gout	Congenital Ichthyosis	1
+Gout	Cystic Fibrosis	1
+Gout	Degenerative Diseases of the Basal Ganglia	1
+Gout	Diamond-Blackfan Anemia	1
+Gout	Disorders of Aromatic Amino Acid Metabolism	1
+Gout	Disorders of Branched Chain Amino Acid Metabolism	1
+Gout	Disorders of Copper Metabolism	1
+Gout	Disorders of Phosphorous Metabolism	1
+Gout	Disorders of Straight Chain Amino Acid Metabolism	1
+Gout	Disorders of Urea Cycle Metabolism	1
+Gout	Dopa-Responsive Dystonia	1
+Gout	Erythromelalgia	1
+Gout	Facial and Skull Anomalies	1
+Gout	Genetic Anomalies of Leukocytes	1
+Gout	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Gout	Glycogenosis	1
+Gout	Haemophilia	1
+Gout	Hereditary Hemorrhagic Telangiectasia	1
+Gout	Hereditary Muscular Dystrophy	1
+Gout	Hereditary Sensory Neuropathy	1
+Gout	Hypopituitarism	1
+Gout	Immunodeficiency with Increased IgM	1
+Gout	Inherited Adrenogenital Disorders	1
+Gout	Inherited Anomalies of the Skin	1
+Gout	Lipoprotein Deficiencies	1
+Gout	Long QT Syndrome	1
+Gout	Non-Specified Osteodystrophy	1
+Gout	Other Specified Disorders of Amino Acid Metabolism	1
+Gout	Pervasive, Specified Congenital Anomalies	1
+Gout	Polycystic Kidney, Autosomal Dominant	1
+Gout	Retinitis Pigmentosa	1
+Gout	Sensory Retina Dystropies	1
+Gout	Severe Combined Immunodeficiency	1
+Gout	Sickle Cell Anemia	1
+Gout	Specific Nail Anomalies	1
+Gout	Specified Anomalies of the Musculoskeletal System	1
+Gout	Specified Hamartoses	1
+Gout	Spinocerebellar Ataxia	1
+Gout	Thalassemia	1
+Gout	Tongue Tie	1
+Hyperplasia of the Prostate	Androgen Insensitivity Syndrome	1
+Hyperplasia of the Prostate	Anophthalmos/Micropthalmos	1
+Hyperplasia of the Prostate	Autoimmune Lymphoproliferative Syndrome	1
+Hyperplasia of the Prostate	Autoimmune Polyglandular Syndrome	1
+Hyperplasia of the Prostate	Cerebral Degeneration Due to Generalized Lipidoses	1
+Hyperplasia of the Prostate	Chronic Granulomatous Disease	1
+Hyperplasia of the Prostate	Circulating Enzyme Deficiencies	1
+Hyperplasia of the Prostate	Combined Heart and Skeletal Defects	1
+Hyperplasia of the Prostate	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Hyperplasia of the Prostate	Congenital Hirschsprung Disease	1
+Hyperplasia of the Prostate	Congenital Hydrocephalus	1
+Hyperplasia of the Prostate	Congenital Ichthyosis	1
+Hyperplasia of the Prostate	Congenital Pigmentary Anomalies	1
+Hyperplasia of the Prostate	Degenerative Diseases of the Basal Ganglia	1
+Hyperplasia of the Prostate	Diamond-Blackfan Anemia	1
+Hyperplasia of the Prostate	Disorders of Aromatic Amino Acid Metabolism	1
+Hyperplasia of the Prostate	Disorders of Copper Metabolism	1
+Hyperplasia of the Prostate	Disorders of Phosphorous Metabolism	1
+Hyperplasia of the Prostate	Disorders of Straight Chain Amino Acid Metabolism	1
+Hyperplasia of the Prostate	Disorders of Urea Cycle Metabolism	1
+Hyperplasia of the Prostate	Dopa-Responsive Dystonia	1
+Hyperplasia of the Prostate	Erythromelalgia	1
+Hyperplasia of the Prostate	Facial and Skull Anomalies	1
+Hyperplasia of the Prostate	Friedreich Ataxia	1
+Hyperplasia of the Prostate	Genetic Anomalies of Leukocytes	1
+Hyperplasia of the Prostate	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Hyperplasia of the Prostate	Glycogenosis	1
+Hyperplasia of the Prostate	Haemophilia	1
+Hyperplasia of the Prostate	Hereditary Hemorrhagic Telangiectasia	1
+Hyperplasia of the Prostate	Hereditary Muscular Dystrophy	1
+Hyperplasia of the Prostate	Hereditary Sensory Neuropathy	1
+Hyperplasia of the Prostate	Holoprosencephaly	1
+Hyperplasia of the Prostate	Huntington Disease	1
+Hyperplasia of the Prostate	Hypopituitarism	1
+Hyperplasia of the Prostate	Inherited Adrenogenital Disorders	1
+Hyperplasia of the Prostate	Inherited Anomalies of the Skin	1
+Hyperplasia of the Prostate	Lipoprotein Deficiencies	1
+Hyperplasia of the Prostate	Long QT Syndrome	1
+Hyperplasia of the Prostate	Multiple Endocrine Neoplasia Type I	1
+Hyperplasia of the Prostate	Neurofibromatosis	1
+Hyperplasia of the Prostate	Non-Specified Osteodystrophy	1
+Hyperplasia of the Prostate	Other Specified Disorders of Amino Acid Metabolism	1
+Hyperplasia of the Prostate	Pervasive, Specified Congenital Anomalies	1
+Hyperplasia of the Prostate	Phenylketonuria	1
+Hyperplasia of the Prostate	Polycystic Kidney, Autosomal Dominant	1
+Hyperplasia of the Prostate	Retinitis Pigmentosa	1
+Hyperplasia of the Prostate	Sensory Retina Dystropies	1
+Hyperplasia of the Prostate	Severe Combined Immunodeficiency	1
+Hyperplasia of the Prostate	Sickle Cell Anemia	1
+Hyperplasia of the Prostate	Specific Nail Anomalies	1
+Hyperplasia of the Prostate	Specified Anomalies of the Musculoskeletal System	1
+Hyperplasia of the Prostate	Specified Hamartoses	1
+Hyperplasia of the Prostate	Spinocerebellar Ataxia	1
+Hyperplasia of the Prostate	Systemic Primary Carnitine Deficiency	1
+Hyperplasia of the Prostate	Thalassemia	1
+Hyperplasia of the Prostate	Tongue Tie	1
+Hyperplasia of the Prostate	Velo-Cardio-Facial Syndrome	1
+Hypotony of the Eye	Anophthalmos/Micropthalmos	1
+Hypotony of the Eye	Anterior Eye Anomalies	1
+Hypotony of the Eye	Combined Heart and Skeletal Defects	1
+Hypotony of the Eye	Congenital Hydrocephalus	1
+Hypotony of the Eye	Disorders of Aromatic Amino Acid Metabolism	1
+Hypotony of the Eye	Facial and Skull Anomalies	1
+Hypotony of the Eye	Familial Dysautonomia	1
+Hypotony of the Eye	Hereditary Muscular Dystrophy	1
+Hypotony of the Eye	Inherited Anomalies of the Skin	1
+Hypotony of the Eye	Marfan Syndrome	1
+Hypotony of the Eye	Pervasive, Specified Congenital Anomalies	1
+Hypotony of the Eye	Retinitis Pigmentosa	1
+Hypotony of the Eye	Rett Syndrome	1
+Hypotony of the Eye	Sickle Cell Anemia	1
+Hypotony of the Eye	Specified Hamartoses	1
+Hypotony of the Eye	Velo-Cardio-Facial Syndrome	1
+Intellectual Disability	Anophthalmos/Micropthalmos	1
+Intellectual Disability	Anterior Eye Anomalies	1
+Intellectual Disability	Cerebral Degeneration Due to Generalized Lipidoses	1
+Intellectual Disability	Cerebral Lipidoses	1
+Intellectual Disability	Chondrodystrophy	1
+Intellectual Disability	Combined Heart and Skeletal Defects	1
+Intellectual Disability	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Intellectual Disability	Congenital Ectodermal Dysplasia	1
+Intellectual Disability	Congenital Hirschsprung Disease	1
+Intellectual Disability	Congenital Hydrocephalus	1
+Intellectual Disability	Congenital Hypogammaglobulinemia	1
+Intellectual Disability	Congenital Ichthyosis	1
+Intellectual Disability	Cri-Du-Chat Syndrome	1
+Intellectual Disability	Cystic Fibrosis	1
+Intellectual Disability	Degenerative Diseases of the Basal Ganglia	1
+Intellectual Disability	Disorders of Aromatic Amino Acid Metabolism	1
+Intellectual Disability	Disorders of Branched Chain Amino Acid Metabolism	1
+Intellectual Disability	Disorders of Copper Metabolism	1
+Intellectual Disability	Disorders of Fatty Acid Oxidation	1
+Intellectual Disability	Disorders of Phosphorous Metabolism	1
+Intellectual Disability	Disorders of Straight Chain Amino Acid Metabolism	1
+Intellectual Disability	Disorders of Urea Cycle Metabolism	1
+Intellectual Disability	Dopa-Responsive Dystonia	1
+Intellectual Disability	Facial and Skull Anomalies	1
+Intellectual Disability	Familial Dysautonomia	1
+Intellectual Disability	Fragile-X Syndrome	1
+Intellectual Disability	Friedreich Ataxia	1
+Intellectual Disability	Genetic Anomalies of Leukocytes	1
+Intellectual Disability	Glycogenosis	1
+Intellectual Disability	Haemophilia	1
+Intellectual Disability	Hereditary Muscular Dystrophy	1
+Intellectual Disability	Holoprosencephaly	1
+Intellectual Disability	Huntington Disease	1
+Intellectual Disability	Hypopituitarism	1
+Intellectual Disability	Immunodeficiency with Increased IgM	1
+Intellectual Disability	Inherited Adrenogenital Disorders	1
+Intellectual Disability	Inherited Anomalies of the Skin	1
+Intellectual Disability	Long QT Syndrome	1
+Intellectual Disability	Marfan Syndrome	1
+Intellectual Disability	Neurofibromatosis	1
+Intellectual Disability	Non-Specific Autosomal Deletion Syndromes	1
+Intellectual Disability	Non-Specified Osteodystrophy	1
+Intellectual Disability	Osteogenesis Imperfecta	1
+Intellectual Disability	Other Specified Disorders of Amino Acid Metabolism	1
+Intellectual Disability	Peroxisomal Disorders	1
+Intellectual Disability	Pervasive, Specified Congenital Anomalies	1
+Intellectual Disability	Phenylketonuria	1
+Intellectual Disability	Retinitis Pigmentosa	1
+Intellectual Disability	Rett Syndrome	1
+Intellectual Disability	Sensory Retina Dystropies	1
+Intellectual Disability	Severe Combined Immunodeficiency	1
+Intellectual Disability	Sickle Cell Anemia	1
+Intellectual Disability	Smith-Magenis Syndrome	1
+Intellectual Disability	Specified Anomalies of the Musculoskeletal System	1
+Intellectual Disability	Specified Hamartoses	1
+Intellectual Disability	Spinocerebellar Ataxia	1
+Intellectual Disability	Systemic Primary Carnitine Deficiency	1
+Intellectual Disability	Thalassemia	1
+Intellectual Disability	Tongue Tie	1
+Intellectual Disability	Tuberous Sclerosis	1
+Intellectual Disability	Velo-Cardio-Facial Syndrome	1
+Kawasaki Disease	Combined Heart and Skeletal Defects	1
+Kawasaki Disease	Congenital Pigmentary Anomalies	1
+Kawasaki Disease	Cystic Fibrosis	1
+Kawasaki Disease	Facial and Skull Anomalies	1
+Kawasaki Disease	Genetic Anomalies of Leukocytes	1
+Kawasaki Disease	Inherited Anomalies of the Skin	1
+Kawasaki Disease	Long QT Syndrome	1
+Kawasaki Disease	Marfan Syndrome	1
+Kawasaki Disease	Pervasive, Specified Congenital Anomalies	1
+Kawasaki Disease	Sickle Cell Anemia	1
+Kawasaki Disease	Thalassemia	1
+Kawasaki Disease	Tongue Tie	1
+Kidney Cancer	Cerebral Degeneration Due to Generalized Lipidoses	1
+Kidney Cancer	Chronic Granulomatous Disease	1
+Kidney Cancer	Combined Heart and Skeletal Defects	1
+Kidney Cancer	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Kidney Cancer	Congenital Ichthyosis	1
+Kidney Cancer	Cystic Fibrosis	1
+Kidney Cancer	Degenerative Diseases of the Basal Ganglia	1
+Kidney Cancer	Disorders of Copper Metabolism	1
+Kidney Cancer	Disorders of Phosphorous Metabolism	1
+Kidney Cancer	Disorders of Straight Chain Amino Acid Metabolism	1
+Kidney Cancer	Disorders of Urea Cycle Metabolism	1
+Kidney Cancer	Dopa-Responsive Dystonia	1
+Kidney Cancer	Genetic Anomalies of Leukocytes	1
+Kidney Cancer	Haemophilia	1
+Kidney Cancer	Hereditary Hemorrhagic Telangiectasia	1
+Kidney Cancer	Hereditary Sensory Neuropathy	1
+Kidney Cancer	Hypopituitarism	1
+Kidney Cancer	Inherited Adrenogenital Disorders	1
+Kidney Cancer	Inherited Anomalies of the Skin	1
+Kidney Cancer	Lipoprotein Deficiencies	1
+Kidney Cancer	Long QT Syndrome	1
+Kidney Cancer	Multiple Endocrine Neoplasia Type I	1
+Kidney Cancer	Neurofibromatosis	1
+Kidney Cancer	Non-Specific Autosomal Deletion Syndromes	1
+Kidney Cancer	Pervasive, Specified Congenital Anomalies	1
+Kidney Cancer	Polycystic Kidney, Autosomal Dominant	1
+Kidney Cancer	Severe Combined Immunodeficiency	1
+Kidney Cancer	Sickle Cell Anemia	1
+Kidney Cancer	Specified Hamartoses	1
+Kidney Cancer	Spinocerebellar Ataxia	1
+Kidney Cancer	Thalassemia	1
+Kidney Cancer	Tuberous Sclerosis	1
+Liche	Autoimmune Lymphoproliferative Syndrome	1
+Liche	Cerebral Degeneration Due to Generalized Lipidoses	1
+Liche	Chronic Granulomatous Disease	1
+Liche	Circulating Enzyme Deficiencies	1
+Liche	Combined Heart and Skeletal Defects	1
+Liche	Congenital Ichthyosis	1
+Liche	Congenital Pigmentary Anomalies	1
+Liche	Cystic Fibrosis	1
+Liche	Disorders of Phosphorous Metabolism	1
+Liche	Disorders of Straight Chain Amino Acid Metabolism	1
+Liche	Dopa-Responsive Dystonia	1
+Liche	Haemophilia	1
+Liche	Hereditary Hemorrhagic Telangiectasia	1
+Liche	Hereditary Sensory Neuropathy	1
+Liche	Hypopituitarism	1
+Liche	Immunodeficiency with Increased IgM	1
+Liche	Inherited Anomalies of the Skin	1
+Liche	Lipoprotein Deficiencies	1
+Liche	Retinitis Pigmentosa	1
+Liche	Severe Combined Immunodeficiency	1
+Liche	Sickle Cell Anemia	1
+Liche	Specific Nail Anomalies	1
+Liche	Thalassemia	1
+Lung Cancer	Cerebral Degeneration Due to Generalized Lipidoses	1
+Lung Cancer	Chronic Granulomatous Disease	1
+Lung Cancer	Circulating Enzyme Deficiencies	1
+Lung Cancer	Combined Heart and Skeletal Defects	1
+Lung Cancer	Congenital Ichthyosis	1
+Lung Cancer	Congenital Pigmentary Anomalies	1
+Lung Cancer	Cystic Fibrosis	1
+Lung Cancer	Degenerative Diseases of the Basal Ganglia	1
+Lung Cancer	Diamond-Blackfan Anemia	1
+Lung Cancer	Disorders of Copper Metabolism	1
+Lung Cancer	Disorders of Phosphorous Metabolism	1
+Lung Cancer	Disorders of Straight Chain Amino Acid Metabolism	1
+Lung Cancer	Disorders of Urea Cycle Metabolism	1
+Lung Cancer	Dopa-Responsive Dystonia	1
+Lung Cancer	Facial and Skull Anomalies	1
+Lung Cancer	Friedreich Ataxia	1
+Lung Cancer	Genetic Anomalies of Leukocytes	1
+Lung Cancer	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Lung Cancer	Haemophilia	1
+Lung Cancer	Hereditary Hemorrhagic Telangiectasia	1
+Lung Cancer	Hereditary Sensory Neuropathy	1
+Lung Cancer	Hypopituitarism	1
+Lung Cancer	Inherited Anomalies of the Skin	1
+Lung Cancer	Li Fraumeni and Related Syndromes	1
+Lung Cancer	Lipoprotein Deficiencies	1
+Lung Cancer	Long QT Syndrome	1
+Lung Cancer	Multiple Endocrine Neoplasia Type I	1
+Lung Cancer	Neurofibromatosis	1
+Lung Cancer	Non-Specified Osteodystrophy	1
+Lung Cancer	Polycystic Kidney, Autosomal Dominant	1
+Lung Cancer	Retinitis Pigmentosa	1
+Lung Cancer	Severe Combined Immunodeficiency	1
+Lung Cancer	Sickle Cell Anemia	1
+Lung Cancer	Specified Hamartoses	1
+Lung Cancer	Spinocerebellar Ataxia	1
+Lung Cancer	Thalassemia	1
+Lung Cancer	Tongue Tie	1
+Lupus	Autoimmune Lymphoproliferative Syndrome	1
+Lupus	Cerebral Degeneration Due to Generalized Lipidoses	1
+Lupus	Chronic Granulomatous Disease	1
+Lupus	Circulating Enzyme Deficiencies	1
+Lupus	Combined Heart and Skeletal Defects	1
+Lupus	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Lupus	Congenital Hypogammaglobulinemia	1
+Lupus	Congenital Ichthyosis	1
+Lupus	Cystic Fibrosis	1
+Lupus	Degenerative Diseases of the Basal Ganglia	1
+Lupus	Diamond-Blackfan Anemia	1
+Lupus	Disorders of Copper Metabolism	1
+Lupus	Disorders of Phosphorous Metabolism	1
+Lupus	Disorders of Straight Chain Amino Acid Metabolism	1
+Lupus	Dopa-Responsive Dystonia	1
+Lupus	Erythromelalgia	1
+Lupus	Genetic Anomalies of Leukocytes	1
+Lupus	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Lupus	Glycogenosis	1
+Lupus	Haemophilia	1
+Lupus	Hereditary Hemorrhagic Telangiectasia	1
+Lupus	Hereditary Muscular Dystrophy	1
+Lupus	Hereditary Sensory Neuropathy	1
+Lupus	Hypopituitarism	1
+Lupus	Immunodeficiency with Increased IgM	1
+Lupus	Inherited Adrenogenital Disorders	1
+Lupus	Inherited Anomalies of the Skin	1
+Lupus	Lipoprotein Deficiencies	1
+Lupus	Long QT Syndrome	1
+Lupus	Retinitis Pigmentosa	1
+Lupus	Severe Combined Immunodeficiency	1
+Lupus	Sickle Cell Anemia	1
+Lupus	Specific Nail Anomalies	1
+Lupus	Specified Hamartoses	1
+Lupus	Systemic Primary Carnitine Deficiency	1
+Lupus	Thalassemia	1
+Lymphosarcoma/Reticulorsarcoma	Cerebral Degeneration Due to Generalized Lipidoses	1
+Lymphosarcoma/Reticulorsarcoma	Chronic Granulomatous Disease	1
+Lymphosarcoma/Reticulorsarcoma	Circulating Enzyme Deficiencies	1
+Lymphosarcoma/Reticulorsarcoma	Combined Heart and Skeletal Defects	1
+Lymphosarcoma/Reticulorsarcoma	Congenital Ichthyosis	1
+Lymphosarcoma/Reticulorsarcoma	Cystic Fibrosis	1
+Lymphosarcoma/Reticulorsarcoma	Diamond-Blackfan Anemia	1
+Lymphosarcoma/Reticulorsarcoma	Disorders of Phosphorous Metabolism	1
+Lymphosarcoma/Reticulorsarcoma	Disorders of Straight Chain Amino Acid Metabolism	1
+Lymphosarcoma/Reticulorsarcoma	Genetic Anomalies of Leukocytes	1
+Lymphosarcoma/Reticulorsarcoma	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Lymphosarcoma/Reticulorsarcoma	Glycogenosis	1
+Lymphosarcoma/Reticulorsarcoma	Haemophilia	1
+Lymphosarcoma/Reticulorsarcoma	Hereditary Hemorrhagic Telangiectasia	1
+Lymphosarcoma/Reticulorsarcoma	Hereditary Sensory Neuropathy	1
+Lymphosarcoma/Reticulorsarcoma	Hypopituitarism	1
+Lymphosarcoma/Reticulorsarcoma	Immunodeficiency with Increased IgM	1
+Lymphosarcoma/Reticulorsarcoma	Inherited Anomalies of the Skin	1
+Lymphosarcoma/Reticulorsarcoma	Lipoprotein Deficiencies	1
+Lymphosarcoma/Reticulorsarcoma	Long QT Syndrome	1
+Lymphosarcoma/Reticulorsarcoma	Neurofibromatosis	1
+Lymphosarcoma/Reticulorsarcoma	Non-Specific Autosomal Deletion Syndromes	1
+Lymphosarcoma/Reticulorsarcoma	Non-Specified Osteodystrophy	1
+Lymphosarcoma/Reticulorsarcoma	Pervasive, Specified Congenital Anomalies	1
+Lymphosarcoma/Reticulorsarcoma	Severe Combined Immunodeficiency	1
+Lymphosarcoma/Reticulorsarcoma	Sickle Cell Anemia	1
+Lymphosarcoma/Reticulorsarcoma	Spinocerebellar Ataxia	1
+Lymphosarcoma/Reticulorsarcoma	Wiskott-Aldrich Syndrome	1
+Malignant Brain Neoplasm	Anophthalmos/Micropthalmos	1
+Malignant Brain Neoplasm	Cerebral Degeneration Due to Generalized Lipidoses	1
+Malignant Brain Neoplasm	Chondrodystrophy	1
+Malignant Brain Neoplasm	Chronic Granulomatous Disease	1
+Malignant Brain Neoplasm	Chronic Progressive External Ophthalmoplegia	1
+Malignant Brain Neoplasm	Combined Heart and Skeletal Defects	1
+Malignant Brain Neoplasm	Congenital Hydrocephalus	1
+Malignant Brain Neoplasm	Congenital Ichthyosis	1
+Malignant Brain Neoplasm	Cystic Fibrosis	1
+Malignant Brain Neoplasm	Degenerative Diseases of the Basal Ganglia	1
+Malignant Brain Neoplasm	Diamond-Blackfan Anemia	1
+Malignant Brain Neoplasm	Disorders of Copper Metabolism	1
+Malignant Brain Neoplasm	Disorders of Phosphorous Metabolism	1
+Malignant Brain Neoplasm	Disorders of Straight Chain Amino Acid Metabolism	1
+Malignant Brain Neoplasm	Disorders of Urea Cycle Metabolism	1
+Malignant Brain Neoplasm	Dopa-Responsive Dystonia	1
+Malignant Brain Neoplasm	Facial and Skull Anomalies	1
+Malignant Brain Neoplasm	Familial Dysautonomia	1
+Malignant Brain Neoplasm	Friedreich Ataxia	1
+Malignant Brain Neoplasm	Genetic Anomalies of Leukocytes	1
+Malignant Brain Neoplasm	Haemophilia	1
+Malignant Brain Neoplasm	Hereditary Hemorrhagic Telangiectasia	1
+Malignant Brain Neoplasm	Hereditary Sensory Neuropathy	1
+Malignant Brain Neoplasm	Holoprosencephaly	1
+Malignant Brain Neoplasm	Hypopituitarism	1
+Malignant Brain Neoplasm	Inherited Adrenogenital Disorders	1
+Malignant Brain Neoplasm	Inherited Anomalies of the Skin	1
+Malignant Brain Neoplasm	Li Fraumeni and Related Syndromes	1
+Malignant Brain Neoplasm	Lipoprotein Deficiencies	1
+Malignant Brain Neoplasm	Long QT Syndrome	1
+Malignant Brain Neoplasm	Multiple Endocrine Neoplasia Type I	1
+Malignant Brain Neoplasm	Neurofibromatosis	1
+Malignant Brain Neoplasm	Non-Specified Osteodystrophy	1
+Malignant Brain Neoplasm	Osteogenesis Imperfecta	1
+Malignant Brain Neoplasm	Pervasive, Specified Congenital Anomalies	1
+Malignant Brain Neoplasm	Severe Combined Immunodeficiency	1
+Malignant Brain Neoplasm	Sickle Cell Anemia	1
+Malignant Brain Neoplasm	Specified Anomalies of the Musculoskeletal System	1
+Malignant Brain Neoplasm	Specified Hamartoses	1
+Malignant Brain Neoplasm	Spinocerebellar Ataxia	1
+Malignant Brain Neoplasm	Thalassemia	1
+Malignant Brain Neoplasm	Tuberous Sclerosis	1
+Melanoma	Anophthalmos/Micropthalmos	1
+Melanoma	Cerebral Degeneration Due to Generalized Lipidoses	1
+Melanoma	Chronic Granulomatous Disease	1
+Melanoma	Circulating Enzyme Deficiencies	1
+Melanoma	Combined Heart and Skeletal Defects	1
+Melanoma	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Melanoma	Congenital Ectodermal Dysplasia	1
+Melanoma	Congenital Ichthyosis	1
+Melanoma	Congenital Pigmentary Anomalies	1
+Melanoma	Cystic Fibrosis	1
+Melanoma	Degenerative Diseases of the Basal Ganglia	1
+Melanoma	Disorders of Aromatic Amino Acid Metabolism	1
+Melanoma	Disorders of Copper Metabolism	1
+Melanoma	Disorders of Phosphorous Metabolism	1
+Melanoma	Disorders of Straight Chain Amino Acid Metabolism	1
+Melanoma	Dopa-Responsive Dystonia	1
+Melanoma	Facial and Skull Anomalies	1
+Melanoma	Genetic Anomalies of Leukocytes	1
+Melanoma	Haemophilia	1
+Melanoma	Hereditary Hemorrhagic Telangiectasia	1
+Melanoma	Hereditary Sensory Neuropathy	1
+Melanoma	Hypopituitarism	1
+Melanoma	Inherited Anomalies of the Skin	1
+Melanoma	Li Fraumeni and Related Syndromes	1
+Melanoma	Lipoprotein Deficiencies	1
+Melanoma	Neurofibromatosis	1
+Melanoma	Polycystic Kidney, Autosomal Dominant	1
+Melanoma	Retinitis Pigmentosa	1
+Melanoma	Severe Combined Immunodeficiency	1
+Melanoma	Sickle Cell Anemia	1
+Melanoma	Specific Nail Anomalies	1
+Melanoma	Specified Hamartoses	1
+Melanoma	Tongue Tie	1
+Melanoma	Tuberous Sclerosis	1
+Migraine	Androgen Insensitivity Syndrome	1
+Migraine	Anophthalmos/Micropthalmos	1
+Migraine	Autoimmune Lymphoproliferative Syndrome	1
+Migraine	Autoimmune Polyglandular Syndrome	1
+Migraine	Bartter Syndrome	1
+Migraine	Cerebral Degeneration Due to Generalized Lipidoses	1
+Migraine	Cerebral Lipidoses	1
+Migraine	Chondrodystrophy	1
+Migraine	Chronic Granulomatous Disease	1
+Migraine	Chronic Progressive External Ophthalmoplegia	1
+Migraine	Circulating Enzyme Deficiencies	1
+Migraine	Combined Heart and Skeletal Defects	1
+Migraine	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Migraine	Congenital Ectodermal Dysplasia	1
+Migraine	Congenital Hydrocephalus	1
+Migraine	Congenital Hypogammaglobulinemia	1
+Migraine	Congenital Ichthyosis	1
+Migraine	Congenital Pigmentary Anomalies	1
+Migraine	Cystic Fibrosis	1
+Migraine	Degenerative Diseases of the Basal Ganglia	1
+Migraine	Diamond-Blackfan Anemia	1
+Migraine	Disorders of Aromatic Amino Acid Metabolism	1
+Migraine	Disorders of Copper Metabolism	1
+Migraine	Disorders of Fatty Acid Oxidation	1
+Migraine	Disorders of Phosphorous Metabolism	1
+Migraine	Disorders of Straight Chain Amino Acid Metabolism	1
+Migraine	Disorders of Urea Cycle Metabolism	1
+Migraine	Dopa-Responsive Dystonia	1
+Migraine	Erythromelalgia	1
+Migraine	Facial and Skull Anomalies	1
+Migraine	Familial Dysautonomia	1
+Migraine	Familial Mediterranean Fever	1
+Migraine	Friedreich Ataxia	1
+Migraine	Genetic Anomalies of Leukocytes	1
+Migraine	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Migraine	Glycogenosis	1
+Migraine	Haemophilia	1
+Migraine	Hereditary Hemorrhagic Telangiectasia	1
+Migraine	Hereditary Muscular Dystrophy	1
+Migraine	Hereditary Sensory Neuropathy	1
+Migraine	Holoprosencephaly	1
+Migraine	Huntington Disease	1
+Migraine	Hypopituitarism	1
+Migraine	Immunodeficiency with Increased IgM	1
+Migraine	Inherited Adrenogenital Disorders	1
+Migraine	Inherited Anomalies of the Skin	1
+Migraine	Li Fraumeni and Related Syndromes	1
+Migraine	Lipoprotein Deficiencies	1
+Migraine	Long QT Syndrome	1
+Migraine	Marfan Syndrome	1
+Migraine	Multiple Endocrine Neoplasia Type I	1
+Migraine	Neurofibromatosis	1
+Migraine	Non-Specified Osteodystrophy	1
+Migraine	Osteogenesis Imperfecta	1
+Migraine	Other Specified Disorders of Amino Acid Metabolism	1
+Migraine	Pervasive, Specified Congenital Anomalies	1
+Migraine	Phenylketonuria	1
+Migraine	Polycystic Kidney, Autosomal Dominant	1
+Migraine	Retinitis Pigmentosa	1
+Migraine	Sensory Retina Dystropies	1
+Migraine	Severe Combined Immunodeficiency	1
+Migraine	Sickle Cell Anemia	1
+Migraine	Specific Nail Anomalies	1
+Migraine	Specified Anomalies of the Musculoskeletal System	1
+Migraine	Specified Hamartoses	1
+Migraine	Spinocerebellar Ataxia	1
+Migraine	Systemic Primary Carnitine Deficiency	1
+Migraine	Thalassemia	1
+Migraine	Tongue Tie	1
+Migraine	Tuberous Sclerosis	1
+Non-Specific Endophthalmitis	Anophthalmos/Micropthalmos	1
+Non-Specific Endophthalmitis	Disorders of Phosphorous Metabolism	1
+Non-Specific Endophthalmitis	Inherited Anomalies of the Skin	1
+Non-Specific Endophthalmitis	Lipoprotein Deficiencies	1
+Non-Specific Endophthalmitis	Retinitis Pigmentosa	1
+Non-Specific Endophthalmitis	Sensory Retina Dystropies	1
+Non-Specific Endophthalmitis	Sickle Cell Anemia	1
+Obsessive Compulsive Disorder	Autoimmune Lymphoproliferative Syndrome	1
+Obsessive Compulsive Disorder	Cerebral Degeneration Due to Generalized Lipidoses	1
+Obsessive Compulsive Disorder	Cerebral Lipidoses	1
+Obsessive Compulsive Disorder	Chondrodystrophy	1
+Obsessive Compulsive Disorder	Circulating Enzyme Deficiencies	1
+Obsessive Compulsive Disorder	Combined Heart and Skeletal Defects	1
+Obsessive Compulsive Disorder	Congenital Hirschsprung Disease	1
+Obsessive Compulsive Disorder	Congenital Hydrocephalus	1
+Obsessive Compulsive Disorder	Congenital Ichthyosis	1
+Obsessive Compulsive Disorder	Cystic Fibrosis	1
+Obsessive Compulsive Disorder	Degenerative Diseases of the Basal Ganglia	1
+Obsessive Compulsive Disorder	Disorders of Aromatic Amino Acid Metabolism	1
+Obsessive Compulsive Disorder	Disorders of Copper Metabolism	1
+Obsessive Compulsive Disorder	Disorders of Phosphorous Metabolism	1
+Obsessive Compulsive Disorder	Disorders of Straight Chain Amino Acid Metabolism	1
+Obsessive Compulsive Disorder	Disorders of Urea Cycle Metabolism	1
+Obsessive Compulsive Disorder	Dopa-Responsive Dystonia	1
+Obsessive Compulsive Disorder	Familial Dysautonomia	1
+Obsessive Compulsive Disorder	Fragile-X Syndrome	1
+Obsessive Compulsive Disorder	Haemophilia	1
+Obsessive Compulsive Disorder	Hereditary Muscular Dystrophy	1
+Obsessive Compulsive Disorder	Hereditary Sensory Neuropathy	1
+Obsessive Compulsive Disorder	Holoprosencephaly	1
+Obsessive Compulsive Disorder	Huntington Disease	1
+Obsessive Compulsive Disorder	Hypopituitarism	1
+Obsessive Compulsive Disorder	Inherited Adrenogenital Disorders	1
+Obsessive Compulsive Disorder	Inherited Anomalies of the Skin	1
+Obsessive Compulsive Disorder	Li Fraumeni and Related Syndromes	1
+Obsessive Compulsive Disorder	Lipoprotein Deficiencies	1
+Obsessive Compulsive Disorder	Long QT Syndrome	1
+Obsessive Compulsive Disorder	Marfan Syndrome	1
+Obsessive Compulsive Disorder	Neurofibromatosis	1
+Obsessive Compulsive Disorder	Non-Specific Autosomal Deletion Syndromes	1
+Obsessive Compulsive Disorder	Other Specified Disorders of Amino Acid Metabolism	1
+Obsessive Compulsive Disorder	Pervasive, Specified Congenital Anomalies	1
+Obsessive Compulsive Disorder	Retinitis Pigmentosa	1
+Obsessive Compulsive Disorder	Severe Combined Immunodeficiency	1
+Obsessive Compulsive Disorder	Smith-Magenis Syndrome	1
+Obsessive Compulsive Disorder	Specific Nail Anomalies	1
+Obsessive Compulsive Disorder	Specified Anomalies of the Musculoskeletal System	1
+Obsessive Compulsive Disorder	Specified Hamartoses	1
+Obsessive Compulsive Disorder	Spinocerebellar Ataxia	1
+Obsessive Compulsive Disorder	Thalassemia	1
+Obsessive Compulsive Disorder	Tuberous Sclerosis	1
+Obsessive Compulsive Disorder	Velo-Cardio-Facial Syndrome	1
+Osteoarthritis	Androgen Insensitivity Syndrome	1
+Osteoarthritis	Anophthalmos/Micropthalmos	1
+Osteoarthritis	Autoimmune Lymphoproliferative Syndrome	1
+Osteoarthritis	Autoimmune Polyglandular Syndrome	1
+Osteoarthritis	Bartter Syndrome	1
+Osteoarthritis	Cerebral Degeneration Due to Generalized Lipidoses	1
+Osteoarthritis	Chondrodystrophy	1
+Osteoarthritis	Chronic Granulomatous Disease	1
+Osteoarthritis	Circulating Enzyme Deficiencies	1
+Osteoarthritis	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Osteoarthritis	Congenital Hirschsprung Disease	1
+Osteoarthritis	Congenital Hydrocephalus	1
+Osteoarthritis	Congenital Hypogammaglobulinemia	1
+Osteoarthritis	Congenital Ichthyosis	1
+Osteoarthritis	Degenerative Diseases of the Basal Ganglia	1
+Osteoarthritis	Diamond-Blackfan Anemia	1
+Osteoarthritis	Disorders of Aromatic Amino Acid Metabolism	1
+Osteoarthritis	Disorders of Branched Chain Amino Acid Metabolism	1
+Osteoarthritis	Disorders of Copper Metabolism	1
+Osteoarthritis	Disorders of Phosphorous Metabolism	1
+Osteoarthritis	Disorders of Straight Chain Amino Acid Metabolism	1
+Osteoarthritis	Disorders of Urea Cycle Metabolism	1
+Osteoarthritis	Dopa-Responsive Dystonia	1
+Osteoarthritis	Erythromelalgia	1
+Osteoarthritis	Facial and Skull Anomalies	1
+Osteoarthritis	Familial Dysautonomia	1
+Osteoarthritis	Fragile-X Syndrome	1
+Osteoarthritis	Genetic Anomalies of Leukocytes	1
+Osteoarthritis	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Osteoarthritis	Glycogenosis	1
+Osteoarthritis	Haemophilia	1
+Osteoarthritis	Hereditary Hemorrhagic Telangiectasia	1
+Osteoarthritis	Hereditary Muscular Dystrophy	1
+Osteoarthritis	Hereditary Sensory Neuropathy	1
+Osteoarthritis	Hereditary Thrombocytopenic Purpura	1
+Osteoarthritis	Holoprosencephaly	1
+Osteoarthritis	Huntington Disease	1
+Osteoarthritis	Hypopituitarism	1
+Osteoarthritis	Immunodeficiency with Increased IgM	1
+Osteoarthritis	Inherited Adrenogenital Disorders	1
+Osteoarthritis	Inherited Anomalies of the Skin	1
+Osteoarthritis	Li Fraumeni and Related Syndromes	1
+Osteoarthritis	Lipoprotein Deficiencies	1
+Osteoarthritis	Long QT Syndrome	1
+Osteoarthritis	Marfan Syndrome	1
+Osteoarthritis	Multiple Endocrine Neoplasia Type I	1
+Osteoarthritis	Multiple Endocrine Neoplasia Type IIA	1
+Osteoarthritis	Multiple Epiphyseal Dysplasia	1
+Osteoarthritis	Neurofibromatosis	1
+Osteoarthritis	Non-Specific Autosomal Deletion Syndromes	1
+Osteoarthritis	Non-Specified Osteodystrophy	1
+Osteoarthritis	Osteogenesis Imperfecta	1
+Osteoarthritis	Other Specified Disorders of Amino Acid Metabolism	1
+Osteoarthritis	Phenylketonuria	1
+Osteoarthritis	Polycystic Kidney, Autosomal Dominant	1
+Osteoarthritis	Retinitis Pigmentosa	1
+Osteoarthritis	Sensory Retina Dystropies	1
+Osteoarthritis	Severe Combined Immunodeficiency	1
+Osteoarthritis	Sickle Cell Anemia	1
+Osteoarthritis	Specific Nail Anomalies	1
+Osteoarthritis	Specified Anomalies of the Musculoskeletal System	1
+Osteoarthritis	Specified Hamartoses	1
+Osteoarthritis	Spinocerebellar Ataxia	1
+Osteoarthritis	Systemic Primary Carnitine Deficiency	1
+Osteoarthritis	Thalassemia	1
+Osteoarthritis	Tongue Tie	1
+Osteoarthritis	Tuberous Sclerosis	1
+Osteoarthritis	Velo-Cardio-Facial Syndrome	1
+Osteoarthritis	Wiskott-Aldrich Syndrome	1
+Parkinsonism	Cerebral Degeneration Due to Generalized Lipidoses	1
+Parkinsonism	Cerebral Lipidoses	1
+Parkinsonism	Chronic Granulomatous Disease	1
+Parkinsonism	Chronic Progressive External Ophthalmoplegia	1
+Parkinsonism	Combined Heart and Skeletal Defects	1
+Parkinsonism	Congenital Hydrocephalus	1
+Parkinsonism	Degenerative Diseases of the Basal Ganglia	1
+Parkinsonism	Diamond-Blackfan Anemia	1
+Parkinsonism	Disorders of Copper Metabolism	1
+Parkinsonism	Disorders of Phosphorous Metabolism	1
+Parkinsonism	Disorders of Straight Chain Amino Acid Metabolism	1
+Parkinsonism	Disorders of Urea Cycle Metabolism	1
+Parkinsonism	Dopa-Responsive Dystonia	1
+Parkinsonism	Familial Dysautonomia	1
+Parkinsonism	Friedreich Ataxia	1
+Parkinsonism	Haemophilia	1
+Parkinsonism	Hereditary Muscular Dystrophy	1
+Parkinsonism	Hereditary Sensory Neuropathy	1
+Parkinsonism	Holoprosencephaly	1
+Parkinsonism	Huntington Disease	1
+Parkinsonism	Hypopituitarism	1
+Parkinsonism	Inherited Anomalies of the Skin	1
+Parkinsonism	Lipoprotein Deficiencies	1
+Parkinsonism	Long QT Syndrome	1
+Parkinsonism	Neurofibromatosis	1
+Parkinsonism	Polycystic Kidney, Autosomal Dominant	1
+Parkinsonism	Rett Syndrome	1
+Parkinsonism	Spinocerebellar Ataxia	1
+Parkinsonism	Tongue Tie	1
+Phobia	Cerebral Degeneration Due to Generalized Lipidoses	1
+Phobia	Chronic Granulomatous Disease	1
+Phobia	Circulating Enzyme Deficiencies	1
+Phobia	Combined Heart and Skeletal Defects	1
+Phobia	Congenital Hydrocephalus	1
+Phobia	Congenital Ichthyosis	1
+Phobia	Cystic Fibrosis	1
+Phobia	Degenerative Diseases of the Basal Ganglia	1
+Phobia	Disorders of Aromatic Amino Acid Metabolism	1
+Phobia	Disorders of Copper Metabolism	1
+Phobia	Disorders of Phosphorous Metabolism	1
+Phobia	Disorders of Straight Chain Amino Acid Metabolism	1
+Phobia	Disorders of Urea Cycle Metabolism	1
+Phobia	Dopa-Responsive Dystonia	1
+Phobia	Facial and Skull Anomalies	1
+Phobia	Familial Dysautonomia	1
+Phobia	Genetic Anomalies of Leukocytes	1
+Phobia	Haemophilia	1
+Phobia	Hereditary Sensory Neuropathy	1
+Phobia	Holoprosencephaly	1
+Phobia	Huntington Disease	1
+Phobia	Hypopituitarism	1
+Phobia	Inherited Adrenogenital Disorders	1
+Phobia	Inherited Anomalies of the Skin	1
+Phobia	Li Fraumeni and Related Syndromes	1
+Phobia	Lipoprotein Deficiencies	1
+Phobia	Long QT Syndrome	1
+Phobia	Marfan Syndrome	1
+Phobia	Neurofibromatosis	1
+Phobia	Pervasive, Specified Congenital Anomalies	1
+Phobia	Sickle Cell Anemia	1
+Phobia	Specific Nail Anomalies	1
+Phobia	Spinocerebellar Ataxia	1
+Phobia	Thalassemia	1
+Phobia	Tongue Tie	1
+Phobia	Tuberous Sclerosis	1
+Picks Disease	Cerebral Degeneration Due to Generalized Lipidoses	1
+Picks Disease	Congenital Hydrocephalus	1
+Picks Disease	Degenerative Diseases of the Basal Ganglia	1
+Picks Disease	Dopa-Responsive Dystonia	1
+Picks Disease	Spinocerebellar Ataxia	1
+Prostate Cancer	Cerebral Degeneration Due to Generalized Lipidoses	1
+Prostate Cancer	Chronic Granulomatous Disease	1
+Prostate Cancer	Circulating Enzyme Deficiencies	1
+Prostate Cancer	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Prostate Cancer	Congenital Ichthyosis	1
+Prostate Cancer	Congenital Pigmentary Anomalies	1
+Prostate Cancer	Degenerative Diseases of the Basal Ganglia	1
+Prostate Cancer	Disorders of Phosphorous Metabolism	1
+Prostate Cancer	Disorders of Straight Chain Amino Acid Metabolism	1
+Prostate Cancer	Dopa-Responsive Dystonia	1
+Prostate Cancer	Facial and Skull Anomalies	1
+Prostate Cancer	Genetic Anomalies of Leukocytes	1
+Prostate Cancer	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Prostate Cancer	Glycogenosis	1
+Prostate Cancer	Haemophilia	1
+Prostate Cancer	Hereditary Hemorrhagic Telangiectasia	1
+Prostate Cancer	Hereditary Sensory Neuropathy	1
+Prostate Cancer	Hypopituitarism	1
+Prostate Cancer	Inherited Anomalies of the Skin	1
+Prostate Cancer	Lipoprotein Deficiencies	1
+Prostate Cancer	Long QT Syndrome	1
+Prostate Cancer	Pervasive, Specified Congenital Anomalies	1
+Prostate Cancer	Polycystic Kidney, Autosomal Dominant	1
+Prostate Cancer	Retinitis Pigmentosa	1
+Prostate Cancer	Sickle Cell Anemia	1
+Prostate Cancer	Specified Hamartoses	1
+Prostate Cancer	Spinocerebellar Ataxia	1
+Prostate Cancer	Thalassemia	1
+Prostate Cancer	Tongue Tie	1
+Psoriasis	Autoimmune Lymphoproliferative Syndrome	1
+Psoriasis	Autoimmune Polyglandular Syndrome	1
+Psoriasis	Cerebral Degeneration Due to Generalized Lipidoses	1
+Psoriasis	Chondrodystrophy	1
+Psoriasis	Chronic Granulomatous Disease	1
+Psoriasis	Circulating Enzyme Deficiencies	1
+Psoriasis	Combined Heart and Skeletal Defects	1
+Psoriasis	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Psoriasis	Congenital Ectodermal Dysplasia	1
+Psoriasis	Congenital Ichthyosis	1
+Psoriasis	Congenital Pigmentary Anomalies	1
+Psoriasis	Cystic Fibrosis	1
+Psoriasis	Degenerative Diseases of the Basal Ganglia	1
+Psoriasis	Disorders of Aromatic Amino Acid Metabolism	1
+Psoriasis	Disorders of Copper Metabolism	1
+Psoriasis	Disorders of Phosphorous Metabolism	1
+Psoriasis	Disorders of Straight Chain Amino Acid Metabolism	1
+Psoriasis	Disorders of Urea Cycle Metabolism	1
+Psoriasis	Dopa-Responsive Dystonia	1
+Psoriasis	Erythromelalgia	1
+Psoriasis	Familial Dysautonomia	1
+Psoriasis	Fragile-X Syndrome	1
+Psoriasis	Genetic Anomalies of Leukocytes	1
+Psoriasis	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Psoriasis	Glycogenosis	1
+Psoriasis	Haemophilia	1
+Psoriasis	Hereditary Hemorrhagic Telangiectasia	1
+Psoriasis	Hereditary Muscular Dystrophy	1
+Psoriasis	Hereditary Sensory Neuropathy	1
+Psoriasis	Holoprosencephaly	1
+Psoriasis	Hypopituitarism	1
+Psoriasis	Immunodeficiency with Increased IgM	1
+Psoriasis	Inherited Adrenogenital Disorders	1
+Psoriasis	Inherited Anomalies of the Skin	1
+Psoriasis	Li Fraumeni and Related Syndromes	1
+Psoriasis	Lipoprotein Deficiencies	1
+Psoriasis	Long QT Syndrome	1
+Psoriasis	Marfan Syndrome	1
+Psoriasis	Neurofibromatosis	1
+Psoriasis	Non-Specified Osteodystrophy	1
+Psoriasis	Pervasive, Specified Congenital Anomalies	1
+Psoriasis	Retinitis Pigmentosa	1
+Psoriasis	Sensory Retina Dystropies	1
+Psoriasis	Severe Combined Immunodeficiency	1
+Psoriasis	Sickle Cell Anemia	1
+Psoriasis	Specific Nail Anomalies	1
+Psoriasis	Specified Anomalies of the Musculoskeletal System	1
+Psoriasis	Specified Hamartoses	1
+Psoriasis	Spinocerebellar Ataxia	1
+Psoriasis	Thalassemia	1
+Psoriasis	Tongue Tie	1
+Psoriasis	Wiskott-Aldrich Syndrome	1
+Pulmonary Embolism and Infarction	Autoimmune Polyglandular Syndrome	1
+Pulmonary Embolism and Infarction	Cerebral Degeneration Due to Generalized Lipidoses	1
+Pulmonary Embolism and Infarction	Chronic Granulomatous Disease	1
+Pulmonary Embolism and Infarction	Circulating Enzyme Deficiencies	1
+Pulmonary Embolism and Infarction	Combined Heart and Skeletal Defects	1
+Pulmonary Embolism and Infarction	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Pulmonary Embolism and Infarction	Congenital Hydrocephalus	1
+Pulmonary Embolism and Infarction	Congenital Hypogammaglobulinemia	1
+Pulmonary Embolism and Infarction	Congenital Ichthyosis	1
+Pulmonary Embolism and Infarction	Cystic Fibrosis	1
+Pulmonary Embolism and Infarction	Degenerative Diseases of the Basal Ganglia	1
+Pulmonary Embolism and Infarction	Diamond-Blackfan Anemia	1
+Pulmonary Embolism and Infarction	Disorders of Aromatic Amino Acid Metabolism	1
+Pulmonary Embolism and Infarction	Disorders of Copper Metabolism	1
+Pulmonary Embolism and Infarction	Disorders of Phosphorous Metabolism	1
+Pulmonary Embolism and Infarction	Disorders of Straight Chain Amino Acid Metabolism	1
+Pulmonary Embolism and Infarction	Disorders of Urea Cycle Metabolism	1
+Pulmonary Embolism and Infarction	Dopa-Responsive Dystonia	1
+Pulmonary Embolism and Infarction	Friedreich Ataxia	1
+Pulmonary Embolism and Infarction	Genetic Anomalies of Leukocytes	1
+Pulmonary Embolism and Infarction	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Pulmonary Embolism and Infarction	Glycogenosis	1
+Pulmonary Embolism and Infarction	Haemophilia	1
+Pulmonary Embolism and Infarction	Hereditary Hemorrhagic Telangiectasia	1
+Pulmonary Embolism and Infarction	Hereditary Muscular Dystrophy	1
+Pulmonary Embolism and Infarction	Hereditary Sensory Neuropathy	1
+Pulmonary Embolism and Infarction	Hereditary Thrombocytopenic Purpura	1
+Pulmonary Embolism and Infarction	Holoprosencephaly	1
+Pulmonary Embolism and Infarction	Huntington Disease	1
+Pulmonary Embolism and Infarction	Hypopituitarism	1
+Pulmonary Embolism and Infarction	Immunodeficiency with Increased IgM	1
+Pulmonary Embolism and Infarction	Inherited Adrenogenital Disorders	1
+Pulmonary Embolism and Infarction	Inherited Anomalies of the Skin	1
+Pulmonary Embolism and Infarction	Li Fraumeni and Related Syndromes	1
+Pulmonary Embolism and Infarction	Lipoprotein Deficiencies	1
+Pulmonary Embolism and Infarction	Long QT Syndrome	1
+Pulmonary Embolism and Infarction	Marfan Syndrome	1
+Pulmonary Embolism and Infarction	Multiple Endocrine Neoplasia Type I	1
+Pulmonary Embolism and Infarction	Neurofibromatosis	1
+Pulmonary Embolism and Infarction	Non-Specified Osteodystrophy	1
+Pulmonary Embolism and Infarction	Osteogenesis Imperfecta	1
+Pulmonary Embolism and Infarction	Other Specified Disorders of Amino Acid Metabolism	1
+Pulmonary Embolism and Infarction	Pervasive, Specified Congenital Anomalies	1
+Pulmonary Embolism and Infarction	Polycystic Kidney, Autosomal Dominant	1
+Pulmonary Embolism and Infarction	Retinitis Pigmentosa	1
+Pulmonary Embolism and Infarction	Severe Combined Immunodeficiency	1
+Pulmonary Embolism and Infarction	Sickle Cell Anemia	1
+Pulmonary Embolism and Infarction	Specific Nail Anomalies	1
+Pulmonary Embolism and Infarction	Specified Anomalies of the Musculoskeletal System	1
+Pulmonary Embolism and Infarction	Specified Hamartoses	1
+Pulmonary Embolism and Infarction	Spinocerebellar Ataxia	1
+Pulmonary Embolism and Infarction	Thalassemia	1
+Pulmonary Embolism and Infarction	Tongue Tie	1
+Pulmonary Embolism and Infarction	Tuberous Sclerosis	1
+Purulent Endophthalmitis	Anophthalmos/Micropthalmos	1
+Purulent Endophthalmitis	Combined Heart and Skeletal Defects	1
+Purulent Endophthalmitis	Disorders of Phosphorous Metabolism	1
+Purulent Endophthalmitis	Disorders of Straight Chain Amino Acid Metabolism	1
+Purulent Endophthalmitis	Facial and Skull Anomalies	1
+Purulent Endophthalmitis	Inherited Anomalies of the Skin	1
+Purulent Endophthalmitis	Lipoprotein Deficiencies	1
+Purulent Endophthalmitis	Pervasive, Specified Congenital Anomalies	1
+Purulent Endophthalmitis	Retinitis Pigmentosa	1
+Purulent Endophthalmitis	Severe Combined Immunodeficiency	1
+Purulent Endophthalmitis	Sickle Cell Anemia	1
+Rheumatoid Arthritis	Androgen Insensitivity Syndrome	1
+Rheumatoid Arthritis	Anophthalmos/Micropthalmos	1
+Rheumatoid Arthritis	Autoimmune Lymphoproliferative Syndrome	1
+Rheumatoid Arthritis	Autoimmune Polyglandular Syndrome	1
+Rheumatoid Arthritis	Bartter Syndrome	1
+Rheumatoid Arthritis	Cerebral Degeneration Due to Generalized Lipidoses	1
+Rheumatoid Arthritis	Chondrodystrophy	1
+Rheumatoid Arthritis	Chronic Granulomatous Disease	1
+Rheumatoid Arthritis	Circulating Enzyme Deficiencies	1
+Rheumatoid Arthritis	Combined Heart and Skeletal Defects	1
+Rheumatoid Arthritis	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Rheumatoid Arthritis	Congenital Hypogammaglobulinemia	1
+Rheumatoid Arthritis	Congenital Ichthyosis	1
+Rheumatoid Arthritis	Congenital Pigmentary Anomalies	1
+Rheumatoid Arthritis	Cystic Fibrosis	1
+Rheumatoid Arthritis	Degenerative Diseases of the Basal Ganglia	1
+Rheumatoid Arthritis	Diamond-Blackfan Anemia	1
+Rheumatoid Arthritis	Disorders of Aromatic Amino Acid Metabolism	1
+Rheumatoid Arthritis	Disorders of Copper Metabolism	1
+Rheumatoid Arthritis	Disorders of Phosphorous Metabolism	1
+Rheumatoid Arthritis	Disorders of Straight Chain Amino Acid Metabolism	1
+Rheumatoid Arthritis	Disorders of Urea Cycle Metabolism	1
+Rheumatoid Arthritis	Dopa-Responsive Dystonia	1
+Rheumatoid Arthritis	Erythromelalgia	1
+Rheumatoid Arthritis	Facial and Skull Anomalies	1
+Rheumatoid Arthritis	Familial Dysautonomia	1
+Rheumatoid Arthritis	Familial Mediterranean Fever	1
+Rheumatoid Arthritis	Friedreich Ataxia	1
+Rheumatoid Arthritis	Genetic Anomalies of Leukocytes	1
+Rheumatoid Arthritis	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Rheumatoid Arthritis	Glycogenosis	1
+Rheumatoid Arthritis	Haemophilia	1
+Rheumatoid Arthritis	Hereditary Hemorrhagic Telangiectasia	1
+Rheumatoid Arthritis	Hereditary Muscular Dystrophy	1
+Rheumatoid Arthritis	Hereditary Sensory Neuropathy	1
+Rheumatoid Arthritis	Hereditary Thrombocytopenic Purpura	1
+Rheumatoid Arthritis	Holoprosencephaly	1
+Rheumatoid Arthritis	Hypopituitarism	1
+Rheumatoid Arthritis	Immunodeficiency with Increased IgM	1
+Rheumatoid Arthritis	Inherited Adrenogenital Disorders	1
+Rheumatoid Arthritis	Inherited Anomalies of the Skin	1
+Rheumatoid Arthritis	Li Fraumeni and Related Syndromes	1
+Rheumatoid Arthritis	Lipoprotein Deficiencies	1
+Rheumatoid Arthritis	Long QT Syndrome	1
+Rheumatoid Arthritis	Marfan Syndrome	1
+Rheumatoid Arthritis	Multiple Endocrine Neoplasia Type I	1
+Rheumatoid Arthritis	Neurofibromatosis	1
+Rheumatoid Arthritis	Non-Specified Osteodystrophy	1
+Rheumatoid Arthritis	Osteogenesis Imperfecta	1
+Rheumatoid Arthritis	Other Specified Disorders of Amino Acid Metabolism	1
+Rheumatoid Arthritis	Pervasive, Specified Congenital Anomalies	1
+Rheumatoid Arthritis	Polycystic Kidney, Autosomal Dominant	1
+Rheumatoid Arthritis	Retinitis Pigmentosa	1
+Rheumatoid Arthritis	Sensory Retina Dystropies	1
+Rheumatoid Arthritis	Severe Combined Immunodeficiency	1
+Rheumatoid Arthritis	Sickle Cell Anemia	1
+Rheumatoid Arthritis	Specific Nail Anomalies	1
+Rheumatoid Arthritis	Specified Anomalies of the Musculoskeletal System	1
+Rheumatoid Arthritis	Specified Hamartoses	1
+Rheumatoid Arthritis	Spinocerebellar Ataxia	1
+Rheumatoid Arthritis	Systemic Primary Carnitine Deficiency	1
+Rheumatoid Arthritis	Thalassemia	1
+Rheumatoid Arthritis	Tongue Tie	1
+Rosacea	Androgen Insensitivity Syndrome	1
+Rosacea	Autoimmune Lymphoproliferative Syndrome	1
+Rosacea	Autoimmune Polyglandular Syndrome	1
+Rosacea	Cerebral Degeneration Due to Generalized Lipidoses	1
+Rosacea	Cerebral Lipidoses	1
+Rosacea	Chondrodystrophy	1
+Rosacea	Chronic Granulomatous Disease	1
+Rosacea	Circulating Enzyme Deficiencies	1
+Rosacea	Combined Heart and Skeletal Defects	1
+Rosacea	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Rosacea	Congenital Ectodermal Dysplasia	1
+Rosacea	Congenital Ichthyosis	1
+Rosacea	Congenital Pigmentary Anomalies	1
+Rosacea	Cystic Fibrosis	1
+Rosacea	Degenerative Diseases of the Basal Ganglia	1
+Rosacea	Disorders of Aromatic Amino Acid Metabolism	1
+Rosacea	Disorders of Copper Metabolism	1
+Rosacea	Disorders of Phosphorous Metabolism	1
+Rosacea	Disorders of Straight Chain Amino Acid Metabolism	1
+Rosacea	Dopa-Responsive Dystonia	1
+Rosacea	Erythromelalgia	1
+Rosacea	Facial and Skull Anomalies	1
+Rosacea	Genetic Anomalies of Leukocytes	1
+Rosacea	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Rosacea	Glycogenosis	1
+Rosacea	Haemophilia	1
+Rosacea	Hereditary Hemorrhagic Telangiectasia	1
+Rosacea	Hereditary Muscular Dystrophy	1
+Rosacea	Hereditary Sensory Neuropathy	1
+Rosacea	Holoprosencephaly	1
+Rosacea	Huntington Disease	1
+Rosacea	Hypopituitarism	1
+Rosacea	Inherited Adrenogenital Disorders	1
+Rosacea	Inherited Anomalies of the Skin	1
+Rosacea	Li Fraumeni and Related Syndromes	1
+Rosacea	Lipoprotein Deficiencies	1
+Rosacea	Long QT Syndrome	1
+Rosacea	Marfan Syndrome	1
+Rosacea	Multiple Endocrine Neoplasia Type I	1
+Rosacea	Neurofibromatosis	1
+Rosacea	Pervasive, Specified Congenital Anomalies	1
+Rosacea	Phenylketonuria	1
+Rosacea	Polycystic Kidney, Autosomal Dominant	1
+Rosacea	Retinitis Pigmentosa	1
+Rosacea	Sensory Retina Dystropies	1
+Rosacea	Severe Combined Immunodeficiency	1
+Rosacea	Sickle Cell Anemia	1
+Rosacea	Specific Nail Anomalies	1
+Rosacea	Specified Anomalies of the Musculoskeletal System	1
+Rosacea	Specified Hamartoses	1
+Rosacea	Spinocerebellar Ataxia	1
+Rosacea	Thalassemia	1
+Rosacea	Tongue Tie	1
+Rosacea	Tuberous Sclerosis	1
+Sarcoidosis	Autoimmune Lymphoproliferative Syndrome	1
+Sarcoidosis	Cerebral Degeneration Due to Generalized Lipidoses	1
+Sarcoidosis	Chronic Granulomatous Disease	1
+Sarcoidosis	Circulating Enzyme Deficiencies	1
+Sarcoidosis	Combined Heart and Skeletal Defects	1
+Sarcoidosis	Congenital Hypogammaglobulinemia	1
+Sarcoidosis	Congenital Ichthyosis	1
+Sarcoidosis	Cystic Fibrosis	1
+Sarcoidosis	Degenerative Diseases of the Basal Ganglia	1
+Sarcoidosis	Diamond-Blackfan Anemia	1
+Sarcoidosis	Disorders of Copper Metabolism	1
+Sarcoidosis	Disorders of Phosphorous Metabolism	1
+Sarcoidosis	Disorders of Straight Chain Amino Acid Metabolism	1
+Sarcoidosis	Disorders of Urea Cycle Metabolism	1
+Sarcoidosis	Dopa-Responsive Dystonia	1
+Sarcoidosis	Facial and Skull Anomalies	1
+Sarcoidosis	Familial Mediterranean Fever	1
+Sarcoidosis	Friedreich Ataxia	1
+Sarcoidosis	Genetic Anomalies of Leukocytes	1
+Sarcoidosis	Glycogenosis	1
+Sarcoidosis	Haemophilia	1
+Sarcoidosis	Hereditary Hemorrhagic Telangiectasia	1
+Sarcoidosis	Hereditary Muscular Dystrophy	1
+Sarcoidosis	Hereditary Sensory Neuropathy	1
+Sarcoidosis	Hypopituitarism	1
+Sarcoidosis	Inherited Adrenogenital Disorders	1
+Sarcoidosis	Inherited Anomalies of the Skin	1
+Sarcoidosis	Li Fraumeni and Related Syndromes	1
+Sarcoidosis	Lipoprotein Deficiencies	1
+Sarcoidosis	Long QT Syndrome	1
+Sarcoidosis	Neurofibromatosis	1
+Sarcoidosis	Non-Specified Osteodystrophy	1
+Sarcoidosis	Polycystic Kidney, Autosomal Dominant	1
+Sarcoidosis	Retinitis Pigmentosa	1
+Sarcoidosis	Sensory Retina Dystropies	1
+Sarcoidosis	Severe Combined Immunodeficiency	1
+Sarcoidosis	Sickle Cell Anemia	1
+Sarcoidosis	Specific Nail Anomalies	1
+Sarcoidosis	Spinocerebellar Ataxia	1
+Sarcoidosis	Thalassemia	1
+Sarcoidosis	Tongue Tie	1
+Sarcoidosis	Wiskott-Aldrich Syndrome	1
+Schizophrenia	Cerebral Degeneration Due to Generalized Lipidoses	1
+Schizophrenia	Chronic Granulomatous Disease	1
+Schizophrenia	Combined Heart and Skeletal Defects	1
+Schizophrenia	Congenital Hydrocephalus	1
+Schizophrenia	Congenital Ichthyosis	1
+Schizophrenia	Degenerative Diseases of the Basal Ganglia	1
+Schizophrenia	Disorders of Copper Metabolism	1
+Schizophrenia	Disorders of Phosphorous Metabolism	1
+Schizophrenia	Disorders of Straight Chain Amino Acid Metabolism	1
+Schizophrenia	Disorders of Urea Cycle Metabolism	1
+Schizophrenia	Dopa-Responsive Dystonia	1
+Schizophrenia	Familial Dysautonomia	1
+Schizophrenia	Friedreich Ataxia	1
+Schizophrenia	Genetic Anomalies of Leukocytes	1
+Schizophrenia	Haemophilia	1
+Schizophrenia	Hereditary Sensory Neuropathy	1
+Schizophrenia	Huntington Disease	1
+Schizophrenia	Hypopituitarism	1
+Schizophrenia	Inherited Adrenogenital Disorders	1
+Schizophrenia	Inherited Anomalies of the Skin	1
+Schizophrenia	Lipoprotein Deficiencies	1
+Schizophrenia	Long QT Syndrome	1
+Schizophrenia	Pervasive, Specified Congenital Anomalies	1
+Schizophrenia	Retinitis Pigmentosa	1
+Schizophrenia	Sickle Cell Anemia	1
+Schizophrenia	Specific Nail Anomalies	1
+Schizophrenia	Spinocerebellar Ataxia	1
+Schizophrenia	Thalassemia	1
+Schizophrenia	Tongue Tie	1
+Schizophrenia	Tuberous Sclerosis	1
+Schizophrenia	Velo-Cardio-Facial Syndrome	1
+Skin Cyst	Androgen Insensitivity Syndrome	1
+Skin Cyst	Anophthalmos/Micropthalmos	1
+Skin Cyst	Autoimmune Lymphoproliferative Syndrome	1
+Skin Cyst	Autoimmune Polyglandular Syndrome	1
+Skin Cyst	Bartter Syndrome	1
+Skin Cyst	Cerebral Degeneration Due to Generalized Lipidoses	1
+Skin Cyst	Cerebral Lipidoses	1
+Skin Cyst	Chondrodystrophy	1
+Skin Cyst	Chronic Granulomatous Disease	1
+Skin Cyst	Chronic Progressive External Ophthalmoplegia	1
+Skin Cyst	Circulating Enzyme Deficiencies	1
+Skin Cyst	Combined Heart and Skeletal Defects	1
+Skin Cyst	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Skin Cyst	Congenital Ectodermal Dysplasia	1
+Skin Cyst	Congenital Hydrocephalus	1
+Skin Cyst	Congenital Ichthyosis	1
+Skin Cyst	Congenital Pigmentary Anomalies	1
+Skin Cyst	Cystic Fibrosis	1
+Skin Cyst	Degenerative Diseases of the Basal Ganglia	1
+Skin Cyst	Disorders of Aromatic Amino Acid Metabolism	1
+Skin Cyst	Disorders of Copper Metabolism	1
+Skin Cyst	Disorders of Phosphorous Metabolism	1
+Skin Cyst	Disorders of Straight Chain Amino Acid Metabolism	1
+Skin Cyst	Disorders of Urea Cycle Metabolism	1
+Skin Cyst	Dopa-Responsive Dystonia	1
+Skin Cyst	Facial and Skull Anomalies	1
+Skin Cyst	Familial Dysautonomia	1
+Skin Cyst	Friedreich Ataxia	1
+Skin Cyst	Genetic Anomalies of Leukocytes	1
+Skin Cyst	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Skin Cyst	Glycogenosis	1
+Skin Cyst	Haemophilia	1
+Skin Cyst	Hereditary Hemorrhagic Telangiectasia	1
+Skin Cyst	Hereditary Muscular Dystrophy	1
+Skin Cyst	Hereditary Sensory Neuropathy	1
+Skin Cyst	Holoprosencephaly	1
+Skin Cyst	Huntington Disease	1
+Skin Cyst	Hypopituitarism	1
+Skin Cyst	Immunodeficiency with Increased IgM	1
+Skin Cyst	Inherited Adrenogenital Disorders	1
+Skin Cyst	Inherited Anomalies of the Skin	1
+Skin Cyst	Li Fraumeni and Related Syndromes	1
+Skin Cyst	Lipoprotein Deficiencies	1
+Skin Cyst	Long QT Syndrome	1
+Skin Cyst	Marfan Syndrome	1
+Skin Cyst	Multiple Endocrine Neoplasia Type I	1
+Skin Cyst	Neurofibromatosis	1
+Skin Cyst	Non-Specific Autosomal Deletion Syndromes	1
+Skin Cyst	Non-Specified Osteodystrophy	1
+Skin Cyst	Osteogenesis Imperfecta	1
+Skin Cyst	Other Specified Disorders of Amino Acid Metabolism	1
+Skin Cyst	Pervasive, Specified Congenital Anomalies	1
+Skin Cyst	Polycystic Kidney, Autosomal Dominant	1
+Skin Cyst	Retinitis Pigmentosa	1
+Skin Cyst	Sensory Retina Dystropies	1
+Skin Cyst	Severe Combined Immunodeficiency	1
+Skin Cyst	Sickle Cell Anemia	1
+Skin Cyst	Specific Nail Anomalies	1
+Skin Cyst	Specified Anomalies of the Musculoskeletal System	1
+Skin Cyst	Specified Hamartoses	1
+Skin Cyst	Spinocerebellar Ataxia	1
+Skin Cyst	Systemic Primary Carnitine Deficiency	1
+Skin Cyst	Thalassemia	1
+Skin Cyst	Tuberous Sclerosis	1
+Sleep Disorder	Androgen Insensitivity Syndrome	1
+Sleep Disorder	Cerebral Degeneration Due to Generalized Lipidoses	1
+Sleep Disorder	Chronic Granulomatous Disease	1
+Sleep Disorder	Circulating Enzyme Deficiencies	1
+Sleep Disorder	Combined Heart and Skeletal Defects	1
+Sleep Disorder	Congenital Disorders of Purine/Pyrimidine Metabolism	1
+Sleep Disorder	Congenital Hydrocephalus	1
+Sleep Disorder	Congenital Hypogammaglobulinemia	1
+Sleep Disorder	Congenital Ichthyosis	1
+Sleep Disorder	Cystic Fibrosis	1
+Sleep Disorder	Degenerative Diseases of the Basal Ganglia	1
+Sleep Disorder	Disorders of Aromatic Amino Acid Metabolism	1
+Sleep Disorder	Disorders of Copper Metabolism	1
+Sleep Disorder	Disorders of Fatty Acid Oxidation	1
+Sleep Disorder	Disorders of Phosphorous Metabolism	1
+Sleep Disorder	Disorders of Straight Chain Amino Acid Metabolism	1
+Sleep Disorder	Disorders of Urea Cycle Metabolism	1
+Sleep Disorder	Dopa-Responsive Dystonia	1
+Sleep Disorder	Erythromelalgia	1
+Sleep Disorder	Familial Dysautonomia	1
+Sleep Disorder	Friedreich Ataxia	1
+Sleep Disorder	Genetic Anomalies of Leukocytes	1
+Sleep Disorder	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Sleep Disorder	Glycogenosis	1
+Sleep Disorder	Haemophilia	1
+Sleep Disorder	Hereditary Hemorrhagic Telangiectasia	1
+Sleep Disorder	Hereditary Muscular Dystrophy	1
+Sleep Disorder	Hereditary Sensory Neuropathy	1
+Sleep Disorder	Holoprosencephaly	1
+Sleep Disorder	Huntington Disease	1
+Sleep Disorder	Hypopituitarism	1
+Sleep Disorder	Immunodeficiency with Increased IgM	1
+Sleep Disorder	Inherited Adrenogenital Disorders	1
+Sleep Disorder	Inherited Anomalies of the Skin	1
+Sleep Disorder	Li Fraumeni and Related Syndromes	1
+Sleep Disorder	Lipoprotein Deficiencies	1
+Sleep Disorder	Long QT Syndrome	1
+Sleep Disorder	Marfan Syndrome	1
+Sleep Disorder	Neurofibromatosis	1
+Sleep Disorder	Non-Specific Autosomal Deletion Syndromes	1
+Sleep Disorder	Non-Specified Osteodystrophy	1
+Sleep Disorder	Osteogenesis Imperfecta	1
+Sleep Disorder	Other Specified Disorders of Amino Acid Metabolism	1
+Sleep Disorder	Pervasive, Specified Congenital Anomalies	1
+Sleep Disorder	Polycystic Kidney, Autosomal Dominant	1
+Sleep Disorder	Retinitis Pigmentosa	1
+Sleep Disorder	Severe Combined Immunodeficiency	1
+Sleep Disorder	Smith-Magenis Syndrome	1
+Sleep Disorder	Specific Nail Anomalies	1
+Sleep Disorder	Specified Anomalies of the Musculoskeletal System	1
+Sleep Disorder	Spinocerebellar Ataxia	1
+Sleep Disorder	Thalassemia	1
+Uterine Cancer	Cerebral Degeneration Due to Generalized Lipidoses	1
+Uterine Cancer	Chronic Granulomatous Disease	1
+Uterine Cancer	Combined Heart and Skeletal Defects	1
+Uterine Cancer	Degenerative Diseases of the Basal Ganglia	1
+Uterine Cancer	Diamond-Blackfan Anemia	1
+Uterine Cancer	Disorders of Phosphorous Metabolism	1
+Uterine Cancer	Disorders of Straight Chain Amino Acid Metabolism	1
+Uterine Cancer	Facial and Skull Anomalies	1
+Uterine Cancer	Genetic Anomalies of Leukocytes	1
+Uterine Cancer	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Uterine Cancer	Haemophilia	1
+Uterine Cancer	Hereditary Hemorrhagic Telangiectasia	1
+Uterine Cancer	Hereditary Sensory Neuropathy	1
+Uterine Cancer	Inherited Anomalies of the Skin	1
+Uterine Cancer	Li Fraumeni and Related Syndromes	1
+Uterine Cancer	Lipoprotein Deficiencies	1
+Uterine Cancer	Long QT Syndrome	1
+Unspecified Viral Infection (Common Cold)	Achromatopsia	1
+Unspecified Viral Infection (Common Cold)	Anophthalmos/Micropthalmos	1
+Unspecified Viral Infection (Common Cold)	Anterior Eye Anomalies	1
+Unspecified Viral Infection (Common Cold)	Autoimmune Lymphoproliferative Syndrome	1
+Unspecified Viral Infection (Common Cold)	Autoimmune Polyglandular Syndrome	1
+Unspecified Viral Infection (Common Cold)	Bartter Syndrome	1
+Unspecified Viral Infection (Common Cold)	Cerebral Degeneration Due to Generalized Lipidoses	1
+Unspecified Viral Infection (Common Cold)	Cerebral Lipidoses	1
+Unspecified Viral Infection (Common Cold)	Chondrodystrophy	1
+Unspecified Viral Infection (Common Cold)	Chronic Granulomatous Disease	1
+Unspecified Viral Infection (Common Cold)	Chronic Progressive External Ophthalmoplegia	1
+Unspecified Viral Infection (Common Cold)	Circulating Enzyme Deficiencies	1
+Unspecified Viral Infection (Common Cold)	Combined Heart and Skeletal Defects	1
+Unspecified Viral Infection (Common Cold)	Congenital Ectodermal Dysplasia	1
+Unspecified Viral Infection (Common Cold)	Congenital Fistula of the Lip	1
+Unspecified Viral Infection (Common Cold)	Congenital Hirschsprung Disease	1
+Unspecified Viral Infection (Common Cold)	Congenital Hydrocephalus	1
+Unspecified Viral Infection (Common Cold)	Congenital Hypogammaglobulinemia	1
+Unspecified Viral Infection (Common Cold)	Congenital Ichthyosis	1
+Unspecified Viral Infection (Common Cold)	Congenital Pigmentary Anomalies	1
+Unspecified Viral Infection (Common Cold)	Cri-Du-Chat Syndrome	1
+Unspecified Viral Infection (Common Cold)	Cystic Fibrosis	1
+Unspecified Viral Infection (Common Cold)	Diamond-Blackfan Anemia	1
+Unspecified Viral Infection (Common Cold)	Disorders of Aromatic Amino Acid Metabolism	1
+Unspecified Viral Infection (Common Cold)	Disorders of Branched Chain Amino Acid Metabolism	1
+Unspecified Viral Infection (Common Cold)	Disorders of Copper Metabolism	1
+Unspecified Viral Infection (Common Cold)	Disorders of Fatty Acid Oxidation	1
+Unspecified Viral Infection (Common Cold)	Disorders of Phosphorous Metabolism	1
+Unspecified Viral Infection (Common Cold)	Disorders of Straight Chain Amino Acid Metabolism	1
+Unspecified Viral Infection (Common Cold)	Disorders of Urea Cycle Metabolism	1
+Unspecified Viral Infection (Common Cold)	Dopa-Responsive Dystonia	1
+Unspecified Viral Infection (Common Cold)	Ectrodactyly	1
+Unspecified Viral Infection (Common Cold)	Ellis Van Creveld Syndrome	1
+Unspecified Viral Infection (Common Cold)	Facial and Skull Anomalies	1
+Unspecified Viral Infection (Common Cold)	Familial Dysautonomia	1
+Unspecified Viral Infection (Common Cold)	Familial Mediterranean Fever	1
+Unspecified Viral Infection (Common Cold)	Fragile-X Syndrome	1
+Unspecified Viral Infection (Common Cold)	Friedreich Ataxia	1
+Unspecified Viral Infection (Common Cold)	Genetic Anomalies of Leukocytes	1
+Unspecified Viral Infection (Common Cold)	Glucose-6-Phosphate Dehydrogenase Deficiency	1
+Unspecified Viral Infection (Common Cold)	Glycogenosis	1
+Unspecified Viral Infection (Common Cold)	Haemophilia	1
+Unspecified Viral Infection (Common Cold)	Hereditary Color Blindness	1
+Unspecified Viral Infection (Common Cold)	Hereditary Hemorrhagic Telangiectasia	1
+Unspecified Viral Infection (Common Cold)	Hereditary Muscular Dystrophy	1
+Unspecified Viral Infection (Common Cold)	Hereditary Sensory Neuropathy	1
+Unspecified Viral Infection (Common Cold)	Hereditary Thrombocytopenic Purpura	1
+Unspecified Viral Infection (Common Cold)	Holoprosencephaly	1
+Unspecified Viral Infection (Common Cold)	Hypopituitarism	1
+Unspecified Viral Infection (Common Cold)	Immunodeficiency with Increased IgM	1
+Unspecified Viral Infection (Common Cold)	Indeterminate Sex and Pseudohermaphroditism	1
+Unspecified Viral Infection (Common Cold)	Inherited Adrenogenital Disorders	1
+Unspecified Viral Infection (Common Cold)	Inherited Anomalies of the Skin	1
+Unspecified Viral Infection (Common Cold)	Long QT Syndrome	1
+Unspecified Viral Infection (Common Cold)	Marfan Syndrome	1
+Unspecified Viral Infection (Common Cold)	Multiple Epiphyseal Dysplasia	1
+Unspecified Viral Infection (Common Cold)	Neurofibromatosis	1
+Unspecified Viral Infection (Common Cold)	Non-Specific Autosomal Deletion Syndromes	1
+Unspecified Viral Infection (Common Cold)	Non-Specified Osteodystrophy	1
+Unspecified Viral Infection (Common Cold)	Osteogenesis Imperfecta	1
+Unspecified Viral Infection (Common Cold)	Other Specified Disorders of Amino Acid Metabolism	1
+Unspecified Viral Infection (Common Cold)	Peroxisomal Disorders	1
+Unspecified Viral Infection (Common Cold)	Pervasive, Specified Congenital Anomalies	1
+Unspecified Viral Infection (Common Cold)	Phenylketonuria	1
+Unspecified Viral Infection (Common Cold)	Polycystic Kidney, Autosomal Dominant	1
+Unspecified Viral Infection (Common Cold)	Retinitis Pigmentosa	1
+Unspecified Viral Infection (Common Cold)	Rett Syndrome	1
+Unspecified Viral Infection (Common Cold)	Sensory Retina Dystropies	1
+Unspecified Viral Infection (Common Cold)	Severe Combined Immunodeficiency	1
+Unspecified Viral Infection (Common Cold)	Sickle Cell Anemia	1
+Unspecified Viral Infection (Common Cold)	Smith-Magenis Syndrome	1
+Unspecified Viral Infection (Common Cold)	Specific Nail Anomalies	1
+Unspecified Viral Infection (Common Cold)	Specified Anomalies of the Musculoskeletal System	1
+Unspecified Viral Infection (Common Cold)	Specified Hamartoses	1
+Unspecified Viral Infection (Common Cold)	Spinocerebellar Ataxia	1
+Unspecified Viral Infection (Common Cold)	Systemic Primary Carnitine Deficiency	1
+Unspecified Viral Infection (Common Cold)	Thalassemia	1
+Unspecified Viral Infection (Common Cold)	Tongue Tie	1
+Unspecified Viral Infection (Common Cold)	Tuberous Sclerosis	1
+Unspecified Viral Infection (Common Cold)	Velo-Cardio-Facial Syndrome	1
+Unspecified Viral Infection (Common Cold)	Wiskott-Aldrich Syndrome	1

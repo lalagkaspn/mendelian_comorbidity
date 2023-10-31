@@ -1,0 +1,242 @@
+complex_disease	mesh_term	mesh_code
+Acne	Acneiform Eruptions	D017486
+Acne	Acne Vulgaris	D000152
+Acne	Acne Conglobata	D000069316
+Acne	Acne Keloid	D000153
+Acquired Hypothyroidism	Hypothyroidism	D007037
+Acquired Hypothyroidism	Myxedema	D009230
+Acquired Hypothyroidism	"Goiter, Endemic"	D006043
+Acute Glomerulonephritis	Nephrotic Syndrome	D009404
+Acute Myocardial Infarction	Myocardial Infarction	D009203
+Acute Myocardial Infarction	Anterior Wall Myocardial Infarction	D056988
+Acute Myocardial Infarction	Inferior Wall Myocardial Infarction	D056989
+Acute Myocardial Infarction	Non-ST Elevated Myocardial Infarction	D000072658
+Acute Myocardial Infarction	ST Elevation Myocardial Infarction	D000072657
+Acute Myocardial Infarction	MINOCA	D000088442
+Acute Myocardial Infarction	Coronary Thrombosis	D003328
+Acute Myocardial Infarction	Coronary Occlusion	D054059
+Addisons Disease	Addison Disease	D000224
+Addisons Disease	"Hypoadrenocorticism, Familial"	D000075262
+Alopecia Areata	Alopecia Areata	D000506
+Alopecia Areata	Alopecia	D000505
+Alzheimers Disease	Alzheimer Disease	D000544
+Anxiety	Anxiety	D001007
+Anxiety	Anxiety Disorders	D001008
+Anxiety	"Anxiety, Separation"	D001010
+Anxiety	Dental Anxiety	D016854
+Anxiety	Performance Anxiety	D060805
+Anxiety	Test Anxiety	D000083563
+Anxiety	Panic	D010200
+Anxiety	Panic Disorder	D016584
+Asthma	Asthma	D001249
+Asthma	Status Asthmaticus	D013224
+Asthma	"Asthma, Occupational"	D059366
+Asthma	"Asthma, Exercise-Induced"	D001250
+Asthma	Asthma-Chronic Obstructive Pulmonary Disease Overlap Syndrome	D000080445
+Autism	Autistic Disorder	D001321
+Autism	Autism Spectrum Disorder	D000067877
+Autism	Asperger Syndrome	D020817
+Benign Brain Neoplasm	Brain Neoplasms	D001932
+Benign Brain Neoplasm	Supratentorial Neoplasms	D015173
+Benign Brain Neoplasm	Cerebral Ventricle Neoplasms	D002551
+Benign Brain Neoplasm	Cerebellar Neoplasms	D002528
+Benign Brain Neoplasm	Infratentorial Neoplasms	D015192
+Benign Brain Neoplasm	Neurocytoma	D018306
+Benign Brain Neoplasm	Choroid Plexus Neoplasms	D016545
+Benign Brain Neoplasm	Brain Stem Neoplasms	D020295
+Benign Brain Neoplasm	Hypothalamic Neoplasms	D007029
+Benign Brain Neoplasm	Spinal Cord Neoplasms	D013120
+Benign Brain Neoplasm	Central Nervous System Neoplasms	D016543
+Bipolar Disorder	Bipolar Disorder	D001714
+Bipolar Disorder	Bipolar and Related Disorders	D000068105
+Bipolar Disorder	Mania	D000087122
+Bladder Cancer	Urinary Bladder Neoplasms	D001749
+Bladder Cancer	Non-Muscle Invasive Bladder Neoplasms	D000093284
+Bronchitis	Bronchitis	D001991
+Bronchitis	"Bronchitis, Chronic"	D029481
+Burkitts Lymphoma	Burkitt Lymphoma	D002051
+Cataract	Cataract	D002386
+Celiac Disease	Celiac Disease	D002446
+Cerebral Infarction	Cerebral Infarction	D002544
+Cerebral Infarction	"Infarction, Anterior Cerebral Artery"	D020243
+Cerebral Infarction	"Infarction, Middle Cerebral Artery"	D020244
+Cerebral Infarction	"Infarction, Posterior Cerebral Artery"	D020762
+Cerebral Infarction	Stroke	D020521
+Colorectal Cancer	Colorectal Neoplasms	D015179
+Colorectal Cancer	Adenomatous Polyposis Coli	D011125
+Colorectal Cancer	Colonic Neoplasms	D003110
+Colorectal Cancer	"Colorectal Neoplasms, Hereditary Nonpolyposis"	D003123
+Colorectal Cancer	Rectal Neoplasms	D012004
+Colorectal Cancer	Anus Neoplasms	D001005
+Colorectal Cancer	Sigmoid Neoplasms	D012811
+Colorectal Cancer	Colitis-Associated Neoplasms	D000083023
+Colorectal Cancer	Anal Gland Neoplasms	D000694
+Crohns Disease	Crohn Disease	D003424
+Cushings Syndrome	Cushing Syndrome	D003480
+Cushings Syndrome	Pituitary ACTH Hypersecretion	D047748
+Deep Vein Thrombosis	Venous Thrombosis	D020246
+Deep Vein Thrombosis	Upper Extremity Deep Vein Thrombosis	D056824
+Deep Vein Thrombosis	Thrombophlebitis	D013924
+Deep Vein Thrombosis	Budd-Chiari Syndrome	D006502
+Deep Vein Thrombosis	Phlebitis	D010689
+Deep Vein Thrombosis	Thrombosis	D013927
+Depression	Depression	D003863
+Depression	Depressive Disorder	D003866
+Depression	"Depressive Disorder, Major"	D003865
+Dermatitis Herpetiformis	Dermatitis Herpetiformis	D003874
+Diabetes Insipidus	Diabetes Insipidus	D003919
+Diabetes Mellitus Type 1	"Diabetes Mellitus, Type 1"	D003922
+Diabetes Mellitus Type 1	Diabetic Ketoacidosis	D016883
+Diabetes Mellitus Type 1	Diabetic Foot	D017719
+Diabetes Mellitus Type 1	Diabetic Retinopathy	D003930
+Diabetes Mellitus Type 1	Diabetic Nephropathies	D003928
+Diabetes Mellitus Type 1	Diabetic Coma	D003926
+Diabetes Mellitus Type 1	Diabetic Angiopathies	D003925
+Diabetes Mellitus Type 2	"Diabetes Mellitus, Type 2"	D003924
+Diabetes Mellitus Type 2	Hyperglycemic Hyperosmolar Nonketotic Coma	D006944
+Diabetes Mellitus Type 2	Diabetic Foot	D017719
+Diabetes Mellitus Type 2	Diabetic Retinopathy	D003930
+Diabetes Mellitus Type 2	Diabetic Nephropathies	D003928
+Diabetes Mellitus Type 2	Diabetic Coma	D003926
+Diabetes Mellitus Type 2	Diabetic Angiopathies	D003925
+Eczema	Eczema	D004485
+Eczema	"Eczema, Dyshidrotic"	D011146
+Eczema	"Dermatitis, Atopic"	D003876
+Eczema	"Dermatitis, Seborrheic"	D012628
+Eczema	Dandruff	D063807
+Eczema	"Dermatitis, Allergic Contact"	D017449
+Eczema	"Dermatitis, Irritant"	D017453
+Eczema	"Dermatitis, Contact"	D003877
+Eczema	"Dermatitis, Exfoliative"	D003873
+Eczema	Neurodermatitis	D009450
+Eczema	Prurigo	D011536
+Eczema	Dermatitis	D003872
+Eczema	Pruritus	D011537
+Eczema	Pruritus Ani	D011538
+Eczema	Pruritus Vulvae	D011539
+Eczema	Intertrigo	D017437
+Emphysema	Pulmonary Emphysema	D011656
+Emphysema	Emphysema	D004646
+Emphysema	"Lung, Hyperlucent"	D019568
+Emphysema	Subcutaneous Emphysema	D013352
+Emphysema	Mediastinal Emphysema	D008478
+Epilepsy	Epilepsy	D004827
+Epilepsy	"Epilepsies, Partial"	D004828
+Epilepsy	"Epilepsy, Temporal Lobe"	D004833
+Epilepsy	"Epilepsy, Frontal Lobe"	D017034
+Epilepsy	"Epilepsy, Complex Partial"	D017029
+Epilepsy	"Epilepsy, Absence"	D004832
+Epilepsy	"Epilepsy, Tonic-Clonic"	D004830
+Epilepsy	"Epilepsy, Post-Traumatic"	D004834
+Epilepsy	"Epilepsy, Rolandic"	D019305
+Epilepsy	Lennox Gastaut Syndrome	D065768
+Epilepsy	Epileptic Syndromes	D000073376
+Epilepsy	"Epilepsy, Generalized"	D004829
+Epilepsy	"Epilepsy, Reflex"	D020195
+Epilepsy	Epilepsia Partialis Continua	D017036
+Epilepsy	"Epilepsies, Myoclonic"	D004831
+Epilepsy	Landau-Kleffner Syndrome	D018887
+Female Breast Cancer	Breast Neoplasms	D001943
+Female Breast Cancer	Breast Carcinoma In Situ	D000071960
+Female Breast Cancer	Triple Negative Breast Neoplasms	D064726
+Female Breast Cancer	Unilateral Breast Neoplasms	D000069584
+Gastric Cancer	Stomach Neoplasms	D013274
+General Frontotemporal Dementia	Frontotemporal Dementia	D057180
+Glaucoma	Glaucoma	D005901
+Glaucoma	Hydrophthalmos	D006871
+Glaucoma	Low Tension Glaucoma	D057066
+Glaucoma	"Glaucoma, Angle-Closure"	D015812
+Glaucoma	"Glaucoma, Neovascular"	D015355
+Glaucoma	"Glaucoma, Open-Angle"	D005902
+Gout	Gout	D006073
+Hyperplasia of the Prostate	Prostatic Hyperplasia	D011470
+Hypotony of the Eye	Ocular Hypotension	D015814
+Intellectual Disability	Intellectual Disability	D008607
+Kawasaki Disease	Mucocutaneous Lymph Node Syndrome	D009080
+Kidney Cancer	Kidney Neoplasms	D007680
+Liche	Lichen Planus	D008010
+Liche	Lichen Nitidus	D017513
+Lung Cancer	Lung Neoplasms	D008175
+Lung Cancer	Adenocarcinoma of Lung	D000077192
+Lung Cancer	Bronchial Neoplasms	D001984
+Lung Cancer	Small Cell Lung Carcinoma	D055752
+Lung Cancer	"Carcinoma, Non-Small-Cell Lung"	D002289
+Lupus	"Lupus Erythematosus, Systemic"	D008180
+Lupus	Lupus Nephritis	D008181
+Lupus	"Lupus Vasculitis, Central Nervous System"	D020945
+Lymphosarcoma/Reticulorsarcoma	"Lymphoma, Large B-Cell, Diffuse"	D016403
+Lymphosarcoma/Reticulorsarcoma	"Lymphoma, Large-Cell, Immunoblastic"	D016400
+Lymphosarcoma/Reticulorsarcoma	Plasmablastic Lymphoma	D000069293
+Malignant Brain Neoplasm	Brain Neoplasms	D001932
+Malignant Brain Neoplasm	Supratentorial Neoplasms	D015173
+Malignant Brain Neoplasm	Cerebral Ventricle Neoplasms	D002551
+Malignant Brain Neoplasm	Cerebellar Neoplasms	D002528
+Malignant Brain Neoplasm	Hypothalamic Neoplasms	D007029
+Melanoma	Melanoma	D008545
+Melanoma	"Melanoma, Amelanotic"	D018328
+Migraine	Migraine Disorders	D008881
+Migraine	Migraine with Aura	D020325
+Migraine	Migraine without Aura	D020326
+Migraine	Ophthalmoplegic Migraine	D060486
+Non-Specific Endophthalmitis	Endophthalmitis	D009877
+Non-Specific Endophthalmitis	Panuveitis	D015864
+Non-Specific Endophthalmitis	"Ophthalmia, Sympathetic"	D009879
+Obsessive Compulsive Disorder	Obsessive-Compulsive Disorder	D009771
+Osteoarthritis	Osteoarthritis	D010003
+Osteoarthritis	"Osteoarthritis, Hip"	D015207
+Osteoarthritis	"Osteoarthritis, Knee"	D020370
+Osteoarthritis	"Osteoarthritis, Spine"	D055013
+Osteoarthritis	Arthritis	D001168
+Osteoarthritis	Joint Diseases	D007592
+Parkinsonism	Parkinsonian Disorders	D020734
+Parkinsonism	Parkinson Disease	D010300
+Phobia	Phobic Disorders	D010698
+Phobia	Agoraphobia	D000379
+Phobia	Kinesiophobia	D000092442
+Phobia	"Phobia, Social"	D000072861
+Picks Disease	Pick Disease of the Brain	D020774
+Prostate Cancer	Prostatic Neoplasms	D011471
+Psoriasis	Psoriasis	D011565
+Psoriasis	"Arthritis, Psoriatic"	D015535
+Psoriasis	Acrodermatitis	D000169
+Pulmonary Embolism and Infarction	Pulmonary Embolism	D011655
+Pulmonary Embolism and Infarction	Pulmonary Infarction	D054060
+Purulent Endophthalmitis	Endophthalmitis	D009877
+Purulent Endophthalmitis	Panophthalmitis	D010202
+Rheumatoid Arthritis	"Arthritis, Rheumatoid"	D001172
+Rheumatoid Arthritis	Felty Syndrome	D005258
+Rheumatoid Arthritis	"Still's Disease, Adult-Onset"	D016706
+Rheumatoid Arthritis	Rheumatoid Nodule	D012218
+Rheumatoid Arthritis	Rheumatoid Vasculitis	D056653
+Rosacea	Rosacea	D012393
+Rosacea	Rhinophyma	D012224
+Rosacea	"Dermatitis, Perioral"	D019557
+Sarcoidosis	Sarcoidosis	D012507
+Sarcoidosis	"Sarcoidosis, Pulmonary"	D017565
+Sarcoidosis	Uveoparotid Fever	D014608
+Schizophrenia	Schizophrenia	D012559
+Schizophrenia	"Schizophrenia, Catatonic"	D012560
+Schizophrenia	"Schizophrenia, Disorganized"	D012562
+Schizophrenia	"Schizophrenia, Paranoid"	D012563
+Schizophrenia	Schizotypal Personality Disorder	D012569
+Skin Cyst	Epidermal Cyst	D004814
+Skin Cyst	Follicular Cyst	D005497
+Sleep Disorder	Sleep Initiation and Maintenance Disorders	D007319
+Sleep Disorder	"Sleep Disorders, Intrinsic"	D020919
+Sleep Disorder	Sleep Deprivation	D012892
+Sleep Disorder	Somnambulism	D013009
+Sleep Disorder	Night Terrors	D020184
+Unspecified Viral Infection (Common Cold)	Common Cold	D003139
+Unspecified Viral Infection (Common Cold)	Adenoviridae Infections	D000257
+Unspecified Viral Infection (Common Cold)	Coronavirus Infections	D018352
+Unspecified Viral Infection (Common Cold)	Respiratory Syncytial Virus Infections	D018357
+Unspecified Viral Infection (Common Cold)	Virus Diseases	D014777
+Unspecified Viral Infection (Common Cold)	Enterovirus Infections	D004769
+Unspecified Viral Infection (Common Cold)	Coxsackievirus Infections	D003384
+Unspecified Viral Infection (Common Cold)	Echovirus Infections	D004457
+Unspecified Viral Infection (Common Cold)	Parvoviridae Infections	D010322
+Unspecified Viral Infection (Common Cold)	Viremia	D014766
+Uterine Cancer	Uterine Neoplasms	D014594
+Uterine Cancer	Endometrial Neoplasms	D016889
+Uterine Cancer	"Carcinoma, Endometrioid"	D018269
+Uterine Cancer	Endometrial Stromal Tumors	D036821

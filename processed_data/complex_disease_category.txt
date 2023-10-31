@@ -1,0 +1,66 @@
+complex_disease	disease_category
+Acne	hormonal
+Acquired Hypothyroidism	hormonal
+Acute Glomerulonephritis	immune
+Acute Myocardial Infarction	cardiovascular
+Addisons Disease	hormonal
+Alopecia Areata	immune
+Alzheimers Disease	neurological
+Anxiety	neurological
+Asthma	immune
+Autism	neurological
+Benign Brain Neoplasm	cancer
+Bipolar Disorder	neurological
+Bladder Cancer	cancer
+Bronchitis	immune
+Burkitts Lymphoma	cancer
+Cataract	ophthalmological
+Celiac Disease	immune
+Cerebral Infarction	cardiovascular
+Colorectal Cancer	cancer
+Crohns Disease	immune
+Cushings Syndrome	hormonal
+Deep Vein Thrombosis	cardiovascular
+Depression	neurological
+Dermatitis Herpetiformis	immune
+Diabetes Insipidus	hormonal
+Diabetes Mellitus Type 1	hormonal
+Diabetes Mellitus Type 2	hormonal
+Eczema	immune
+Emphysema	immune
+Epilepsy	neurological
+Female Breast Cancer	cancer
+Gastric Cancer	cancer
+General Frontotemporal Dementia	neurological
+Glaucoma	ophthalmological
+Gout	immune
+Hyperplasia of the Prostate	cancer
+Hypotony of the Eye	ophthalmological
+Intellectual Disability	neurological
+Kawasaki Disease	immune
+Kidney Cancer	cancer
+Liche	immune
+Lung Cancer	cancer
+Lupus	immune
+Lymphosarcoma/Reticulorsarcoma	cancer
+Malignant Brain Neoplasm	cancer
+Melanoma	cancer
+Migraine	neurological
+Non-Specific Endophthalmitis	ophthalmological
+Obsessive Compulsive Disorder	neurological
+Osteoarthritis	immune
+Parkinsonism	neurological
+Phobia	neurological
+Picks Disease	neurological
+Prostate Cancer	cancer
+Psoriasis	immune
+Pulmonary Embolism and Infarction	cardiovascular
+Purulent Endophthalmitis	ophthalmological
+Rheumatoid Arthritis	immune
+Rosacea	immune
+Sarcoidosis	immune
+Schizophrenia	neurological
+Skin Cyst	hormonal
+Sleep Disorder	neurological
+Unspecified Viral Infection (Common Cold)	immune
+Uterine Cancer	cancer
