@@ -573,9 +573,7 @@ complex_disease_mesh = left_join(complex_disease_mesh, complex_disease_categorie
 
 ## Create ultimate matrix ##
 
-## Per disease
-
-# indicated/Investigated drug vector
+# indicated/investigated drug vector
 drugs_indicated_investigated = unique(c(ct_filt_blair$db_id, db_drugs_indications_blair$drugbank_id)) # 2,155 drugs
 drugs_indicated_investigated = sort(drugs_indicated_investigated)
 
@@ -641,70 +639,3 @@ rownames(ultimate_per_disease) = NULL
 
 # save file
 data.table::fwrite(ultimate_per_disease, "processed_data/drugs_inv_ind_per_disease.txt", sep = "\t", row.names = FALSE, col.names = TRUE)
-
-## Per disease category
-
-# complex disease categories
-complex_disease_categories_vector = unique(complex_disease_mesh$disease_category)
-complex_disease_categories_vector = sort(complex_disease_categories_vector)
-
-ultimate_per_disease_category = matrix(ncol = length(complex_disease_categories_vector),
-                                       nrow = length(drugs_indicated_investigated))
-colnames(ultimate_per_disease_category) = complex_disease_categories_vector
-rownames(ultimate_per_disease_category) = drugs_indicated_investigated
-
-for (i in 1:nrow(ultimate_per_disease_category)) {
-
-  # identify drug
-  drug = rownames(ultimate_per_disease_category)[i]
-
-  # if drug indicated for a complex disease
-  if (sum(drug %in% db_drugs_indications_blair$drugbank_id) > 0) {
-    drug_conditions_indicated = db_drugs_indications_blair %>% filter(drugbank_id == drug) %>% dplyr::select(disease_category) %>% distinct()
-    for (z in 1:nrow(drug_conditions_indicated)) {
-      ultimate_per_disease_category[i, drug_conditions_indicated[z, disease_category]] = 5
-    }
-  }
-
-  # if drug investigated for a complex disease
-  if (sum(drug %in% ct_filt_blair$db_id) > 0) {
-    drug_conditions_investigated = ct_filt_blair %>% filter(db_id == drug) %>% dplyr::select(phase, disease_category) %>% distinct()
-    for (b in 1:nrow(drug_conditions_investigated)) {
-
-      disease_category = drug_conditions_investigated[b, disease_category]
-
-      # if drug is already indicated, then next
-      if (setequal(ultimate_per_disease_category[i, disease_category], 5) == TRUE) {
-        next
-      }
-
-      # if no previous information about this drug-complex_disease pair, add clinical trial phase
-      if (is.na(ultimate_per_disease_category[i, disease_category]) == TRUE) {
-        ultimate_per_disease_category[i, disease_category] = drug_conditions_investigated[b, phase]
-        next
-      }
-
-      # if previous information about this drug-complex_disease pair, keep the most advanced clinical trial phase
-      if (is.na(ultimate_per_disease_category[i, disease_category]) == FALSE) {
-        if (ultimate_per_disease_category[i, disease_category] >= drug_conditions_investigated[b, phase]) {
-          next
-        }
-        if (ultimate_per_disease_category[i, disease_category] < drug_conditions_investigated[b, phase]) {
-          ultimate_per_disease_category[i, disease_category] = drug_conditions_investigated[b, phase]
-        }
-      }
-    }
-  }
-  cat(i, "/", nrow(ultimate_per_disease_category), "\n")
-}
-rm(drug_conditions_indicated, drug_conditions_investigated, b, disease_category, drug, i, z)
-
-ultimate_per_disease_category = as.data.frame(ultimate_per_disease_category)
-ultimate_per_disease_category = ultimate_per_disease_category %>% mutate(drugbank_id = rownames(ultimate_per_disease_category), .before = cancer)
-rownames(ultimate_per_disease_category) = NULL
-
-data.table::fwrite(ultimate_per_disease_category, "processed_data/drugs_inv_ind_per_disease_category.txt", sep = "\t", row.names = FALSE, col.names = TRUE)
-
-########################################################################
-########################################################################
-########################################################################
