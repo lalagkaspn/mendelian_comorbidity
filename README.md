@@ -8,7 +8,7 @@ In this work, we analyze a set of *2,908* clinically associated (comorbid) pairs
 
 There are six scripts in this repository. The first three scripts preprocess and create the necessary data to run the three last scripts (one for each section of the paper).
 
-- `blair_files_processing.R` is the script to preprocess the clinically associated pairs of Mendelian and complex diseases
+- `md_cd_comorbidity_pairs_preprocessing.R` is the script to preprocess the clinically associated pairs of Mendelian and complex diseases
 - `drugs_investigated_indicated_diseases.R` is the script to get all the drugs that are investigated or indicated for the 65 complex diseases in our sample
 - `drug_targets_drugbank.R` is the script to preprocess DrugBank files to get all the drugs with known drug targets
 - `main_analysis.R` is the script to reproduce the results and figures of the first section of the Results *Mendelian disease comorbidity identifies drugs under current investigation or indication
