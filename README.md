@@ -2,7 +2,7 @@
 
 ## Panagiotis Nikolaos Lalagkas & Rachel D. Melamed
 
-Link to the [pre-print:](https://www.biorxiv.org/content/10.1101/2023.07.23.550190v1)
+Link to the [pre-print](https://www.biorxiv.org/content/10.1101/2023.07.23.550190v1).
 
 In this work, we analyze a set of *2,908* clinically associated (comorbid) pairs of 90 Mendelian diseases and 65 complex diseases. Our goal is to leverage the well-known biology of Mendelian diseases to improve the treatment of complex diseases. To this end, we use the aforementioned clinical associations to match each complex disease to a set of Mendelian disease causal genes. We hypothesize that the drugs targeting these genes are potential candidate drugs for the complex diseases. We validate our list of candidate drugs using thousands of clinical trials and current drug indications. Additionally, we present evidence that certain Mendelian diseases hold a greater promise as resources for complex disease drug discovery. We also assess the genetic similarity between 60 Mendelian diseases and 10 cancers, as another evidence of shared biology (other than the comorbidity). We propose that the combination of comorbidity and genetic similarity can prioritize candidate drugs with a higher probability of success.
 
