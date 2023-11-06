@@ -204,27 +204,26 @@ log_reg_results_summary$nr_comorbidities = factor(log_reg_results_summary$nr_com
 log_reg_results_summary$beta = ifelse(exp(log_reg_results_summary$beta) > 1, 1, 0)
 log_reg_results_summary$beta = factor(log_reg_results_summary$beta, levels = c(0, 1), labels = c("No", "Yes"))
 
-ggplot(log_reg_results_summary, aes(x = nr_comorbidities, y = -log10(pvalue))) +
-  geom_point(alpha = 0.5, aes(size = nr_drugs, color = beta)) +
-  scale_x_discrete(breaks = seq(1, 61, 1)) +
+fig_s3 = ggplot(log_reg_results_summary, aes(x = nr_drugs, y = -log10(pvalue))) +
+  geom_point(alpha = 0.4, size = 1.5, aes(color = beta)) +
+  # scale_x_discrete(breaks = seq(1, 61, 1)) +
   scale_y_continuous(breaks = seq(0, 11, 1)) +
-  labs(title = "Per Mendelian disease analysis",
-       subtitle = "LR model: indicated/investigated ~ disease_category + nr_targets + candidate_drug", 
-       color = "odds ratio > 1",
-       size = "number of drugs") +
-  xlab("Number of \ncomplex disease comorbidities") +
+  labs(color = "odds ratio > 1") +
+  xlab("Number of drugs") +
   ylab("neg_log10_pvalue") +
   geom_hline(yintercept = -log10(0.05), linetype = "dashed", color = "red") +
-  theme_test() +
-  # guides(color = guide_legend(override.aes = list(size = 4))) +
-  scale_size_continuous(breaks = c(1, 25, 50, 100, 125, 150)) +
-  geom_text(data = subset(log_reg_results_summary, beta == 1 & pvalue < 0.05), 
-            aes(label = mendelian_disease), 
-            nudge_y = 0.16, nudge_x = 0.16) +
-  theme(axis.text = element_text(size = 14),
-        axis.title = element_text(size = 18),
-        title = element_text(size = 18), 
-        legend.text = element_text(size = 12))
+  theme_classic() +
+  theme(axis.text = element_text(size = 14, family = "Arial", color = "black"),
+        axis.title = element_text(size = 18, family = "Arial", color = "black"),
+        title = element_text(size = 18, family = "Arial", color = "black"), 
+        legend.text = element_text(size = 12, family = "Arial", color = "black"))
+
+fig_s3
+ggsave(filename = "FigS3_per_MD_analysis_results.tiff", 
+       path = "figures/",
+       width = 7, height = 5, device = 'tiff',
+       dpi = 700, compression = "lzw", type = type_compression)
+dev.off()
 
 # histogram drug-to-gene ratio per Mendelian disease
 nr_genes_per_md = md_genes %>%
