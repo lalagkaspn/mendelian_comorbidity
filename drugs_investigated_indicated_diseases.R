@@ -4,6 +4,7 @@ library(data.table)
 library(dplyr)
 library(jsonlite)
 library(httr)
+library(ggpl)
 
 ## To run this script, you need some files that can be downloaded only after you obtain corresponding licenses:
 ## 1. UMLS - MRCONSO.RFF file
@@ -662,9 +663,6 @@ ultimate_per_disease[which(ultimate_per_disease$complex_disease == "Hypotony of 
 
 ## remove clinical trials with unknown phases
 ultimate_per_disease = ultimate_per_disease[-which(ultimate_per_disease$phase == 0), ] ; rownames(ultimate_per_disease) = NULL
-# 
-# ## convert complex_disease column to factor so to keep this order of complex diseases in the visualization
-# ultimate_per_disease$complex_disease = factor(ultimate_per_disease$complex_disease, levels = ultimate_per_disease$complex_disease, labels = ultimate_per_disease$complex_disease)
 
 ## calculate number of drugs per clinical trial phase
 ultimate_per_disease = ultimate_per_disease %>% 
@@ -714,21 +712,20 @@ fig1c = ggplot(ultimate_per_disease_gathered, aes(y = complex_disease, x = nr_dr
   scale_x_continuous(breaks = seq(0, 600, 50)) +
   scale_fill_manual(values=c("#808080", "#A9A9A9", "#D3D3D3", "#E5E4E2")) +
   theme_classic() +
-  theme(axis.text.x = element_text(size = 20, family = "Arial", color = "black"),
-        axis.text.y = element_text(size = 20, family = "Arial", color = c(rep("brown", 14),
+  theme(axis.text.x = element_text(size = 25, family = "Arial", color = "black"),
+        axis.text.y = element_text(size = 30, family = "Arial", color = c(rep("brown", 14),
                                                                           rep("blue3", 4),
                                                                           rep("cyan3", 8),
                                                                           rep("orange", 19),
                                                                           rep("purple", 15),
                                                                           rep("chartreuse3", 5))),
-        axis.title.x = element_text(size = 18, family = "Arial", color = "black"),
-        axis.title.y = element_text(size = 18, family = "Arial", color = "black"),
-        legend.text = element_text(size = 18)) +
+        axis.title.x = element_text(size = 30, family = "Arial", color = "black"),
+        legend.text = element_text(size = 40)) +
   guides(fill = guide_legend(byrow = TRUE))
 
 fig1c
 ggsave(filename = "Fig1C_investigated_indicated_drugs_per_complex_disease.tiff", 
        path = "figures/", 
-       width = 16, height = 20, device = "tiff",
+       width = 20, height = 24, device = "tiff",
        dpi = 700, compression = "lzw", type = type_compression)
 dev.off()
