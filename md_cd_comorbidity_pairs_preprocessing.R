@@ -72,3 +72,40 @@ md_genes = md_genes %>% arrange(mendelian_disease, causal_gene) %>% distinct()
 ## save files
 fwrite(md_cd_comorbidities, "processed_data/md_cd_comorbidities.txt", sep = "\t", row.names = FALSE)
 fwrite(md_genes, "processed_data/md_genes.txt", sep = "\t", row.names = FALSE)
+
+## --- visualizations --- ##
+
+## histogram of the number of complex disease comorbidities per Mendelian disease
+md_nr_cd_comorbidities = md_cd_comorbidities %>% 
+  group_by(mendelian_disease) %>%
+  mutate(nr_cd_comorbidities = length(complex_disease)) %>%
+  ungroup() %>%
+  dplyr::select(mendelian_disease, nr_cd_comorbidities) %>%
+  distinct()
+
+fig_1b = ggplot(md_nr_cd_comorbidities, aes(x = nr_cd_comorbidities)) +
+  geom_histogram(color = "black", fill = "gray", bins = 61) +
+  xlab("Number of comorbities per Mendelian disease") +
+  ylab("Count") +
+  scale_x_continuous(breaks = seq(0, 60, 5)) +
+  scale_y_continuous(breaks = seq(0, 8, 1)) +
+  theme_classic() +
+  theme(axis.line = element_line(linewidth = 0.5),
+        axis.ticks = element_line(linewidth = 0.3), 
+        axis.title = element_text(angle = 0, hjust = 0.5,
+                                  margin = margin(t = 3, unit = "cm"),
+                                  size = 16, family = "Arial", colour = "black"),
+        axis.text = element_text(angle = 0, hjust = 0.5, vjust = 0.5,
+                                 margin = margin(l = 0.5, r = 0.2, unit = "cm"),
+                                 size = 16, family = "Arial", colour = "black"),
+        legend.title = element_blank())
+
+fig_1b
+ggsave(filename = "Fig1B_comorbidities_per_mendelian_disease.tiff", 
+       path = "figures/", 
+       width = 7, height = 5, device = "tiff",
+       dpi = 300, compression = "lzw", type = type_compression)
+dev.off()
+
+
+
