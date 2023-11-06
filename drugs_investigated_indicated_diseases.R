@@ -640,3 +640,95 @@ rownames(ultimate_per_disease) = NULL
 
 # save file
 data.table::fwrite(ultimate_per_disease, "processed_data/drugs_inv_ind_per_disease.txt", sep = "\t", row.names = FALSE, col.names = TRUE)
+
+####################
+##                ##
+## visualizations ##
+##                ##
+####################
+
+## reshape
+ultimate_per_disease = reshape2::melt(ultimate_per_disease, "drugbank_id", colnames(ultimate_per_disease)[2:ncol(ultimate_per_disease)])
+ultimate_per_disease = na.omit(ultimate_per_disease)
+colnames(ultimate_per_disease) = c("drugbank_id", "complex_disease", "phase")
+
+## correct clinical trial phases
+ultimate_per_disease$phase = gsub(1.5, 2, ultimate_per_disease$phase)
+ultimate_per_disease$phase = gsub(2.5, 3, ultimate_per_disease$phase)
+ultimate_per_disease$phase = gsub(5, 4, ultimate_per_disease$phase) # 4 is considered to be indicated drugs
+table(ultimate_per_disease$phase)
+# "Hypotony of the eye" has one clinical trial but it has unknown phase --> for illustration purposes, convert this to 1
+ultimate_per_disease[which(ultimate_per_disease$complex_disease == "Hypotony of the Eye"), "phase"] = 1
+
+## remove clinical trials with unknown phases
+ultimate_per_disease = ultimate_per_disease[-which(ultimate_per_disease$phase == 0), ] ; rownames(ultimate_per_disease) = NULL
+# 
+# ## convert complex_disease column to factor so to keep this order of complex diseases in the visualization
+# ultimate_per_disease$complex_disease = factor(ultimate_per_disease$complex_disease, levels = ultimate_per_disease$complex_disease, labels = ultimate_per_disease$complex_disease)
+
+## calculate number of drugs per clinical trial phase
+ultimate_per_disease = ultimate_per_disease %>% 
+  group_by(complex_disease) %>%
+  mutate(nr_drugs = length(drugbank_id),
+         phase_1 = sum(phase == 1),
+         phase_2 = sum(phase == 2),
+         phase_3 = sum(phase == 3),
+         approved = sum(phase == 4)) %>%
+  ungroup() %>%
+  dplyr::select(complex_disease, phase_1, phase_2, phase_3, approved) %>%
+  distinct()
+
+## load complex disease categories
+cd_categories = fread("processed_data/complex_disease_category.txt")
+
+## gather data
+ultimate_per_disease_gathered = tidyr::gather(ultimate_per_disease, status, nr_drugs, -complex_disease)
+ultimate_per_disease_gathered$status = factor(ultimate_per_disease_gathered$status, levels = c("approved", "phase_3", "phase_2", "phase_1"), labels = c("Approved", "Phase 3", "Phase 2", "Phase 1"))
+
+## add complex disease category
+ultimate_per_disease_gathered = left_join(ultimate_per_disease_gathered, cd_categories, by = "complex_disease")
+
+## calculate total number of investigated/indicated drugs per complex disease
+ultimate_per_disease_gathered = ultimate_per_disease_gathered %>% 
+  group_by(complex_disease) %>% 
+  mutate(total_drugs = sum(nr_drugs)) %>% 
+  ungroup() %>%
+  distinct() %>%
+  arrange(disease_category, total_drugs, status)
+ultimate_per_disease_gathered$complex_disease = factor(ultimate_per_disease_gathered$complex_disease, levels = ultimate_per_disease_gathered$complex_disease, labels = ultimate_per_disease_gathered$complex_disease)
+ultimate_per_disease_gathered$disease_category = factor(ultimate_per_disease_gathered$disease_category, levels = unique(ultimate_per_disease_gathered$disease_category), labels = unique(ultimate_per_disease_gathered$disease_category))
+
+myColors <- c("brown", "blue3", "cyan3", "orange", "purple", "chartreuse3")
+names(myColors) <- levels(ultimate_per_disease_gathered$disease_category)
+
+scale_custom <- list(
+  scale_fill_manual(values=c("#808080", "#A9A9A9", "#D3D3D3", "#E5E4E2")),
+  scale_color_manual(aesthetics = "complex_disease", values = myColors)
+)
+
+fig1c = ggplot(ultimate_per_disease_gathered, aes(y = complex_disease, x = nr_drugs, fill = status)) +
+  geom_col() +
+  xlab("Number of drugs\n") +
+  ylab("") +
+  labs(fill = "") +
+  scale_x_continuous(breaks = seq(0, 600, 50)) +
+  scale_fill_manual(values=c("#808080", "#A9A9A9", "#D3D3D3", "#E5E4E2")) +
+  theme_classic() +
+  theme(axis.text.x = element_text(size = 20, family = "Arial", color = "black"),
+        axis.text.y = element_text(size = 20, family = "Arial", color = c(rep("brown", 14),
+                                                                          rep("blue3", 4),
+                                                                          rep("cyan3", 8),
+                                                                          rep("orange", 19),
+                                                                          rep("purple", 15),
+                                                                          rep("chartreuse3", 5))),
+        axis.title.x = element_text(size = 18, family = "Arial", color = "black"),
+        axis.title.y = element_text(size = 18, family = "Arial", color = "black"),
+        legend.text = element_text(size = 18)) +
+  guides(fill = guide_legend(byrow = TRUE))
+
+fig1c
+ggsave(filename = "Fig1C_investigated_indicated_drugs_per_complex_disease.tiff", 
+       path = "figures/", 
+       width = 16, height = 20, device = "tiff",
+       dpi = 700, compression = "lzw", type = type_compression)
+dev.off()
