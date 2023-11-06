@@ -232,6 +232,9 @@ genetic_overlap_results$comorbidity = ifelse(is.na(genetic_overlap_results$comor
 ## annotate with genetic similarity
 genetic_overlap_results$genetic_similarity = ifelse(genetic_overlap_results$pvalue_onesided < 0.1, 1, 0)
 
+## save
+fwrite(genetic_overlap_results, "processed_data/md_cancers_genetic_overlap.txt", sep = "\t", row.names = FALSE)
+
 #########################
 ##                     ##
 ##    Co-expression    ##
@@ -346,10 +349,11 @@ coexpression_results = coexpression_results %>%
   distinct()
 
 ## annotate with comorbidity
-md_cancer_comorbidities$comorbidity = 1
 coexpression_results = left_join(coexpression_results, md_cancer_comorbidities, by = c("mendelian_disease", "cancer" = "complex_disease"))
 coexpression_results$comorbidity = ifelse(is.na(coexpression_results$comorbidity), 0, 1)
 
+# save
+fwrite(coexpression_results, "processed_data/md_cancers_coexpression.txt", sep = "\t", row.names = FALSE)
 
 #########################
 ##                     ##
@@ -359,7 +363,6 @@ coexpression_results$comorbidity = ifelse(is.na(coexpression_results$comorbidity
 
 md_cd_comorbidities_gensim_ultimate = full_join(genetic_overlap_results, coexpression_results, by = c("cancer", "mendelian_disease", "comorbidity"))
 colnames(md_cd_comorbidities_gensim_ultimate) = c("mendelian_disease", "cancer", "pvalue_onesided_geneoverlap", "comorbidity", "genetic_similarity_geneoverlap", "adj_pvalue_coexpression", "genetic_similarity_coexpression")
-rm(genetic_overlap_results, coexpression_results)
 # fix information for Familial Dysautonomia
 md_cd_comorbidities_gensim_ultimate[541:550, "genetic_similarity_coexpression"] = 0
 
