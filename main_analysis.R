@@ -849,7 +849,7 @@ data_fig2c$color = c("Permuted","Observed")
 data_fig2c$color = factor(data_fig2c$color, levels = c("Observed", "Permuted"), labels = c("Observed", "Permuted"))
 
 fig_2c = ggplot(data_fig2c, aes(y = category, x = odds_ratio, xmin = ci_2.5, xmax = ci_97.5, color = color)) +
-  geom_point(size = 0.8) + 
+  geom_point(size = 1) + 
   scale_colour_manual(values = c("black", "gray50")) +
   geom_errorbarh(height = 0.2, linewidth = 0.5) +
   ylab("") +
@@ -857,13 +857,16 @@ fig_2c = ggplot(data_fig2c, aes(y = category, x = odds_ratio, xmin = ci_2.5, xma
   scale_x_continuous(breaks = seq(0, 9, 1), limits = c(0, 3)) +
   geom_vline(xintercept = 1, color = "black", linewidth = 1, linetype = 3) +
   theme_classic() +
-  theme(axis.title = element_text(size = 16, family = "Arial", colour = "black"),
-        axis.text = element_text(size = 16, family = "Arial", colour = "black"),
-        legend.title = element_blank())
+  theme(axis.title = element_text(size = 24, family = "Arial", colour = "black"),
+        axis.text = element_text(size = 24, family = "Arial", colour = "black"),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 24, family = "Arial", colour = "black"),
+        legend.key.size = unit(1, 'cm'))
+
 fig_2c
 ggsave(filename = "Fig2C_oddsratio_ct_phases.tiff", 
        path = "figures/", 
-       width = 10, height = 4, device = "tiff",
+       width = 8, height = 4, device = "tiff",
        dpi = 300, compression = "lzw", type = type_compression)
 dev.off()
 

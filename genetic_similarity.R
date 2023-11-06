@@ -406,25 +406,23 @@ fig_4a = ggplot(data_fig4a, aes(x = comorbidity, y = number_of_pairs, fill=gen_s
   theme_classic() +
   theme(axis.title = element_text(angle = 0, hjust = 0.5, face = "bold", 
                                   margin = margin(t = 3, unit = "cm"),
-                                  size = 16),
+                                  size = 24, family = "Arial", color = "black"),
         axis.line = element_line(linewidth = 0.5),
         axis.ticks = element_line(linewidth = 0.3),
         axis.text.y = element_text(angle = 0, hjust = 0.5, vjust = 0.5,
                                    margin = margin(l = 0.5, r = 0.2, unit = "cm"),
-                                   size = 14),
+                                   size = 24, family = "Arial", color = "black"),
         axis.text.x = element_text(angle = 0, hjust = 0.5, vjust = 0.5, face = "bold",
                                    margin = margin(t = 0.2, unit = "cm"),
-                                   size = 16),
-        legend.text = element_text(size = 11),
-        legend.title = element_text(size = 14),
-        panel.background = element_rect(fill = "white", 
-                                        colour = "white"),
+                                   size = 24, family = "Arial", color = "black"),
+        legend.text = element_text(size = 20, family = "Arial", color = "black"),
+        legend.title = element_text(size = 24, family = "Arial", color = "black"),
         aspect.ratio = 1.3)
 
 fig_4a
 ggsave(filename = "Fig4A_md_cancer_comorbidity_gensim_stacked_barplot.tiff", 
        path = "figures/",
-       width = 7680, height = 3740, device = 'tiff', units = "px",
+       width = 12, height = 9, device = 'tiff',
        dpi = 700, compression = "lzw", type = type_compression)
 dev.off()
 
@@ -691,26 +689,25 @@ fig_4b = ggplot(data_fig4b, aes(y = category, x = odds_ratio, xmin = ci_2.5, xma
   theme_classic() +
   theme(axis.title = element_text(angle = 0, hjust = 0.5, vjust = 0.5,
                                   margin = margin(t = 0.2, unit = "cm"),
-                                  size = 16),
+                                  size = 30),
         axis.line = element_line(linewidth = 0.5),
         axis.ticks = element_line(linewidth = 0.3),
         axis.text.y = element_text(angle = 0, 
                                    margin = margin(l = 0.5, r = 0.2, unit = "cm"),
-                                   size = 14),
+                                   size = 30, family = "Arial", color = "black"),
         axis.text.x = element_text(angle = 0, hjust = 0.5, vjust = 0.5,
                                    margin = margin(t = 0.2, unit = "cm"),
-                                   size = 16),
-        legend.text = element_text(size = 18),
+                                   size = 30, family = "Arial", color = "black"),
+        legend.text = element_text(size = 30, family = "Arial", color = "black"),
         legend.title = element_blank(),
-        panel.background = element_rect(fill = "white", 
-                                        colour = "white"),
-        aspect.ratio = 0.4)
+        legend.key.size = unit(2, "cm"), 
+        aspect.ratio = 0.5)
 
 fig_4b
 ggsave(filename = "Fig4B_forest_plot.tiff", 
        path = "figures/",
-       width = 7680, height = 3740, device = 'tiff', units = "px",
-       dpi = 700, compression = "lzw", type = type_compression)
+       width = 16, height = 7, device = 'tiff',
+       dpi = 300, compression = "lzw", type = type_compression)
 dev.off()
 
 ## -- analysis per drug-cancer pairs -- ##
@@ -787,25 +784,20 @@ fig_4c_percentages = ggplot(data_fig4c_fraction, aes(x = category, y = fraction)
                                         colour = "white"),
         axis.text.y = element_text(angle = 0, hjust = 0.5, vjust = 0.5,
                                    margin = margin(l = 0.5, r = 0.2, unit = "cm"),
-                                   size = 14),
+                                   size = 20, family = "Arial", color = "black"),
         axis.text.x = element_text(angle = 0, hjust = 0.5, vjust = 0.5, face = "bold",
                                    margin = margin(t = 0.2, unit = "cm"),
-                                   size = 16),
+                                   size = 20, family = "Arial", color = "black"),
         axis.title = element_text(angle = 0, hjust = 0.5, face = "bold", 
                                   margin = margin(t = 3, unit = "cm"),
-                                  size = 16),
+                                  size = 20, family = "Arial", color = "black"),
         axis.line = element_line(linewidth = 0.5),
-        axis.ticks = element_line(linewidth = 0.3),
-        legend.position = "top",
-        legend.margin = ggplot2::margin(0, 0, 0, 0, unit = "mm"),
-        legend.spacing.y = unit(1, units = "mm"),
-        legend.spacing.x = unit(1, units = "mm"),
-        legend.text = element_text(size = 12))
+        axis.ticks = element_line(linewidth = 0.3))
 
 fig_4c_percentages
 ggsave(filename = "Fig4C_fraction_candidate_drugs_inv_ind.tiff", 
        path = "figures/",
-       width = 10000, height = 4500, device = 'tiff', units = "px",
+       width = 20, height = 12, device = 'tiff',
        dpi = 700, compression = "lzw", type = type_compression)
 dev.off()
 

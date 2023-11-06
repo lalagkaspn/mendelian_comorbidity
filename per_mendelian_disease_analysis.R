@@ -241,15 +241,13 @@ fig_3a = ggplot(log_reg_results_summary, aes(x = drug_to_gene_ratio)) +
   xlab("Drug-to-gene ratio") +
   ylab("Number of Mendelian diseases") +
   theme_classic() +
-  theme(axis.text = element_text(size = 14),
-        axis.title = element_text(size = 18),
-        title = element_text(size = 18), 
-        legend.text = element_text(size = 12))
+  theme(axis.text = element_text(size = 24, family = "Arial", color = "black"),
+        axis.title = element_text(size = 30, family = "Arial", color = "black"))
 
 fig_3a
 ggsave(filename = "Fig3A_drug_to_gene_ratio_per_MD.tiff", 
        path = "figures/",
-       width = 10000, height = 4500, device = 'tiff', units = "px",
+       width = 12, height = 8, device = 'tiff',
        dpi = 700, compression = "lzw", type = type_compression)
 dev.off()
 
@@ -265,16 +263,16 @@ fig_3b = ggplot(log_reg_results_summary, aes(y = nr_drugs, x = sig, fill = sig))
   scale_y_continuous(breaks = seq(0, 170, 20)) +
   theme_classic() +
   geom_signif(comparisons = list(c("Non-significant \nMendelian diseases", "Significant \nMendelian diseases")),   
-              map_signif_level = FALSE, textsize = 7) +
-  annotate(geom = "text", x = 1.5, y = 150, label = "WIilcoxon rank-sum test", size = 7) +
-  theme(axis.text = element_text(size = 20),
-        axis.title = element_text(size = 22),
+              map_signif_level = FALSE, textsize = 10) +
+  annotate(geom = "text", x = 1.5, y = 150, label = "WIilcoxon rank-sum test", size = 9) +
+  theme(axis.text = element_text(size = 30, family = "Arial", color = "black"),
+        axis.title = element_text(size = 30),
         legend.position = "none")
 
 fig_3b
 ggsave(filename = "Fig3B_rank_sum_test.tiff", 
        path = "figures/",
-       width = 7000, height = 8000, device = 'tiff', units = "px",
+       width = 12, height = 12, device = 'tiff',
        dpi = 700, compression = "lzw", type = type_compression)
 dev.off()
 
@@ -400,21 +398,21 @@ perm_pvalue = sum(pvalue_obs >= log_reg_results_permutation$pvalue) / 1000 # 0.0
 sum(or_obs <= log_reg_results_permutation$odds_ratio) / 1000 # 0.014 = 1.4%
 
 ## visualizations of results
-fig_3c = ggplot(log_reg_results_permutation, aes(x = -log10(pvalue))) +
+fig_3c = ggplot(log_reg_results_permutation, aes(x = odds_ratio)) +
   geom_histogram(color = "black", fill = "lightblue") +
-  geom_vline(xintercept = -log10(pvalue_obs), color = "red", linewidth = 0.8) +
-  xlab("neg_log10_pvalue") +
+  geom_vline(xintercept = or_obs, color = "red", linewidth = 0.8) +
+  xlab("Odds ratio") +
   ylab("count") +
-  scale_x_continuous(breaks = seq(0, 30, 5)) +
-  annotate(geom = "text", x = 22.5, y = 95, label = paste0(perm_pvalue * 100, "%"), size = 7, color = "red", fontface = "bold") +
-  theme_test() +
+  scale_x_continuous(breaks = seq(0, 2.25, 0.25), limits = c(0.75, 2.25)) +
+  annotate(geom = "text", x = 1.95, y = 145, label = paste0(sum(or_obs <= log_reg_results_permutation$odds_ratio) / 1000*100, "%"), size = 7, family = "Arial", color = "red", fontface = "bold") +
+  theme_classic() +
   theme(axis.text = element_text(size = 20, family = "Arial", colour = "black"),
         axis.title = element_text(size = 22, family = "Arial", colour = "black"))
 
 fig_3c
 ggsave(filename = "Fig3C_permutations.tiff", 
        path = "figures/",
-       width = 5000, height = 6000, device = 'tiff', units = "px",
+       width = 8, height = 6, device = 'tiff',
        dpi = 700, compression = "lzw", type = type_compression)
 dev.off()
 
