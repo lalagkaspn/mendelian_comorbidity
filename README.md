@@ -21,6 +21,6 @@ All scripts are written in **R**.
 
 NOTE: all the publicly available data needed to run the above scripts are made available in this repository. For the non-publicly available data, information about how to download it after getting the corresponding licenses is included in the each script.
 
-If you have any questions, feel free to reach out to Panos by e-mail at [panagiotis.lalagkas@gmail.com](mailto:panagiotis.lalagkas@gmail.com)
+If you have any questions, please reach out to [panagiotis.lalagkas@gmail.com](mailto:panagiotis.lalagkas@gmail.com)
 
 
