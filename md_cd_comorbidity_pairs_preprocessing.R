@@ -107,5 +107,35 @@ ggsave(filename = "Fig1B_comorbidities_per_mendelian_disease.tiff",
        dpi = 300, compression = "lzw", type = type_compression)
 dev.off()
 
+## number of causal genes per Mendelian disease
+md_nr_genes = md_genes %>% 
+  group_by(mendelian_disease) %>%
+  mutate(nr_genes = length(causal_gene)) %>%
+  ungroup() %>%
+  dplyr::select(mendelian_disease, nr_genes) %>%
+  distinct() %>%
+  arrange(nr_genes)
+md_nr_genes$mendelian_disease = factor(md_nr_genes$mendelian_disease, levels = md_nr_genes$mendelian_disease, labels = md_nr_genes$mendelian_disease)
+
+fig_s1 = ggplot(md_nr_genes, aes(x = nr_genes, y = mendelian_disease)) +
+  geom_col(fill = "gray", color = "black") +
+  xlab("Number of causal genes") +
+  ylab("") +
+  scale_x_continuous(breaks = seq(0, 51, 3)) +
+  theme(axis.line = element_line(linewidth = 0.5),
+        axis.ticks = element_line(linewidth = 0.3), 
+        axis.title = element_text(angle = 0, hjust = 0.5,
+                                  margin = margin(t = 3, unit = "cm"),
+                                  size = 30, family = "Arial", colour = "black"),
+        axis.text = element_text(angle = 0, hjust = 0.5, vjust = 0.5,
+                                 margin = margin(l = 0.5, r = 0.2, unit = "cm"),
+                                 size = 30, family = "Arial", colour = "black"))
+
+fig_s1
+ggsave(filename = "FigS1_causal_genes_per_mendelian_disease.tiff", 
+       path = "figures/", 
+       width = 25, height = 30, device = "tiff",
+       dpi = 300, compression = "lzw", type = type_compression)
+dev.off()
 
 

@@ -38,3 +38,46 @@ db_links = db_links %>% dplyr::select(db_id = "DrugBank ID", drug_name = "Name")
 db_drug_targets = left_join(db_drug_targets, db_links, by = "db_id")
 
 fwrite(db_drug_targets, "processed_data/drugbank_all_drugs_known_targets.txt", sep = "\t", row.names = FALSE)
+
+## -- visualizations -- ##
+
+## number of drugs per Mendelian disease
+md_genes = fread("processed_data/md_genes.txt")
+md_drugs = left_join(md_genes, db_drug_targets[, 1:2], by = c("causal_gene" = "drug_target"))
+md_drugs = md_drugs %>%
+  dplyr::select(mendelian_disease, db_id) %>%
+  distinct()
+
+# calculate number of drugs per Mendelian disease
+md_nr_drugs = md_drugs %>% 
+  group_by(mendelian_disease) %>%
+  mutate(nr_drugs = if_else(!is.na(db_id), length(db_id), 0)) %>%
+  ungroup() %>%
+  dplyr::select(mendelian_disease, nr_drugs) %>%
+  group_by(mendelian_disease) %>%
+  mutate(nr_drugs = max(nr_drugs)) %>%
+  ungroup() %>%
+  distinct() %>%
+  arrange(nr_drugs)
+md_nr_drugs$mendelian_disease = factor(md_nr_drugs$mendelian_disease, levels = md_nr_drugs$mendelian_disease, labels = md_nr_drugs$mendelian_disease)
+
+fig_s2 = ggplot(md_nr_drugs, aes(x = nr_drugs, y = mendelian_disease)) +
+  geom_col(fill = "gray", color = "black") +
+  xlab("Number of drugs") +
+  ylab("") +
+  scale_x_continuous(breaks = seq(0, 120, 5)) +
+  theme(axis.line = element_line(linewidth = 0.5),
+        axis.ticks = element_line(linewidth = 0.3), 
+        axis.title = element_text(angle = 0, hjust = 0.5,
+                                  margin = margin(t = 3, unit = "cm"),
+                                  size = 40, family = "Arial", colour = "black"),
+        axis.text = element_text(angle = 0, hjust = 0.5, vjust = 0.5,
+                                 margin = margin(l = 0.5, r = 0.2, unit = "cm"),
+                                 size = 40, family = "Arial", colour = "black"))
+
+fig_s2
+ggsave(filename = "FigS2_number_of_drugs_per_mendelian_disease.tiff", 
+       path = "figures/", 
+       width = 40, height = 45, device = "tiff",
+       dpi = 300, compression = "lzw", type = type_compression)
+dev.off()
