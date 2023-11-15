@@ -81,7 +81,7 @@ sig_snv_cnv_combined = function(full_path_to_gistic2_ampl, full_path_to_gistic2_
   # remove empty cells
   gistic2_del = data.frame(gene = gistic2_del[-which(gistic2_del$value == ""), ])
   rownames(gistic2_del) = NULL
-  # keep peaks with less than 50 genes --> following Rachel's paper
+  # keep peaks with less than 50 genes
   gistic2_del = gistic2_del %>% 
     dplyr::select(peak = gene.peak, gene = gene.value) %>%
     distinct() %>% 
