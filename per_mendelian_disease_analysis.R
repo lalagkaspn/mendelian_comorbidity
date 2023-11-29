@@ -262,7 +262,7 @@ fig_3b = ggplot(log_reg_results_summary, aes(y = nr_drugs, x = sig, fill = sig))
   labs(title = "") +
   scale_y_continuous(breaks = seq(0, 170, 20)) +
   theme_classic() +
-  geom_signif(comparisons = list(c("Non-significant \nMendelian diseases", "Significant \nMendelian diseases")),   
+  geom_signif(comparisons = list(c("Significant \nMendelian diseases", "Non-significant \nMendelian diseases")), test = "wilcox.test", test.args = list(alternative = "greater"),   
               map_signif_level = FALSE, textsize = 10) +
   annotate(geom = "text", x = 1.5, y = 150, label = "WIilcoxon rank-sum test", size = 9) +
   theme(axis.text = element_text(size = 30, family = "Arial", color = "black"),
