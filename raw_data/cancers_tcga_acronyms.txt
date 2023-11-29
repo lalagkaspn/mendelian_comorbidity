@@ -1,0 +1,16 @@
+complex_disease	tcga_acronym
+Bladder Cancer	BLCA
+Female Breast Cancer	BRCA
+Colorectal Cancer	COAD
+Colorectal Cancer	READ
+Gastric Cancer	STAD
+Kidney Cancer	KICH
+Kidney Cancer	KIRC
+Kidney Cancer	KIRP
+Lung Cancer	LUAD
+Lung Cancer	LUSC
+Malignant Brain Neoplasm	GBM
+Malignant Brain Neoplasm	LGG
+Melanoma	SKCM
+Prostate Cancer	PRAD
+Uterine Cancer	UCEC

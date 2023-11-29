@@ -160,7 +160,7 @@ Melanoma	Hereditary Sensory Neuropathy	0.0116802419689766	1	1
 Prostate Cancer	Hereditary Sensory Neuropathy	0.0211001767005034	1	1
 Uterine Cancer	Hereditary Sensory Neuropathy	0.0285039927918104	1	1
 Bladder Cancer	Hypopituitarism	0.0107430983543675	1	1
-Female Breast Cancer	Hypopituitarism	0.0957718902631424	1	1
+Female Breast Cancer	Hypopituitarism	0.0957718902631424	0	1
 Colorectal Cancer	Hypopituitarism	0.137810046515934	0	1
 Gastric Cancer	Hypopituitarism	0.0483332717206539	1	0
 Kidney Cancer	Hypopituitarism	0.00448790501663768	1	1
@@ -171,12 +171,12 @@ Prostate Cancer	Hypopituitarism	0.0331447385020496	1	1
 Uterine Cancer	Hypopituitarism	0.0253617667516055	1	0
 Bladder Cancer	Inherited Anomalies of the Skin	0.0417881188442099	1	1
 Female Breast Cancer	Inherited Anomalies of the Skin	0.0423231425329605	1	1
-Colorectal Cancer	Inherited Anomalies of the Skin	0.0714399252880383	1	1
-Gastric Cancer	Inherited Anomalies of the Skin	0.0653404739767763	1	0
+Colorectal Cancer	Inherited Anomalies of the Skin	0.0714399252880383	0	1
+Gastric Cancer	Inherited Anomalies of the Skin	0.0653404739767763	0	0
 Kidney Cancer	Inherited Anomalies of the Skin	0.0466172581016283	1	1
 Lung Cancer	Inherited Anomalies of the Skin	0.0419571860341641	1	1
 Malignant Brain Neoplasm	Inherited Anomalies of the Skin	0.0267913843409716	1	1
-Melanoma	Inherited Anomalies of the Skin	0.0614796025947044	1	1
+Melanoma	Inherited Anomalies of the Skin	0.0614796025947044	0	1
 Prostate Cancer	Inherited Anomalies of the Skin	0.123873394196381	0	1
 Uterine Cancer	Inherited Anomalies of the Skin	0.0295194960265811	1	1
 Bladder Cancer	Lipoprotein Deficiencies	0.00569617399897397	1	1
@@ -189,16 +189,16 @@ Malignant Brain Neoplasm	Lipoprotein Deficiencies	0.0045359670981321	1	1
 Melanoma	Lipoprotein Deficiencies	0.00409474415410362	1	1
 Prostate Cancer	Lipoprotein Deficiencies	0.00515869678611407	1	1
 Uterine Cancer	Lipoprotein Deficiencies	0.00803777959199483	1	1
-Bladder Cancer	Long QT Syndrome	0.0696761784022298	1	1
+Bladder Cancer	Long QT Syndrome	0.0696761784022298	0	1
 Female Breast Cancer	Long QT Syndrome	0.290036875452424	0	1
-Colorectal Cancer	Long QT Syndrome	0.0948390300259104	1	1
+Colorectal Cancer	Long QT Syndrome	0.0948390300259104	0	1
 Gastric Cancer	Long QT Syndrome	0.121924896332359	0	1
 Kidney Cancer	Long QT Syndrome	0.540002359218998	0	1
 Lung Cancer	Long QT Syndrome	0.301442390694894	0	1
 Malignant Brain Neoplasm	Long QT Syndrome	0.0203438982745319	1	1
 Melanoma	Long QT Syndrome	0.200193307481039	0	0
-Prostate Cancer	Long QT Syndrome	0.0515531674989927	1	1
-Uterine Cancer	Long QT Syndrome	0.0930109601021581	1	1
+Prostate Cancer	Long QT Syndrome	0.0515531674989927	0	1
+Uterine Cancer	Long QT Syndrome	0.0930109601021581	0	1
 Bladder Cancer	Neurofibromatosis	0.437914155717275	0	1
 Female Breast Cancer	Neurofibromatosis	0.30793712220757	0	1
 Colorectal Cancer	Neurofibromatosis	0.307697978011588	0	1
@@ -226,7 +226,7 @@ Gastric Cancer	Specified Hamartoses	0.220144676305458	0	1
 Kidney Cancer	Specified Hamartoses	0.374447739563162	0	1
 Lung Cancer	Specified Hamartoses	0.13523093319959	0	1
 Malignant Brain Neoplasm	Specified Hamartoses	0.164516612340928	0	1
-Melanoma	Specified Hamartoses	0.0803759721350829	1	1
+Melanoma	Specified Hamartoses	0.0803759721350829	0	1
 Prostate Cancer	Specified Hamartoses	0.19954763170974	0	1
 Uterine Cancer	Specified Hamartoses	0.164510467402761	0	0
 Bladder Cancer	Spinocerebellar Ataxia	0.00488693987206492	1	1
@@ -383,7 +383,7 @@ Bladder Cancer	Sensory Retina Dystropies	0.289611591932758	0	0
 Female Breast Cancer	Sensory Retina Dystropies	0.200204042732728	0	1
 Colorectal Cancer	Sensory Retina Dystropies	0.117764093881674	0	0
 Gastric Cancer	Sensory Retina Dystropies	0.155429167930035	0	0
-Kidney Cancer	Sensory Retina Dystropies	0.0678944679167533	1	0
+Kidney Cancer	Sensory Retina Dystropies	0.0678944679167533	0	0
 Lung Cancer	Sensory Retina Dystropies	0.158855486039971	0	0
 Malignant Brain Neoplasm	Sensory Retina Dystropies	0.168606006987938	0	0
 Melanoma	Sensory Retina Dystropies	0.150163185506205	0	0
@@ -419,16 +419,16 @@ Malignant Brain Neoplasm	Specific Nail Anomalies	0.0118148854946234	1	0
 Melanoma	Specific Nail Anomalies	0.0229197271700569	1	1
 Prostate Cancer	Specific Nail Anomalies	0.0395741681941956	1	0
 Uterine Cancer	Specific Nail Anomalies	0.0115822156021844	1	0
-Bladder Cancer	Thalassemia	0.0526297341873767	1	0
-Female Breast Cancer	Thalassemia	0.092979064161555	1	1
-Colorectal Cancer	Thalassemia	0.0694770863054091	1	1
-Gastric Cancer	Thalassemia	0.0566747140431278	1	1
-Kidney Cancer	Thalassemia	0.0782515249689307	1	1
+Bladder Cancer	Thalassemia	0.0526297341873767	0	0
+Female Breast Cancer	Thalassemia	0.092979064161555	0	1
+Colorectal Cancer	Thalassemia	0.0694770863054091	0	1
+Gastric Cancer	Thalassemia	0.0566747140431278	0	1
+Kidney Cancer	Thalassemia	0.0782515249689307	0	1
 Lung Cancer	Thalassemia	0.0492966581771778	1	1
 Malignant Brain Neoplasm	Thalassemia	0.0374108329619704	1	1
-Melanoma	Thalassemia	0.0857441864089596	1	0
-Prostate Cancer	Thalassemia	0.0593897072837741	1	1
-Uterine Cancer	Thalassemia	0.0635097207453137	1	0
+Melanoma	Thalassemia	0.0857441864089596	0	0
+Prostate Cancer	Thalassemia	0.0593897072837741	0	1
+Uterine Cancer	Thalassemia	0.0635097207453137	0	0
 Bladder Cancer	Congenital Hirschsprung Disease	0.97337417281765	0	0
 Female Breast Cancer	Congenital Hirschsprung Disease	0.969707341423518	0	0
 Colorectal Cancer	Congenital Hirschsprung Disease	0.976714312849065	0	1
@@ -504,7 +504,7 @@ Female Breast Cancer	Anophthalmos/Micropthalmos	0.618490736560612	0	0
 Colorectal Cancer	Anophthalmos/Micropthalmos	0.335124525712673	0	0
 Gastric Cancer	Anophthalmos/Micropthalmos	0.358366915304718	0	0
 Kidney Cancer	Anophthalmos/Micropthalmos	0.156266279161275	0	0
-Lung Cancer	Anophthalmos/Micropthalmos	0.0777750979435097	1	0
+Lung Cancer	Anophthalmos/Micropthalmos	0.0777750979435097	0	0
 Malignant Brain Neoplasm	Anophthalmos/Micropthalmos	0.333604653538815	0	1
 Melanoma	Anophthalmos/Micropthalmos	0.253488271853913	0	1
 Prostate Cancer	Anophthalmos/Micropthalmos	0.257549027016117	0	0
@@ -549,21 +549,21 @@ Malignant Brain Neoplasm	Holoprosencephaly	0.959284693057751	0	1
 Melanoma	Holoprosencephaly	0.958853662100323	0	0
 Prostate Cancer	Holoprosencephaly	0.917530691523339	0	0
 Uterine Cancer	Holoprosencephaly	0.963060274549842	0	0
-Bladder Cancer	Osteogenesis Imperfecta	0.0591773640112574	1	0
-Female Breast Cancer	Osteogenesis Imperfecta	0.0694170701307403	1	0
+Bladder Cancer	Osteogenesis Imperfecta	0.0591773640112574	0	0
+Female Breast Cancer	Osteogenesis Imperfecta	0.0694170701307403	0	0
 Colorectal Cancer	Osteogenesis Imperfecta	0.0454021052153904	1	0
 Gastric Cancer	Osteogenesis Imperfecta	0.0429035472825921	1	0
 Kidney Cancer	Osteogenesis Imperfecta	0.03209656014159	1	0
-Lung Cancer	Osteogenesis Imperfecta	0.0577113078487525	1	0
+Lung Cancer	Osteogenesis Imperfecta	0.0577113078487525	0	0
 Malignant Brain Neoplasm	Osteogenesis Imperfecta	0.0381614043658081	1	1
 Melanoma	Osteogenesis Imperfecta	0.0260076232894986	1	0
 Prostate Cancer	Osteogenesis Imperfecta	0.0374301038023985	1	0
-Uterine Cancer	Osteogenesis Imperfecta	0.0515863822701714	1	0
+Uterine Cancer	Osteogenesis Imperfecta	0.0515863822701714	0	0
 Bladder Cancer	Specified Anomalies of the Musculoskeletal System	0.0314306735504907	1	0
-Female Breast Cancer	Specified Anomalies of the Musculoskeletal System	0.0532490913836949	1	0
-Colorectal Cancer	Specified Anomalies of the Musculoskeletal System	0.0837261344636882	1	0
+Female Breast Cancer	Specified Anomalies of the Musculoskeletal System	0.0532490913836949	0	0
+Colorectal Cancer	Specified Anomalies of the Musculoskeletal System	0.0837261344636882	0	0
 Gastric Cancer	Specified Anomalies of the Musculoskeletal System	0.126123084947829	0	0
-Kidney Cancer	Specified Anomalies of the Musculoskeletal System	0.0850660122837485	1	0
+Kidney Cancer	Specified Anomalies of the Musculoskeletal System	0.0850660122837485	0	0
 Lung Cancer	Specified Anomalies of the Musculoskeletal System	0.423176491487509	0	0
 Malignant Brain Neoplasm	Specified Anomalies of the Musculoskeletal System	0.0257983915519349	1	1
 Melanoma	Specified Anomalies of the Musculoskeletal System	0.4379018793433	0	0
@@ -580,11 +580,11 @@ Melanoma	Congenital Ectodermal Dysplasia	1.38029012751118e-07	1	1
 Prostate Cancer	Congenital Ectodermal Dysplasia	5.6218393341348e-07	1	0
 Uterine Cancer	Congenital Ectodermal Dysplasia	1.71333499125071e-07	1	0
 Bladder Cancer	Disorders of Aromatic Amino Acid Metabolism	0.113291951638305	0	0
-Female Breast Cancer	Disorders of Aromatic Amino Acid Metabolism	0.0570867474577315	1	0
-Colorectal Cancer	Disorders of Aromatic Amino Acid Metabolism	0.0562783496294847	1	0
-Gastric Cancer	Disorders of Aromatic Amino Acid Metabolism	0.0874622932839177	1	0
+Female Breast Cancer	Disorders of Aromatic Amino Acid Metabolism	0.0570867474577315	0	0
+Colorectal Cancer	Disorders of Aromatic Amino Acid Metabolism	0.0562783496294847	0	0
+Gastric Cancer	Disorders of Aromatic Amino Acid Metabolism	0.0874622932839177	0	0
 Kidney Cancer	Disorders of Aromatic Amino Acid Metabolism	0.100919295652772	0	0
-Lung Cancer	Disorders of Aromatic Amino Acid Metabolism	0.0882545824165218	1	0
+Lung Cancer	Disorders of Aromatic Amino Acid Metabolism	0.0882545824165218	0	0
 Malignant Brain Neoplasm	Disorders of Aromatic Amino Acid Metabolism	0.19685072416635	0	0
 Melanoma	Disorders of Aromatic Amino Acid Metabolism	0.279548209818574	0	1
 Prostate Cancer	Disorders of Aromatic Amino Acid Metabolism	0.220481146095614	0	0

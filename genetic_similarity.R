@@ -1,10 +1,8 @@
-### Calculate two metrics of genetic similarity between Mendelian diseases and cancers ###
-### - Genetic overlap
-### - Co-expression
 
 library(dplyr)
 library(data.table)
 library(ggplot2)
+library(openxlsx)
 
 ## Set type for image compression based on operating system
 ## For macOS, X11 installation is required (link: https://www.xquartz.org/)
@@ -20,6 +18,178 @@ if (Sys.info()['sysname'] == "Linux") {
 if (Sys.info()['sysname'] == "Darwin") {
   type_compression = "cairo"
 } 
+
+### -- comorbidity VS comorbidity & genetic similarity -- ###
+## using genetic similarity data from: https://www.nature.com/articles/ncomms8033 (Melamed et al., 2015)
+# load genetic similarity data
+md_cancer_gensim_melamed = read.xlsx("raw_data/melamed_genetic_similarity_sup_data_4.xlsx", startRow = 9)
+
+# keep columns containing p-values for each genetic similarity metric
+md_cancer_gensim_melamed = md_cancer_gensim_melamed %>% 
+  dplyr::select(mendelian_disease = MD,
+                tcga_acronym = C,
+                gene_enrichment, pathway_correlation, coex_CG, humannet_set, biogrid_set) %>%
+  distinct()
+
+# find mendelian-cancer pairs with at least one significant genetic similarity metric (p<0.05)
+md_cancer_gensim_melamed = md_cancer_gensim_melamed %>%
+  rowwise() %>%
+  mutate(min_pvalue = min(gene_enrichment, pathway_correlation, coex_CG, humannet_set, biogrid_set)) %>%
+  filter(min_pvalue < 0.05) %>%
+  dplyr::select(mendelian_disease, tcga_acronym) %>%
+  distinct()
+
+# convert cancer abbreviations to full names
+tcga_cancer_acronyms = fread("raw_data/cancers_tcga_acronyms.txt")
+md_cancer_gensim_melamed = left_join(md_cancer_gensim_melamed, tcga_cancer_acronyms, by = "tcga_acronym") ; rm(tcga_cancer_acronyms)
+md_cancer_gensim_melamed = md_cancer_gensim_melamed %>% 
+  dplyr::select(-tcga_acronym) %>%
+  mutate(genetic_similarity_melamed = 1) %>%
+  distinct()
+
+## MD-cancer comorbidities 
+md_cancer_comorbidities = fread("processed_data/md_cd_comorbidities.txt") %>%
+  # filter for cancers with available information for genetic similarity
+  filter(complex_disease %in% md_cancer_gensim_melamed$complex_disease)
+# add genetic similarity information
+md_cancer_comorbidities = left_join(md_cancer_comorbidities, md_cancer_gensim_melamed, by = c("mendelian_disease", "complex_disease"))
+md_cancer_comorbidities$genetic_similarity_melamed = ifelse(is.na(md_cancer_comorbidities$genetic_similarity_melamed), 0, 1)
+
+## mendelian disease genes and drugs
+md_genes = fread("processed_data/md_genes.txt")
+db_drug_targets = fread("processed_data/drugbank_all_drugs_known_targets.txt") %>% 
+  dplyr::select(db_id, drug_target) %>%
+  distinct()
+drugs_nr_targets = fread("processed_data/drugbank_all_drugs_known_targets.txt") %>%
+  dplyr::select(db_id, drug_target) %>%
+  group_by(db_id) %>%
+  mutate(total_targets = length(unique(drug_target))) %>%
+  ungroup() %>%
+  dplyr::select(db_id, total_targets) %>%
+  distinct()
+  
+md_drugs = md_genes %>%
+  left_join(db_drug_targets, by = c("causal_gene" = "drug_target")) %>%
+  na.omit() %>%
+  dplyr::select(-causal_gene) %>%
+  filter(mendelian_disease %in% md_cancer_comorbidities$mendelian_disease) %>%
+  distinct()
+
+## investigated/indicated drugs for the complex diseases
+investigated_indicated_drugs = data.table::fread("processed_data/drugs_inv_ind_per_disease.txt")
+investigated_indicated_drugs = reshape2::melt(investigated_indicated_drugs, "drugbank_id", colnames(investigated_indicated_drugs)[2:ncol(investigated_indicated_drugs)])
+investigated_indicated_drugs = na.omit(investigated_indicated_drugs)
+rownames(investigated_indicated_drugs) = NULL
+investigated_indicated_drugs = investigated_indicated_drugs %>% dplyr::select(drugbank_id, complex_disease = variable) %>% distinct()
+investigated_indicated_drugs$indicated_investigated = 1
+
+### -- logistic regression -- ###
+
+# drugs targeting MD genes
+drugs_targeting_md_genes = md_drugs %>%
+  dplyr::select(db_id) %>%
+  distinct()
+
+# unique cancers in the data
+unique_cancers = unique(md_cancer_comorbidities$complex_disease)  
+
+# create logistic regression input
+log_input = data.frame(db_id = rep(drugs_targeting_md_genes$db_id, each = length(unique_cancers)))
+
+log_input$complex_disease = unique_cancers
+
+log_input = left_join(log_input, drugs_nr_targets, by = "db_id")  
+
+log_input = left_join(log_input, investigated_indicated_drugs, by = c("complex_disease", "db_id" = "drugbank_id"))
+log_input$indicated_investigated = ifelse(is.na(log_input$indicated_investigated), 0, 1)
+
+cancer_recommended_drugs = left_join(md_cancer_comorbidities, md_drugs, by = "mendelian_disease")
+cancer_recommended_drugs = cancer_recommended_drugs %>%
+  dplyr::select(db_id, complex_disease, comorbidity, genetic_similarity_melamed) %>%
+  distinct() %>%
+  group_by(complex_disease, db_id) %>%
+  mutate(comorbidity = max(comorbidity),
+         genetic_similarity_melamed = max(genetic_similarity_melamed)) %>%
+  ungroup() %>%
+  distinct()
+
+log_input = left_join(log_input, cancer_recommended_drugs, by = c("complex_disease", "db_id"))
+log_input$comorbidity = ifelse(is.na(log_input$comorbidity), 0, log_input$comorbidity)
+log_input$genetic_similarity_melamed = ifelse(is.na(log_input$genetic_similarity_melamed), 0, log_input$genetic_similarity_melamed)
+
+log_input$comorbidity_gensim = log_input$comorbidity * log_input$genetic_similarity_melamed
+
+# comorbidity (regardless of genetic similarity)
+glm_fits_comorbidity = glm(indicated_investigated ~ total_targets + comorbidity,
+                           data = log_input, 
+                           family = binomial())
+log_summary_comorbidity = summary(glm_fits_comorbidity)$coefficients
+log_summary_comorbidity
+# confidence intervals
+or_comorbidity = exp(log_summary_comorbidity[3, 1])
+pvalue_comorbidity = log_summary_comorbidity[3, 4]
+or_comorbidity_95ci = c(exp(confint(glm_fits_comorbidity))[3, 1], exp(confint(glm_fits_comorbidity))[3, 2])
+names(or_comorbidity_95ci) = c("ci_2.5", "ci_97.5")
+
+# comorbidity AND genetic similarity
+glm_fits_comorbidity_gensim = glm(indicated_investigated ~ total_targets + comorbidity_gensim,
+                                  data = log_input, 
+                                  family = binomial())
+log_summary_comorbidity_gensim = summary(glm_fits_comorbidity_gensim)$coefficients
+log_summary_comorbidity_gensim
+# confidence intervals
+or_comorbidity_gensim = exp(log_summary_comorbidity_gensim[3, 1])
+pvalue_comorbidity_gensim = log_summary_comorbidity_gensim[3, 4]
+or_comorbidity_gensim_95ci = c(exp(confint(glm_fits_comorbidity_gensim))[3, 1], exp(confint(glm_fits_comorbidity_gensim))[3, 2])
+names(or_comorbidity_gensim_95ci) = c("ci_2.5", "ci_97.5")
+
+## create forestplot
+data_fig4a = data.frame(category = c("Comorbidity & Genetic similarity", "Comorbidity"),
+                        ci_2.5 = c(or_comorbidity_gensim_95ci["ci_2.5"], or_comorbidity_95ci["ci_2.5"]),
+                        ci_97.5 = c(or_comorbidity_gensim_95ci["ci_97.5"], or_comorbidity_95ci["ci_97.5"]),
+                        odds_ratio = c(or_comorbidity_gensim, or_comorbidity))
+data_fig4a$category = factor(data_fig4a$category, levels = data_fig4a$category, labels = data_fig4a$category)
+
+fig_4a = ggplot(data_fig4a, aes(y = category, x = odds_ratio, xmin = ci_2.5, xmax = ci_97.5)) +
+  geom_point(size = 1.5) + 
+  geom_errorbarh(height = 0.2, linewidth = 0.7) +
+  ylab("") +
+  xlab("\nOdds Ratio") +
+  scale_x_continuous(breaks = seq(0, 8, 1), limits = c(0, 3)) +
+  scale_color_manual(values = c("black", "gray50")) +
+  geom_vline(xintercept = 1, color = "black", linewidth = 1, linetype = 3) +
+  theme_classic() +
+  theme(axis.title = element_text(angle = 0, hjust = 0.5, vjust = 0.5,
+                                  margin = margin(t = 0.2, unit = "cm"),
+                                  size = 30),
+        axis.line = element_line(linewidth = 0.5),
+        axis.ticks = element_line(linewidth = 0.3),
+        axis.text.y = element_text(angle = 0, 
+                                   margin = margin(l = 0.5, r = 0.2, unit = "cm"),
+                                   size = 30, family = "Arial", color = "black"),
+        axis.text.x = element_text(angle = 0, hjust = 0.5, vjust = 0.5,
+                                   margin = margin(t = 0.2, unit = "cm"),
+                                   size = 30, family = "Arial", color = "black"),
+        legend.text = element_text(size = 30, family = "Arial", color = "black"),
+        legend.title = element_blank(),
+        legend.key.size = unit(2, "cm"), 
+        aspect.ratio = 0.2)
+
+fig_4a
+ggsave(filename = "Fig4A_forest_plot.tiff", 
+       path = "figures/",
+       width = 14, height = 7, device = 'tiff',
+       dpi = 300, compression = "lzw", type = type_compression)
+dev.off()
+
+####
+#### We further explore the observed signal.
+#### To do this, we need information about the genetic similarity between non-comorbid Mendelian disease - cancer pairs
+#### However, Melamded et al. did not estimate it, as it was out of the scope of the paper
+#### Therefore, we calculate the genetic similarity between any Mendelian disease - cancer pairs using two simple metrics:
+####    1. Genetic overlap: tests if the same genes are mutated in a Mendelian disease - cancer pair
+####    2. Co-expression: tests if the genes in a Mendelian disease - cancer pairs have similar expression across human tissues
+####
 
 #########################
 ##                     ##
@@ -159,10 +329,11 @@ uterine_cancer = sig_snv_cnv_combined(full_path_to_gistic2_ampl = paste0(path_to
                                       threshold_gistic2_qvalue = 0.05, threshold_gistic2_genes_in_peak = 50, threshold_mutsig2cv_qvalue = 0.05)
 
 ## calculate the significance of genetic overlap for all possible MD-cancer pairs
-cancers = unique(md_cancer_comorbidities$complex_disease) # 10 cancers
+unique_cancers
 mendelian_diseases = unique(md_cancer_comorbidities$mendelian_disease) # 60 Mendelian diseases
 
-md_genes = data.table::fread("processed_data/md_genes.txt") %>%
+# genes linked to the 60 Mendelian diseases
+md_genes = md_genes %>%
   filter(mendelian_disease %in% mendelian_diseases)
 
 # protein coding genes
@@ -213,7 +384,7 @@ genetic_overlap = function(md, cancer) {
 
 genetic_overlap_results = data.frame(mendelian_disease = NA, cancer = NA, pvalue_onesided = NA)
 for (mendelian_disease_temp in mendelian_diseases) {
-  for (cancer_temp in cancers) {
+  for (cancer_temp in unique_cancers) {
     # estimate genetic similarity
     temp = genetic_overlap(md = mendelian_disease_temp, cancer = cancer_temp)
     genetic_overlap_results = rbind(genetic_overlap_results, temp)
@@ -230,7 +401,7 @@ genetic_overlap_results = left_join(genetic_overlap_results, md_cancer_comorbidi
 genetic_overlap_results$comorbidity = ifelse(is.na(genetic_overlap_results$comorbidity), 0, 1)
 
 ## annotate with genetic similarity
-genetic_overlap_results$genetic_similarity = ifelse(genetic_overlap_results$pvalue_onesided < 0.1, 1, 0)
+genetic_overlap_results$genetic_similarity = ifelse(genetic_overlap_results$pvalue_onesided < 0.05, 1, 0)
 
 ## save
 fwrite(genetic_overlap_results, "processed_data/md_cancers_genetic_overlap.txt", sep = "\t", row.names = FALSE)
@@ -275,7 +446,8 @@ pearson_correlation_gtex = pearson_correlation_gtex[, -which(is.na(pearson_corre
 coexpression = function(md, cancer) {
   
   ## Mendelian disease genes
-  md_genes_temp = md_genes %>% filter(mendelian_disease == md) %>%
+  md_genes_temp = md_genes %>% 
+    filter(mendelian_disease == md) %>%
     filter(causal_gene %in% colnames(pearson_correlation_gtex))
   md_genes_temp = unique(md_genes_temp$causal_gene)
   
@@ -321,7 +493,7 @@ coexpression = function(md, cancer) {
 
 coexpression_results = data.frame(cancer_gene = NA, p_value = NA, cancer = NA, mendelian_disease = NA)
 for (mendelian_disease_temp in mendelian_diseases) {
-  for (cancer_temp in cancers) {
+  for (cancer_temp in unique_cancers) {
     # estimate genetic similarity
     temp = coexpression(md = mendelian_disease_temp, cancer = cancer_temp)
     coexpression_results = rbind(coexpression_results, temp)
@@ -343,7 +515,7 @@ coexpression_results = coexpression_results %>%
   ungroup() %>%
   dplyr::select(mendelian_disease, cancer, adj_pvalue_threshold) %>%
   distinct()
-coexpression_results$genetic_similarity = ifelse(coexpression_results$adj_pvalue_threshold < 0.1, 1, 0)
+coexpression_results$genetic_similarity = ifelse(coexpression_results$adj_pvalue_threshold < 0.05, 1, 0)
 coexpression_results = coexpression_results %>%
   dplyr::select(cancer, mendelian_disease, adj_pvalue_threshold, genetic_similarity) %>%
   distinct()
@@ -386,17 +558,17 @@ md_cd_comorbidities_gensim_ultimate = md_cd_comorbidities_gensim_ultimate %>%
 table(md_cd_comorbidities_gensim_ultimate$comorbidity, md_cd_comorbidities_gensim_ultimate$gensim_combined)
 # rows are comorbidity (no/yes)
 # columns are genetic similarity (no/yes)
-data_fig4a = data.frame(comorbidity = c("Comorbid", "Comorbid", "Non comorbid", "Non comorbid"),
+data_fig4b = data.frame(comorbidity = c("Comorbid", "Comorbid", "Non comorbid", "Non comorbid"),
                         gen_sim = c( "Yes", "No", "Yes", "No"),
                         number_of_pairs = c(table(md_cd_comorbidities_gensim_ultimate$comorbidity, md_cd_comorbidities_gensim_ultimate$gensim_combined)[2, 2],
                                             table(md_cd_comorbidities_gensim_ultimate$comorbidity, md_cd_comorbidities_gensim_ultimate$gensim_combined)[2, 1],
                                             table(md_cd_comorbidities_gensim_ultimate$comorbidity, md_cd_comorbidities_gensim_ultimate$gensim_combined)[1, 2],
                                             table(md_cd_comorbidities_gensim_ultimate$comorbidity, md_cd_comorbidities_gensim_ultimate$gensim_combined)[1, 1]))
-data_fig4a$comorbidity = factor(data_fig4a$comorbidity, levels = data_fig4a$comorbidity, labels = data_fig4a$comorbidity)
-data_fig4a$gen_sim = factor(data_fig4a$gen_sim, levels = data_fig4a$gen_sim, labels = data_fig4a$gen_sim)
+data_fig4b$comorbidity = factor(data_fig4b$comorbidity, levels = data_fig4b$comorbidity, labels = data_fig4b$comorbidity)
+data_fig4b$gen_sim = factor(data_fig4b$gen_sim, levels = data_fig4b$gen_sim, labels = data_fig4b$gen_sim)
 
 # Stacked barplot
-fig_4a = ggplot(data_fig4a, aes(x = comorbidity, y = number_of_pairs, fill=gen_sim)) + 
+fig_4b = ggplot(data_fig4b, aes(x = comorbidity, y = number_of_pairs, fill=gen_sim)) + 
   geom_bar(position = "stack", stat = "identity", width = 0.5) +
   labs(fill = "Genetically similar") +
   xlab("") +
@@ -419,69 +591,56 @@ fig_4a = ggplot(data_fig4a, aes(x = comorbidity, y = number_of_pairs, fill=gen_s
         legend.title = element_text(size = 24, family = "Arial", color = "black"),
         aspect.ratio = 1.3)
 
-fig_4a
-ggsave(filename = "Fig4A_md_cancer_comorbidity_gensim_stacked_barplot.tiff", 
+fig_4b
+ggsave(filename = "Fig4B_md_cancer_comorbidity_gensim_stacked_barplot.tiff", 
        path = "figures/",
        width = 12, height = 9, device = 'tiff',
        dpi = 700, compression = "lzw", type = type_compression)
 dev.off()
 
+## check if there is a significant enrichment of genetically similar Mendelian disease - cancer pairs based on our genetic similarity metric and Melamed et al. metrics
+contingency_table = matrix(nrow = 2, ncol = 2)
+colnames(contingency_table) = c("melamed_sig", "melamed_not_sig")
+rownames(contingency_table) = c("ourmetrics_sig", "ourmetrics_notsig")
+# across comorbidity pairs only (remember, Melamed et al. did not estimate genetic similarity between non-comorbid Mendelian disease - cancer pairs)
+comorbid_pairs = md_cancer_comorbidities
+comorbid_pairs = left_join(comorbid_pairs, md_cancer_gensim_melamed, by = c("mendelian_disease", "complex_disease"))
+comorbid_pairs$genetic_similarity_melamed = ifelse(is.na(comorbid_pairs$genetic_similarity_melamed), 0, comorbid_pairs$genetic_similarity_melamed)
+comorbid_pairs = left_join(comorbid_pairs, md_cd_comorbidities_gensim_ultimate, by = c("mendelian_disease", "complex_disease" = "cancer", "comorbidity"))
+table(comorbid_pairs$genetic_similarity_melamed, comorbid_pairs$gensim_combined)
+contingency_table[1, 1] = 64
+contingency_table[2, 1] = 34
+contingency_table[1, 2] = 71
+contingency_table[2, 2] = 145
+fisher_ovelap_melamed_our_gensim_metrics_comorbid_pairs = fisher.test(contingency_table, alternative = "greater") 
+fisher_ovelap_melamed_our_gensim_metrics_comorbid_pairs
+rm(contingency_table, comorbid_pairs)
+
 ## -- logistic regression analyses -- ##
 
-## load data ##
-# load drugs with their targets
-db_drugs_targets = fread("processed_data/drugbank_all_drugs_known_targets.txt")
-# find drugs targeting the MD genes
-md_drugs = left_join(md_genes, db_drugs_targets[, 1:2], by = c("causal_gene" = "drug_target"))
-md_drugs = na.omit(md_drugs)
-length(unique(md_drugs$db_id)) # 692 drugs target the genes associated with the Mendelian diseases in our sample
-
-# calculate number of targets of each drug
-db_drug_targets = db_drugs_targets %>%
-  dplyr::select(db_id, drug_target) %>% 
-  distinct()
-drugs_nr_targets = fread("processed_data/drugbank_all_drugs_known_targets.txt") %>%
-  dplyr::select(db_id, drug_target) %>%
-  group_by(db_id) %>% 
-  mutate(total_targets = length(drug_target)) %>%
-  dplyr::select(db_id, total_targets) %>% 
-  distinct() %>%
-  ungroup()
-rm(db_drug_targets)
-
-# load investigated/indicated drugs for the cancers
-investigated_indicated_drugs = fread("processed_data/drugs_inv_ind_per_disease.txt")
-investigated_indicated_drugs = reshape2::melt(investigated_indicated_drugs, "drugbank_id", colnames(investigated_indicated_drugs)[2:ncol(investigated_indicated_drugs)])
-investigated_indicated_drugs = na.omit(investigated_indicated_drugs)
-rownames(investigated_indicated_drugs) = NULL
-investigated_indicated_drugs = investigated_indicated_drugs %>% dplyr::select(drugbank_id, complex_disease = variable) %>% distinct()
-investigated_indicated_drugs$indicated_investigated = 1
-
-## logistic regression input ##
+## create logistic regression input ##
 
 # unique Mendelian diseases and cancers in our sample
-unique_md = unique(md_cd_comorbidities_gensim_ultimate$mendelian_disease) # 60
-unique_cancers = unique(md_cd_comorbidities_gensim_ultimate$cancer) # 10
+mendelian_diseases
+unique_cancers
 
 # unique drugs targeting the genes associated with the 60 Mendelian diseases
-drugs_targeting_md_genes = md_drugs %>%
-  dplyr::select(db_id) %>%
-  distinct()
+drugs_targeting_md_genes
 
 # create logistic regression input - each row is a drug-cancer pair 
-log_input_obs = data.frame(db_id = rep(drugs_targeting_md_genes$db_id, each = length(unique_cancers)))
-log_input_obs$cancer = unique_cancers  
+log_input = data.frame(db_id = rep(drugs_targeting_md_genes$db_id, each = length(unique_cancers)))
+log_input$cancer = unique_cancers  
 # add information about number of targets for each drug
-log_input_obs = left_join(log_input_obs, drugs_nr_targets, by = "db_id")  
+log_input = left_join(log_input, drugs_nr_targets, by = "db_id")  
 # add information about investigated/indicated drugs within each drug-cancer pair
-log_input_obs = left_join(log_input_obs, investigated_indicated_drugs, by = c("cancer" = "complex_disease", 
-                                                                              "db_id" = "drugbank_id"))
+log_input = left_join(log_input, investigated_indicated_drugs, by = c("cancer" = "complex_disease", 
+                                                                      "db_id" = "drugbank_id"))
 # if indicated_investigated is NA --> this drug is not indicated/investigated for this cancer
-log_input_obs$indicated_investigated = ifelse(is.na(log_input_obs$indicated_investigated), 0, 1)
+log_input$indicated_investigated = ifelse(is.na(log_input$indicated_investigated), 0, 1)
 
 # add information about comorbidity and genetic similarity support
 md_cancer_pairs_drugs_support = left_join(md_cd_comorbidities_gensim_ultimate, md_drugs, by = "mendelian_disease")
-md_cancer_pairs_drugs_support = na.omit(md_cancer_pairs_drugs_support)
+md_cancer_pairs_drugs_support = na.omit(md_cancer_pairs_drugs_support) ; rownames(md_cancer_pairs_drugs_support) = NULL
 md_cancer_pairs_drugs_support = md_cancer_pairs_drugs_support %>% 
   dplyr::select(db_id, cancer, comorbidity, gensim_combined) %>%
   distinct()
@@ -493,86 +652,20 @@ md_cancer_pairs_drugs_support = md_cancer_pairs_drugs_support %>%
          gensim_combined = max(gensim_combined)) %>%
   ungroup() %>%
   distinct()
-log_input_obs = left_join(log_input_obs, md_cancer_pairs_drugs_support, by = c("cancer", "db_id"))
+log_input = left_join(log_input, md_cancer_pairs_drugs_support, by = c("cancer", "db_id"))
 
-# add column about drug-cancer pairs that are supported by both comorbidity and genetic similarity
-log_input_obs$comorbidity_gensim = log_input_obs$comorbidity * log_input_obs$gensim_combined
-
-## run logistic regression ##
-
-# among 6,920 drug-cancer pairs, are the ones supported by comorbidity more likely to be investigated/indicated for the cancer?
-glm_fits_comorbidity_obs = glm(indicated_investigated ~ total_targets + comorbidity,
-                               data = log_input_obs, 
-                               family = binomial())
-log_summary_comorbidity_obs = summary(glm_fits_comorbidity_obs)$coefficients
-log_summary_comorbidity_obs
-# calculate confidence intervals
-or_comorbidity_obs = exp(log_summary_comorbidity_obs[3, 1])
-pvalue_comorbidity_obs = log_summary_comorbidity_obs[3, 4]
-or_comorbidity_obs_95ci = c(exp(confint(glm_fits_comorbidity_obs))[3, 1], exp(confint(glm_fits_comorbidity_obs))[3, 2])
-names(or_comorbidity_obs_95ci) = c("ci_2.5", "ci_97.5")
-
-# among 6,920 drug-cancer pairs, are the ones supported by comorbidity and genetic similarity more likely to be investigated/indicated for the cancer?
-glm_fits_comorbidity_gensim_obs = glm(indicated_investigated ~ total_targets + comorbidity_gensim, 
-                                      data = log_input_obs,
-                                      family = binomial())
-log_summary_comorbidity_gensim_obs = summary(glm_fits_comorbidity_gensim_obs)$coefficients
-log_summary_comorbidity_gensim_obs
-or_comorbidity_gensim_obs = exp(log_summary_comorbidity_gensim_obs[3, 1])
-pvalue_comorbidity_gensim_obs = log_summary_comorbidity_gensim_obs[3, 4]
-or_comorbidity_gensim_obs_95ci = c(exp(confint(glm_fits_comorbidity_gensim_obs))[3, 1], exp(confint(glm_fits_comorbidity_gensim_obs))[3, 2])
-names(or_comorbidity_gensim_obs_95ci) = c("ci_2.5", "ci_97.5")
-
-## create forestplot
-data_fig4b = data.frame(category = c("Comorbidity & Genetic similarity", "Comorbidity"),
-                        ci_2.5 = c(or_comorbidity_gensim_obs_95ci["ci_2.5"], or_comorbidity_obs_95ci["ci_2.5"]),
-                        ci_97.5 = c(or_comorbidity_gensim_obs_95ci["ci_97.5"], or_comorbidity_obs_95ci["ci_97.5"]),
-                        odds_ratio = c(or_comorbidity_gensim_obs, or_comorbidity_obs))
-data_fig4b$category = factor(data_fig4b$category, levels = data_fig4b$category, labels = data_fig4b$category)
-
-fig_4b = ggplot(data_fig4b, aes(y = category, x = odds_ratio, xmin = ci_2.5, xmax = ci_97.5)) +
-  geom_point(size = 1.5) + 
-  geom_errorbarh(height = 0.2, linewidth = 0.7) +
-  ylab("") +
-  xlab("\nOdds Ratio") +
-  scale_x_continuous(breaks = seq(0, 8, 1), limits = c(0, 3)) +
-  scale_color_manual(values = c("black", "gray50")) +
-  geom_vline(xintercept = 1, color = "black", linewidth = 1, linetype = 3) +
-  theme_classic() +
-  theme(axis.title = element_text(angle = 0, hjust = 0.5, vjust = 0.5,
-                                  margin = margin(t = 0.2, unit = "cm"),
-                                  size = 30),
-        axis.line = element_line(linewidth = 0.5),
-        axis.ticks = element_line(linewidth = 0.3),
-        axis.text.y = element_text(angle = 0, 
-                                   margin = margin(l = 0.5, r = 0.2, unit = "cm"),
-                                   size = 30, family = "Arial", color = "black"),
-        axis.text.x = element_text(angle = 0, hjust = 0.5, vjust = 0.5,
-                                   margin = margin(t = 0.2, unit = "cm"),
-                                   size = 30, family = "Arial", color = "black"),
-        legend.text = element_text(size = 30, family = "Arial", color = "black"),
-        legend.title = element_blank(),
-        legend.key.size = unit(2, "cm"), 
-        aspect.ratio = 0.2)
-
-fig_4b
-ggsave(filename = "Fig4B_forest_plot.tiff", 
-       path = "figures/",
-       width = 16, height = 7, device = 'tiff',
-       dpi = 300, compression = "lzw", type = type_compression)
-dev.off()
-
-## -- analysis per drug-cancer pairs -- ##
+## -- run logistic regression -- ##
+## analysis per drug-cancer pairs ##
 
 # filter for drug-cancer pairs without comorbidity support
-log_input_no_comorbidity = log_input_obs %>% filter(comorbidity == 0)
+log_input_no_comorbidity = log_input %>% filter(comorbidity == 0)
 glm_fits_no_comorbidity = glm(indicated_investigated ~ total_targets + gensim_combined,
                               data = log_input_no_comorbidity, 
                               family = binomial())
 summary(glm_fits_no_comorbidity)$coefficients
 
 # filter for drug-cancer pairs with comorbidity support
-log_input_comorbidity = log_input_obs %>% filter(comorbidity == 1)
+log_input_comorbidity = log_input %>% filter(comorbidity == 1)
 glm_fits_comorbidity = glm(indicated_investigated ~ total_targets + gensim_combined,
                            data = log_input_comorbidity, 
                            family = binomial())
@@ -585,23 +678,23 @@ sum(log_input_comorbidity$indicated_investigated) / nrow(log_input_comorbidity) 
 
 # comorbidity - NO genetic similarity
 log_input_comorbidity_no_gensim = log_input_comorbidity %>% filter(gensim_combined == 0)
-sum(log_input_comorbidity_no_gensim$indicated_investigated) / nrow(log_input_comorbidity_no_gensim) # 4.72%
+sum(log_input_comorbidity_no_gensim$indicated_investigated) / nrow(log_input_comorbidity_no_gensim) # 5.6%
 
 # comorbidity - genetic similarity
 log_input_comorbidity_gensim = log_input_comorbidity %>% filter(gensim_combined == 1)
-sum(log_input_comorbidity_gensim$indicated_investigated) / nrow(log_input_comorbidity_gensim) # 7.67%
+sum(log_input_comorbidity_gensim$indicated_investigated) / nrow(log_input_comorbidity_gensim) # 7.8%
 
 # NO comorbidity
 log_input_no_comorbidity
-sum(log_input_no_comorbidity$indicated_investigated) / nrow(log_input_no_comorbidity) # 3.99%
+sum(log_input_no_comorbidity$indicated_investigated) / nrow(log_input_no_comorbidity) # 4.0%
 
 # NO comorbidity - NO genetic similarity
 log_input_no_comorbidity_no_gen_sim = log_input_no_comorbidity %>% filter(gensim_combined == 0)
-sum(log_input_no_comorbidity_no_gen_sim$indicated_investigated) / nrow(log_input_no_comorbidity_no_gen_sim) # 2.17%
+sum(log_input_no_comorbidity_no_gen_sim$indicated_investigated) / nrow(log_input_no_comorbidity_no_gen_sim) # 2.4%
 
 # NO comorbidity - genetic similarity
 log_input_no_comorbidity_gen_sim = log_input_no_comorbidity %>% filter(gensim_combined == 1)
-sum(log_input_no_comorbidity_gen_sim$indicated_investigated) / nrow(log_input_no_comorbidity_gen_sim) # 5.33%
+sum(log_input_no_comorbidity_gen_sim$indicated_investigated) / nrow(log_input_no_comorbidity_gen_sim) # 5.5%
 
 ## percentages
 data_fig4c_fraction = data.frame(category = c("Comorbidity \n& \nGenetic similarity",
@@ -654,13 +747,10 @@ ggsave(filename = "Fig4C_fraction_candidate_drugs_inv_ind.tiff",
 dev.off()
 
 ## save results
-odds_ratio_genetic_similarity = data.frame(disease_category = c("Comorbidity", "Comorbidity & Genetic similarity"),
-                                           odds_ratio_observed = c(or_comorbidity_obs, or_comorbidity_gensim_obs),
-                                           pvalue = c(pvalue_comorbidity_obs, pvalue_comorbidity_gensim_obs),
-                                           ci_2.5 = c(or_comorbidity_obs_95ci["ci_2.5"], or_comorbidity_gensim_obs_95ci["ci_2.5"]),
-                                           ci_97.5 = c(or_comorbidity_obs_95ci["ci_97.5"], or_comorbidity_gensim_obs_95ci["ci_97.5"]),
-                                           ci_5_permutations = c(or_comorbidity_perm_95ci["5%"], or_comorbidity_gensim_perm_95ci["5%"]),
-                                           ci_50_permutations = c(or_comorbidity_perm_95ci["50%"], or_comorbidity_gensim_perm_95ci["50%"]),
-                                           ci_95_permutations = c(or_comorbidity_perm_95ci["95%"], or_comorbidity_gensim_perm_95ci["95%"]))
-fwrite(odds_ratio_genetic_similarity, "results/log_reg_results_comorbidity_genetic_similarity.txt", sep = "\t", row.names = FALSE)
+odds_ratio_genetic_similarity_melamed = data.frame(disease_category = c("Comorbidity", "Comorbidity & Genetic similarity"),
+                                                   odds_ratioerved = c(or_comorbidity, or_comorbidity_gensim),
+                                                   pvalue = c(pvalue_comorbidity, pvalue_comorbidity_gensim),
+                                                   ci_2.5 = c(or_comorbidity_95ci["ci_2.5"], or_comorbidity_gensim_95ci["ci_2.5"]),
+                                                   ci_97.5 = c(or_comorbidity_95ci["ci_97.5"], or_comorbidity_gensim_95ci["ci_97.5"]))
+fwrite(odds_ratio_genetic_similarity_melamed, "results/log_reg_results_comorbidity_genetic_similarity_odds_ratio_fig4a.txt", sep = "\t", row.names = FALSE)
 fwrite(data_fig4c_fraction, "results/fraction_candidate_drugs_inv_ind_comorbidity_genetic_similarity.txt", sep = "\t", row.names = FALSE)

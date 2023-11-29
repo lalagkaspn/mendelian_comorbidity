@@ -4,7 +4,7 @@ Cerebral Degeneration Due to Generalized Lipidoses	Female Breast Cancer	1	1	0
 Cerebral Degeneration Due to Generalized Lipidoses	Colorectal Cancer	1	1	0
 Cerebral Degeneration Due to Generalized Lipidoses	Gastric Cancer	1	1	0
 Cerebral Degeneration Due to Generalized Lipidoses	Kidney Cancer	1	1	0
-Cerebral Degeneration Due to Generalized Lipidoses	Lung Cancer	0.0836649389739347	1	1
+Cerebral Degeneration Due to Generalized Lipidoses	Lung Cancer	0.0836649389739347	1	0
 Cerebral Degeneration Due to Generalized Lipidoses	Malignant Brain Neoplasm	1	1	0
 Cerebral Degeneration Due to Generalized Lipidoses	Melanoma	1	1	0
 Cerebral Degeneration Due to Generalized Lipidoses	Prostate Cancer	1	1	0
@@ -49,13 +49,13 @@ Congenital Ichthyosis	Malignant Brain Neoplasm	1	1	0
 Congenital Ichthyosis	Melanoma	1	1	0
 Congenital Ichthyosis	Prostate Cancer	1	1	0
 Congenital Ichthyosis	Uterine Cancer	0.33560443699015	0	0
-Degenerative Diseases of the Basal Ganglia	Bladder Cancer	0.0670136318264715	1	1
+Degenerative Diseases of the Basal Ganglia	Bladder Cancer	0.0670136318264715	1	0
 Degenerative Diseases of the Basal Ganglia	Female Breast Cancer	1	1	0
 Degenerative Diseases of the Basal Ganglia	Colorectal Cancer	0.248307586638447	1	0
 Degenerative Diseases of the Basal Ganglia	Gastric Cancer	1	0	0
 Degenerative Diseases of the Basal Ganglia	Kidney Cancer	1	1	0
-Degenerative Diseases of the Basal Ganglia	Lung Cancer	0.0836649389739347	1	1
-Degenerative Diseases of the Basal Ganglia	Malignant Brain Neoplasm	0.0622712755759338	1	1
+Degenerative Diseases of the Basal Ganglia	Lung Cancer	0.0836649389739347	1	0
+Degenerative Diseases of the Basal Ganglia	Malignant Brain Neoplasm	0.0622712755759338	1	0
 Degenerative Diseases of the Basal Ganglia	Melanoma	1	1	0
 Degenerative Diseases of the Basal Ganglia	Prostate Cancer	1	1	0
 Degenerative Diseases of the Basal Ganglia	Uterine Cancer	0.118189950809366	1	0
@@ -71,12 +71,12 @@ Diamond-Blackfan Anemia	Prostate Cancer	1	0	0
 Diamond-Blackfan Anemia	Uterine Cancer	1	1	0
 Disorders of Phosphorous Metabolism	Bladder Cancer	1	1	0
 Disorders of Phosphorous Metabolism	Female Breast Cancer	1	1	0
-Disorders of Phosphorous Metabolism	Colorectal Cancer	0.0789339038311643	1	1
-Disorders of Phosphorous Metabolism	Gastric Cancer	0.0507024867451321	1	1
+Disorders of Phosphorous Metabolism	Colorectal Cancer	0.0789339038311643	1	0
+Disorders of Phosphorous Metabolism	Gastric Cancer	0.0507024867451321	1	0
 Disorders of Phosphorous Metabolism	Kidney Cancer	1	1	0
 Disorders of Phosphorous Metabolism	Lung Cancer	0.14179745000856	1	0
 Disorders of Phosphorous Metabolism	Malignant Brain Neoplasm	1	1	0
-Disorders of Phosphorous Metabolism	Melanoma	0.0574366966583688	1	1
+Disorders of Phosphorous Metabolism	Melanoma	0.0574366966583688	1	0
 Disorders of Phosphorous Metabolism	Prostate Cancer	1	1	0
 Disorders of Phosphorous Metabolism	Uterine Cancer	1	1	0
 Disorders of Straight Chain Amino Acid Metabolism	Bladder Cancer	1	1	0
@@ -163,7 +163,7 @@ Hypopituitarism	Bladder Cancer	1	1	0
 Hypopituitarism	Female Breast Cancer	1	1	0
 Hypopituitarism	Colorectal Cancer	0.0165499403080184	1	1
 Hypopituitarism	Gastric Cancer	1	0	0
-Hypopituitarism	Kidney Cancer	0.0598271416529913	1	1
+Hypopituitarism	Kidney Cancer	0.0598271416529913	1	0
 Hypopituitarism	Lung Cancer	0.279452650104212	1	0
 Hypopituitarism	Malignant Brain Neoplasm	0.21429520086241	1	0
 Hypopituitarism	Melanoma	1	1	0
@@ -181,12 +181,12 @@ Inherited Anomalies of the Skin	Prostate Cancer	1	1	0
 Inherited Anomalies of the Skin	Uterine Cancer	0.33560443699015	1	0
 Lipoprotein Deficiencies	Bladder Cancer	1	1	0
 Lipoprotein Deficiencies	Female Breast Cancer	1	1	0
-Lipoprotein Deficiencies	Colorectal Cancer	0.0789339038311643	1	1
+Lipoprotein Deficiencies	Colorectal Cancer	0.0789339038311643	1	0
 Lipoprotein Deficiencies	Gastric Cancer	1	1	0
 Lipoprotein Deficiencies	Kidney Cancer	1	1	0
 Lipoprotein Deficiencies	Lung Cancer	1	1	0
 Lipoprotein Deficiencies	Malignant Brain Neoplasm	1	1	0
-Lipoprotein Deficiencies	Melanoma	0.0574366966583688	1	1
+Lipoprotein Deficiencies	Melanoma	0.0574366966583688	1	0
 Lipoprotein Deficiencies	Prostate Cancer	1	1	0
 Lipoprotein Deficiencies	Uterine Cancer	1	1	0
 Long QT Syndrome	Bladder Cancer	1	1	0
@@ -208,7 +208,7 @@ Neurofibromatosis	Lung Cancer	0.042743887378334	1	1
 Neurofibromatosis	Malignant Brain Neoplasm	0.0316344279377198	1	1
 Neurofibromatosis	Melanoma	0.016756446242023	1	1
 Neurofibromatosis	Prostate Cancer	1	0	0
-Neurofibromatosis	Uterine Cancer	0.0609494681346774	0	1
+Neurofibromatosis	Uterine Cancer	0.0609494681346774	0	0
 Polycystic Kidney, Autosomal Dominant	Bladder Cancer	1	1	0
 Polycystic Kidney, Autosomal Dominant	Female Breast Cancer	1	1	0
 Polycystic Kidney, Autosomal Dominant	Colorectal Cancer	1	1	0
@@ -219,15 +219,15 @@ Polycystic Kidney, Autosomal Dominant	Malignant Brain Neoplasm	1	0	0
 Polycystic Kidney, Autosomal Dominant	Melanoma	1	1	0
 Polycystic Kidney, Autosomal Dominant	Prostate Cancer	1	1	0
 Polycystic Kidney, Autosomal Dominant	Uterine Cancer	1	0	0
-Specified Hamartoses	Bladder Cancer	0.0830553173423114	1	1
+Specified Hamartoses	Bladder Cancer	0.0830553173423114	1	0
 Specified Hamartoses	Female Breast Cancer	0.110582708720214	1	0
 Specified Hamartoses	Colorectal Cancer	0.0412026798559592	1	1
 Specified Hamartoses	Gastric Cancer	0.241610630440326	1	0
 Specified Hamartoses	Kidney Cancer	0.000164884479832085	1	1
 Specified Hamartoses	Lung Cancer	0.103466268015898	1	0
-Specified Hamartoses	Malignant Brain Neoplasm	0.0772254451462516	1	1
+Specified Hamartoses	Malignant Brain Neoplasm	0.0772254451462516	1	0
 Specified Hamartoses	Melanoma	0.0413692980874496	1	1
-Specified Hamartoses	Prostate Cancer	0.0878910026192874	1	1
+Specified Hamartoses	Prostate Cancer	0.0878910026192874	1	0
 Specified Hamartoses	Uterine Cancer	0.145490287899263	0	0
 Spinocerebellar Ataxia	Bladder Cancer	0.405830021490511	1	0
 Spinocerebellar Ataxia	Female Breast Cancer	1	1	0
@@ -260,7 +260,7 @@ Androgen Insensitivity Syndrome	Melanoma	1	0	0
 Androgen Insensitivity Syndrome	Prostate Cancer	0.01822903142041	0	1
 Androgen Insensitivity Syndrome	Uterine Cancer	1	0	0
 Congenital Disorders of Purine/Pyrimidine Metabolism	Bladder Cancer	1	0	0
-Congenital Disorders of Purine/Pyrimidine Metabolism	Female Breast Cancer	0.0678947677057599	1	1
+Congenital Disorders of Purine/Pyrimidine Metabolism	Female Breast Cancer	0.0678947677057599	1	0
 Congenital Disorders of Purine/Pyrimidine Metabolism	Colorectal Cancer	1	1	0
 Congenital Disorders of Purine/Pyrimidine Metabolism	Gastric Cancer	1	0	0
 Congenital Disorders of Purine/Pyrimidine Metabolism	Kidney Cancer	1	1	0
@@ -271,12 +271,12 @@ Congenital Disorders of Purine/Pyrimidine Metabolism	Prostate Cancer	1	1	0
 Congenital Disorders of Purine/Pyrimidine Metabolism	Uterine Cancer	1	0	0
 Congenital Pigmentary Anomalies	Bladder Cancer	0.114318387654297	0	0
 Congenital Pigmentary Anomalies	Female Breast Cancer	1	1	0
-Congenital Pigmentary Anomalies	Colorectal Cancer	0.0789339038311643	1	1
+Congenital Pigmentary Anomalies	Colorectal Cancer	0.0789339038311643	1	0
 Congenital Pigmentary Anomalies	Gastric Cancer	1	0	0
 Congenital Pigmentary Anomalies	Kidney Cancer	1	0	0
 Congenital Pigmentary Anomalies	Lung Cancer	1	1	0
 Congenital Pigmentary Anomalies	Malignant Brain Neoplasm	1	0	0
-Congenital Pigmentary Anomalies	Melanoma	0.0574366966583688	1	1
+Congenital Pigmentary Anomalies	Melanoma	0.0574366966583688	1	0
 Congenital Pigmentary Anomalies	Prostate Cancer	1	1	0
 Congenital Pigmentary Anomalies	Uterine Cancer	1	0	0
 Cystic Fibrosis	Bladder Cancer	1	0	0
@@ -302,7 +302,7 @@ Disorders of Copper Metabolism	Uterine Cancer	1	0	0
 Facial and Skull Anomalies	Bladder Cancer	0.144518659553633	0	0
 Facial and Skull Anomalies	Female Breast Cancer	0.190195115376076	1	0
 Facial and Skull Anomalies	Colorectal Cancer	0.0199878220826778	1	1
-Facial and Skull Anomalies	Gastric Cancer	0.0809604178419679	0	1
+Facial and Skull Anomalies	Gastric Cancer	0.0809604178419679	0	0
 Facial and Skull Anomalies	Kidney Cancer	1	0	0
 Facial and Skull Anomalies	Lung Cancer	1	1	0
 Facial and Skull Anomalies	Malignant Brain Neoplasm	0.134702362170189	1	0
@@ -327,12 +327,12 @@ Li Fraumeni and Related Syndromes	Kidney Cancer	4.97300589077133e-05	0	1
 Li Fraumeni and Related Syndromes	Lung Cancer	0.00137697906787731	1	1
 Li Fraumeni and Related Syndromes	Malignant Brain Neoplasm	0.000752151864056301	1	1
 Li Fraumeni and Related Syndromes	Melanoma	0.000209886671172498	1	1
-Li Fraumeni and Related Syndromes	Prostate Cancer	0.0536989967477242	0	1
-Li Fraumeni and Related Syndromes	Uterine Cancer	0.090018917934279	1	1
+Li Fraumeni and Related Syndromes	Prostate Cancer	0.0536989967477242	0	0
+Li Fraumeni and Related Syndromes	Uterine Cancer	0.090018917934279	1	0
 Multiple Endocrine Neoplasia Type I	Bladder Cancer	1	0	0
 Multiple Endocrine Neoplasia Type I	Female Breast Cancer	1	1	0
-Multiple Endocrine Neoplasia Type I	Colorectal Cancer	0.0688652298104389	1	1
-Multiple Endocrine Neoplasia Type I	Gastric Cancer	0.0538042066995585	1	1
+Multiple Endocrine Neoplasia Type I	Colorectal Cancer	0.0688652298104389	1	0
+Multiple Endocrine Neoplasia Type I	Gastric Cancer	0.0538042066995585	1	0
 Multiple Endocrine Neoplasia Type I	Kidney Cancer	1	1	0
 Multiple Endocrine Neoplasia Type I	Lung Cancer	1	1	0
 Multiple Endocrine Neoplasia Type I	Malignant Brain Neoplasm	1	1	0
@@ -466,13 +466,13 @@ Inherited Adrenogenital Disorders	Gastric Cancer	1	0	0
 Inherited Adrenogenital Disorders	Kidney Cancer	1	1	0
 Inherited Adrenogenital Disorders	Lung Cancer	1	0	0
 Inherited Adrenogenital Disorders	Malignant Brain Neoplasm	1	1	0
-Inherited Adrenogenital Disorders	Melanoma	0.0653697419171671	0	1
+Inherited Adrenogenital Disorders	Melanoma	0.0653697419171671	0	0
 Inherited Adrenogenital Disorders	Prostate Cancer	0.136882829868589	0	0
 Inherited Adrenogenital Disorders	Uterine Cancer	1	0	0
 Non-Specific Autosomal Deletion Syndromes	Bladder Cancer	0.144518659553633	0	0
 Non-Specific Autosomal Deletion Syndromes	Female Breast Cancer	1	0	0
 Non-Specific Autosomal Deletion Syndromes	Colorectal Cancer	1	0	0
-Non-Specific Autosomal Deletion Syndromes	Gastric Cancer	0.0809604178419679	0	1
+Non-Specific Autosomal Deletion Syndromes	Gastric Cancer	0.0809604178419679	0	0
 Non-Specific Autosomal Deletion Syndromes	Kidney Cancer	1	1	0
 Non-Specific Autosomal Deletion Syndromes	Lung Cancer	1	0	0
 Non-Specific Autosomal Deletion Syndromes	Malignant Brain Neoplasm	0.134702362170189	0	0
@@ -501,7 +501,7 @@ Friedreich Ataxia	Prostate Cancer	1	0	0
 Friedreich Ataxia	Uterine Cancer	1	0	0
 Anophthalmos/Micropthalmos	Bladder Cancer	1	0	0
 Anophthalmos/Micropthalmos	Female Breast Cancer	1	0	0
-Anophthalmos/Micropthalmos	Colorectal Cancer	0.0670205476436106	0	1
+Anophthalmos/Micropthalmos	Colorectal Cancer	0.0670205476436106	0	0
 Anophthalmos/Micropthalmos	Gastric Cancer	0.0362218725752612	0	1
 Anophthalmos/Micropthalmos	Kidney Cancer	1	0	0
 Anophthalmos/Micropthalmos	Lung Cancer	1	0	0
@@ -518,7 +518,7 @@ Chondrodystrophy	Lung Cancer	1	0	0
 Chondrodystrophy	Malignant Brain Neoplasm	0.0316344279377198	1	1
 Chondrodystrophy	Melanoma	1	0	0
 Chondrodystrophy	Prostate Cancer	1	0	0
-Chondrodystrophy	Uterine Cancer	0.0609494681346774	0	1
+Chondrodystrophy	Uterine Cancer	0.0609494681346774	0	0
 Chronic Progressive External Ophthalmoplegia	Bladder Cancer	1	0	0
 Chronic Progressive External Ophthalmoplegia	Female Breast Cancer	1	0	0
 Chronic Progressive External Ophthalmoplegia	Colorectal Cancer	0.132991370107071	0	0
@@ -588,7 +588,7 @@ Congenital Ectodermal Dysplasia	Lung Cancer	0.279452650104212	0	0
 Congenital Ectodermal Dysplasia	Malignant Brain Neoplasm	1	0	0
 Congenital Ectodermal Dysplasia	Melanoma	1	1	0
 Congenital Ectodermal Dysplasia	Prostate Cancer	1	0	0
-Congenital Ectodermal Dysplasia	Uterine Cancer	0.0769875867259483	0	1
+Congenital Ectodermal Dysplasia	Uterine Cancer	0.0769875867259483	0	0
 Disorders of Aromatic Amino Acid Metabolism	Bladder Cancer	1	0	0
 Disorders of Aromatic Amino Acid Metabolism	Female Breast Cancer	0.328719021203392	0	0
 Disorders of Aromatic Amino Acid Metabolism	Colorectal Cancer	0.702842802986488	0	0
