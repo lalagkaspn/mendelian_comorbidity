@@ -352,7 +352,7 @@ md_cancer_comorbidities = fread("processed_data/md_cd_comorbidities.txt") %>%
   filter(complex_disease %in% c("Female Breast Cancer", "Malignant Brain Neoplasm", "Melanoma", "Bladder Cancer", "Colorectal Cancer", "Gastric Cancer", "Kidney Cancer", "Lung Cancer", "Prostate Cancer", "Uterine Cancer"))
 
 ## Function to create list of TCGA significantly mutated genes for each cancer
-sig_snv_cnv_combined = function(full_path_to_gistic2_ampl, full_path_to_gistic2_del, full_path_to_mutsig2cv, threshold_gistic2_qvalue = 0.1, threshold_gistic2_genes_in_peak = 50, threshold_mutsig2cv_qvalue = 0.1) {
+sig_snv_cnv_combined = function(full_path_to_gistic2_ampl, full_path_to_gistic2_del, full_path_to_mutsig2cv, threshold_gistic2_qvalue = 0.05, threshold_gistic2_genes_in_peak = 50, threshold_mutsig2cv_qvalue = 0.05) {
   
   ## GISTIC2 amplifications
   gistic2_ampl = data.table::fread(full_path_to_gistic2_ampl)
