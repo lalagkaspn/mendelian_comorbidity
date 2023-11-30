@@ -143,14 +143,162 @@ pvalue_comorbidity_gensim = log_summary_comorbidity_gensim[3, 4]
 or_comorbidity_gensim_95ci = c(exp(confint(glm_fits_comorbidity_gensim))[3, 1], exp(confint(glm_fits_comorbidity_gensim))[3, 2])
 names(or_comorbidity_gensim_95ci) = c("ci_2.5", "ci_97.5")
 
-## create forestplot
-data_fig4a = data.frame(category = c("Comorbidity & Genetic similarity", "Comorbidity"),
-                        ci_2.5 = c(or_comorbidity_gensim_95ci["ci_2.5"], or_comorbidity_95ci["ci_2.5"]),
-                        ci_97.5 = c(or_comorbidity_gensim_95ci["ci_97.5"], or_comorbidity_95ci["ci_97.5"]),
-                        odds_ratio = c(or_comorbidity_gensim, or_comorbidity))
-data_fig4a$category = factor(data_fig4a$category, levels = data_fig4a$category, labels = data_fig4a$category)
+## permutations ## 
 
-fig_4a = ggplot(data_fig4a, aes(y = category, x = odds_ratio, xmin = ci_2.5, xmax = ci_97.5)) +
+## define functions
+# define shuffle function - we shuffle the cancers associated (comorbid or comorbid and genetically similar) with each Mendelian disease
+shuffle = function(matrix_to_be_shuffled) {
+  
+  matrix_shuffled = matrix_to_be_shuffled
+  
+  # shuffling
+  for (i in 2:ncol(matrix_shuffled)) {
+    matrix_shuffled[, i] = sample(matrix_shuffled[, i], replace = FALSE)
+  }
+  
+  # convert to original format
+  matrix_shuffled = tidyr::gather(matrix_shuffled, key = "mendelian_disease", value = "value", -cancer) %>%
+    dplyr::select(mendelian_disease, cancer, value) %>%
+    filter(value == 1) %>% 
+    distinct()
+  
+  return(matrix_shuffled)
+}
+
+permutation = function(md_cancer_matrix, drugs_targeting_md_genes, drugs_nr_targets, investigated_indicated_drugs, md_drugs) {
+  
+  # shuffle comorbidity matrix
+  md_cancer_matrix_shuffled = shuffle(md_cancer_matrix)
+  
+  # unique mendelian diseases and cancers in our sample
+  unique_md = unique(md_cancer_matrix_shuffled$mendelian_disease)
+  unique_cancers = unique(md_cancer_matrix_shuffled$cancer)
+  
+  # create logistic regression input - each row is a drug-cancer pair 
+  log_input = data.frame(db_id = rep(drugs_targeting_md_genes$db_id, each = length(unique_cancers)))
+  log_input$cancer = unique_cancers  
+  # add information about number of targets for each drug
+  log_input = left_join(log_input, drugs_nr_targets, by = "db_id")  
+  # add information about investigated/indicated drugs within each drug-cancer pair
+  log_input = left_join(log_input, investigated_indicated_drugs, by = c("cancer" = "complex_disease", 
+                                                                        "db_id" = "drugbank_id"))
+  # if indicated_investigated is NA --> this drug is not indicated/investigated for this cancer
+  log_input$indicated_investigated = ifelse(is.na(log_input$indicated_investigated), 0, 1)
+  
+  # add information about comorbidity and genetic similarity support
+  md_cancer_pairs_support = left_join(md_cancer_matrix_shuffled, md_drugs, by = "mendelian_disease")
+  md_cancer_pairs_support = na.omit(md_cancer_pairs_support)
+  md_cancer_pairs_support = md_cancer_pairs_support %>% 
+    dplyr::select(db_id, cancer, value) %>%
+    distinct()
+  # some drug-cancer pairs might be supported by comorbidity from one MD-cancer pair but not another (same with genetic similarity)
+  # for these pairs, keep the max evidence
+  md_cancer_pairs_support = md_cancer_pairs_support %>% 
+    group_by(db_id, cancer) %>%
+    mutate(value = max(value)) %>%
+    ungroup() %>%
+    distinct()
+  log_input = left_join(log_input, md_cancer_pairs_support, by = c("cancer", "db_id"))
+  if (sum(is.na(log_input$value)) > 1) {
+    log_input$value = ifelse(is.na(log_input$value), 0, 1)
+  }
+  
+  ## run logistic regression ##
+  glm_fits = glm(indicated_investigated ~ total_targets + value,
+                 data = log_input, 
+                 family = binomial())
+  log_summary = summary(glm_fits)$coefficients
+  log_summary
+  # isolate needed results
+  oddsratio_pvalue = c(exp(log_summary[3, 1]), log_summary[3, 4])
+  names(oddsratio_pvalue) = c("odds_ratio", "pvalue")
+  
+  return(oddsratio_pvalue)
+}
+
+## to assess the significance of the comorbidity variable
+md_cd_comorbidity_matrix = md_cancer_comorbidities %>% filter(comorbidity == 1)
+md_cd_comorbidity_matrix = as.data.frame.matrix(table(md_cd_comorbidity_matrix[, 1:2]))
+md_cd_comorbidity_matrix = md_cd_comorbidity_matrix %>% 
+  mutate(cancer = rownames(md_cd_comorbidity_matrix)) %>%
+  dplyr::select(cancer, everything())
+rownames(md_cd_comorbidity_matrix) = NULL
+
+# create empty vector to save the permutation results
+or_comorbidity_perm = c()
+pvalue_comorbidity_perm = c()
+
+# run permutations
+for (i in 1:1000) {
+  
+  # permutations
+  perm_results = permutation(md_cancer_matrix = md_cd_comorbidity_matrix, 
+                             drugs_targeting_md_genes, drugs_nr_targets, investigated_indicated_drugs, md_drugs)
+  
+  # update permutation results vectors
+  or_comorbidity_perm[i] = perm_results[1]
+  pvalue_comorbidity_perm[i] = perm_results[2]
+  
+  # track progress
+  cat(i, "\n")
+}
+
+# calculate permutation p-values and odds ratio 95% CIs
+# p-values
+pvalue_comorbidity_perm_pvalue = sum(pvalue_comorbidity >= pvalue_comorbidity_perm) / 1000
+pvalue_comorbidity_perm_pvalue # 0.007 (0.7%)
+# odds ratios
+or_comorbidity_perm_pvalue = sum(or_comorbidity <= or_comorbidity_perm) / 1000
+or_comorbidity_perm_pvalue # 0.007 (0.7%)
+or_comorbidity_perm_95ci = quantile(or_comorbidity_perm, c(0.05, 0.5, 0.95))
+
+## to assess the significance of the comorbidity * genetic similarity
+# create comorbidity matrix
+md_cd_comorbidity_gensim_matrix = md_cancer_comorbidities %>% filter(comorbidity == 1 & genetic_similarity_melamed == 1)
+md_cd_comorbidity_gensim_matrix = as.data.frame.matrix(table(md_cd_comorbidity_gensim_matrix[, 1:2]))
+md_cd_comorbidity_gensim_matrix = md_cd_comorbidity_gensim_matrix %>% 
+  mutate(cancer = rownames(md_cd_comorbidity_gensim_matrix)) %>%
+  dplyr::select(cancer, everything())
+rownames(md_cd_comorbidity_gensim_matrix) = NULL
+
+# create empty vector to save the permutation results
+or_comorbidity_gensim_perm = c()
+pvalue_comorbidity_gensim_perm = c()
+
+# run permutations
+for (i in 1:1000) {
+  
+  # permutations
+  perm_results = permutation(md_cancer_matrix = md_cd_comorbidity_gensim_matrix, 
+                             drugs_targeting_md_genes, drugs_nr_targets, investigated_indicated_drugs, md_drugs)
+  
+  # update permutation results vectors
+  or_comorbidity_gensim_perm[i] = perm_results[1]
+  pvalue_comorbidity_gensim_perm[i] = perm_results[2]
+  
+  # track progress
+  cat(i, "\n")
+}
+
+# calculate permutation p-values and odds ratio 95% CIs
+# p-values
+pvalue_comorbidity_gensim_perm_pvalue = sum(pvalue_comorbidity_gensim >= pvalue_comorbidity_gensim_perm) / 1000
+pvalue_comorbidity_gensim_perm_pvalue # 0.001
+# odds ratios
+or_comorbidity_gensim_perm_pvalue = sum(or_comorbidity_gensim <= or_comorbidity_gensim_perm) / 1000
+or_comorbidity_gensim_perm_pvalue # 0.001
+or_comorbidity_gensim_perm_95ci = quantile(or_comorbidity_gensim_perm, c(0.05, 0.5, 0.95))
+
+## create forestplot
+data_fig4a = data.frame(category = c("Comorbidity & Genetic similarity permutations", "Comorbidity & Genetic similarity", "Comorbidity permutations", "Comorbidity"),
+                        ci_2.5 = c(or_comorbidity_gensim_perm_95ci["5%"], or_comorbidity_gensim_95ci["ci_2.5"], or_comorbidity_perm_95ci["5%"], or_comorbidity_95ci["ci_2.5"]),
+                        ci_97.5 = c(or_comorbidity_gensim_perm_95ci["95%"], or_comorbidity_gensim_95ci["ci_97.5"], or_comorbidity_perm_95ci["95%"], or_comorbidity_95ci["ci_97.5"]),
+                        odds_ratio = c(or_comorbidity_gensim_perm_95ci["50%"], or_comorbidity_gensim, or_comorbidity_perm_95ci["50%"], or_comorbidity))
+data_fig4a$category = factor(data_fig4a$category, levels = data_fig4a$category, labels = data_fig4a$category)
+data_fig4a$obs_perm = c("Permuted", "Observed")
+data_fig4a$obs_perm = factor(data_fig4a$obs_perm, levels = c("Observed", "Permuted"), labels = c("Observed", "Permuted"))
+
+fig_4a = ggplot(data_fig4a, aes(y = category, x = odds_ratio, xmin = ci_2.5, xmax = ci_97.5, color = obs_perm)) +
   geom_point(size = 1.5) + 
   geom_errorbarh(height = 0.2, linewidth = 0.7) +
   ylab("") +
@@ -173,12 +321,12 @@ fig_4a = ggplot(data_fig4a, aes(y = category, x = odds_ratio, xmin = ci_2.5, xma
         legend.text = element_text(size = 30, family = "Arial", color = "black"),
         legend.title = element_blank(),
         legend.key.size = unit(2, "cm"), 
-        aspect.ratio = 0.2)
+        aspect.ratio = 0.4)
 
 fig_4a
 ggsave(filename = "Fig4A_forest_plot.tiff", 
        path = "figures/",
-       width = 14, height = 7, device = 'tiff',
+       width = 20, height = 10, device = 'tiff',
        dpi = 300, compression = "lzw", type = type_compression)
 dev.off()
 
@@ -748,9 +896,12 @@ dev.off()
 
 ## save results
 odds_ratio_genetic_similarity_melamed = data.frame(disease_category = c("Comorbidity", "Comorbidity & Genetic similarity"),
-                                                   odds_ratioerved = c(or_comorbidity, or_comorbidity_gensim),
+                                                   odds_ratio = c(or_comorbidity, or_comorbidity_gensim),
                                                    pvalue = c(pvalue_comorbidity, pvalue_comorbidity_gensim),
                                                    ci_2.5 = c(or_comorbidity_95ci["ci_2.5"], or_comorbidity_gensim_95ci["ci_2.5"]),
-                                                   ci_97.5 = c(or_comorbidity_95ci["ci_97.5"], or_comorbidity_gensim_95ci["ci_97.5"]))
+                                                   ci_97.5 = c(or_comorbidity_95ci["ci_97.5"], or_comorbidity_gensim_95ci["ci_97.5"]),
+                                                   ci_5_permutations = c(or_comorbidity_perm_95ci["5%"], or_comorbidity_gensim_perm_95ci["5%"]),
+                                                   ci_50_permutations = c(or_comorbidity_perm_95ci["50%"], or_comorbidity_gensim_perm_95ci["50%"]),
+                                                   ci_95_permutations = c(or_comorbidity_perm_95ci["95%"], or_comorbidity_gensim_perm_95ci["95%"]))
 fwrite(odds_ratio_genetic_similarity_melamed, "results/log_reg_results_comorbidity_genetic_similarity_odds_ratio_fig4a.txt", sep = "\t", row.names = FALSE)
 fwrite(data_fig4c_fraction, "results/fraction_candidate_drugs_inv_ind_comorbidity_genetic_similarity.txt", sep = "\t", row.names = FALSE)
