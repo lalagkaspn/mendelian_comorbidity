@@ -254,9 +254,9 @@ dev.off()
 # number of drugs - rank sum test
 log_reg_results_summary$sig = ifelse(log_reg_results_summary$pvalue < 0.05, 1, 0)
 log_reg_results_summary$sig = factor(log_reg_results_summary$sig, levels = c(0, 1), labels = c("Non-significant \nMendelian diseases", "Significant \nMendelian diseases"))
-fig_3b = ggplot(log_reg_results_summary, aes(y = nr_drugs, x = sig, fill = sig)) +
-  geom_violin() +
-  geom_jitter(width = 0.1, alpha = 0.5, size = 4) +
+fig_3b = ggplot(log_reg_results_summary, aes(y = nr_drugs, x = sig)) +
+  geom_boxplot() +
+  # geom_jitter(width = 0.1, alpha = 0.5, size = 4) +
   xlab("") +
   ylab("Number of drugs") +
   labs(title = "") +
@@ -397,22 +397,131 @@ for (permutation in 1:1000) {
 perm_pvalue = sum(pvalue_obs >= log_reg_results_permutation$pvalue) / 1000 # 0.018 = 1.8%
 sum(or_obs <= log_reg_results_permutation$odds_ratio) / 1000 # 0.014 = 1.4%
 
-## visualizations of results
-fig_3c = ggplot(log_reg_results_permutation, aes(x = odds_ratio)) +
-  geom_histogram(color = "black", fill = "lightblue") +
-  geom_vline(xintercept = or_obs, color = "red", linewidth = 0.8) +
-  xlab("Odds ratio") +
-  ylab("count") +
-  scale_x_continuous(breaks = seq(0, 2.25, 0.25), limits = c(0.75, 2.25)) +
-  annotate(geom = "text", x = 1.95, y = 145, label = paste0(sum(or_obs <= log_reg_results_permutation$odds_ratio) / 1000*100, "%"), size = 7, family = "Arial", color = "red", fontface = "bold") +
+# ## visualizations of results
+# ggplot(log_reg_results_permutation, aes(x = odds_ratio)) +
+#   geom_histogram(color = "black", fill = "lightblue") +
+#   geom_vline(xintercept = or_obs, color = "red", linewidth = 0.8) +
+#   xlab("Odds ratio") +
+#   ylab("count") +
+#   scale_x_continuous(breaks = seq(0, 2.25, 0.25), limits = c(0.75, 2.25)) +
+#   annotate(geom = "text", x = 1.95, y = 145, label = paste0(sum(or_obs <= log_reg_results_permutation$odds_ratio) / 1000*100, "%"), size = 7, family = "Arial", color = "red", fontface = "bold") +
+#   theme_classic() +
+#   theme(axis.text = element_text(size = 20, family = "Arial", colour = "black"),
+#         axis.title = element_text(size = 22, family = "Arial", colour = "black"))
+
+
+## -- gene level analysis -- ##
+
+## analysis per Mendelian disease gene
+# keep druggable md genes
+md_genes_druggable = md_genes %>% filter(causal_gene %in% db_drug_targets$drug_target)
+unique_md_genes = unique(md_genes_druggable$causal_gene)
+lr_inputs = vector("list", length(unique(unique_md_genes)))
+names(lr_inputs) = unique_md_genes
+
+for (i in 1:length(unique_md_genes)) {
+  
+  # gene
+  md_gene_temp = unique_md_genes[[i]]
+  
+  # drugs targeting that gene
+  drugs_targeting_md_gene_temp = db_drug_targets %>% filter(drug_target == md_gene_temp)
+  drugs_targeting_md_gene_temp = unique(drugs_targeting_md_gene_temp$db_id)
+  
+  # Mendelian diseases linked to that gene
+  md_disease_temp = md_genes %>% filter(causal_gene == md_gene_temp)
+  md_disease_temp = unique(md_disease_temp$mendelian_disease)
+  
+  # comorbidities of these Mendelian diseases
+  md_comorbidities_temp = md_cd_comorbidities %>% filter(mendelian_disease %in% md_disease_temp)
+  md_comorbidities_temp = unique(md_comorbidities_temp$complex_disease)
+  
+  # each row should be a drug-complex disease pair
+  log_input = data.frame(drug = rep(drugs_targeting_md_gene_temp, each = length(unique_cd)))
+  
+  # add complex diseases
+  log_input$disease = unique_cd
+  
+  # add disease category
+  log_input = left_join(log_input, complex_disease_categories, by = c("disease" = "complex_disease"))
+  
+  # add number of targets
+  log_input = left_join(log_input, drugs_nr_targets, by = c("drug" = "db_id"))
+  
+  # add indicated/investigated drugs
+  log_input = left_join(log_input, investigated_indicated_drugs, by = c("drug" = "drugbank_id", "disease" = "complex_disease"))
+  log_input$indicated_investigated = ifelse(is.na(log_input$indicated_investigated), 0, 1)
+  
+  # add recommended candidate drugs
+  log_input$recommended = ifelse(log_input$disease %in% md_comorbidities_temp, 1, 0)
+  
+  lr_inputs[[i]] = log_input
+  
+  cat(i, "-", length(unique_md_genes), "\n")
+}
+
+## run logistic regression
+log_reg_results = data.frame(md_genes = unique_md_genes, comorbidity_OR = NA, comorbidity_P = NA)
+
+for (i in 1:nrow(log_reg_results)) {
+  
+  # run logistic regression
+  if (length(unique(lr_inputs[[i]]$total_targets)) == 1) {
+    glm_fits_temp = glm(indicated_investigated ~  disease_category + recommended, 
+                        data = lr_inputs[[i]], 
+                        family = binomial())
+    log_summary_temp = as.data.frame(summary(glm_fits_temp)$coefficients)
+    log_reg_results[i, "comorbidity_OR"] = exp(log_summary_temp[7, 1])
+    log_reg_results[i, "comorbidity_P"] = log_summary_temp[7, 4]
+    
+  }
+  
+  if (length(unique(lr_inputs[[i]]$total_targets)) > 1) {
+    glm_fits_temp = glm(indicated_investigated ~  disease_category + total_targets + recommended, 
+                        data = lr_inputs[[i]], 
+                        family = binomial())
+    log_summary_temp = as.data.frame(summary(glm_fits_temp)$coefficients)
+    log_reg_results[i, "comorbidity_OR"] = exp(log_summary_temp[8, 1])
+    log_reg_results[i, "comorbidity_P"] = log_summary_temp[8, 4]
+  }
+  
+  cat(i, "-", nrow(log_reg_results), "\n")
+}
+
+log_reg_results$sig = ifelse(log_reg_results$comorbidity_P < 0.05, 1, 0)
+
+## add nr of targets for each MD gene
+md_genes_druggable = left_join(md_genes_druggable, db_drug_targets, by = c("causal_gene" = "drug_target"))
+md_genes_druggable = md_genes_druggable %>% 
+  group_by(causal_gene) %>%
+  mutate(nr_drugs = length(unique(db_id))) %>%
+  ungroup() %>%
+  distinct()
+md_genes_nr_drugs = md_genes_druggable %>%
+  dplyr::select(causal_gene, nr_drugs) %>% 
+  distinct()
+hist(md_genes_nr_drugs$nr_drugs)
+
+log_reg_results = left_join(log_reg_results, md_genes_nr_drugs, by = c("md_genes" = "causal_gene"))
+log_reg_results$sig = factor(log_reg_results$sig, levels = c("0", "1"), labels = c("Non-significant \ngenes", "Significant \ngenes"))
+
+fig_3c = ggplot(log_reg_results, aes(x = sig, y = nr_drugs)) +
+  geom_boxplot() +
+  # geom_point(alpha = 0.5, position = "jitter") +
+  xlab("") +
+  ylab("Number of drugs") +
+  geom_signif(comparisons = list(c("Significant \ngenes", "Non-significant \ngenes")), test.args = list(alternative = "greater"), 
+              map_signif_level = FALSE, textsize = 10) +
+  annotate(geom = "text", x = 1.5, y = 85, label = "WIilcoxon rank-sum test", size = 9) +
+  scale_y_continuous(breaks = seq(0, 85, 5)) +
   theme_classic() +
-  theme(axis.text = element_text(size = 20, family = "Arial", colour = "black"),
-        axis.title = element_text(size = 22, family = "Arial", colour = "black"))
+  theme(axis.text = element_text(size = 30, family = "Arial", color = "black"),
+        axis.title = element_text(size = 30),
+        legend.position = "none")
 
 fig_3c
-ggsave(filename = "Fig3C_permutations.tiff", 
+ggsave(filename = "Fig3C_per_gene_drugs.tiff", 
        path = "figures/",
-       width = 8, height = 6, device = 'tiff',
+       width = 12, height = 12, device = 'tiff',
        dpi = 700, compression = "lzw", type = type_compression)
 dev.off()
-
