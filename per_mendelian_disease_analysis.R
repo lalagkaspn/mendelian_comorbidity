@@ -235,7 +235,7 @@ nr_genes_per_md = md_genes %>%
 log_reg_results_summary = left_join(log_reg_results_summary, nr_genes_per_md, by = "mendelian_disease")
 log_reg_results_summary$drug_to_gene_ratio = log_reg_results_summary$nr_drugs / log_reg_results_summary$nr_genes
 
-fig_3a = ggplot(log_reg_results_summary, aes(x = drug_to_gene_ratio)) +
+ggplot(log_reg_results_summary, aes(x = drug_to_gene_ratio)) +
   geom_histogram(color = "black", fill = "lightblue", bins = 71) +
   scale_x_continuous(breaks = seq(0, 95, 5)) +
   xlab("Drug-to-gene ratio") +
@@ -244,8 +244,31 @@ fig_3a = ggplot(log_reg_results_summary, aes(x = drug_to_gene_ratio)) +
   theme(axis.text = element_text(size = 24, family = "Arial", color = "black"),
         axis.title = element_text(size = 30, family = "Arial", color = "black"))
 
+# histogram of number of drugs per Mendelian gene
+md_genes_drugs = left_join(md_genes, db_drug_targets, by = c("causal_gene" = "drug_target"))
+# md_genes_drugs = na.omit(md_genes_drugs) ; rownames(md_genes_drugs) = NULL
+md_genes_drugs = md_genes_drugs %>%
+  dplyr::select(causal_gene, db_id) %>%
+  distinct() %>%
+  group_by(causal_gene) %>% 
+  mutate(nr_drugs = if_else(sum(is.na(unique(db_id))) == 1, "0", "over_0")) %>%
+  mutate(nr_drugs = if_else(nr_drugs != "0", length(unique(db_id)), 0)) %>%
+  ungroup() %>%
+  dplyr::select(causal_gene, nr_drugs) %>% 
+  distinct()
+
+fig_3a = ggplot(md_genes_drugs, aes(x = nr_drugs)) +
+  geom_histogram(color = "black", fill = "lightblue", bins = 100) +
+  scale_x_continuous(breaks = seq(0, 90, 10)) +
+  scale_y_continuous(breaks = seq(0, 400, 40), limits = c(0, 400)) +
+  xlab("Number of drugs") +
+  ylab("Number of genes") +
+  theme_classic() +
+  theme(axis.text = element_text(size = 24, family = "Arial", color = "black"),
+        axis.title = element_text(size = 30, family = "Arial", color = "black"))
+
 fig_3a
-ggsave(filename = "Fig3A_drug_to_gene_ratio_per_MD.tiff", 
+ggsave(filename = "Fig3A_drugs_per_MD_gene.tiff", 
        path = "figures/",
        width = 12, height = 8, device = 'tiff',
        dpi = 700, compression = "lzw", type = type_compression)
