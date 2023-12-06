@@ -513,7 +513,7 @@ fig_3c = ggplot(log_reg_results, aes(x = sig, y = nr_drugs)) +
   geom_signif(comparisons = list(c("Significant \ngenes", "Non-significant \ngenes")), test.args = list(alternative = "greater"), 
               map_signif_level = FALSE, textsize = 10) +
   annotate(geom = "text", x = 1.5, y = 85, label = "WIilcoxon rank-sum test", size = 9) +
-  scale_y_continuous(breaks = seq(0, 85, 5)) +
+  scale_y_continuous(breaks = seq(0, 85, 10)) +
   theme_classic() +
   theme(axis.text = element_text(size = 30, family = "Arial", color = "black"),
         axis.title = element_text(size = 30),
