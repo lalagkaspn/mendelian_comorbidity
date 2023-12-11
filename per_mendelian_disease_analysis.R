@@ -235,40 +235,18 @@ nr_genes_per_md = md_genes %>%
 log_reg_results_summary = left_join(log_reg_results_summary, nr_genes_per_md, by = "mendelian_disease")
 log_reg_results_summary$drug_to_gene_ratio = log_reg_results_summary$nr_drugs / log_reg_results_summary$nr_genes
 
-ggplot(log_reg_results_summary, aes(x = drug_to_gene_ratio)) +
+fig3a = ggplot(log_reg_results_summary, aes(x = nr_drugs)) +
   geom_histogram(color = "black", fill = "lightblue", bins = 71) +
-  scale_x_continuous(breaks = seq(0, 95, 5)) +
-  xlab("Drug-to-gene ratio") +
+  scale_x_continuous(breaks = c(1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150)) +
+  scale_y_continuous(breaks = seq(0, 9)) +
+  xlab("Number of drugs") +
   ylab("Number of Mendelian diseases") +
   theme_classic() +
   theme(axis.text = element_text(size = 24, family = "Arial", color = "black"),
         axis.title = element_text(size = 30, family = "Arial", color = "black"))
 
-# histogram of number of drugs per Mendelian gene
-md_genes_drugs = left_join(md_genes, db_drug_targets, by = c("causal_gene" = "drug_target"))
-# md_genes_drugs = na.omit(md_genes_drugs) ; rownames(md_genes_drugs) = NULL
-md_genes_drugs = md_genes_drugs %>%
-  dplyr::select(causal_gene, db_id) %>%
-  distinct() %>%
-  group_by(causal_gene) %>% 
-  mutate(nr_drugs = if_else(sum(is.na(unique(db_id))) == 1, "0", "over_0")) %>%
-  mutate(nr_drugs = if_else(nr_drugs != "0", length(unique(db_id)), 0)) %>%
-  ungroup() %>%
-  dplyr::select(causal_gene, nr_drugs) %>% 
-  distinct()
-
-fig_3a = ggplot(md_genes_drugs, aes(x = nr_drugs)) +
-  geom_histogram(color = "black", fill = "lightblue", bins = 100) +
-  scale_x_continuous(breaks = seq(0, 90, 10)) +
-  scale_y_continuous(breaks = seq(0, 400, 40), limits = c(0, 400)) +
-  xlab("Number of drugs") +
-  ylab("Number of genes") +
-  theme_classic() +
-  theme(axis.text = element_text(size = 24, family = "Arial", color = "black"),
-        axis.title = element_text(size = 30, family = "Arial", color = "black"))
-
-fig_3a
-ggsave(filename = "Fig3A_drugs_per_MD_gene.tiff", 
+fig3a
+ggsave(filename = "Fig3A_drugs_per_MD.tiff", 
        path = "figures/",
        width = 12, height = 8, device = 'tiff',
        dpi = 700, compression = "lzw", type = type_compression)
@@ -432,8 +410,37 @@ sum(or_obs <= log_reg_results_permutation$odds_ratio) / 1000 # 0.014 = 1.4%
 #   theme(axis.text = element_text(size = 20, family = "Arial", colour = "black"),
 #         axis.title = element_text(size = 22, family = "Arial", colour = "black"))
 
-
 ## -- gene level analysis -- ##
+
+# histogram of number of drugs per Mendelian gene
+md_genes_drugs = left_join(md_genes, db_drug_targets, by = c("causal_gene" = "drug_target"))
+md_genes_drugs = md_genes_drugs %>%
+  dplyr::select(causal_gene, db_id) %>%
+  distinct() %>%
+  group_by(causal_gene) %>% 
+  mutate(nr_drugs = if_else(sum(is.na(unique(db_id))) == 1, "0", "over_0")) %>%
+  mutate(nr_drugs = if_else(nr_drugs != "0", length(unique(db_id)), 0)) %>%
+  ungroup() %>%
+  dplyr::select(causal_gene, nr_drugs) %>% 
+  distinct() %>%
+  filter(nr_drugs > 0)
+
+fi3c = ggplot(md_genes_drugs, aes(x = nr_drugs)) +
+  geom_histogram(color = "black", fill = "lightblue", bins = 75) +
+  scale_x_continuous(breaks = c(1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85)) +
+  scale_y_continuous(breaks = seq(0, 75, 5)) +
+  xlab("Number of drugs") +
+  ylab("Number of genes") +
+  theme_classic() +
+  theme(axis.text = element_text(size = 24, family = "Arial", color = "black"),
+        axis.title = element_text(size = 30, family = "Arial", color = "black"))
+
+fi3c
+ggsave(filename = "Fig3C_drugs_per_MD_gene.tiff", 
+       path = "figures/",
+       width = 12, height = 8, device = 'tiff',
+       dpi = 700, compression = "lzw", type = type_compression)
+dev.off()
 
 ## analysis per Mendelian disease gene
 # keep druggable md genes
@@ -523,12 +530,11 @@ md_genes_druggable = md_genes_druggable %>%
 md_genes_nr_drugs = md_genes_druggable %>%
   dplyr::select(causal_gene, nr_drugs) %>% 
   distinct()
-hist(md_genes_nr_drugs$nr_drugs)
 
 log_reg_results = left_join(log_reg_results, md_genes_nr_drugs, by = c("md_genes" = "causal_gene"))
 log_reg_results$sig = factor(log_reg_results$sig, levels = c("0", "1"), labels = c("Non-significant \ngenes", "Significant \ngenes"))
 
-fig_3c = ggplot(log_reg_results, aes(x = sig, y = nr_drugs)) +
+fig_3d = ggplot(log_reg_results, aes(x = sig, y = nr_drugs)) +
   geom_boxplot() +
   # geom_point(alpha = 0.5, position = "jitter") +
   xlab("") +
@@ -542,7 +548,7 @@ fig_3c = ggplot(log_reg_results, aes(x = sig, y = nr_drugs)) +
         axis.title = element_text(size = 30),
         legend.position = "none")
 
-fig_3c
+fig_3d
 ggsave(filename = "Fig3C_per_gene_drugs.tiff", 
        path = "figures/",
        width = 12, height = 12, device = 'tiff',
