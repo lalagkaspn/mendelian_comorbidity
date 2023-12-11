@@ -271,7 +271,7 @@ fig_3b = ggplot(log_reg_results_summary, aes(y = nr_drugs, x = sig)) +
         legend.position = "none")
 
 fig_3b
-ggsave(filename = "Fig3B_rank_sum_test.tiff", 
+ggsave(filename = "Fig3B_per_MD_drugs.tiff", 
        path = "figures/",
        width = 12, height = 12, device = 'tiff',
        dpi = 700, compression = "lzw", type = type_compression)
@@ -549,7 +549,7 @@ fig_3d = ggplot(log_reg_results, aes(x = sig, y = nr_drugs)) +
         legend.position = "none")
 
 fig_3d
-ggsave(filename = "Fig3C_per_gene_drugs.tiff", 
+ggsave(filename = "Fig3D_per_gene_drugs.tiff", 
        path = "figures/",
        width = 12, height = 12, device = 'tiff',
        dpi = 700, compression = "lzw", type = type_compression)
