@@ -89,7 +89,7 @@ for (i in 1:length(md_comorbidities)) {
 } ; rm(i)
 
 ### NOTE: 19 Mendelian diseases are causally associated with genes NOT targeted by any existing drug with know drug targets
-###       Therefore, we remove them from the downstream analysis
+### Therefore, we remove them from the downstream analysis
 md_comorbidities = md_comorbidities[lapply(md_comorbidities, nrow) > 0] # 71 Mendelian diseases remain
 
 ## -- logistic regression per Mendelian disease -- ##
@@ -202,7 +202,7 @@ log_reg_results_summary = left_join(log_reg_results_summary, md_genes_drugs, by 
 log_reg_results_summary = log_reg_results_summary %>% arrange(nr_comorbidities)
 log_reg_results_summary$nr_comorbidities = factor(log_reg_results_summary$nr_comorbidities, levels = log_reg_results_summary$nr_comorbidities, labels = log_reg_results_summary$nr_comorbidities)
 log_reg_results_summary$beta = ifelse(exp(log_reg_results_summary$beta) > 1, 1, 0)
-log_reg_results_summary$beta = factor(log_reg_results_summary$beta, levels = c(0, 1), labels = c("No", "Yes"))
+log_reg_results_summary$beta = factor(log_reg_results_summary$beta, levels = c(0, 1), labels = c("No", "Yes")) # Yes --> OR > 1 | No --> OR < 1
 
 fig_s3 = ggplot(log_reg_results_summary, aes(x = nr_drugs, y = -log10(pvalue))) +
   geom_point(alpha = 0.4, size = 1.5, aes(color = beta)) +
@@ -225,7 +225,7 @@ ggsave(filename = "FigS3_per_MD_analysis_results.tiff",
        dpi = 700, compression = "lzw", type = type_compression)
 dev.off()
 
-# histogram drug-to-gene ratio per Mendelian disease
+# histogram number of drugs per Mendelian disease
 nr_genes_per_md = md_genes %>%
   group_by(mendelian_disease) %>%
   mutate(nr_genes = length(causal_gene)) %>%
@@ -279,8 +279,7 @@ dev.off()
 
 ## -- observed vs permutations -- ##
 
-## Now, that we have the signal that significant Mendelian diseases are targeted by a higher number of drugs compared to non-significant,
-## we want to exclude the possibility that our significant results from the main analysis are due to the high number of drugs rather than the comorbidity information
+## Excluding the possibility that our results are due to the high number of drugs rather than the information about comorbiditiy
 
 # Mendelian - complex disease comorbidities
 md_cd_comorbidities = md_cd_comorbidities %>% 
@@ -534,7 +533,88 @@ md_genes_nr_drugs = md_genes_druggable %>%
 log_reg_results = left_join(log_reg_results, md_genes_nr_drugs, by = c("md_genes" = "causal_gene"))
 log_reg_results$sig = factor(log_reg_results$sig, levels = c("0", "1"), labels = c("Non-significant \ngenes", "Significant \ngenes"))
 
-fig_3d = ggplot(log_reg_results, aes(x = sig, y = nr_drugs)) +
+# ggplot(log_reg_results, aes(x = sig, y = nr_drugs)) +
+#   geom_boxplot() +
+#   # geom_point(alpha = 0.5, position = "jitter") +
+#   xlab("") +
+#   ylab("Number of drugs") +
+#   geom_signif(comparisons = list(c("Significant \ngenes", "Non-significant \ngenes")), test.args = list(alternative = "greater"), 
+#               map_signif_level = FALSE, textsize = 10) +
+#   annotate(geom = "text", x = 1.5, y = 85, label = "WIilcoxon rank-sum test", size = 9) +
+#   scale_y_continuous(breaks = seq(0, 85, 10)) +
+#   theme_classic() +
+#   theme(axis.text = element_text(size = 30, family = "Arial", color = "black"),
+#         axis.title = element_text(size = 30),
+#         legend.position = "none")
+
+## permutations analysis to exclude the possibility that the results are due to the high number of drugs targeting some of the genes
+## each time, shuffle the predictor vector of "recommended" drugs based on comorbidity --> it is the same as shuffling the comorbidities of the Mendelian diseases
+## linked to a gene
+per_md_gene_permutation_results = vector("list", 1000)
+names(per_md_gene_permutation_results) = paste0("permutation_", 1:1000)
+
+for (permutation in 1:1000) {
+  
+  ## shuffle the predictor vector of "recommended"
+  lr_inputs_permuted = lr_inputs
+  lr_inputs_permuted = lapply(lr_inputs_permuted, function(x) {
+    x$recommended = sample(x$recommended, size = nrow(x), replace = FALSE)
+    return(x)
+  })
+  
+  ## logistic regression
+  log_reg_results_perm = data.table(md_gene = names(lr_inputs_permuted), 
+                                    perm_OR = 0,
+                                    perm_pvalue = 0)
+  
+  for (i in 1:nrow(log_reg_results_perm)) {
+    
+    # run logistic regression
+    glm_fits_temp = glm(indicated_investigated ~ disease_category + total_targets + recommended, 
+                        data = lr_inputs_permuted[[log_reg_results_perm[i, md_gene]]], 
+                        family = binomial())
+    log_summary_temp = summary(glm_fits_temp)$coefficients
+    log_reg_results_perm[i, "perm_OR"] = exp(log_summary_temp["recommended", "Estimate"])
+    log_reg_results_perm[i, "perm_pvalue"] = log_summary_temp["recommended", "Pr(>|z|)"]
+  }
+  
+  # populate list
+  per_md_gene_permutation_results[[paste0("permutation_", permutation)]] = log_reg_results_perm
+  
+  cat(permutation, "\n")
+}
+
+# calculate permuted p-values for each gene
+per_md_gene_permuted_pvalues = data.table(md_gene = log_reg_results$md_genes, 
+                                          perm_pvalue_OR_based = 0,
+                                          perm_pvalue_pvalue_based = 0)
+for (i in 1:nrow(per_md_gene_permuted_pvalues)) {
+  gene_temp = per_md_gene_permuted_pvalues[i, md_gene]
+  
+  obs_or = log_reg_results[i, "comorbidity_OR"]
+  obs_pvalue = log_reg_results[i, "comorbidity_P"]
+  
+  perm_or = c()
+  perm_pvalue = c()
+  for (z in 1:length(per_md_gene_permutation_results)) {
+    perm_or = c(perm_or, per_md_gene_permutation_results[[z]][i, perm_OR])
+    perm_pvalue = c(perm_pvalue, per_md_gene_permutation_results[[z]][i, perm_pvalue])
+  }
+  
+  per_md_gene_permuted_pvalues[i, "perm_pvalue_OR_based"] = sum(obs_or <= perm_or) / 1000
+  per_md_gene_permuted_pvalues[i, "perm_pvalue_pvalue_based"] = sum(obs_pvalue >= perm_pvalue) / 1000
+  
+  cat(i, "\n")
+}
+
+per_md_gene_permuted_pvalues$perm_sig = ifelse(per_md_gene_permuted_pvalues$perm_pvalue_OR_based < 0.05, 1, 0)
+
+log_reg_results = left_join(log_reg_results, per_md_gene_permuted_pvalues[, c(1,4,5)], by = c("md_genes" = "md_gene"))
+log_reg_results$perm_sig = ifelse(log_reg_results$sig == "Non-significant \ngenes", 0, log_reg_results$perm_sig) # 13 / 13 MD genes are signficant after permutations (comparing ORs of nominally significant genes)
+
+log_reg_results$perm_sig = factor(log_reg_results$perm_sig, levels = c("0", "1"), labels = c("Non-significant \ngenes", "Significant \ngenes"))
+
+fig_3d = ggplot(log_reg_results, aes(x = perm_sig, y = nr_drugs)) +
   geom_boxplot() +
   # geom_point(alpha = 0.5, position = "jitter") +
   xlab("") +
