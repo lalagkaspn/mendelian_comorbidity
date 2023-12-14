@@ -390,30 +390,28 @@ ophthalmological_perm_ci = exp(quantile(ophthalmological_or_perm, c(0.05, 0.50, 
 cardiovascular_perm_ci = exp(quantile(cardiovascular_or_perm, c(0.05, 0.50, 0.95)))
 
 ## forestplot
-data_fig2a = data.frame(category = c("Cardiovascular perm", "Cardiovascular", "Ophthalmological perm", "Ophthalmological", "Hormonal perm", "Hormonal", "Neoplasms perm", "Neoplasms", "Neurological perm", "Neurological", "Immune perm", "Immune", "All per", "All"),
-                        odds_ratio = c(cardiovascular_perm_ci["50%"], cardiovascular_obs_or, ophthalmological_perm_ci["50%"], ophthalmological_obs_or, hormonal_perm_ci["50%"], hormonal_obs_or, cancer_perm_ci["50%"], cancers_obs_or, neurological_perm_ci["50%"], neurological_obs_or, immune_perm_ci["50%"], immune_obs_or, all_perm_ci["50%"], all_obs_or),
-                        ci_2.5 = c(cardiovascular_perm_ci["5%"], cardiovascular_obs_ci["2.5 %"], ophthalmological_perm_ci["5%"], ophthalmological_obs_ci["2.5 %"], hormonal_perm_ci["5%"], hormonal_obs_ci["2.5 %"], cancer_perm_ci["5%"], cancers_obs_ci["2.5 %"], neurological_perm_ci["5%"], neurological_obs_ci["2.5 %"], immune_perm_ci["5%"], immune_obs_ci["2.5 %"], all_perm_ci["5%"], all_obs_ci["2.5 %"]),
-                        ci_97.5 = c(cardiovascular_perm_ci["95%"], cardiovascular_obs_ci["97.5 %"], ophthalmological_perm_ci["95%"], ophthalmological_obs_ci["97.5 %"], hormonal_perm_ci["95%"], hormonal_obs_ci["97.5 %"], cancer_perm_ci["95%"], cancers_obs_ci["97.5 %"], neurological_perm_ci["95%"], neurological_obs_ci["97.5 %"], immune_perm_ci["95%"], immune_obs_ci["97.5 %"], all_perm_ci["95%"], all_obs_ci["97.5 %"]))
+data_fig2a = data.frame(category = c("Neoplasms", "Neurological", "Immune", "All"),
+                        odds_ratio = c(cancers_obs_or, neurological_obs_or, immune_obs_or, all_obs_or),
+                        ci_2.5 = c(cancers_obs_ci["2.5 %"], neurological_obs_ci["2.5 %"], immune_obs_ci["2.5 %"], all_obs_ci["2.5 %"]),
+                        ci_97.5 = c(cancers_obs_ci["97.5 %"], neurological_obs_ci["97.5 %"], immune_obs_ci["97.5 %"], all_obs_ci["97.5 %"]))
 data_fig2a$category = factor(data_fig2a$category, levels = data_fig2a$category, labels = data_fig2a$category)
-data_fig2a$color = c("Permuted","Observed")
-data_fig2a$color = factor(data_fig2a$color, levels = c("Observed", "Permuted"), labels = c("Observed", "Permuted"))
 
-fig_2a = ggplot(data_fig2a, aes(y = category, x = odds_ratio, xmin = ci_2.5, xmax = ci_97.5, color = color)) +
-  geom_point(size = 0.6) + 
-  scale_colour_manual(values = c("black", "gray50")) +
-  geom_errorbarh(height = 0.2, linewidth = 0.5) +
+fig_2a = ggplot(data_fig2a, aes(y = category, x = odds_ratio, xmin = ci_2.5, xmax = ci_97.5)) +
+  geom_point(size = 3) + 
+  geom_errorbarh(height = 0.2, linewidth = 1) +
   ylab("") +
   xlab("Odds Ratio") +
-  scale_x_continuous(breaks = seq(0, 9, 1), limits = c(0, 9)) +
+  scale_x_continuous(breaks = seq(0, 4, 0.5)) +
   geom_vline(xintercept = 1, color = "black", linewidth = 1, linetype = 3) +
   theme_classic() +
-  theme(axis.title = element_text(size = 16, family = "Arial", colour = "black"),
-        axis.text = element_text(size = 16, family = "Arial", colour = "black"),
+  theme(axis.title = element_text(size = 25, family = "Arial", colour = "black"),
+        axis.text = element_text(size = 25, family = "Arial", colour = "black"),
+        axis.title.x = element_text(margin = margin(t = 15)),
         legend.title = element_blank())
 fig_2a
 ggsave(filename = "Fig2A_oddsratio_all_per_dis_cat.tiff", 
        path = "figures/", 
-       width = 7, height = 5, device = "tiff",
+       width = 10, height = 6, device = "tiff",
        dpi = 300, compression = "lzw", type = type_compression)
 dev.off()
 
@@ -840,25 +838,23 @@ ct_phase3_perm_ci = quantile(ct_phase3_perm_or, c(0.05, 0.50, 0.95))
 ct_approved_perm_ci = quantile(ct_approved_perm_or, c(0.05, 0.50, 0.95))
 
 ### forest plot ###
-data_fig2c = data.frame(category = c("Approved perm", "Approved", "Phase III perm", "Phase III", "Phase II perm", "Phase II", "Phase I perm", "Phase I"),
-                        odds_ratio = c(ct_approved_perm_ci["50%"], ct_approved_obs_or, ct_phase3_perm_ci["50%"], ct_phase3_obs_or, ct_phase2_perm_ci["50%"], ct_phase2_obs_or, ct_phase1_perm_ci["50%"], ct_phase1_obs_or),
-                        ci_2.5 = c(ct_approved_perm_ci["5%"], ct_approved_obs_ci["2.5 %"], ct_phase3_perm_ci["5%"], ct_phase3_obs_ci["2.5 %"], ct_phase2_perm_ci["5%"], ct_phase2_obs_ci["2.5 %"], ct_phase1_perm_ci["5%"], ct_phase1_obs_ci["2.5 %"]),
-                        ci_97.5 = c(ct_approved_perm_ci["95%"], ct_approved_obs_ci["97.5 %"], ct_phase3_perm_ci["95%"], ct_phase3_obs_ci["97.5 %"], ct_phase2_perm_ci["95%"], ct_phase2_obs_ci["97.5 %"], ct_phase1_perm_ci["95%"], ct_phase1_obs_ci["97.5 %"]))
+data_fig2c = data.frame(category = c("Approved", "Phase III", "Phase II", "Phase I"),
+                        odds_ratio = c(ct_approved_obs_or, ct_phase3_obs_or, ct_phase2_obs_or, ct_phase1_obs_or),
+                        ci_2.5 = c(ct_approved_obs_ci["2.5 %"], ct_phase3_obs_ci["2.5 %"], ct_phase2_obs_ci["2.5 %"], ct_phase1_obs_ci["2.5 %"]),
+                        ci_97.5 = c(ct_approved_obs_ci["97.5 %"], ct_phase3_obs_ci["97.5 %"], ct_phase2_obs_ci["97.5 %"], ct_phase1_obs_ci["97.5 %"]))
 data_fig2c$category = factor(data_fig2c$category, levels = data_fig2c$category, labels = data_fig2c$category)
-data_fig2c$color = c("Permuted","Observed")
-data_fig2c$color = factor(data_fig2c$color, levels = c("Observed", "Permuted"), labels = c("Observed", "Permuted"))
 
-fig_2c = ggplot(data_fig2c, aes(y = category, x = odds_ratio, xmin = ci_2.5, xmax = ci_97.5, color = color)) +
-  geom_point(size = 1) + 
-  scale_colour_manual(values = c("black", "gray50")) +
-  geom_errorbarh(height = 0.2, linewidth = 0.5) +
+fig_2c = ggplot(data_fig2c, aes(y = category, x = odds_ratio, xmin = ci_2.5, xmax = ci_97.5)) +
+  geom_point(size = 3) + 
+  geom_errorbarh(height = 0.2, linewidth = 1) +
   ylab("") +
   xlab("Odds Ratio") +
-  scale_x_continuous(breaks = seq(0, 9, 1), limits = c(0, 3)) +
+  scale_x_continuous(breaks = seq(0, 3, 0.5)) +
   geom_vline(xintercept = 1, color = "black", linewidth = 1, linetype = 3) +
   theme_classic() +
-  theme(axis.title = element_text(size = 24, family = "Arial", colour = "black"),
-        axis.text = element_text(size = 24, family = "Arial", colour = "black"),
+  theme(axis.title = element_text(size = 25, family = "Arial", colour = "black"),
+        axis.text = element_text(size = 25, family = "Arial", colour = "black"),
+        axis.title.x = element_text(margin = margin(t = 15)),
         legend.title = element_blank(),
         legend.text = element_text(size = 24, family = "Arial", colour = "black"),
         legend.key.size = unit(1, 'cm'))
