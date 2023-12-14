@@ -133,7 +133,7 @@ fig_s1 = ggplot(md_nr_genes, aes(x = nr_genes, y = mendelian_disease)) +
 
 fig_s1
 ggsave(filename = "FigS1_causal_genes_per_mendelian_disease.tiff", 
-       path = "figures/", 
+       path = "supplementary_figures/", 
        width = 25, height = 30, device = "tiff",
        dpi = 300, compression = "lzw", type = type_compression)
 dev.off()

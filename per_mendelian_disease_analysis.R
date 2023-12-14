@@ -220,7 +220,7 @@ fig_s3 = ggplot(log_reg_results_summary, aes(x = nr_drugs, y = -log10(pvalue))) 
 
 fig_s3
 ggsave(filename = "FigS3_per_MD_analysis_results.tiff", 
-       path = "figures/",
+       path = "supplementary_figures/",
        width = 7, height = 5, device = 'tiff',
        dpi = 700, compression = "lzw", type = type_compression)
 dev.off()

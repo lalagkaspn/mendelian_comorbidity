@@ -77,7 +77,7 @@ fig_s2 = ggplot(md_nr_drugs, aes(x = nr_drugs, y = mendelian_disease)) +
 
 fig_s2
 ggsave(filename = "FigS2_number_of_drugs_per_mendelian_disease.tiff", 
-       path = "figures/", 
+       path = "supplementary_figures/", 
        width = 40, height = 45, device = "tiff",
        dpi = 300, compression = "lzw", type = type_compression)
 dev.off()

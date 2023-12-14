@@ -869,7 +869,7 @@ data_fig4c_fraction$category = factor(data_fig4c_fraction$category, levels = dat
 fig_4c_percentages = ggplot(data_fig4c_fraction, aes(x = category, y = fraction)) +
   geom_col(width = 0.6) +
   labs(fill = "") +
-  ylab("Fraction of succesfull candidate drugs") +
+  ylab("Fraction of successful candidate drugs") +
   xlab("") +
   scale_y_continuous(breaks = seq(0, 1, 0.01)) +
   theme_classic() +
