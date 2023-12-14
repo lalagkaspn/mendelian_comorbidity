@@ -234,10 +234,7 @@ for (permutation in 1:1000) {
   cat(permutation, "\n")
 }
 
-## ----------------------------------------------------------------------------------------------- ##
-## ----------------------------------------------------------------------------------------------- ##
-
-all_or_perm = readRDS("/Users/panagiotisnikolaoslalagkas/Desktop/main_analysis_OR_perm.RDS")
+# all_or_perm = readRDS("/Users/panagiotisnikolaoslalagkas/Desktop/main_analysis_OR_perm.RDS")
 
 all_permuted_ors = data.frame(comorbidity_filter = NA,
                               perm_OR = NA,
