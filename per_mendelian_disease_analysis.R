@@ -204,7 +204,7 @@ log_reg_results_summary$nr_comorbidities = factor(log_reg_results_summary$nr_com
 log_reg_results_summary$beta = ifelse(exp(log_reg_results_summary$beta) > 1, 1, 0)
 log_reg_results_summary$beta = factor(log_reg_results_summary$beta, levels = c(0, 1), labels = c("No", "Yes")) # Yes --> OR > 1 | No --> OR < 1
 
-fig_s3 = ggplot(log_reg_results_summary, aes(x = nr_drugs, y = -log10(pvalue))) +
+ggplot(log_reg_results_summary, aes(x = nr_drugs, y = -log10(pvalue))) +
   geom_point(alpha = 0.4, size = 1.5, aes(color = beta)) +
   # scale_x_discrete(breaks = seq(1, 61, 1)) +
   scale_y_continuous(breaks = seq(0, 11, 1)) +
@@ -215,15 +215,8 @@ fig_s3 = ggplot(log_reg_results_summary, aes(x = nr_drugs, y = -log10(pvalue))) 
   theme_classic() +
   theme(axis.text = element_text(size = 14, family = "Arial", color = "black"),
         axis.title = element_text(size = 18, family = "Arial", color = "black"),
-        title = element_text(size = 18, family = "Arial", color = "black"), 
+        title = element_text(size = 18, family = "Arial", color = "black"),
         legend.text = element_text(size = 12, family = "Arial", color = "black"))
-
-fig_s3
-ggsave(filename = "FigS3_per_MD_analysis_results.tiff", 
-       path = "supplementary_figures/",
-       width = 7, height = 5, device = 'tiff',
-       dpi = 700, compression = "lzw", type = type_compression)
-dev.off()
 
 # histogram number of drugs per Mendelian disease
 nr_genes_per_md = md_genes %>%

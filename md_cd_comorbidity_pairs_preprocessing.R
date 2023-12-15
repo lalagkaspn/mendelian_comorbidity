@@ -117,7 +117,7 @@ md_nr_genes = md_genes %>%
   arrange(nr_genes)
 md_nr_genes$mendelian_disease = factor(md_nr_genes$mendelian_disease, levels = md_nr_genes$mendelian_disease, labels = md_nr_genes$mendelian_disease)
 
-fig_s1 = ggplot(md_nr_genes, aes(x = nr_genes, y = mendelian_disease)) +
+ggplot(md_nr_genes, aes(x = nr_genes, y = mendelian_disease)) +
   geom_col(fill = "gray", color = "black") +
   xlab("Number of causal genes") +
   ylab("") +
@@ -130,12 +130,3 @@ fig_s1 = ggplot(md_nr_genes, aes(x = nr_genes, y = mendelian_disease)) +
         axis.text = element_text(angle = 0, hjust = 0.5, vjust = 0.5,
                                  margin = margin(l = 0.5, r = 0.2, unit = "cm"),
                                  size = 30, family = "Arial", colour = "black"))
-
-fig_s1
-ggsave(filename = "FigS1_causal_genes_per_mendelian_disease.tiff", 
-       path = "supplementary_figures/", 
-       width = 25, height = 30, device = "tiff",
-       dpi = 300, compression = "lzw", type = type_compression)
-dev.off()
-
-

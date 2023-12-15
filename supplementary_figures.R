@@ -234,8 +234,6 @@ for (permutation in 1:1000) {
   cat(permutation, "\n")
 }
 
-# all_or_perm = readRDS("/Users/panagiotisnikolaoslalagkas/Desktop/main_analysis_OR_perm.RDS")
-
 all_permuted_ors = data.frame(comorbidity_filter = NA,
                               perm_OR = NA,
                               perm_P = NA) 
@@ -283,93 +281,36 @@ colnames(all_permuted_ors_filt) = c("comorbidity_filter", "observed_OR_95ci_lowe
 
 all_obs_perm_combined = rbind(log_reg_observed_nrcomorbidities[, c(1,2,4,5, 8)], all_permuted_ors_filt)
 colnames(all_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit","status")
-all_obs_perm_combined$comorbidity_filter = factor(all_obs_perm_combined$comorbidity_filter, levels = all_obs_perm_combined$comorbidity_filter, labels = all_obs_perm_combined$comorbidity_filter)
+all_obs_perm_combined$comorbidity_filter = rep(9:61, 2)
 all_obs_perm_combined$status = factor(all_obs_perm_combined$status, levels = all_obs_perm_combined$status, labels = all_obs_perm_combined$status)
 
-## attempt 1 - error bars for both observed and permuted
-ggplot(all_obs_perm_combined, aes(x = comorbidity_filter, y = OR, color = status)) +
-  geom_errorbar(aes(y = OR, ymin = OR_lower_limit, ymax = OR_upper_limit),
-                width = 0.7, linewidth = 1.5, position = "dodge") +
-  geom_point(aes(y = OR), size = 4, position = position_dodge(width = 0.7)) +
-  
-  geom_hline(yintercept = 1, color = "red", linetype = "dashed") +
-  scale_colour_manual(values = c("red", "blue")) +
+ggplot(all_obs_perm_combined) +
+  geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
+              alpha = 0.3) +
+  scale_fill_manual(values = c("#00BFC4","#F8766D"))+
+  geom_hline(yintercept = 1, color = "black", linetype = "dashed", linewidth = 2) +
+  geom_line(aes(x = comorbidity_filter, y = OR, color = status), linewidth = 2, show.legend = FALSE) +
+  scale_color_manual(values = c("#00BFC4","#F8766D")) +
   xlab("Comorbidities per Mendelian disease") +
+  scale_x_continuous(breaks = seq(9, 61, 1), labels = paste0("≤", seq(9, 61, 1)), expand = c(0, 0.5)) +
   ylab("Odds Ratio") +
-  labs(color="") +
+  labs(fill = "") +
   theme_classic() +
   theme(axis.title = element_text(size = 45, color = "black", family = "Arial"),
         axis.title.x = element_text(margin = margin(t = 20)),
         axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text = element_text(size = 28, color = "black", family = "Arial"),
+        axis.text.x = element_text(size = 30, color = "black", family = "Arial", margin = margin(t = 10)),
+        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
+        axis.line = element_line(linewidth = 2),
+        axis.ticks = element_line(linewidth = 2),
+        axis.ticks.length = unit(0.3, "cm"),
         legend.title = element_text(size = 23, color = "black", family = "Arial"),
         legend.text = element_text(size = 40, family = "Arial"),
-        legend.position = "top", legend.key.size = unit(3, "cm"))
+        legend.position = "top", legend.key.size = unit(2, "cm"))
 ggsave(filename = "main_analysis_observed_permuted_odds_ratios.png",
        path = "supplementary_figures/", 
-       width = 45, height = 20, device = "tiff",
-       dpi = 300, compression = "lzw", type = type_compression)
-
-## attempt 2 - error bars for observed and boxplots for permuted
-all_permuted_ors_filt = all_permuted_ors %>%
-  group_by(comorbidity_filter) %>%
-  mutate(percentile_5 = as.numeric(quantile(perm_OR, 0.05)),
-         percentile_50 = as.numeric(quantile(perm_OR, 0.50)),
-         percentile_95 = as.numeric(quantile(perm_OR, 0.95))) %>%
-  filter(perm_OR >= percentile_5 & perm_OR <= percentile_95) %>%
-  ungroup() %>%
-  dplyr::select(-percentile_5, -percentile_50, -percentile_95) %>%
-  distinct()
-
-# ggplot(all_permuted_ors_filt, aes(x = comorbidity_filter, y = perm_OR)) +
-#   # observed
-#   geom_point(data = log_reg_observed_nrcomorbidities,
-#              aes(x = comorbidity_filter, y = observed_OR, color = "red"),
-#              size = 2) +
-#   geom_errorbar(data = log_reg_observed_nrcomorbidities,
-#                 aes(x = comorbidity_filter, y = observed_OR, ymin = observed_OR_95ci_lower, ymax = observed_OR_95ci_upper, color = "red"),
-#                 width = 0.6, linewidth = 1, position = position_dodge()) +
-#   # permuted
-#   geom_boxplot(color = "black", outlier.shape = NA, size = 1.3) +
-#   stat_boxplot(geom = "errorbar", width = 0.6, linewidth = 1, color = "black") +
-#   geom_hline(yintercept = 1, color = "red", linetype = "dashed") +
-#   scale_colour_manual(values = "red") +
-#   xlab("Comorbidities per Mendelian disease") +
-#   ylab("Odds Ratio") +
-#   theme_classic() +
-#   theme(axis.title = element_text(size = 45, color = "black", family = "Arial"),
-#         axis.title.x = element_text(margin = margin(t = 20)),
-#         axis.title.y = element_text(margin = margin(r = 20)),
-#         axis.text = element_text(size = 28, color = "black", family = "Arial"),
-#         legend.position = "none")
-# ggsave(filename = "main_analysis_observed_permuted_odds_ratios.png",
-#        path = "supplementary_figures/",
-#        width = 45, height = 20, device = "tiff",
-#        dpi = 300, compression = "lzw", type = type_compression)
-
-## attempt 3 - point for observed and boxplots for permuted
-ggplot(all_permuted_ors_filt, aes(x = comorbidity_filter, y = perm_OR)) +
-  # permuted
-  geom_boxplot(color = "black", outlier.shape = NA, size = 1) +
-  # observed
-  geom_point(data = log_reg_observed_nrcomorbidities, 
-             aes(x = comorbidity_filter, y = observed_OR, color = "blue"),
-             size = 5) + 
-  geom_hline(yintercept = 1, color = "red", linetype = "dashed") +
-  scale_colour_manual(values = "red") +
-  xlab("Comorbidities per Mendelian disease") +
-  ylab("Odds Ratio") +
-  theme_classic() +
-  theme(axis.title = element_text(size = 45, color = "black", family = "Arial"),
-        axis.title.x = element_text(margin = margin(t = 20)),
-        axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text = element_text(size = 28, color = "black", family = "Arial"),
-        legend.position = "none")
-ggsave(filename = "main_analysis_observed_permuted_odds_ratios.png",
-       path = "supplementary_figures/", 
-       width = 45, height = 20, device = "tiff",
-       dpi = 300, compression = "lzw", type = type_compression)
-
+       width = 45, height = 20, device = "png",
+       dpi = 700, type = type_compression)
 
 ## -- Per disease category -- ##
 
@@ -735,33 +676,39 @@ colnames(cancers_perm_or_all_filt) = c("comorbidity_filter", "obs_or", "ci_95_lo
 
 cancers_obs_perm_combined = rbind(cancers_obs_or[, c(1,2,4,5,6)], cancers_perm_or_all_filt)
 colnames(cancers_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit","status")
-cancers_obs_perm_combined$comorbidity_filter = factor(cancers_obs_perm_combined$comorbidity_filter, levels = cancers_obs_perm_combined$comorbidity_filter, labels = cancers_obs_perm_combined$comorbidity_filter)
+cancers_obs_perm_combined$comorbidity_filter = rep(1:14, 2)
 cancers_obs_perm_combined$status = factor(cancers_obs_perm_combined$status, levels = cancers_obs_perm_combined$status, labels = cancers_obs_perm_combined$status)
 
-ggplot(cancers_obs_perm_combined, aes(x = comorbidity_filter, y = OR, color = status)) +
-  geom_errorbar(aes(y = OR, ymin = OR_lower_limit, ymax = OR_upper_limit),
-                width = 0.7, linewidth = 1, position = "dodge") +
-  geom_point(aes(y = OR), size = 3, position = position_dodge(width = 0.7)) +
-  geom_hline(yintercept = 1, color = "red", linetype = "dashed") +
-  scale_colour_manual(values = c("red", "blue")) +
+ggplot(cancers_obs_perm_combined) +
+  geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
+              alpha = 0.3) +
+  scale_fill_manual(values = c("#00BFC4","#F8766D"))+
+  geom_hline(yintercept = 1, color = "black", linetype = "dashed", linewidth = 2) +
+  geom_line(aes(x = comorbidity_filter, y = OR, color = status), linewidth = 2, show.legend = FALSE) +
+  scale_color_manual(values = c("#00BFC4","#F8766D")) +
+  scale_x_continuous(breaks = seq(1, 14, 1), labels = paste0("≤", seq(1, 14, 1)), expand = c(0, 0.5)) +
   scale_y_continuous(breaks = seq(0, 3, 0.5)) +
   labs(title = "Neoplasms") +
   xlab("Comorbidities per Mendelian disease") +
   ylab("Odds Ratio") +
-  labs(color="") +
+  labs(fill = "") +
   theme_classic() +
-  theme(plot.title = element_text(size = 30, color = "black", family = "Arial", face = "bold"),
-        axis.title = element_text(size = 25, color = "black", family = "Arial"),
+  theme(plot.title = element_text(size = 50, color = "black", family = "Arial", face = "bold"),
+        axis.title = element_text(size = 45, color = "black", family = "Arial"),
         axis.title.x = element_text(margin = margin(t = 20)),
         axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text = element_text(size = 16, color = "black", family = "Arial"),
-        legend.title = element_text(size = 16, color = "black", family = "Arial"),
-        legend.text = element_text(size = 20, family = "Arial"),
-        legend.position = "right", legend.key.size = unit(1, "cm"))
+        axis.text.x = element_text(size = 40, color = "black", family = "Arial", margin = margin(t = 10)),
+        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
+        axis.line = element_line(linewidth = 2),
+        axis.ticks = element_line(linewidth = 2),
+        axis.ticks.length = unit(0.3, "cm"),
+        legend.title = element_text(size = 23, color = "black", family = "Arial"),
+        legend.text = element_text(size = 40, family = "Arial"),
+        legend.position = "right", legend.key.size = unit(2, "cm"))
 ggsave(filename = "neoplasms_observed_permuted_odds_ratios.png",
        path = "supplementary_figures/", 
-       width = 13, height = 7, device = "tiff",
-       dpi = 300, compression = "lzw", type = type_compression)
+       width = 25, height = 10, device = "png",
+       dpi = 700, type = type_compression)
 
 ## Immune ##
 ## For observed OR: plot OR with 95% CI
@@ -787,33 +734,39 @@ colnames(immune_perm_or_all_filt) = c("comorbidity_filter", "obs_or", "ci_95_low
 
 immune_obs_perm_combined = rbind(immune_obs_or[, c(1,2,4,5,6)], immune_perm_or_all_filt)
 colnames(immune_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit","status")
-immune_obs_perm_combined$comorbidity_filter = factor(immune_obs_perm_combined$comorbidity_filter, levels = immune_obs_perm_combined$comorbidity_filter, labels = immune_obs_perm_combined$comorbidity_filter)
+immune_obs_perm_combined$comorbidity_filter = rep(2:19, 2)
 immune_obs_perm_combined$status = factor(immune_obs_perm_combined$status, levels = immune_obs_perm_combined$status, labels = immune_obs_perm_combined$status)
 
-ggplot(immune_obs_perm_combined, aes(x = comorbidity_filter, y = OR, color = status)) +
-  geom_errorbar(aes(y = OR, ymin = OR_lower_limit, ymax = OR_upper_limit),
-                width = 0.7, linewidth = 1, position = "dodge") +
-  geom_point(aes(y = OR), size = 3, position = position_dodge(width = 0.7)) +
-  geom_hline(yintercept = 1, color = "red", linetype = "dashed") +
-  scale_colour_manual(values = c("red", "blue")) +
+ggplot(immune_obs_perm_combined) +
+  geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
+              alpha = 0.3) +
+  scale_fill_manual(values = c("#00BFC4","#F8766D"))+
+  geom_hline(yintercept = 1, color = "black", linetype = "dashed", linewidth = 2) +
+  geom_line(aes(x = comorbidity_filter, y = OR, color = status), linewidth = 2, show.legend = FALSE) +
+  scale_color_manual(values = c("#00BFC4","#F8766D")) +
+  scale_x_continuous(breaks = seq(2, 19, 1), labels = paste0("≤", seq(2, 19, 1)), expand = c(0, 0.5)) +
   scale_y_continuous(breaks = seq(0, 16, 2)) +
   labs(title = "Immune diseases") +
   xlab("Comorbidities per Mendelian disease") +
   ylab("Odds Ratio") +
-  labs(color="") +
+  labs(fill = "") +
   theme_classic() +
-  theme(plot.title = element_text(size = 30, color = "black", family = "Arial", face = "bold"),
-        axis.title = element_text(size = 25, color = "black", family = "Arial"),
+  theme(plot.title = element_text(size = 50, color = "black", family = "Arial", face = "bold"),
+        axis.title = element_text(size = 45, color = "black", family = "Arial"),
         axis.title.x = element_text(margin = margin(t = 20)),
         axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text = element_text(size = 16, color = "black", family = "Arial"),
-        legend.title = element_text(size = 16, color = "black", family = "Arial"),
-        legend.text = element_text(size = 20, family = "Arial"),
-        legend.position = "right", legend.key.size = unit(1, "cm"))
+        axis.text.x = element_text(size = 40, color = "black", family = "Arial", margin = margin(t = 10)),
+        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
+        axis.line = element_line(linewidth = 2),
+        axis.ticks = element_line(linewidth = 2),
+        axis.ticks.length = unit(0.3, "cm"),
+        legend.title = element_text(size = 23, color = "black", family = "Arial"),
+        legend.text = element_text(size = 40, family = "Arial"),
+        legend.position = "right", legend.key.size = unit(2, "cm"))
 ggsave(filename = "immune_observed_permuted_odds_ratios.png",
        path = "supplementary_figures/", 
-       width = 13, height = 7, device = "tiff",
-       dpi = 300, compression = "lzw", type = type_compression)
+       width = 30, height = 10, device = "png",
+       dpi = 700, type = type_compression)
 
 ## neurological ##
 ## For observed OR: plot OR with 95% CI
@@ -839,35 +792,39 @@ colnames(neurological_perm_or_all_filt) = c("comorbidity_filter", "obs_or", "ci_
 
 neurological_obs_perm_combined = rbind(neurological_obs_or[, c(1,2,4,5,6)], neurological_perm_or_all_filt)
 colnames(neurological_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit","status")
-neurological_obs_perm_combined$comorbidity_filter = factor(neurological_obs_perm_combined$comorbidity_filter, levels = neurological_obs_perm_combined$comorbidity_filter, labels = neurological_obs_perm_combined$comorbidity_filter)
+neurological_obs_perm_combined$comorbidity_filter = rep(3:15, 2)
 neurological_obs_perm_combined$status = factor(neurological_obs_perm_combined$status, levels = neurological_obs_perm_combined$status, labels = neurological_obs_perm_combined$status)
 
-# remove <=2 comorbidities as the OR is alwats 1
-neurological_obs_perm_combined = neurological_obs_perm_combined %>% filter(comorbidity_filter != "≤2")
-ggplot(neurological_obs_perm_combined, aes(x = comorbidity_filter, y = OR, color = status)) +
-  geom_errorbar(aes(y = OR, ymin = OR_lower_limit, ymax = OR_upper_limit),
-                width = 0.7, linewidth = 1, position = "dodge") +
-  geom_point(aes(y = OR), size = 3, position = position_dodge(width = 0.7)) +
-  geom_hline(yintercept = 1, color = "red", linetype = "dashed") +
-  scale_colour_manual(values = c("red", "blue")) +
-  scale_y_continuous(breaks = seq(0, 6, 1)) +
+ggplot(neurological_obs_perm_combined) +
+  geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
+              alpha = 0.3) +
+  scale_fill_manual(values = c("#00BFC4","#F8766D"))+
+  geom_hline(yintercept = 1, color = "black", linetype = "dashed", linewidth = 2) +
+  geom_line(aes(x = comorbidity_filter, y = OR, color = status), linewidth = 2, show.legend = FALSE) +
+  scale_color_manual(values = c("#00BFC4","#F8766D")) +
+  scale_x_continuous(breaks = seq(3, 15, 1), labels = paste0("≤", seq(3, 15, 1)), expand = c(0, 0.5)) +
+  scale_y_continuous(breaks = seq(0, 6, 1), limits = c(0, 6)) +
   labs(title = "Neurological diseases") +
   xlab("Comorbidities per Mendelian disease") +
   ylab("Odds Ratio") +
-  labs(color="") +
+  labs(fill = "") +
   theme_classic() +
-  theme(plot.title = element_text(size = 30, color = "black", family = "Arial", face = "bold"),
-        axis.title = element_text(size = 25, color = "black", family = "Arial"),
+  theme(plot.title = element_text(size = 50, color = "black", family = "Arial", face = "bold"),
+        axis.title = element_text(size = 45, color = "black", family = "Arial"),
         axis.title.x = element_text(margin = margin(t = 20)),
         axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text = element_text(size = 16, color = "black", family = "Arial"),
-        legend.title = element_text(size = 16, color = "black", family = "Arial"),
-        legend.text = element_text(size = 20, family = "Arial"),
-        legend.position = "right", legend.key.size = unit(1, "cm"))
+        axis.text.x = element_text(size = 40, color = "black", family = "Arial", margin = margin(t = 10)),
+        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
+        axis.line = element_line(linewidth = 2),
+        axis.ticks = element_line(linewidth = 2),
+        axis.ticks.length = unit(0.3, "cm"),
+        legend.title = element_text(size = 23, color = "black", family = "Arial"),
+        legend.text = element_text(size = 40, family = "Arial"),
+        legend.position = "right", legend.key.size = unit(2, "cm"))
 ggsave(filename = "neurological_observed_permuted_odds_ratios.png",
        path = "supplementary_figures/", 
-       width = 13, height = 7, device = "tiff",
-       dpi = 300, compression = "lzw", type = type_compression)
+       width = 25, height = 10, device = "png",
+       dpi = 700, type = type_compression)
 
 ## hormonal ##
 ## For observed OR: plot OR with 95% CI
@@ -893,35 +850,39 @@ colnames(hormonal_perm_or_all_filt) = c("comorbidity_filter", "obs_or", "ci_95_l
 
 hormonal_obs_perm_combined = rbind(hormonal_obs_or[, c(1,2,4,5,6)], hormonal_perm_or_all_filt)
 colnames(hormonal_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit","status")
-hormonal_obs_perm_combined$comorbidity_filter = factor(hormonal_obs_perm_combined$comorbidity_filter, levels = hormonal_obs_perm_combined$comorbidity_filter, labels = hormonal_obs_perm_combined$comorbidity_filter)
+hormonal_obs_perm_combined$comorbidity_filter = rep(2:8, 2)
 hormonal_obs_perm_combined$status = factor(hormonal_obs_perm_combined$status, levels = hormonal_obs_perm_combined$status, labels = hormonal_obs_perm_combined$status)
 
-# remove <=1 comorbidities as the OR is alwats 1
-hormonal_obs_perm_combined = hormonal_obs_perm_combined %>% filter(comorbidity_filter != "≤1")
-ggplot(hormonal_obs_perm_combined, aes(x = comorbidity_filter, y = OR, color = status)) +
-  geom_errorbar(aes(y = OR, ymin = OR_lower_limit, ymax = OR_upper_limit),
-                width = 0.7, linewidth = 1, position = "dodge") +
-  geom_point(aes(y = OR), size = 3, position = position_dodge(width = 0.7)) +
-  geom_hline(yintercept = 1, color = "red", linetype = "dashed") +
-  scale_colour_manual(values = c("red", "blue")) +
-  scale_y_continuous(breaks = seq(0, 12, 2)) +
+ggplot(hormonal_obs_perm_combined) +
+  geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
+              alpha = 0.3) +
+  scale_fill_manual(values = c("#00BFC4","#F8766D"))+
+  geom_hline(yintercept = 1, color = "black", linetype = "dashed", linewidth = 2) +
+  geom_line(aes(x = comorbidity_filter, y = OR, color = status), linewidth = 2, show.legend = FALSE) +
+  scale_color_manual(values = c("#00BFC4","#F8766D")) +
+  scale_x_continuous(breaks = seq(2, 8, 1), labels = paste0("≤", seq(2, 8, 1)), expand = c(0, 0.5)) +
+  scale_y_continuous(breaks = seq(0, 12, 2), limits = c(0, 12)) +
   labs(title = "Hormonal diseases") +
   xlab("Comorbidities per Mendelian disease") +
   ylab("Odds Ratio") +
-  labs(color="") +
+  labs(fill = "") +
   theme_classic() +
-  theme(plot.title = element_text(size = 30, color = "black", family = "Arial", face = "bold"),
-        axis.title = element_text(size = 25, color = "black", family = "Arial"),
+  theme(plot.title = element_text(size = 50, color = "black", family = "Arial", face = "bold"),
+        axis.title = element_text(size = 45, color = "black", family = "Arial"),
         axis.title.x = element_text(margin = margin(t = 20)),
         axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text = element_text(size = 16, color = "black", family = "Arial"),
-        legend.title = element_text(size = 16, color = "black", family = "Arial"),
-        legend.text = element_text(size = 20, family = "Arial"),
-        legend.position = "right", legend.key.size = unit(1, "cm"))
+        axis.text.x = element_text(size = 40, color = "black", family = "Arial", margin = margin(t = 10)),
+        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
+        axis.line = element_line(linewidth = 2),
+        axis.ticks = element_line(linewidth = 2),
+        axis.ticks.length = unit(0.3, "cm"),
+        legend.title = element_text(size = 23, color = "black", family = "Arial"),
+        legend.text = element_text(size = 40, family = "Arial"),
+        legend.position = "right", legend.key.size = unit(2, "cm"))
 ggsave(filename = "hormonal_observed_permuted_odds_ratios.png",
        path = "supplementary_figures/", 
-       width = 13, height = 7, device = "tiff",
-       dpi = 300, compression = "lzw", type = type_compression)
+       width = 15, height = 10, device = "png",
+       dpi = 700, type = type_compression)
 
 ## ophthalmological ##
 ## For observed OR: plot OR with 95% CI
@@ -947,33 +908,39 @@ colnames(ophthalmological_perm_or_all_filt) = c("comorbidity_filter", "obs_or", 
 
 ophthalmological_obs_perm_combined = rbind(ophthalmological_obs_or[, c(1,2,4,5,6)], ophthalmological_perm_or_all_filt)
 colnames(ophthalmological_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit","status")
-ophthalmological_obs_perm_combined$comorbidity_filter = factor(ophthalmological_obs_perm_combined$comorbidity_filter, levels = ophthalmological_obs_perm_combined$comorbidity_filter, labels = ophthalmological_obs_perm_combined$comorbidity_filter)
+ophthalmological_obs_perm_combined$comorbidity_filter = rep(1:5, 2)
 ophthalmological_obs_perm_combined$status = factor(ophthalmological_obs_perm_combined$status, levels = ophthalmological_obs_perm_combined$status, labels = ophthalmological_obs_perm_combined$status)
 
-ggplot(ophthalmological_obs_perm_combined, aes(x = comorbidity_filter, y = OR, color = status)) +
-  geom_errorbar(aes(y = OR, ymin = OR_lower_limit, ymax = OR_upper_limit),
-                width = 0.7, linewidth = 1, position = "dodge") +
-  geom_point(aes(y = OR), size = 3, position = position_dodge(width = 0.7)) +
-  geom_hline(yintercept = 1, color = "red", linetype = "dashed") +
-  scale_colour_manual(values = c("red", "blue")) +
-  scale_y_continuous(breaks = seq(0, 120, 20)) +
+ggplot(ophthalmological_obs_perm_combined) +
+  geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
+              alpha = 0.3) +
+  scale_fill_manual(values = c("#00BFC4","#F8766D"))+
+  geom_hline(yintercept = 1, color = "black", linetype = "dashed", linewidth = 2) +
+  geom_line(aes(x = comorbidity_filter, y = OR, color = status), linewidth = 2, show.legend = FALSE) +
+  scale_color_manual(values = c("#00BFC4","#F8766D")) +
+  scale_x_continuous(breaks = seq(1, 5, 1), labels = paste0("≤", seq(1, 5, 1)), expand = c(0, 0.5)) +
+  scale_y_continuous(breaks = seq(0, 125, 25), limits = c(0, 125)) +
   labs(title = "Ophthalmological diseases") +
   xlab("Comorbidities per Mendelian disease") +
   ylab("Odds Ratio") +
-  labs(color="") +
+  labs(fill = "") +
   theme_classic() +
-  theme(plot.title = element_text(size = 30, color = "black", family = "Arial", face = "bold"),
-        axis.title = element_text(size = 25, color = "black", family = "Arial"),
+  theme(plot.title = element_text(size = 50, color = "black", family = "Arial", face = "bold"),
+        axis.title = element_text(size = 45, color = "black", family = "Arial"),
         axis.title.x = element_text(margin = margin(t = 20)),
         axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text = element_text(size = 16, color = "black", family = "Arial"),
-        legend.title = element_text(size = 16, color = "black", family = "Arial"),
-        legend.text = element_text(size = 20, family = "Arial"),
-        legend.position = "right", legend.key.size = unit(1, "cm"))
+        axis.text.x = element_text(size = 40, color = "black", family = "Arial", margin = margin(t = 10)),
+        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
+        axis.line = element_line(linewidth = 2),
+        axis.ticks = element_line(linewidth = 2),
+        axis.ticks.length = unit(0.3, "cm"),
+        legend.title = element_text(size = 23, color = "black", family = "Arial"),
+        legend.text = element_text(size = 40, family = "Arial"),
+        legend.position = "right", legend.key.size = unit(2, "cm"))
 ggsave(filename = "ophthalmological_observed_permuted_odds_ratios.png",
        path = "supplementary_figures/", 
-       width = 13, height = 7, device = "tiff",
-       dpi = 300, compression = "lzw", type = type_compression)
+       width = 20, height = 15, device = "png",
+       dpi = 700, type = type_compression)
 
 ## cardiovascular ##
 ## For observed OR: plot OR with 95% CI
@@ -999,35 +966,39 @@ colnames(cardiovascular_perm_or_all_filt) = c("comorbidity_filter", "obs_or", "c
 
 cardiovascular_obs_perm_combined = rbind(cardiovascular_obs_or[, c(1,2,4,5,6)], cardiovascular_perm_or_all_filt)
 colnames(cardiovascular_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit","status")
-cardiovascular_obs_perm_combined$comorbidity_filter = factor(cardiovascular_obs_perm_combined$comorbidity_filter, levels = cardiovascular_obs_perm_combined$comorbidity_filter, labels = cardiovascular_obs_perm_combined$comorbidity_filter)
+cardiovascular_obs_perm_combined$comorbidity_filter = rep(1:4, 2)
 cardiovascular_obs_perm_combined$status = factor(cardiovascular_obs_perm_combined$status, levels = cardiovascular_obs_perm_combined$status, labels = cardiovascular_obs_perm_combined$status)
 
-ggplot(cardiovascular_obs_perm_combined, aes(x = comorbidity_filter, y = OR, color = status)) +
-  geom_errorbar(aes(y = OR, ymin = OR_lower_limit, ymax = OR_upper_limit),
-                width = 0.7, linewidth = 1, position = "dodge") +
-  geom_point(aes(y = OR), size = 3, position = position_dodge(width = 0.7)) +
-  geom_hline(yintercept = 1, color = "red", linetype = "dashed") +
-  scale_colour_manual(values = c("red", "blue")) +
-  scale_y_continuous(breaks = seq(0, 6, 0.5)) +
+ggplot(cardiovascular_obs_perm_combined) +
+  geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
+              alpha = 0.3) +
+  scale_fill_manual(values = c("#00BFC4","#F8766D"))+
+  geom_hline(yintercept = 1, color = "black", linetype = "dashed", linewidth = 2) +
+  geom_line(aes(x = comorbidity_filter, y = OR, color = status), linewidth = 2, show.legend = FALSE) +
+  scale_color_manual(values = c("#00BFC4","#F8766D")) +
+  scale_x_continuous(breaks = seq(1, 4, 1), labels = paste0("≤", seq(1, 4, 1)), expand = c(0, 0.5)) +
+  scale_y_continuous(breaks = seq(0, 4, 1), limits = c(0, 4)) +
   labs(title = "Cardiovascular diseases") +
   xlab("Comorbidities per Mendelian disease") +
   ylab("Odds Ratio") +
-  labs(color="") +
+  labs(fill = "") +
   theme_classic() +
-  theme(plot.title = element_text(size = 30, color = "black", family = "Arial", face = "bold"),
-        axis.title = element_text(size = 25, color = "black", family = "Arial"),
+  theme(plot.title = element_text(size = 50, color = "black", family = "Arial", face = "bold"),
+        axis.title = element_text(size = 45, color = "black", family = "Arial"),
         axis.title.x = element_text(margin = margin(t = 20)),
         axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text = element_text(size = 16, color = "black", family = "Arial"),
-        legend.title = element_text(size = 16, color = "black", family = "Arial"),
-        legend.text = element_text(size = 20, family = "Arial"),
-        legend.position = "right", legend.key.size = unit(1, "cm"))
+        axis.text.x = element_text(size = 40, color = "black", family = "Arial", margin = margin(t = 10)),
+        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
+        axis.line = element_line(linewidth = 2),
+        axis.ticks = element_line(linewidth = 2),
+        axis.ticks.length = unit(0.3, "cm"),
+        legend.title = element_text(size = 23, color = "black", family = "Arial"),
+        legend.text = element_text(size = 40, family = "Arial"),
+        legend.position = "right", legend.key.size = unit(2, "cm"))
 ggsave(filename = "cardiovascular_observed_permuted_odds_ratios.png",
        path = "supplementary_figures/", 
-       width = 13, height = 7, device = "tiff",
-       dpi = 300, compression = "lzw", type = type_compression)
-
-
+       width = 15, height = 10, device = "png",
+       dpi = 700, type = type_compression)
 
 ### -- per clinical trial phase -- ###
 
@@ -1416,33 +1387,37 @@ colnames(phase123_perm_or_all_filt) = c("comorbidity_filter", "obs_or", "ci95_lo
 
 phase123_obs_perm_combined = rbind(phase123_obs_or[, c(1,2,4,5,6)], phase123_perm_or_all_filt)
 colnames(phase123_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit", "status")
-phase123_obs_perm_combined$comorbidity_filter = factor(phase123_obs_perm_combined$comorbidity_filter, levels = phase123_obs_perm_combined$comorbidity_filter, labels = phase123_obs_perm_combined$comorbidity_filter)
+phase123_obs_perm_combined$comorbidity_filter = rep(10:61, 2)
 phase123_obs_perm_combined$status = factor(phase123_obs_perm_combined$status, levels = phase123_obs_perm_combined$status, labels = phase123_obs_perm_combined$status)
 
-ggplot(phase123_obs_perm_combined, aes(x = comorbidity_filter, y = OR, color = status)) +
-  geom_errorbar(aes(y = OR, ymin = OR_lower_limit, ymax = OR_upper_limit),
-                width = 0.7, linewidth = 1.5, position = "dodge") +
-  geom_point(aes(y = OR), size = 3, position = position_dodge(width = 0.7)) +
-  geom_hline(yintercept = 1, color = "red", linetype = "dashed") +
-  scale_colour_manual(values = c("red", "blue")) +
-  scale_y_continuous(breaks = seq(0, 6, 0.5)) +
-  labs(title = "Phase I/II/III") +
+ggplot(phase123_obs_perm_combined) +
+  geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
+              alpha = 0.3) +
+  scale_fill_manual(values = c("#00BFC4","#F8766D"))+
+  geom_hline(yintercept = 1, color = "black", linetype = "dashed", linewidth = 2) +
+  geom_line(aes(x = comorbidity_filter, y = OR, color = status), linewidth = 2, show.legend = FALSE) +
+  scale_color_manual(values = c("#00BFC4","#F8766D")) +
   xlab("Comorbidities per Mendelian disease") +
+  scale_x_continuous(breaks = seq(10, 61, 1), labels = paste0("≤", seq(10, 61, 1)), expand = c(0, 0.5)) +
   ylab("Odds Ratio") +
-  labs(color="") +
+  labs(title = "Phase I/II/III", fill = "") +
   theme_classic() +
-  theme(plot.title = element_text(size = 40, color = "black", family = "Arial", face = "bold"),
-        axis.title = element_text(size = 35, color = "black", family = "Arial"),
+  theme(plot.title = element_text(size = 70, color = "black", family = "Arial", face = "bold"),
+        axis.title = element_text(size = 45, color = "black", family = "Arial"),
         axis.title.x = element_text(margin = margin(t = 20)),
         axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text = element_text(size = 26, color = "black", family = "Arial"),
-        legend.title = element_text(size = 26, color = "black", family = "Arial"),
-        legend.text = element_text(size = 30, family = "Arial"),
-        legend.position = "right", legend.key.size = unit(1, "cm"))
+        axis.text.x = element_text(size = 30, color = "black", family = "Arial", margin = margin(t = 10)),
+        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
+        axis.line = element_line(linewidth = 2),
+        axis.ticks = element_line(linewidth = 2),
+        axis.ticks.length = unit(0.3, "cm"),
+        legend.title = element_text(size = 23, color = "black", family = "Arial"),
+        legend.text = element_text(size = 40, family = "Arial"),
+        legend.position = "top", legend.key.size = unit(2, "cm"))
 ggsave(filename = "phase123_observed_permuted_odds_ratios.png",
        path = "supplementary_figures/", 
-       width = 45, height = 14, device = "tiff",
-       dpi = 300, compression = "lzw", type = type_compression)
+       width = 45, height = 20, device = "png",
+       dpi = 700, type = type_compression)
 
 # Phase1
 ## For observed OR: plot OR with 95% CI
@@ -1468,34 +1443,37 @@ colnames(phase1_perm_or_all_filt) = c("comorbidity_filter", "obs_or", "ci95_lowe
 
 phase1_obs_perm_combined = rbind(phase1_obs_or[, c(1,2,4,5,6)], phase1_perm_or_all_filt)
 colnames(phase1_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit", "status")
-phase1_obs_perm_combined$comorbidity_filter = factor(phase1_obs_perm_combined$comorbidity_filter, levels = phase1_obs_perm_combined$comorbidity_filter, labels = phase1_obs_perm_combined$comorbidity_filter)
+phase1_obs_perm_combined$comorbidity_filter = rep(14:61, 2)
 phase1_obs_perm_combined$status = factor(phase1_obs_perm_combined$status, levels = phase1_obs_perm_combined$status, labels = phase1_obs_perm_combined$status)
 
-phase1_obs_perm_combined = phase1_obs_perm_combined %>% filter(!comorbidity_filter %in% c("≤10", "≤11", "≤12", "≤13"))
-ggplot(phase1_obs_perm_combined, aes(x = comorbidity_filter, y = OR, color = status)) +
-  geom_errorbar(aes(y = OR, ymin = OR_lower_limit, ymax = OR_upper_limit),
-                width = 0.7, linewidth = 1.5, position = "dodge") +
-  geom_point(aes(y = OR), size = 3, position = position_dodge(width = 0.7)) +
-  geom_hline(yintercept = 1, color = "red", linetype = "dashed") +
-  scale_colour_manual(values = c("red", "blue")) +
-  scale_y_continuous(breaks = seq(0, 6, 0.5)) +
-  labs(title = "Phase I") +
+ggplot(phase1_obs_perm_combined) +
+  geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
+              alpha = 0.3) +
+  scale_fill_manual(values = c("#00BFC4","#F8766D"))+
+  geom_hline(yintercept = 1, color = "black", linetype = "dashed", linewidth = 2) +
+  geom_line(aes(x = comorbidity_filter, y = OR, color = status), linewidth = 2, show.legend = FALSE) +
+  scale_color_manual(values = c("#00BFC4","#F8766D")) +
   xlab("Comorbidities per Mendelian disease") +
+  scale_x_continuous(breaks = seq(14, 61, 1), labels = paste0("≤", seq(14, 61, 1)), expand = c(0, 0.5)) +
   ylab("Odds Ratio") +
-  labs(color="") +
+  labs(title = "Phase I", fill = "") +
   theme_classic() +
-  theme(plot.title = element_text(size = 40, color = "black", family = "Arial", face = "bold"),
-        axis.title = element_text(size = 35, color = "black", family = "Arial"),
+  theme(plot.title = element_text(size = 70, color = "black", family = "Arial", face = "bold"),
+        axis.title = element_text(size = 45, color = "black", family = "Arial"),
         axis.title.x = element_text(margin = margin(t = 20)),
         axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text = element_text(size = 26, color = "black", family = "Arial"),
-        legend.title = element_text(size = 26, color = "black", family = "Arial"),
-        legend.text = element_text(size = 30, family = "Arial"),
-        legend.position = "right", legend.key.size = unit(1, "cm"))
+        axis.text.x = element_text(size = 30, color = "black", family = "Arial", margin = margin(t = 10)),
+        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
+        axis.line = element_line(linewidth = 2),
+        axis.ticks = element_line(linewidth = 2),
+        axis.ticks.length = unit(0.3, "cm"),
+        legend.title = element_text(size = 23, color = "black", family = "Arial"),
+        legend.text = element_text(size = 40, family = "Arial"),
+        legend.position = "top", legend.key.size = unit(2, "cm"))
 ggsave(filename = "phase1_observed_permuted_odds_ratios.png",
        path = "supplementary_figures/", 
-       width = 45, height = 14, device = "tiff",
-       dpi = 300, compression = "lzw", type = type_compression)
+       width = 45, height = 20, device = "png",
+       dpi = 700, type = type_compression)
 
 # phase2
 ## For observed OR: plot OR with 95% CI
@@ -1521,33 +1499,37 @@ colnames(phase2_perm_or_all_filt) = c("comorbidity_filter", "obs_or", "ci95_lowe
 
 phase2_obs_perm_combined = rbind(phase2_obs_or[, c(1,2,4,5,6)], phase2_perm_or_all_filt)
 colnames(phase2_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit", "status")
-phase2_obs_perm_combined$comorbidity_filter = factor(phase2_obs_perm_combined$comorbidity_filter, levels = phase2_obs_perm_combined$comorbidity_filter, labels = phase2_obs_perm_combined$comorbidity_filter)
+phase2_obs_perm_combined$comorbidity_filter = rep(10:61, 2)
 phase2_obs_perm_combined$status = factor(phase2_obs_perm_combined$status, levels = phase2_obs_perm_combined$status, labels = phase2_obs_perm_combined$status)
 
-ggplot(phase2_obs_perm_combined, aes(x = comorbidity_filter, y = OR, color = status)) +
-  geom_errorbar(aes(y = OR, ymin = OR_lower_limit, ymax = OR_upper_limit),
-                width = 0.7, linewidth = 1.5, position = "dodge") +
-  geom_point(aes(y = OR), size = 3, position = position_dodge(width = 0.7)) +
-  geom_hline(yintercept = 1, color = "red", linetype = "dashed") +
-  scale_colour_manual(values = c("red", "blue")) +
-  scale_y_continuous(breaks = seq(0, 6, 0.5)) +
-  labs(title = "Phase II") +
+ggplot(phase2_obs_perm_combined) +
+  geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
+              alpha = 0.3) +
+  scale_fill_manual(values = c("#00BFC4","#F8766D"))+
+  geom_hline(yintercept = 1, color = "black", linetype = "dashed", linewidth = 2) +
+  geom_line(aes(x = comorbidity_filter, y = OR, color = status), linewidth = 2, show.legend = FALSE) +
+  scale_color_manual(values = c("#00BFC4","#F8766D")) +
   xlab("Comorbidities per Mendelian disease") +
+  scale_x_continuous(breaks = seq(10, 61, 1), labels = paste0("≤", seq(10, 61, 1)), expand = c(0, 0.5)) +
   ylab("Odds Ratio") +
-  labs(color="") +
+  labs(title = "Phase II", fill = "") +
   theme_classic() +
-  theme(plot.title = element_text(size = 40, color = "black", family = "Arial", face = "bold"),
-        axis.title = element_text(size = 35, color = "black", family = "Arial"),
+  theme(plot.title = element_text(size = 70, color = "black", family = "Arial", face = "bold"),
+        axis.title = element_text(size = 45, color = "black", family = "Arial"),
         axis.title.x = element_text(margin = margin(t = 20)),
         axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text = element_text(size = 26, color = "black", family = "Arial"),
-        legend.title = element_text(size = 26, color = "black", family = "Arial"),
-        legend.text = element_text(size = 30, family = "Arial"),
-        legend.position = "right", legend.key.size = unit(1, "cm"))
+        axis.text.x = element_text(size = 30, color = "black", family = "Arial", margin = margin(t = 10)),
+        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
+        axis.line = element_line(linewidth = 2),
+        axis.ticks = element_line(linewidth = 2),
+        axis.ticks.length = unit(0.3, "cm"),
+        legend.title = element_text(size = 23, color = "black", family = "Arial"),
+        legend.text = element_text(size = 40, family = "Arial"),
+        legend.position = "top", legend.key.size = unit(2, "cm"))
 ggsave(filename = "phase2_observed_permuted_odds_ratios.png",
        path = "supplementary_figures/", 
-       width = 45, height = 14, device = "tiff",
-       dpi = 300, compression = "lzw", type = type_compression)
+       width = 45, height = 20, device = "png",
+       dpi = 700, type = type_compression)
 
 # phase3
 ## For observed OR: plot OR with 95% CI
@@ -1573,33 +1555,38 @@ colnames(phase3_perm_or_all_filt) = c("comorbidity_filter", "obs_or", "ci95_lowe
 
 phase3_obs_perm_combined = rbind(phase3_obs_or[, c(1,2,4,5,6)], phase3_perm_or_all_filt)
 colnames(phase3_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit", "status")
-phase3_obs_perm_combined$comorbidity_filter = factor(phase3_obs_perm_combined$comorbidity_filter, levels = phase3_obs_perm_combined$comorbidity_filter, labels = phase3_obs_perm_combined$comorbidity_filter)
+phase3_obs_perm_combined$comorbidity_filter = rep(10:61, 2)
 phase3_obs_perm_combined$status = factor(phase3_obs_perm_combined$status, levels = phase3_obs_perm_combined$status, labels = phase3_obs_perm_combined$status)
 
-ggplot(phase3_obs_perm_combined, aes(x = comorbidity_filter, y = OR, color = status)) +
-  geom_errorbar(aes(y = OR, ymin = OR_lower_limit, ymax = OR_upper_limit),
-                width = 0.7, linewidth = 1.5, position = "dodge") +
-  geom_point(aes(y = OR), size = 3, position = position_dodge(width = 0.7)) +
-  geom_hline(yintercept = 1, color = "red", linetype = "dashed") +
-  scale_colour_manual(values = c("red", "blue")) +
-  scale_y_continuous(breaks = seq(0, 13, 1)) +
-  labs(title = "Phase III") +
+ggplot(phase3_obs_perm_combined) +
+  geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
+              alpha = 0.3) +
+  scale_fill_manual(values = c("#00BFC4","#F8766D"))+
+  geom_hline(yintercept = 1, color = "black", linetype = "dashed", linewidth = 2) +
+  geom_line(aes(x = comorbidity_filter, y = OR, color = status), linewidth = 2, show.legend = FALSE) +
+  scale_color_manual(values = c("#00BFC4","#F8766D")) +
   xlab("Comorbidities per Mendelian disease") +
+  scale_x_continuous(breaks = seq(10, 61, 1), labels = paste0("≤", seq(10, 61, 1)), expand = c(0, 0.5)) +
+  scale_y_continuous(breaks = seq(0, 13, 1), limits = c(0, 13)) +
   ylab("Odds Ratio") +
-  labs(color="") +
+  labs(title = "Phase III", fill = "") +
   theme_classic() +
-  theme(plot.title = element_text(size = 40, color = "black", family = "Arial", face = "bold"),
-        axis.title = element_text(size = 35, color = "black", family = "Arial"),
+  theme(plot.title = element_text(size = 70, color = "black", family = "Arial", face = "bold"),
+        axis.title = element_text(size = 45, color = "black", family = "Arial"),
         axis.title.x = element_text(margin = margin(t = 20)),
         axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text = element_text(size = 26, color = "black", family = "Arial"),
-        legend.title = element_text(size = 26, color = "black", family = "Arial"),
-        legend.text = element_text(size = 30, family = "Arial"),
-        legend.position = "right", legend.key.size = unit(1, "cm"))
+        axis.text.x = element_text(size = 30, color = "black", family = "Arial", margin = margin(t = 10)),
+        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
+        axis.line = element_line(linewidth = 2),
+        axis.ticks = element_line(linewidth = 2),
+        axis.ticks.length = unit(0.3, "cm"),
+        legend.title = element_text(size = 23, color = "black", family = "Arial"),
+        legend.text = element_text(size = 40, family = "Arial"),
+        legend.position = "top", legend.key.size = unit(2, "cm"))
 ggsave(filename = "phase3_observed_permuted_odds_ratios.png",
        path = "supplementary_figures/", 
-       width = 45, height = 14, device = "tiff",
-       dpi = 300, compression = "lzw", type = type_compression)
+       width = 45, height = 20, device = "png",
+       dpi = 700, type = type_compression)
 
 # approved
 ## For observed OR: plot OR with 95% CI
@@ -1625,31 +1612,36 @@ colnames(approved_perm_or_all_filt) = c("comorbidity_filter", "obs_or", "ci95_lo
 
 approved_obs_perm_combined = rbind(approved_obs_or[, c(1,2,4,5,6)], approved_perm_or_all_filt)
 colnames(approved_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit", "status")
-approved_obs_perm_combined$comorbidity_filter = factor(approved_obs_perm_combined$comorbidity_filter, levels = approved_obs_perm_combined$comorbidity_filter, labels = approved_obs_perm_combined$comorbidity_filter)
+approved_obs_perm_combined$comorbidity_filter = rep(10:61, 2)
 approved_obs_perm_combined$status = factor(approved_obs_perm_combined$status, levels = approved_obs_perm_combined$status, labels = approved_obs_perm_combined$status)
 
-ggplot(approved_obs_perm_combined, aes(x = comorbidity_filter, y = OR, color = status)) +
-  geom_errorbar(aes(y = OR, ymin = OR_lower_limit, ymax = OR_upper_limit),
-                width = 0.7, linewidth = 1.5, position = "dodge") +
-  geom_point(aes(y = OR), size = 3, position = position_dodge(width = 0.7)) +
-  geom_hline(yintercept = 1, color = "red", linetype = "dashed") +
-  scale_colour_manual(values = c("red", "blue")) +
-  scale_y_continuous(breaks = seq(0, 3, 0.5)) +
-  labs(title = "Approved") +
+ggplot(approved_obs_perm_combined) +
+  geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
+              alpha = 0.3) +
+  scale_fill_manual(values = c("#00BFC4","#F8766D"))+
+  geom_hline(yintercept = 1, color = "black", linetype = "dashed", linewidth = 2) +
+  geom_line(aes(x = comorbidity_filter, y = OR, color = status), linewidth = 2, show.legend = FALSE) +
+  scale_color_manual(values = c("#00BFC4","#F8766D")) +
   xlab("Comorbidities per Mendelian disease") +
+  scale_x_continuous(breaks = seq(10, 61, 1), labels = paste0("≤", seq(10, 61, 1)), expand = c(0, 0.5)) +
+  scale_y_continuous(breaks = seq(0, 3, 0.5), limits = c(0, 3)) +
   ylab("Odds Ratio") +
-  labs(color="") +
+  labs(title = "Approved", fill = "") +
   theme_classic() +
-  theme(plot.title = element_text(size = 40, color = "black", family = "Arial", face = "bold"),
-        axis.title = element_text(size = 35, color = "black", family = "Arial"),
+  theme(plot.title = element_text(size = 70, color = "black", family = "Arial", face = "bold"),
+        axis.title = element_text(size = 45, color = "black", family = "Arial"),
         axis.title.x = element_text(margin = margin(t = 20)),
         axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text = element_text(size = 26, color = "black", family = "Arial"),
-        legend.title = element_text(size = 26, color = "black", family = "Arial"),
-        legend.text = element_text(size = 30, family = "Arial"),
-        legend.position = "right", legend.key.size = unit(1, "cm"))
+        axis.text.x = element_text(size = 30, color = "black", family = "Arial", margin = margin(t = 10)),
+        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
+        axis.line = element_line(linewidth = 2),
+        axis.ticks = element_line(linewidth = 2),
+        axis.ticks.length = unit(0.3, "cm"),
+        legend.title = element_text(size = 23, color = "black", family = "Arial"),
+        legend.text = element_text(size = 40, family = "Arial"),
+        legend.position = "top", legend.key.size = unit(2, "cm"))
 ggsave(filename = "approved_observed_permuted_odds_ratios.png",
        path = "supplementary_figures/", 
-       width = 45, height = 14, device = "tiff",
-       dpi = 300, compression = "lzw", type = type_compression)
+       width = 45, height = 20, device = "png",
+       dpi = 700, type = type_compression)
        

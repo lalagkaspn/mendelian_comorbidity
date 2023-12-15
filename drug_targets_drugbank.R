@@ -61,7 +61,7 @@ md_nr_drugs = md_drugs %>%
   arrange(nr_drugs)
 md_nr_drugs$mendelian_disease = factor(md_nr_drugs$mendelian_disease, levels = md_nr_drugs$mendelian_disease, labels = md_nr_drugs$mendelian_disease)
 
-fig_s2 = ggplot(md_nr_drugs, aes(x = nr_drugs, y = mendelian_disease)) +
+ggplot(md_nr_drugs, aes(x = nr_drugs, y = mendelian_disease)) +
   geom_col(fill = "gray", color = "black") +
   xlab("Number of drugs") +
   ylab("") +
@@ -74,10 +74,3 @@ fig_s2 = ggplot(md_nr_drugs, aes(x = nr_drugs, y = mendelian_disease)) +
         axis.text = element_text(angle = 0, hjust = 0.5, vjust = 0.5,
                                  margin = margin(l = 0.5, r = 0.2, unit = "cm"),
                                  size = 40, family = "Arial", colour = "black"))
-
-fig_s2
-ggsave(filename = "FigS2_number_of_drugs_per_mendelian_disease.tiff", 
-       path = "supplementary_figures/", 
-       width = 40, height = 45, device = "tiff",
-       dpi = 300, compression = "lzw", type = type_compression)
-dev.off()
