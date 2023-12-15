@@ -242,13 +242,15 @@ fig3a = ggplot(log_reg_results_summary, aes(x = nr_drugs)) +
   xlab("Number of drugs") +
   ylab("Number of Mendelian diseases") +
   theme_classic() +
-  theme(axis.text = element_text(size = 24, family = "Arial", color = "black"),
-        axis.title = element_text(size = 30, family = "Arial", color = "black"))
+  theme(axis.text = element_text(size = 28, family = "Arial", color = "black"),
+        axis.title = element_text(size = 30, family = "Arial", color = "black"),
+        axis.title.x = element_text(margin = margin(t = 15)),
+        axis.title.y = element_text(margin = margin(r = 15)))
 
 fig3a
 ggsave(filename = "Fig3A_drugs_per_MD.tiff", 
        path = "figures/",
-       width = 12, height = 8, device = 'tiff',
+       width = 14, height = 8, device = 'tiff',
        dpi = 700, compression = "lzw", type = type_compression)
 dev.off()
 
@@ -264,16 +266,17 @@ fig_3b = ggplot(log_reg_results_summary, aes(y = nr_drugs, x = sig)) +
   scale_y_continuous(breaks = seq(0, 170, 20)) +
   theme_classic() +
   geom_signif(comparisons = list(c("Significant \nMendelian diseases", "Non-significant \nMendelian diseases")), test = "wilcox.test", test.args = list(alternative = "greater"),   
-              map_signif_level = FALSE, textsize = 10) +
-  annotate(geom = "text", x = 1.5, y = 150, label = "WIilcoxon rank-sum test", size = 9) +
-  theme(axis.text = element_text(size = 30, family = "Arial", color = "black"),
-        axis.title = element_text(size = 30),
+              map_signif_level = FALSE, textsize = 14) +
+  annotate(geom = "text", x = 1.5, y = 150, label = "WIilcoxon rank-sum test", size = 12) +
+  theme(axis.text.x = element_text(size = 35, family = "Arial", color = "black", margin = margin(t = 15)),
+        axis.text.y = element_text(size = 35, family = "Arial", color = "black"),
+        axis.title.y = element_text(size = 35, family = "Arial", color = "black", margin = margin(r = 15)),
         legend.position = "none")
 
 fig_3b
 ggsave(filename = "Fig3B_per_MD_drugs.tiff", 
        path = "figures/",
-       width = 12, height = 12, device = 'tiff',
+       width = 14, height = 13, device = 'tiff',
        dpi = 700, compression = "lzw", type = type_compression)
 dev.off()
 
@@ -427,17 +430,19 @@ md_genes_drugs = md_genes_drugs %>%
 fi3c = ggplot(md_genes_drugs, aes(x = nr_drugs)) +
   geom_histogram(color = "black", fill = "lightblue", bins = 75) +
   scale_x_continuous(breaks = c(1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85)) +
-  scale_y_continuous(breaks = seq(0, 75, 5)) +
+  scale_y_continuous(breaks = seq(0, 75, 10)) +
   xlab("Number of drugs") +
   ylab("Number of genes") +
   theme_classic() +
-  theme(axis.text = element_text(size = 24, family = "Arial", color = "black"),
-        axis.title = element_text(size = 30, family = "Arial", color = "black"))
+  theme(axis.text = element_text(size = 28, family = "Arial", color = "black"),
+        axis.title = element_text(size = 30, family = "Arial", color = "black"),
+        axis.title.x = element_text(margin = margin(t = 15)),
+        axis.title.y = element_text(margin = margin(r = 15)))
 
 fi3c
 ggsave(filename = "Fig3C_drugs_per_MD_gene.tiff", 
        path = "figures/",
-       width = 12, height = 8, device = 'tiff',
+       width = 14, height = 8, device = 'tiff',
        dpi = 700, compression = "lzw", type = type_compression)
 dev.off()
 
@@ -609,28 +614,28 @@ for (i in 1:nrow(per_md_gene_permuted_pvalues)) {
 
 per_md_gene_permuted_pvalues$perm_sig = ifelse(per_md_gene_permuted_pvalues$perm_pvalue_OR_based < 0.05, 1, 0)
 
-log_reg_results = left_join(log_reg_results, per_md_gene_permuted_pvalues[, c(1,4,5)], by = c("md_genes" = "md_gene"))
+log_reg_results = left_join(log_reg_results, per_md_gene_permuted_pvalues[, c(1,4)], by = c("md_genes" = "md_gene"))
 log_reg_results$perm_sig = ifelse(log_reg_results$sig == "Non-significant \ngenes", 0, log_reg_results$perm_sig) # 13 / 13 MD genes are signficant after permutations (comparing ORs of nominally significant genes)
 
 log_reg_results$perm_sig = factor(log_reg_results$perm_sig, levels = c("0", "1"), labels = c("Non-significant \ngenes", "Significant \ngenes"))
 
-fig_3d = ggplot(log_reg_results, aes(x = perm_sig, y = nr_drugs)) +
+fig_3d = ggplot(log_reg_results, aes(x = sig, y = nr_drugs)) +
   geom_boxplot() +
-  # geom_point(alpha = 0.5, position = "jitter") +
   xlab("") +
   ylab("Number of drugs") +
   geom_signif(comparisons = list(c("Significant \ngenes", "Non-significant \ngenes")), test.args = list(alternative = "greater"), 
-              map_signif_level = FALSE, textsize = 10) +
-  annotate(geom = "text", x = 1.5, y = 85, label = "WIilcoxon rank-sum test", size = 9) +
+              map_signif_level = FALSE, textsize = 14) +
+  annotate(geom = "text", x = 1.5, y = 85, label = "WIilcoxon rank-sum test", size = 12) +
   scale_y_continuous(breaks = seq(0, 85, 10)) +
   theme_classic() +
-  theme(axis.text = element_text(size = 30, family = "Arial", color = "black"),
-        axis.title = element_text(size = 30),
+  theme(axis.text.x = element_text(size = 35, family = "Arial", color = "black", margin = margin(t = 15)),
+        axis.text.y = element_text(size = 35, family = "Arial", color = "black"),
+        axis.title.y = element_text(size = 35, family = "Arial", color = "black", margin = margin(r = 15)),
         legend.position = "none")
 
 fig_3d
 ggsave(filename = "Fig3D_per_gene_drugs.tiff", 
        path = "figures/",
-       width = 12, height = 12, device = 'tiff',
+       width = 14, height = 13, device = 'tiff',
        dpi = 700, compression = "lzw", type = type_compression)
 dev.off()

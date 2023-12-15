@@ -290,7 +290,7 @@ or_comorbidity_gensim_perm_pvalue # 0.001
 or_comorbidity_gensim_perm_95ci = quantile(or_comorbidity_gensim_perm, c(0.05, 0.5, 0.95))
 
 ## create forestplot
-data_fig4a = data.frame(category = c("Comorbidity & Genetic similarity permutations", "Comorbidity & Genetic similarity", "Comorbidity permutations", "Comorbidity"),
+data_fig4a = data.frame(category = c("Com & Gen sim permutations", "Comorbidity & Genetic similarity", "Comorbidity permutations", "Comorbidity"),
                         ci_2.5 = c(or_comorbidity_gensim_perm_95ci["5%"], or_comorbidity_gensim_95ci["ci_2.5"], or_comorbidity_perm_95ci["5%"], or_comorbidity_95ci["ci_2.5"]),
                         ci_97.5 = c(or_comorbidity_gensim_perm_95ci["95%"], or_comorbidity_gensim_95ci["ci_97.5"], or_comorbidity_perm_95ci["95%"], or_comorbidity_95ci["ci_97.5"]),
                         odds_ratio = c(or_comorbidity_gensim_perm_95ci["50%"], or_comorbidity_gensim, or_comorbidity_perm_95ci["50%"], or_comorbidity))
@@ -299,25 +299,21 @@ data_fig4a$obs_perm = c("Permuted", "Observed")
 data_fig4a$obs_perm = factor(data_fig4a$obs_perm, levels = c("Observed", "Permuted"), labels = c("Observed", "Permuted"))
 
 fig_4a = ggplot(data_fig4a, aes(y = category, x = odds_ratio, xmin = ci_2.5, xmax = ci_97.5, color = obs_perm)) +
-  geom_point(size = 1.5) + 
-  geom_errorbarh(height = 0.2, linewidth = 0.7) +
+  geom_point(size = 4) + 
+  geom_errorbarh(height = 0.2, linewidth = 1.5) +
   ylab("") +
-  xlab("\nOdds Ratio") +
+  xlab("Odds Ratio") +
   scale_x_continuous(breaks = seq(0, 8, 1), limits = c(0, 3)) +
   scale_color_manual(values = c("black", "gray50")) +
   geom_vline(xintercept = 1, color = "black", linewidth = 1, linetype = 3) +
   theme_classic() +
-  theme(axis.title = element_text(angle = 0, hjust = 0.5, vjust = 0.5,
-                                  margin = margin(t = 0.2, unit = "cm"),
-                                  size = 30),
+  theme(axis.title.x = element_text(size = 40, family = "Arial", color = "black", 
+                                    margin = margin(t = 15)),
         axis.line = element_line(linewidth = 0.5),
         axis.ticks = element_line(linewidth = 0.3),
-        axis.text.y = element_text(angle = 0, 
-                                   margin = margin(l = 0.5, r = 0.2, unit = "cm"),
-                                   size = 30, family = "Arial", color = "black"),
-        axis.text.x = element_text(angle = 0, hjust = 0.5, vjust = 0.5,
-                                   margin = margin(t = 0.2, unit = "cm"),
-                                   size = 30, family = "Arial", color = "black"),
+        axis.text.y = element_text(size = 35, family = "Arial", color = "black",
+                                   margin = margin(r = 15)),
+        axis.text.x = element_text(size = 35, family = "Arial", color = "black"),
         legend.text = element_text(size = 30, family = "Arial", color = "black"),
         legend.title = element_blank(),
         legend.key.size = unit(2, "cm"), 
