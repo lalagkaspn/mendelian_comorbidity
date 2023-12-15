@@ -1793,7 +1793,7 @@ s11_b = ggplot(log_reg_observed_nrcomorbidities[2:53, ], aes(x = comorbidity_fil
         axis.ticks.length = unit(0.3, "cm"))
 ggarrange(s11_a, s11_b, 
           ncol = 1, nrow = 2, heights = c(3,1), align = "v")
-ggsave(filename = "S11_phase_III.png",
+ggsave(filename = "S111_phase_III.png",
        path = "supplementary_figures/", 
        width = 45, height = 30, device = "png",
        dpi = 300, type = type_compression)
@@ -1872,4 +1872,3 @@ ggsave(filename = "S12_approved.png",
        path = "supplementary_figures/", 
        width = 45, height = 30, device = "png",
        dpi = 300, type = type_compression)
-       

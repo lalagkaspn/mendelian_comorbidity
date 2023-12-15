@@ -20,16 +20,22 @@ md_genes_drugs = md_genes_drugs %>% distinct()
 
 cd_candidate_drugs = md_cd_comorbidity %>%
   left_join(cd_categories, by = "complex_disease") %>%
-  left_join(md_genes_drugs, by = "mendelian_disease") %>%
+  left_join(md_genes, by = "mendelian_disease") %>%
+  arrange(complex_disease, mendelian_disease, causal_gene) %>%
   distinct() %>%
-  na.omit() %>%
+  group_by(complex_disease, mendelian_disease) %>%
+  mutate(md_causal_genes = paste0(unique(causal_gene), collapse = ",")) %>%
+  ungroup() %>%
+  dplyr::select(-causal_gene) %>%
+  distinct() %>%
+  left_join(md_genes_drugs[, c(1,3)], by = "mendelian_disease") %>%
   arrange(complex_disease, mendelian_disease, db_id) %>%
   group_by(complex_disease, mendelian_disease) %>%
-  mutate(md_causal_genes = paste0(unique(causal_gene), collapse = ","),
-         candidate_drugs = paste0(db_id, collapse = ",")) %>%
+  mutate(candidate_drugs = paste0(unique(db_id), collapse = ",")) %>%
   ungroup() %>%
-  dplyr::select(complex_disease, mendelian_disease, md_causal_genes, candidate_drugs, complex_disease_category = disease_category) %>%
+  dplyr::select(complex_disease, complex_disease_category = disease_category, mendelian_disease, md_causal_genes, candidate_drugs) %>%
   distinct()
+cd_candidate_drugs$candidate_drugs = ifelse(cd_candidate_drugs$candidate_drugs == "NA", NA, cd_candidate_drugs$candidate_drugs)
 
 write.xlsx(cd_candidate_drugs, "supplementary_tables/S1_complex_diseases_candidate_drugs.xlsx", overwrite = TRUE)
 
@@ -54,7 +60,7 @@ combined$genetic_similarity = ifelse(combined$gene_overlap_pvalue < 0.05 | combi
 combined = combined %>%
   dplyr::select(cancer, mendelian_disease, genetic_similarity) %>%
   distinct()
-  
+
 # add information about comorbidity
 md_cd_comorbidity$comorbidity = 1
 combined = left_join(combined, md_cd_comorbidity, by = c("cancer" = "complex_disease", "mendelian_disease"))
