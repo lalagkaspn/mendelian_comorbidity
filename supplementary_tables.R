@@ -40,12 +40,46 @@ coexpression = fread("processed_data/md_cancers_coexpression.txt")
 
 combined = full_join(genetic_overlap, coexpression, by = c("cancer", "mendelian_disease", "comorbidity"))
 colnames(combined) = c("mendelian_disease", "cancer", "pvalue_onesided_geneoverlap", "comorbidity", "genetic_similarity_geneoverlap", "adj_pvalue_coexpression", "genetic_similarity_coexpression")
-# fix information for Familial Dysautonomia
-combined[541:550, "genetic_similarity_coexpression"] = 0
 
 combined = combined %>%
   dplyr::select(cancer, mendelian_disease, gene_overlap_pvalue = pvalue_onesided_geneoverlap, coexpression_pvalue = adj_pvalue_coexpression) %>%
-  distinct() %>%
-  group_by(cancer, mendelian_disease)
+  distinct()
 
 write.xlsx(combined, "supplementary_tables/S2_cancers_mendelian_diseases_genetic_similarity.xlsx", overwrite = TRUE)
+
+## -- Mendelian diseases and cancers - candidate drugs across different levels of support -- ##
+
+combined$genetic_similarity = ifelse(combined$gene_overlap_pvalue < 0.05 | combined$coexpression_pvalue < 0.05, 1, 0)
+
+combined = combined %>%
+  dplyr::select(cancer, mendelian_disease, genetic_similarity) %>%
+  distinct()
+  
+# add information about comorbidity
+md_cd_comorbidity$comorbidity = 1
+combined = left_join(combined, md_cd_comorbidity, by = c("cancer" = "complex_disease", "mendelian_disease"))
+combined$comorbidity = ifelse(is.na(combined$comorbidity), 0, 1)
+
+# add mendelian disease genes and candidate drugs
+combined = combined %>%
+  left_join(md_genes, by = "mendelian_disease") %>%
+  arrange(cancer, mendelian_disease, causal_gene) %>%
+  distinct() %>%
+  group_by(cancer, mendelian_disease) %>%
+  mutate(md_causal_genes = paste0(unique(causal_gene), collapse = ",")) %>%
+  ungroup() %>%
+  dplyr::select(-causal_gene) %>%
+  distinct() %>%
+  left_join(md_genes_drugs[, c(1,3)], by = "mendelian_disease") %>%
+  arrange(cancer, mendelian_disease, db_id) %>%
+  group_by(cancer, mendelian_disease) %>%
+  mutate(candidate_drugs = paste0(unique(db_id), collapse = ",")) %>%
+  ungroup() %>%
+  dplyr::select(cancer, mendelian_disease, md_causal_genes, comorbidity, genetic_similarity, candidate_drugs) %>%
+  distinct()
+combined$candidate_drugs = ifelse(combined$candidate_drugs == "NA", NA, combined$candidate_drugs)
+# Check genetic similarity between Familial Dysautonomia and cancers (genetic overlap measurement only)
+genetic_overlap %>% filter(mendelian_disease == "Familial Dysautonomia") # no genetic similarity --> add this information to the "combined" dataframe
+combined$genetic_similarity = ifelse(combined$mendelian_disease == "Familial Dysautonomia", 0, combined$genetic_similarity)
+
+write.xlsx(combined, "supplementary_tables/S3_cancers_candidate_drugs.xlsx", overwrite = TRUE)
