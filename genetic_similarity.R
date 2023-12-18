@@ -283,28 +283,25 @@ for (i in 1:1000) {
 # calculate permutation p-values and odds ratio 95% CIs
 # p-values
 pvalue_comorbidity_gensim_perm_pvalue = sum(pvalue_comorbidity_gensim >= pvalue_comorbidity_gensim_perm) / 1000
-pvalue_comorbidity_gensim_perm_pvalue # 0.001
+pvalue_comorbidity_gensim_perm_pvalue
 # odds ratios
 or_comorbidity_gensim_perm_pvalue = sum(or_comorbidity_gensim <= or_comorbidity_gensim_perm) / 1000
-or_comorbidity_gensim_perm_pvalue # 0.001
+or_comorbidity_gensim_perm_pvalue
 or_comorbidity_gensim_perm_95ci = quantile(or_comorbidity_gensim_perm, c(0.05, 0.5, 0.95))
 
 ## create forestplot
-data_fig4a = data.frame(category = c("Com & Gen sim permutations", "Comorbidity & Genetic similarity", "Comorbidity permutations", "Comorbidity"),
-                        ci_2.5 = c(or_comorbidity_gensim_perm_95ci["5%"], or_comorbidity_gensim_95ci["ci_2.5"], or_comorbidity_perm_95ci["5%"], or_comorbidity_95ci["ci_2.5"]),
-                        ci_97.5 = c(or_comorbidity_gensim_perm_95ci["95%"], or_comorbidity_gensim_95ci["ci_97.5"], or_comorbidity_perm_95ci["95%"], or_comorbidity_95ci["ci_97.5"]),
-                        odds_ratio = c(or_comorbidity_gensim_perm_95ci["50%"], or_comorbidity_gensim, or_comorbidity_perm_95ci["50%"], or_comorbidity))
+data_fig4a = data.frame(category = c("Comorbidity & Genetic similarity", "Comorbidity"),
+                        ci_2.5 = c(or_comorbidity_gensim_95ci["ci_2.5"], or_comorbidity_95ci["ci_2.5"]),
+                        ci_97.5 = c(or_comorbidity_gensim_95ci["ci_97.5"], or_comorbidity_95ci["ci_97.5"]),
+                        odds_ratio = c(or_comorbidity_gensim, or_comorbidity))
 data_fig4a$category = factor(data_fig4a$category, levels = data_fig4a$category, labels = data_fig4a$category)
-data_fig4a$obs_perm = c("Permuted", "Observed")
-data_fig4a$obs_perm = factor(data_fig4a$obs_perm, levels = c("Observed", "Permuted"), labels = c("Observed", "Permuted"))
 
-fig_4a = ggplot(data_fig4a, aes(y = category, x = odds_ratio, xmin = ci_2.5, xmax = ci_97.5, color = obs_perm)) +
+fig_4a = ggplot(data_fig4a, aes(y = category, x = odds_ratio, xmin = ci_2.5, xmax = ci_97.5)) +
   geom_point(size = 4) + 
   geom_errorbarh(height = 0.2, linewidth = 1.5) +
   ylab("") +
   xlab("Odds Ratio") +
   scale_x_continuous(breaks = seq(0, 8, 1), limits = c(0, 3)) +
-  scale_color_manual(values = c("black", "gray50")) +
   geom_vline(xintercept = 1, color = "black", linewidth = 1, linetype = 3) +
   theme_classic() +
   theme(axis.title.x = element_text(size = 40, family = "Arial", color = "black", 
@@ -316,13 +313,12 @@ fig_4a = ggplot(data_fig4a, aes(y = category, x = odds_ratio, xmin = ci_2.5, xma
         axis.text.x = element_text(size = 35, family = "Arial", color = "black"),
         legend.text = element_text(size = 30, family = "Arial", color = "black"),
         legend.title = element_blank(),
-        legend.key.size = unit(2, "cm"), 
-        aspect.ratio = 0.4)
+        legend.key.size = unit(2, "cm"))
 
 fig_4a
 ggsave(filename = "Fig4A_forest_plot.tiff", 
        path = "figures/",
-       width = 20, height = 10, device = 'tiff',
+       width = 15, height = 5, device = 'tiff',
        dpi = 300, compression = "lzw", type = type_compression)
 dev.off()
 
