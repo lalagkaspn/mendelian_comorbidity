@@ -70,6 +70,7 @@ md_genes = md_genes[-which(md_genes$causal_gene == ""), ] ; rownames(md_genes) =
 md_genes = md_genes %>% arrange(mendelian_disease, causal_gene) %>% distinct()
 
 ## save files
+dir.create(path = "processed_data")
 fwrite(md_cd_comorbidities, "processed_data/md_cd_comorbidities.txt", sep = "\t", row.names = FALSE)
 fwrite(md_genes, "processed_data/md_genes.txt", sep = "\t", row.names = FALSE)
 

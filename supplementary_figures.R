@@ -60,7 +60,7 @@ drugs_nr_targets = fread("processed_data/drugbank_all_drugs_known_targets.txt") 
   ungroup()
 
 # load complex disease categories
-complex_disease_categories = fread("processed_data/complex_disease_category.txt")
+complex_disease_categories = fread("raw_data/complex_disease_category.txt")
 
 # load indicated/investigated drugs
 investigated_indicated_drugs = fread("processed_data/drugs_inv_ind_per_disease.txt")

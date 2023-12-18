@@ -11,7 +11,7 @@ md_cd_comorbidity = fread("processed_data/md_cd_comorbidities.txt") %>%
   dplyr::select(-comorbidity)
 md_genes = fread("processed_data/md_genes.txt")
 
-cd_categories = fread("processed_data/complex_disease_category.txt")
+cd_categories = fread("raw_data/complex_disease_category.txt")
 
 drug_targets = fread("processed_data/drugbank_all_drugs_known_targets.txt")
 md_genes_drugs = left_join(md_genes, drug_targets[, 1:2], by = c("causal_gene" = "drug_target"))

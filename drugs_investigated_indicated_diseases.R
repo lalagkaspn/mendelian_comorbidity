@@ -90,7 +90,7 @@ rownames(ct_conditions_unique) = NULL
 
 ## filter clinical trials for conditions that are among the 65 complex diseases in Blair et al (using mesh_codes)
 # blair complex diseases - MeSh terms were manually matched to their ICD10 codes
-complex_disease_mesh = fread("processed_data/cd_icd10_mesh_manually_matched.txt")
+complex_disease_mesh = fread("raw_data/cd_icd10_mesh_manually_matched.txt")
 
 # filter clinical trial conditions for Blair complex diseases
 ct_conditions_unique_blair = ct_conditions_unique %>% filter(mesh_code %in% complex_disease_mesh$mesh_code)
@@ -103,7 +103,7 @@ ct_filt_blair = left_join(ct_filt_blair, ct_conditions_unique_blair, by = c("con
 ct_filt_blair = left_join(ct_filt_blair, complex_disease_mesh[, c(1,3)], by = "mesh_code")
 
 # add complex disease categories
-complex_disease_categories = fread("processed_data/complex_disease_category.txt")
+complex_disease_categories = fread("raw_data/complex_disease_category.txt")
 ct_filt_blair = left_join(ct_filt_blair, complex_disease_categories, by = "complex_disease") ; rm(complex_disease_categories)
 ct_filt_blair = ct_filt_blair %>% dplyr::select(nct_id:phase, complex_disease, mesh_code, disease_category, intervention_downcase_mesh) %>% distinct()
 
@@ -544,7 +544,7 @@ length(unique(db_drugs_indications_mesh$mesh_code)) # 1,411 indications
 db_drugs_indications_blair = db_drugs_indications_mesh %>% filter(mesh_code %in% complex_disease_mesh$mesh_code) %>% distinct()
 db_drugs_indications_blair = left_join(db_drugs_indications_blair, complex_disease_mesh, by = "mesh_code")
 # add disease category
-complex_disease_categories = data.table::fread("processed_data/complex_disease_category.txt")
+complex_disease_categories = fread("raw_data/complex_disease_category.txt")
 db_drugs_indications_blair = left_join(db_drugs_indications_blair, complex_disease_categories, by = "complex_disease")
 db_drugs_indications_blair = db_drugs_indications_blair %>% dplyr::select(drugbank_id, complex_disease, disease_category)
 length(unique(db_drugs_indications_blair$drugbank_id)) # 939 drugs
@@ -677,7 +677,7 @@ ultimate_per_disease = ultimate_per_disease %>%
   distinct()
 
 ## load complex disease categories
-cd_categories = fread("processed_data/complex_disease_category.txt")
+cd_categories = fread("raw_data/complex_disease_category.txt")
 
 ## gather data
 ultimate_per_disease_gathered = tidyr::gather(ultimate_per_disease, status, nr_drugs, -complex_disease)

@@ -52,7 +52,7 @@ drugs_nr_targets = fread("processed_data/drugbank_all_drugs_known_targets.txt") 
   ungroup()
 
 ## load complex disease categories
-complex_disease_categories = fread("processed_data/complex_disease_category.txt")
+complex_disease_categories = fread("raw_data/complex_disease_category.txt")
 
 ## load indicated/investigated drugs
 investigated_indicated_drugs = fread("processed_data/drugs_inv_ind_per_disease.txt")
@@ -424,6 +424,7 @@ odds_ratio_per_disease_category = data.frame(disease_category = c("All", "Immune
                                              ci_5_permutations = c(all_perm_ci["5%"], immune_perm_ci["5%"], neurological_perm_ci["5%"], cancers_perm_ci["5%"],  hormonal_perm_ci["5%"], ophthalmological_perm_ci["5%"], cardiovascular_perm_ci["5%"]),
                                              ci_50_permutations = c(all_perm_ci["50%"], immune_perm_ci["50%"], neurological_perm_ci["50%"], cancers_perm_ci["50%"],  hormonal_perm_ci["50%"], ophthalmological_perm_ci["50%"], cardiovascular_perm_ci["50%"]),
                                              ci_95_permutations = c(all_perm_ci["95%"], immune_perm_ci["95%"], neurological_perm_ci["95%"], cancers_perm_ci["95%"],  hormonal_perm_ci["95%"], ophthalmological_perm_ci["95%"], cardiovascular_perm_ci["95%"]))
+dir.create("results")
 fwrite(odds_ratio_per_disease_category, "results/log_reg_results_per_disease_category.txt", sep = "\t", row.names = FALSE)
 
 ## Figure 2B: Example of candidate drugs from two Mendelian diseases and cancers ##
@@ -875,6 +876,6 @@ odds_ratio_per_ct_phase = data.frame(disease_category = c("Phase I/II/III", "Pha
                                      ci_5_permutations = c(ct_phase123_perm_ci["5%"], ct_phase1_perm_ci["5%"], ct_phase2_perm_ci["5%"], ct_phase3_perm_ci["5%"],  ct_approved_perm_ci["5%"]),
                                      ci_50_permutations = c(ct_phase123_perm_ci["50%"], ct_phase1_perm_ci["50%"], ct_phase2_perm_ci["50%"], ct_phase3_perm_ci["50%"],  ct_approved_perm_ci["50%"]),
                                      ci_95_permutations = c(ct_phase123_perm_ci["95%"], ct_phase1_perm_ci["95%"], ct_phase2_perm_ci["95%"], ct_phase3_perm_ci["95%"],  ct_approved_perm_ci["95%"]))
-fwrite(odds_ratio_per_disease_category, "results/log_reg_results_per_clinical_trial_phase.txt", sep = "\t", row.names = FALSE)
+fwrite(odds_ratio_per_ct_phase, "results/log_reg_results_per_clinical_trial_phase.txt", sep = "\t", row.names = FALSE)
 
 

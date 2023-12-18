@@ -28,7 +28,7 @@ unique_cd = unique(md_cd_comorbidities$complex_disease)
 unique_md = unique(md_cd_comorbidities$mendelian_disease)
 
 # complex disease categories
-complex_disease_categories = data.table::fread("processed_data/complex_disease_category.txt")
+complex_disease_categories = data.table::fread("raw_data/complex_disease_category.txt")
 md_cd_comorbidities = left_join(md_cd_comorbidities, complex_disease_categories, by = "complex_disease")
 
 # indicated/investigated drugs for the complex diseases
