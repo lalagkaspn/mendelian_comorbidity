@@ -4,7 +4,7 @@ library(data.table)
 library(dplyr)
 library(jsonlite)
 library(httr)
-library(ggpl)
+library(ggplot2)
 
 ## To run this script, you need some files that can be downloaded only after you obtain corresponding licenses:
 ## 1. UMLS - MRCONSO.RFF file
