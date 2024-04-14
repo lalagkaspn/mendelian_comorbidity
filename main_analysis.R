@@ -91,6 +91,7 @@ x = x %>% dplyr::select(-causal_gene) %>% distinct()
 x$comorbidity = 1
 log_input_all = left_join(log_input_all, x, by = c("complex_disease", "db_id"))
 log_input_all$comorbidity = ifelse(is.na(log_input_all$comorbidity), 0, 1)
+
 # logistic regression
 log_reg_all = glm(indicated_investigated ~ total_targets + disease_category + comorbidity,
                   data = log_input_all, 
@@ -169,6 +170,8 @@ for (permutation in 1:1000) {
 
 # calculate permutation 5%, 50% and 95% quantiles
 all_perm_ci = exp(quantile(all_or_perm, c(0.05, 0.50, 0.95)))
+
+sum(all_obs_or <= exp(all_or_perm)) / 1000
 
 #### --- per disease category --- ####
 
@@ -423,7 +426,14 @@ odds_ratio_per_disease_category = data.frame(disease_category = c("All", "Immune
                                              ci_97.5 = c(all_obs_ci["97.5 %"], immune_obs_ci["97.5 %"], neurological_obs_ci["97.5 %"], cancers_obs_ci["97.5 %"],  hormonal_obs_ci["97.5 %"], ophthalmological_obs_ci["97.5 %"], cardiovascular_obs_ci["97.5 %"]),
                                              ci_5_permutations = c(all_perm_ci["5%"], immune_perm_ci["5%"], neurological_perm_ci["5%"], cancers_perm_ci["5%"],  hormonal_perm_ci["5%"], ophthalmological_perm_ci["5%"], cardiovascular_perm_ci["5%"]),
                                              ci_50_permutations = c(all_perm_ci["50%"], immune_perm_ci["50%"], neurological_perm_ci["50%"], cancers_perm_ci["50%"],  hormonal_perm_ci["50%"], ophthalmological_perm_ci["50%"], cardiovascular_perm_ci["50%"]),
-                                             ci_95_permutations = c(all_perm_ci["95%"], immune_perm_ci["95%"], neurological_perm_ci["95%"], cancers_perm_ci["95%"],  hormonal_perm_ci["95%"], ophthalmological_perm_ci["95%"], cardiovascular_perm_ci["95%"]))
+                                             ci_95_permutations = c(all_perm_ci["95%"], immune_perm_ci["95%"], neurological_perm_ci["95%"], cancers_perm_ci["95%"],  hormonal_perm_ci["95%"], ophthalmological_perm_ci["95%"], cardiovascular_perm_ci["95%"]),
+                                             p_perm = c(sum(all_obs_or <= exp(all_or_perm)),
+                                                        sum(immune_obs_or <= exp(immune_or_perm)),
+                                                        sum(neurological_obs_or <= exp(neurological_or_perm)),
+                                                        sum(cancers_obs_or <= exp(cancers_or_perm)),
+                                                        sum(hormonal_obs_or <= exp(hormonal_or_perm)),
+                                                        sum(ophthalmological_obs_or <= exp(ophthalmological_or_perm)),
+                                                        sum(cardiovascular_obs_or <= exp(cardiovascular_or_perm))))
 dir.create("results")
 fwrite(odds_ratio_per_disease_category, "results/log_reg_results_per_disease_category.txt", sep = "\t", row.names = FALSE)
 
@@ -605,7 +615,9 @@ ht = Heatmap(heatmap_matrix,
                  grid.text("", x, y)
                  }
                },
-             left_annotation = rowAnnotation("\n" = c(rep("Androgen Insensitivity Syndrome", 24), rep("Retinitis Pigmentosa", 10)), border = FALSE))
+             left_annotation = rowAnnotation("\n" = c(rep("Androgen Insensitivity Syndrome", 24), 
+                                                      rep("Retinitis Pigmentosa", 10)),
+                                             border = FALSE))
 lgd_list = list(
   Legend(labels = "Recommended", title = "", 
          type = "points", 
@@ -830,6 +842,7 @@ for (permutation in 1:1000) {
 
 # calculate permutation p-value for phase123
 sum(ct_phase123_obs_pvalue >= ct_phase123_perm_pvalue) / 1000 # 0
+sum(ct_phase123_obs_or <= ct_phase123_perm_or) / 1000 # 0
 
 # calculate permutation 5%, 50%, 95% quantiles
 ct_phase123_perm_ci = quantile(ct_phase123_perm_or, c(0.05, 0.50, 0.95))
@@ -877,5 +890,3 @@ odds_ratio_per_ct_phase = data.frame(disease_category = c("Phase I/II/III", "Pha
                                      ci_50_permutations = c(ct_phase123_perm_ci["50%"], ct_phase1_perm_ci["50%"], ct_phase2_perm_ci["50%"], ct_phase3_perm_ci["50%"],  ct_approved_perm_ci["50%"]),
                                      ci_95_permutations = c(ct_phase123_perm_ci["95%"], ct_phase1_perm_ci["95%"], ct_phase2_perm_ci["95%"], ct_phase3_perm_ci["95%"],  ct_approved_perm_ci["95%"]))
 fwrite(odds_ratio_per_ct_phase, "results/log_reg_results_per_clinical_trial_phase.txt", sep = "\t", row.names = FALSE)
-
-

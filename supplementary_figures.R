@@ -5,6 +5,7 @@ library(dplyr)
 library(reshape2)
 library(ggplot2)
 library(ggpubr)
+library(openxlsx)
 
 ## Set type for image compression based on operating system
 ## For macOS, X11 installation is required (link: https://www.xquartz.org/)
@@ -169,13 +170,12 @@ for (permutation in 1:1000) {
     
     comorbidity_filter = log_reg_perm_nrcomorbidities[i, "comorbidity_filter"]
     mds = nr_comorbidities_per_md %>% filter(nr_comorbidities <= comorbidity_filter)
+    md_cd_comorbidities_filt = md_cd_comorbidities %>% filter(mendelian_disease %in% mds$mendelian_disease)
     
     ## comorbidity matrix
     md_cd_comorbidities_matrix_perm = as.data.frame.matrix(table(md_cd_comorbidities_filt[, 2:1]))
     md_cd_comorbidities_matrix_perm = md_cd_comorbidities_matrix_perm %>% mutate(complex_disease = rownames(md_cd_comorbidities_matrix_perm), .before = Achromatopsia)
     rownames(md_cd_comorbidities_matrix_perm) = NULL
-    
-    md_cd_comorbidities_filt = md_cd_comorbidities %>% filter(mendelian_disease %in% mds$mendelian_disease)
     
     ## shuffle comorbidity matrix
     md_cd_comorbidities_shuffled = shuffle(md_cd_comorbidities_matrix_perm)
@@ -285,7 +285,7 @@ colnames(all_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit"
 all_obs_perm_combined$comorbidity_filter = rep(9:61, 2)
 all_obs_perm_combined$status = factor(all_obs_perm_combined$status, levels = all_obs_perm_combined$status, labels = all_obs_perm_combined$status)
 
-s1_a = ggplot(all_obs_perm_combined) +
+s2_a = ggplot(all_obs_perm_combined) +
   geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
               alpha = 0.3) +
   scale_fill_manual(values = c("#00BFC4","#F8766D"))+
@@ -308,7 +308,7 @@ s1_a = ggplot(all_obs_perm_combined) +
         legend.title = element_text(size = 23, color = "black", family = "Arial"),
         legend.text = element_text(size = 40, family = "Arial"),
         legend.position = "top", legend.key.size = unit(2, "cm"))
-s1_b = ggplot(log_reg_observed_nrcomorbidities, aes(x = comorbidity_filter, y = logr_drugs_included)) +
+s2_b = ggplot(log_reg_observed_nrcomorbidities, aes(x = comorbidity_filter, y = logr_drugs_included)) +
   geom_line(group = "comorbidity_filter", linewidth = 1.5) +
   scale_x_discrete(breaks = paste0("≤", seq(9, 61, 4)), labels = paste0("≤", seq(9, 61, 4)), expand = c(0, 0.5)) +
   scale_y_continuous(breaks = seq(0, 800, 200)) +
@@ -324,9 +324,9 @@ s1_b = ggplot(log_reg_observed_nrcomorbidities, aes(x = comorbidity_filter, y = 
         axis.line = element_line(linewidth = 2),
         axis.ticks = element_line(linewidth = 2),
         axis.ticks.length = unit(0.3, "cm"))
-ggarrange(s1_a, s1_b, 
+ggarrange(s2_a, s2_b, 
           ncol = 1, nrow = 2, heights = c(3,1), align = "v")
-ggsave(filename = "S1_main_analysis.png",
+ggsave(filename = "S2_main_analysis.png",
        path = "supplementary_figures/", 
        width = 45, height = 30, device = "png",
        dpi = 300, type = type_compression)
@@ -710,7 +710,7 @@ colnames(immune_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_lim
 immune_obs_perm_combined$comorbidity_filter = rep(2:19, 2)
 immune_obs_perm_combined$status = factor(immune_obs_perm_combined$status, levels = immune_obs_perm_combined$status, labels = immune_obs_perm_combined$status)
 
-s2_a = ggplot(immune_obs_perm_combined) +
+s3_a = ggplot(immune_obs_perm_combined) +
   geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
               alpha = 0.3) +
   scale_fill_manual(values = c("#00BFC4","#F8766D"))+
@@ -736,7 +736,7 @@ s2_a = ggplot(immune_obs_perm_combined) +
         legend.title = element_text(size = 23, color = "black", family = "Arial"),
         legend.text = element_text(size = 40, family = "Arial"),
         legend.position = "top", legend.key.size = unit(2, "cm"))
-s2_b = ggplot(immune_obs_or, aes(x = comorbidity_filter, y = nr_drugs_in_lr)) +
+s3_b = ggplot(immune_obs_or, aes(x = comorbidity_filter, y = nr_drugs_in_lr)) +
   geom_line(group = "comorbidity_filter", linewidth = 1.5) +
   scale_x_discrete(expand = c(0, 0.5)) +
   scale_y_continuous(breaks = seq(0, 800, 200), limits = c(0, 800)) +
@@ -752,9 +752,9 @@ s2_b = ggplot(immune_obs_or, aes(x = comorbidity_filter, y = nr_drugs_in_lr)) +
         axis.line = element_line(linewidth = 2),
         axis.ticks = element_line(linewidth = 2),
         axis.ticks.length = unit(0.3, "cm"))
-ggarrange(s2_a, s2_b, 
+ggarrange(s3_a, s3_b, 
           ncol = 1, nrow = 2, heights = c(3,1), align = "v")
-ggsave(filename = "S2_immune_diseases.png",
+ggsave(filename = "S3_immune_diseases.png",
        path = "supplementary_figures/", 
        width = 30, height = 20, device = "png",
        dpi = 300, type = type_compression)
@@ -787,7 +787,7 @@ neurological_obs_perm_combined = neurological_obs_perm_combined %>% filter(comor
 neurological_obs_perm_combined$comorbidity_filter = rep(3:15, 2)
 neurological_obs_perm_combined$status = factor(neurological_obs_perm_combined$status, levels = neurological_obs_perm_combined$status, labels = neurological_obs_perm_combined$status)
 
-s3_a = ggplot(neurological_obs_perm_combined) +
+s4_a = ggplot(neurological_obs_perm_combined) +
   geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
               alpha = 0.3) +
   scale_fill_manual(values = c("#00BFC4","#F8766D"))+
@@ -813,7 +813,7 @@ s3_a = ggplot(neurological_obs_perm_combined) +
         legend.title = element_text(size = 23, color = "black", family = "Arial"),
         legend.text = element_text(size = 40, family = "Arial"),
         legend.position = "top", legend.key.size = unit(2, "cm"))
-s3_b = ggplot(neurological_obs_or, aes(x = comorbidity_filter, y = nr_drugs_in_lr)) +
+s4_b = ggplot(neurological_obs_or, aes(x = comorbidity_filter, y = nr_drugs_in_lr)) +
   geom_line(group = "comorbidity_filter", linewidth = 1.5) +
   scale_x_discrete(expand = c(0, 0.5)) +
   scale_y_continuous(breaks = seq(0, 800, 200), limits = c(0, 800)) +
@@ -829,9 +829,9 @@ s3_b = ggplot(neurological_obs_or, aes(x = comorbidity_filter, y = nr_drugs_in_l
         axis.line = element_line(linewidth = 2),
         axis.ticks = element_line(linewidth = 2),
         axis.ticks.length = unit(0.3, "cm"))
-ggarrange(s3_a, s3_b, 
+ggarrange(s4_a, s4_b, 
           ncol = 1, nrow = 2, heights = c(3,1), align = "v")
-ggsave(filename = "S3_neurological_diseases.png",
+ggsave(filename = "S4_neurological_diseases.png",
        path = "supplementary_figures/", 
        width = 30, height = 20, device = "png",
        dpi = 300, type = type_compression)
@@ -860,7 +860,7 @@ colnames(cancers_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_li
 cancers_obs_perm_combined$comorbidity_filter = rep(1:14, 2)
 cancers_obs_perm_combined$status = factor(cancers_obs_perm_combined$status, levels = cancers_obs_perm_combined$status, labels = cancers_obs_perm_combined$status)
 
-s4_a = ggplot(cancers_obs_perm_combined) +
+s5_a = ggplot(cancers_obs_perm_combined) +
   geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
               alpha = 0.3) +
   scale_fill_manual(values = c("#00BFC4","#F8766D"))+
@@ -886,7 +886,7 @@ s4_a = ggplot(cancers_obs_perm_combined) +
         legend.title = element_text(size = 23, color = "black", family = "Arial"),
         legend.text = element_text(size = 40, family = "Arial"),
         legend.position = "top", legend.key.size = unit(2, "cm"))
-s4_b = ggplot(cancers_obs_or, aes(x = comorbidity_filter, y = nr_drugs_in_lr)) +
+s5_b = ggplot(cancers_obs_or, aes(x = comorbidity_filter, y = nr_drugs_in_lr)) +
   geom_line(group = "comorbidity_filter", linewidth = 1.5) +
   scale_x_discrete(expand = c(0, 0.5)) +
   scale_y_continuous(breaks = seq(0, 800, 200), limits = c(0, 800)) +
@@ -902,9 +902,9 @@ s4_b = ggplot(cancers_obs_or, aes(x = comorbidity_filter, y = nr_drugs_in_lr)) +
         axis.line = element_line(linewidth = 2),
         axis.ticks = element_line(linewidth = 2),
         axis.ticks.length = unit(0.3, "cm"))
-ggarrange(s4_a, s4_b, 
+ggarrange(s5_a, s5_b, 
           ncol = 1, nrow = 2, heights = c(3,1), align = "v")
-ggsave(filename = "S4_neoplasms.png",
+ggsave(filename = "S5_neoplasms.png",
        path = "supplementary_figures/", 
        width = 30, height = 20, device = "png",
        dpi = 300, type = type_compression)
@@ -937,7 +937,7 @@ hormonal_obs_perm_combined = hormonal_obs_perm_combined %>% filter(comorbidity_f
 hormonal_obs_perm_combined$comorbidity_filter = rep(2:8, 2)
 hormonal_obs_perm_combined$status = factor(hormonal_obs_perm_combined$status, levels = hormonal_obs_perm_combined$status, labels = hormonal_obs_perm_combined$status)
 
-s5_a = ggplot(hormonal_obs_perm_combined) +
+s6_a = ggplot(hormonal_obs_perm_combined) +
   geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
               alpha = 0.3) +
   scale_fill_manual(values = c("#00BFC4","#F8766D"))+
@@ -963,7 +963,7 @@ s5_a = ggplot(hormonal_obs_perm_combined) +
         legend.title = element_text(size = 23, color = "black", family = "Arial"),
         legend.text = element_text(size = 40, family = "Arial"),
         legend.position = "top", legend.key.size = unit(2, "cm"))
-s5_b = ggplot(hormonal_obs_or, aes(x = comorbidity_filter, y = nr_drugs_in_lr)) +
+s6_b = ggplot(hormonal_obs_or, aes(x = comorbidity_filter, y = nr_drugs_in_lr)) +
   geom_line(group = "comorbidity_filter", linewidth = 1.5) +
   scale_x_discrete(expand = c(0, 0.5)) +
   scale_y_continuous(breaks = seq(0, 800, 200), limits = c(0, 800)) +
@@ -979,9 +979,9 @@ s5_b = ggplot(hormonal_obs_or, aes(x = comorbidity_filter, y = nr_drugs_in_lr)) 
         axis.line = element_line(linewidth = 2),
         axis.ticks = element_line(linewidth = 2),
         axis.ticks.length = unit(0.3, "cm"))
-ggarrange(s5_a, s5_b, 
+ggarrange(s6_a, s6_b, 
           ncol = 1, nrow = 2, heights = c(3,1), align = "v")
-ggsave(filename = "S5_hormonal_diseases.png",
+ggsave(filename = "S6_hormonal_diseases.png",
        path = "supplementary_figures/", 
        width = 30, height = 20, device = "png",
        dpi = 300, type = type_compression)
@@ -1013,7 +1013,7 @@ colnames(cardiovascular_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_l
 cardiovascular_obs_perm_combined$comorbidity_filter = rep(1:4, 2)
 cardiovascular_obs_perm_combined$status = factor(cardiovascular_obs_perm_combined$status, levels = cardiovascular_obs_perm_combined$status, labels = cardiovascular_obs_perm_combined$status)
 
-s6_a = ggplot(cardiovascular_obs_perm_combined) +
+s7_a = ggplot(cardiovascular_obs_perm_combined) +
   geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
               alpha = 0.3) +
   scale_fill_manual(values = c("#00BFC4","#F8766D"))+
@@ -1039,7 +1039,7 @@ s6_a = ggplot(cardiovascular_obs_perm_combined) +
         legend.title = element_text(size = 23, color = "black", family = "Arial"),
         legend.text = element_text(size = 40, family = "Arial"),
         legend.position = "top", legend.key.size = unit(2, "cm"))
-s6_b = ggplot(ophthalmological_obs_or, aes(x = comorbidity_filter, y = nr_drugs_in_lr)) +
+s7_b = ggplot(cardiovascular_obs_or, aes(x = comorbidity_filter, y = nr_drugs_in_lr)) +
   geom_line(group = "comorbidity_filter", linewidth = 1.5) +
   scale_x_discrete(expand = c(0, 0.5)) +
   scale_y_continuous(breaks = seq(0, 800, 200), limits = c(0, 800)) +
@@ -1055,9 +1055,9 @@ s6_b = ggplot(ophthalmological_obs_or, aes(x = comorbidity_filter, y = nr_drugs_
         axis.line = element_line(linewidth = 2),
         axis.ticks = element_line(linewidth = 2),
         axis.ticks.length = unit(0.3, "cm"))
-ggarrange(s6_a, s6_b, 
+ggarrange(s7_a, s7_b, 
           ncol = 1, nrow = 2, heights = c(3,1), align = "v")
-ggsave(filename = "S6_cardiovascular_diseases.png",
+ggsave(filename = "S7_cardiovascular_diseases.png",
        path = "supplementary_figures/", 
        width = 30, height = 15, device = "png",
        dpi = 300, type = type_compression)
@@ -1089,7 +1089,7 @@ colnames(ophthalmological_obs_perm_combined) = c("comorbidity_filter", "OR", "OR
 ophthalmological_obs_perm_combined$comorbidity_filter = rep(1:5, 2)
 ophthalmological_obs_perm_combined$status = factor(ophthalmological_obs_perm_combined$status, levels = ophthalmological_obs_perm_combined$status, labels = ophthalmological_obs_perm_combined$status)
 
-s7_a = ggplot(ophthalmological_obs_perm_combined) +
+s8_a = ggplot(ophthalmological_obs_perm_combined) +
   geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
               alpha = 0.3) +
   scale_fill_manual(values = c("#00BFC4","#F8766D"))+
@@ -1115,7 +1115,7 @@ s7_a = ggplot(ophthalmological_obs_perm_combined) +
         legend.title = element_text(size = 23, color = "black", family = "Arial"),
         legend.text = element_text(size = 40, family = "Arial"),
         legend.position = "top", legend.key.size = unit(2, "cm"))
-s7_b = ggplot(ophthalmological_obs_or, aes(x = comorbidity_filter, y = nr_drugs_in_lr)) +
+s8_b = ggplot(ophthalmological_obs_or, aes(x = comorbidity_filter, y = nr_drugs_in_lr)) +
   geom_line(group = "comorbidity_filter", linewidth = 1.5) +
   scale_x_discrete(expand = c(0, 0.5)) +
   scale_y_continuous(breaks = seq(0, 800, 200), limits = c(0, 800)) +
@@ -1131,9 +1131,9 @@ s7_b = ggplot(ophthalmological_obs_or, aes(x = comorbidity_filter, y = nr_drugs_
         axis.line = element_line(linewidth = 2),
         axis.ticks = element_line(linewidth = 2),
         axis.ticks.length = unit(0.3, "cm"))
-ggarrange(s7_a, s7_b, 
+ggarrange(s8_a, s8_b, 
           ncol = 1, nrow = 2, heights = c(3,1), align = "v")
-ggsave(filename = "S7_ophthalmological_diseases.png",
+ggsave(filename = "S8_ophthalmological_diseases.png",
        path = "supplementary_figures/", 
        width = 30, height = 15, device = "png",
        dpi = 300, type = type_compression)
@@ -1528,7 +1528,7 @@ colnames(phase123_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_l
 phase123_obs_perm_combined$comorbidity_filter = rep(10:61, 2)
 phase123_obs_perm_combined$status = factor(phase123_obs_perm_combined$status, levels = phase123_obs_perm_combined$status, labels = phase123_obs_perm_combined$status)
 
-s8_a = ggplot(phase123_obs_perm_combined) +
+s9_a = ggplot(phase123_obs_perm_combined) +
   geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
               alpha = 0.3) +
   scale_fill_manual(values = c("#00BFC4","#F8766D"))+
@@ -1552,9 +1552,9 @@ s8_a = ggplot(phase123_obs_perm_combined) +
         legend.title = element_text(size = 23, color = "black", family = "Arial"),
         legend.text = element_text(size = 40, family = "Arial"),
         legend.position = "top", legend.key.size = unit(2, "cm"))
-s8_b = ggplot(log_reg_observed_nrcomorbidities[2:53, ], aes(x = comorbidity_filter, y = logr_drugs_included)) +
+s9_b = ggplot(log_reg_observed_nrcomorbidities[2:53, ], aes(x = comorbidity_filter, y = logr_drugs_included)) +
   geom_line(group = "comorbidity_filter", linewidth = 1.5) +
-  scale_x_discrete(breaks = paste0("≤", seq(10, 61, 3)), , expand = c(0, 0.5)) +
+  scale_x_discrete(breaks = paste0("≤", seq(10, 61, 3)), expand = c(0, 0.5)) +
   scale_y_continuous(breaks = seq(0, 800, 200)) +
   xlab("Comorbidities per Mendelian disease") +
   ylab("Number of drugs") +
@@ -1568,9 +1568,9 @@ s8_b = ggplot(log_reg_observed_nrcomorbidities[2:53, ], aes(x = comorbidity_filt
         axis.line = element_line(linewidth = 2),
         axis.ticks = element_line(linewidth = 2),
         axis.ticks.length = unit(0.3, "cm"))
-ggarrange(s8_a, s8_b, 
+ggarrange(s9_a, s9_b, 
           ncol = 1, nrow = 2, heights = c(3,1), align = "v")
-ggsave(filename = "S8_phase_I_II_III.png",
+ggsave(filename = "S9_phase_I_II_III.png",
        path = "supplementary_figures/", 
        width = 45, height = 30, device = "png",
        dpi = 300, type = type_compression)
@@ -1597,12 +1597,12 @@ phase1_perm_or_all_filt = phase1_perm_or_all %>%
 # rename columns for rbind later --> will change them after that
 colnames(phase1_perm_or_all_filt) = c("comorbidity_filter", "obs_or", "ci95_lower", "ci95_upper", "status")
 
-phase1_obs_perm_combined = rbind(phase1_obs_or[, c(1,2,4,5,6)], phase1_perm_or_all_filt)
+phase1_obs_perm_combined = rbind(phase1_obs_or[, c(1,2,4,5,6)], phase1_perm_or_all_filt[5:nrow(phase1_perm_or_all_filt),])
 colnames(phase1_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit", "status")
 phase1_obs_perm_combined$comorbidity_filter = rep(14:61, 2)
 phase1_obs_perm_combined$status = factor(phase1_obs_perm_combined$status, levels = phase1_obs_perm_combined$status, labels = phase1_obs_perm_combined$status)
 
-s9_a = ggplot(phase1_obs_perm_combined) +
+s10_a = ggplot(phase1_obs_perm_combined) +
   geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
               alpha = 0.3) +
   scale_fill_manual(values = c("#00BFC4","#F8766D"))+
@@ -1626,7 +1626,7 @@ s9_a = ggplot(phase1_obs_perm_combined) +
         legend.title = element_text(size = 23, color = "black", family = "Arial"),
         legend.text = element_text(size = 40, family = "Arial"),
         legend.position = "top", legend.key.size = unit(2, "cm"))
-s9_b = ggplot(log_reg_observed_nrcomorbidities[6:53, ], aes(x = comorbidity_filter, y = logr_drugs_included)) +
+s10_b = ggplot(log_reg_observed_nrcomorbidities[6:53, ], aes(x = comorbidity_filter, y = logr_drugs_included)) +
   geom_line(group = "comorbidity_filter", linewidth = 1.5) +
   scale_x_discrete(breaks = paste0("≤", c(seq(14, 61, 3), 61)), expand = c(0, 0.5)) +
   scale_y_continuous(breaks = seq(0, 800, 200)) +
@@ -1642,9 +1642,9 @@ s9_b = ggplot(log_reg_observed_nrcomorbidities[6:53, ], aes(x = comorbidity_filt
         axis.line = element_line(linewidth = 2),
         axis.ticks = element_line(linewidth = 2),
         axis.ticks.length = unit(0.3, "cm"))
-ggarrange(s9_a, s9_b, 
+ggarrange(s10_a, s10_b, 
           ncol = 1, nrow = 2, heights = c(3,1), align = "v")
-ggsave(filename = "S9_phase_I.png",
+ggsave(filename = "S10_phase_I.png",
        path = "supplementary_figures/", 
        width = 45, height = 30, device = "png",
        dpi = 300, type = type_compression)
@@ -1676,7 +1676,7 @@ colnames(phase2_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_lim
 phase2_obs_perm_combined$comorbidity_filter = rep(10:61, 2)
 phase2_obs_perm_combined$status = factor(phase2_obs_perm_combined$status, levels = phase2_obs_perm_combined$status, labels = phase2_obs_perm_combined$status)
 
-s10_a = ggplot(phase2_obs_perm_combined) +
+s11_a = ggplot(phase2_obs_perm_combined) +
   geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
               alpha = 0.3) +
   scale_fill_manual(values = c("#00BFC4","#F8766D"))+
@@ -1687,81 +1687,6 @@ s10_a = ggplot(phase2_obs_perm_combined) +
   scale_x_continuous(breaks = seq(10, 61, 3), labels = paste0("≤", seq(10, 61, 3)), expand = c(0, 0.5)) +
   ylab("Odds Ratio") +
   labs(title = "Phase II", fill = "") +
-  theme_classic() +
-  theme(plot.title = element_text(size = 70, color = "black", family = "Arial", face = "bold"),
-        axis.title = element_text(size = 45, color = "black", family = "Arial"),
-        axis.title.x = element_text(margin = margin(t = 20)),
-        axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text.x = element_text(size = 40, color = "black", family = "Arial", margin = margin(t = 10)),
-        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
-        axis.line = element_line(linewidth = 2),
-        axis.ticks = element_line(linewidth = 2),
-        axis.ticks.length = unit(0.3, "cm"),
-        legend.title = element_text(size = 23, color = "black", family = "Arial"),
-        legend.text = element_text(size = 40, family = "Arial"),
-        legend.position = "top", legend.key.size = unit(2, "cm"))
-s10_b = ggplot(log_reg_observed_nrcomorbidities[2:53, ], aes(x = comorbidity_filter, y = logr_drugs_included)) +
-  geom_line(group = "comorbidity_filter", linewidth = 1.5) +
-  scale_x_discrete(breaks = paste0("≤", seq(10, 61, 3)), expand = c(0, 0.5)) +
-  scale_y_continuous(breaks = seq(0, 800, 200)) +
-  xlab("Comorbidities per Mendelian disease") +
-  ylab("Number of drugs") +
-  labs(fill = "") +
-  theme_classic() +
-  theme(axis.title = element_text(size = 45, color = "black", family = "Arial"),
-        axis.title.x = element_text(margin = margin(t = 20)),
-        axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text.x = element_text(size = 40, color = "black", family = "Arial", margin = margin(t = 10)),
-        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
-        axis.line = element_line(linewidth = 2),
-        axis.ticks = element_line(linewidth = 2),
-        axis.ticks.length = unit(0.3, "cm"))
-ggarrange(s10_a, s10_b, 
-          ncol = 1, nrow = 2, heights = c(3,1), align = "v")
-ggsave(filename = "S10_phase_II.png",
-       path = "supplementary_figures/", 
-       width = 45, height = 30, device = "png",
-       dpi = 300, type = type_compression)
-
-# phase3
-## For observed OR: plot OR with 95% CI
-phase3_obs_or = na.omit(phase3_obs_or) ; rownames(phase3_obs_or) = NULL
-phase3_obs_or$comorbidity_filter = paste0("≤", phase3_obs_or$comorbidity_filter)
-phase3_obs_or$comorbidity_filter = factor(phase3_obs_or$comorbidity_filter, levels = phase3_obs_or$comorbidity_filter, labels = phase3_obs_or$comorbidity_filter)
-phase3_obs_or$status = "observed"
-## For permuted ORs: plot 5th, 50th and 95th percentiles
-phase3_perm_or_all = na.omit(phase3_perm_or_all) ; rownames(phase3_perm_or_all) = NULL
-phase3_perm_or_all$comorbidity_filter = factor(phase3_perm_or_all$comorbidity_filter, levels = phase3_perm_or_all$comorbidity_filter, labels = phase3_perm_or_all$comorbidity_filter)
-phase3_perm_or_all_filt = phase3_perm_or_all %>% 
-  group_by(comorbidity_filter) %>%
-  mutate(percentile_5 = as.numeric(quantile(perm_OR, 0.05)),
-         percentile_50 = as.numeric(quantile(perm_OR, 0.50)),
-         percentile_95 = as.numeric(quantile(perm_OR, 0.95))) %>%
-  filter(perm_OR >= percentile_5 & perm_OR <= percentile_95) %>%
-  ungroup() %>%
-  dplyr::select(comorbidity_filter, percentile_50, percentile_5,percentile_95) %>%
-  distinct() %>%
-  mutate(status = "permuted")
-# rename columns for rbind later --> will change them after that
-colnames(phase3_perm_or_all_filt) = c("comorbidity_filter", "obs_or", "ci95_lower", "ci95_upper", "status")
-
-phase3_obs_perm_combined = rbind(phase3_obs_or[, c(1,2,4,5,6)], phase3_perm_or_all_filt)
-colnames(phase3_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit", "status")
-phase3_obs_perm_combined$comorbidity_filter = rep(10:61, 2)
-phase3_obs_perm_combined$status = factor(phase3_obs_perm_combined$status, levels = phase3_obs_perm_combined$status, labels = phase3_obs_perm_combined$status)
-
-s11_a = ggplot(phase3_obs_perm_combined) +
-  geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
-              alpha = 0.3) +
-  scale_fill_manual(values = c("#00BFC4","#F8766D"))+
-  geom_hline(yintercept = 1, color = "black", linetype = "dashed", linewidth = 2) +
-  geom_line(aes(x = comorbidity_filter, y = OR, color = status), linewidth = 2, show.legend = FALSE) +
-  scale_color_manual(values = c("#00BFC4","#F8766D")) +
-  xlab("") +
-  scale_x_continuous(breaks = seq(10, 61, 3), labels = paste0("≤", seq(10, 61, 3)), expand = c(0, 0.5)) +
-  scale_y_continuous(breaks = seq(0, 13, 1), limits = c(0, 13)) +
-  ylab("Odds Ratio") +
-  labs(title = "Phase III", fill = "") +
   theme_classic() +
   theme(plot.title = element_text(size = 70, color = "black", family = "Arial", face = "bold"),
         axis.title = element_text(size = 45, color = "black", family = "Arial"),
@@ -1793,21 +1718,21 @@ s11_b = ggplot(log_reg_observed_nrcomorbidities[2:53, ], aes(x = comorbidity_fil
         axis.ticks.length = unit(0.3, "cm"))
 ggarrange(s11_a, s11_b, 
           ncol = 1, nrow = 2, heights = c(3,1), align = "v")
-ggsave(filename = "S11_phase_III.png",
+ggsave(filename = "S11_phase_II.png",
        path = "supplementary_figures/", 
        width = 45, height = 30, device = "png",
        dpi = 300, type = type_compression)
 
-# approved
+# phase3
 ## For observed OR: plot OR with 95% CI
-approved_obs_or = na.omit(approved_obs_or) ; rownames(approved_obs_or) = NULL
-approved_obs_or$comorbidity_filter = paste0("≤", approved_obs_or$comorbidity_filter)
-approved_obs_or$comorbidity_filter = factor(approved_obs_or$comorbidity_filter, levels = approved_obs_or$comorbidity_filter, labels = approved_obs_or$comorbidity_filter)
-approved_obs_or$status = "observed"
+phase3_obs_or = na.omit(phase3_obs_or) ; rownames(phase3_obs_or) = NULL
+phase3_obs_or$comorbidity_filter = paste0("≤", phase3_obs_or$comorbidity_filter)
+phase3_obs_or$comorbidity_filter = factor(phase3_obs_or$comorbidity_filter, levels = phase3_obs_or$comorbidity_filter, labels = phase3_obs_or$comorbidity_filter)
+phase3_obs_or$status = "observed"
 ## For permuted ORs: plot 5th, 50th and 95th percentiles
-approved_perm_or_all = na.omit(approved_perm_or_all) ; rownames(approved_perm_or_all) = NULL
-approved_perm_or_all$comorbidity_filter = factor(approved_perm_or_all$comorbidity_filter, levels = approved_perm_or_all$comorbidity_filter, labels = approved_perm_or_all$comorbidity_filter)
-approved_perm_or_all_filt = approved_perm_or_all %>% 
+phase3_perm_or_all = na.omit(phase3_perm_or_all) ; rownames(phase3_perm_or_all) = NULL
+phase3_perm_or_all$comorbidity_filter = factor(phase3_perm_or_all$comorbidity_filter, levels = phase3_perm_or_all$comorbidity_filter, labels = phase3_perm_or_all$comorbidity_filter)
+phase3_perm_or_all_filt = phase3_perm_or_all %>% 
   group_by(comorbidity_filter) %>%
   mutate(percentile_5 = as.numeric(quantile(perm_OR, 0.05)),
          percentile_50 = as.numeric(quantile(perm_OR, 0.50)),
@@ -1818,14 +1743,14 @@ approved_perm_or_all_filt = approved_perm_or_all %>%
   distinct() %>%
   mutate(status = "permuted")
 # rename columns for rbind later --> will change them after that
-colnames(approved_perm_or_all_filt) = c("comorbidity_filter", "obs_or", "ci95_lower", "ci95_upper", "status")
+colnames(phase3_perm_or_all_filt) = c("comorbidity_filter", "obs_or", "ci95_lower", "ci95_upper", "status")
 
-approved_obs_perm_combined = rbind(approved_obs_or[, c(1,2,4,5,6)], approved_perm_or_all_filt)
-colnames(approved_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit", "status")
-approved_obs_perm_combined$comorbidity_filter = rep(10:61, 2)
-approved_obs_perm_combined$status = factor(approved_obs_perm_combined$status, levels = approved_obs_perm_combined$status, labels = approved_obs_perm_combined$status)
+phase3_obs_perm_combined = rbind(phase3_obs_or[, c(1,2,4,5,6)], phase3_perm_or_all_filt)
+colnames(phase3_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit", "status")
+phase3_obs_perm_combined$comorbidity_filter = rep(10:61, 2)
+phase3_obs_perm_combined$status = factor(phase3_obs_perm_combined$status, levels = phase3_obs_perm_combined$status, labels = phase3_obs_perm_combined$status)
 
-s12_a = ggplot(approved_obs_perm_combined) +
+s12_a = ggplot(phase3_obs_perm_combined) +
   geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
               alpha = 0.3) +
   scale_fill_manual(values = c("#00BFC4","#F8766D"))+
@@ -1834,9 +1759,9 @@ s12_a = ggplot(approved_obs_perm_combined) +
   scale_color_manual(values = c("#00BFC4","#F8766D")) +
   xlab("") +
   scale_x_continuous(breaks = seq(10, 61, 3), labels = paste0("≤", seq(10, 61, 3)), expand = c(0, 0.5)) +
-  scale_y_continuous(breaks = seq(0, 3, 0.5), limits = c(0, 3)) +
+  scale_y_continuous(breaks = seq(0, 13, 1), limits = c(0, 13)) +
   ylab("Odds Ratio") +
-  labs(title = "Approved", fill = "") +
+  labs(title = "Phase III", fill = "") +
   theme_classic() +
   theme(plot.title = element_text(size = 70, color = "black", family = "Arial", face = "bold"),
         axis.title = element_text(size = 45, color = "black", family = "Arial"),
@@ -1868,7 +1793,82 @@ s12_b = ggplot(log_reg_observed_nrcomorbidities[2:53, ], aes(x = comorbidity_fil
         axis.ticks.length = unit(0.3, "cm"))
 ggarrange(s12_a, s12_b, 
           ncol = 1, nrow = 2, heights = c(3,1), align = "v")
-ggsave(filename = "S12_approved.png",
+ggsave(filename = "S12_phase_III.png",
+       path = "supplementary_figures/", 
+       width = 45, height = 30, device = "png",
+       dpi = 300, type = type_compression)
+
+# approved
+## For observed OR: plot OR with 95% CI
+approved_obs_or = na.omit(approved_obs_or) ; rownames(approved_obs_or) = NULL
+approved_obs_or$comorbidity_filter = paste0("≤", approved_obs_or$comorbidity_filter)
+approved_obs_or$comorbidity_filter = factor(approved_obs_or$comorbidity_filter, levels = approved_obs_or$comorbidity_filter, labels = approved_obs_or$comorbidity_filter)
+approved_obs_or$status = "observed"
+## For permuted ORs: plot 5th, 50th and 95th percentiles
+approved_perm_or_all = na.omit(approved_perm_or_all) ; rownames(approved_perm_or_all) = NULL
+approved_perm_or_all$comorbidity_filter = factor(approved_perm_or_all$comorbidity_filter, levels = approved_perm_or_all$comorbidity_filter, labels = approved_perm_or_all$comorbidity_filter)
+approved_perm_or_all_filt = approved_perm_or_all %>% 
+  group_by(comorbidity_filter) %>%
+  mutate(percentile_5 = as.numeric(quantile(perm_OR, 0.05)),
+         percentile_50 = as.numeric(quantile(perm_OR, 0.50)),
+         percentile_95 = as.numeric(quantile(perm_OR, 0.95))) %>%
+  filter(perm_OR >= percentile_5 & perm_OR <= percentile_95) %>%
+  ungroup() %>%
+  dplyr::select(comorbidity_filter, percentile_50, percentile_5,percentile_95) %>%
+  distinct() %>%
+  mutate(status = "permuted")
+# rename columns for rbind later --> will change them after that
+colnames(approved_perm_or_all_filt) = c("comorbidity_filter", "obs_or", "ci95_lower", "ci95_upper", "status")
+
+approved_obs_perm_combined = rbind(approved_obs_or[, c(1,2,4,5,6)], approved_perm_or_all_filt)
+colnames(approved_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit", "status")
+approved_obs_perm_combined$comorbidity_filter = rep(10:61, 2)
+approved_obs_perm_combined$status = factor(approved_obs_perm_combined$status, levels = approved_obs_perm_combined$status, labels = approved_obs_perm_combined$status)
+
+s13_a = ggplot(approved_obs_perm_combined) +
+  geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
+              alpha = 0.3) +
+  scale_fill_manual(values = c("#00BFC4","#F8766D"))+
+  geom_hline(yintercept = 1, color = "black", linetype = "dashed", linewidth = 2) +
+  geom_line(aes(x = comorbidity_filter, y = OR, color = status), linewidth = 2, show.legend = FALSE) +
+  scale_color_manual(values = c("#00BFC4","#F8766D")) +
+  xlab("") +
+  scale_x_continuous(breaks = seq(10, 61, 3), labels = paste0("≤", seq(10, 61, 3)), expand = c(0, 0.5)) +
+  scale_y_continuous(breaks = seq(0, 3, 0.5), limits = c(0, 3)) +
+  ylab("Odds Ratio") +
+  labs(title = "Approved", fill = "") +
+  theme_classic() +
+  theme(plot.title = element_text(size = 70, color = "black", family = "Arial", face = "bold"),
+        axis.title = element_text(size = 45, color = "black", family = "Arial"),
+        axis.title.x = element_text(margin = margin(t = 20)),
+        axis.title.y = element_text(margin = margin(r = 20)),
+        axis.text.x = element_text(size = 40, color = "black", family = "Arial", margin = margin(t = 10)),
+        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
+        axis.line = element_line(linewidth = 2),
+        axis.ticks = element_line(linewidth = 2),
+        axis.ticks.length = unit(0.3, "cm"),
+        legend.title = element_text(size = 23, color = "black", family = "Arial"),
+        legend.text = element_text(size = 40, family = "Arial"),
+        legend.position = "top", legend.key.size = unit(2, "cm"))
+s13_b = ggplot(log_reg_observed_nrcomorbidities[2:53, ], aes(x = comorbidity_filter, y = logr_drugs_included)) +
+  geom_line(group = "comorbidity_filter", linewidth = 1.5) +
+  scale_x_discrete(breaks = paste0("≤", seq(10, 61, 3)), expand = c(0, 0.5)) +
+  scale_y_continuous(breaks = seq(0, 800, 200)) +
+  xlab("Comorbidities per Mendelian disease") +
+  ylab("Number of drugs") +
+  labs(fill = "") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 45, color = "black", family = "Arial"),
+        axis.title.x = element_text(margin = margin(t = 20)),
+        axis.title.y = element_text(margin = margin(r = 20)),
+        axis.text.x = element_text(size = 40, color = "black", family = "Arial", margin = margin(t = 10)),
+        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
+        axis.line = element_line(linewidth = 2),
+        axis.ticks = element_line(linewidth = 2),
+        axis.ticks.length = unit(0.3, "cm"))
+ggarrange(s13_a, s13_b, 
+          ncol = 1, nrow = 2, heights = c(3,1), align = "v")
+ggsave(filename = "S13_approved.png",
        path = "supplementary_figures/", 
        width = 45, height = 30, device = "png",
        dpi = 300, type = type_compression)
@@ -2193,12 +2193,12 @@ lr_results_cancers_comorbidity_permutations_filt = lr_results_cancers_comorbidit
 # rename columns for rbind later --> will change them after that
 colnames(lr_results_cancers_comorbidity_permutations_filt) = c("comorbidity_filter", "or_obs_comorbidity", "or_obs_comorbidity_lower", "or_obs_comorbidity_upper", "status")
 
-comorbidity_obs_perm_combined = rbind(lr_results_cancers_comorbidity[, c(1,2,3,4,8)], lr_results_cancers_comorbidity_permutations_filt)
+comorbidity_obs_perm_combined = rbind(lr_results_cancers_comorbidity[, c(1,2,3,4,9)], lr_results_cancers_comorbidity_permutations_filt)
 colnames(comorbidity_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit", "status")
 comorbidity_obs_perm_combined$comorbidity_filter = rep(1:10, 2)
 comorbidity_obs_perm_combined$status = factor(comorbidity_obs_perm_combined$status, levels = comorbidity_obs_perm_combined$status, labels = comorbidity_obs_perm_combined$status)
 
-s13_a = ggplot(comorbidity_obs_perm_combined) +
+s14_a = ggplot(comorbidity_obs_perm_combined) +
   geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
               alpha = 0.3) +
   scale_fill_manual(values = c("#00BFC4","#F8766D"))+
@@ -2210,76 +2210,6 @@ s13_a = ggplot(comorbidity_obs_perm_combined) +
   scale_y_continuous(breaks = seq(0, 5, 1), limits = c(0, 5)) +
   ylab("Odds Ratio") +
   labs(title = "Comorbidity", fill = "") +
-  theme_classic() +
-  theme(plot.title = element_text(size = 70, color = "black", family = "Arial", face = "bold"),
-        axis.title = element_text(size = 45, color = "black", family = "Arial"),
-        axis.title.x = element_text(margin = margin(t = 20)),
-        axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text.x = element_text(size = 30, color = "black", family = "Arial", margin = margin(t = 10)),
-        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
-        axis.line = element_line(linewidth = 2),
-        axis.ticks = element_line(linewidth = 2),
-        axis.ticks.length = unit(0.3, "cm"),
-        legend.title = element_text(size = 23, color = "black", family = "Arial"),
-        legend.text = element_text(size = 40, family = "Arial"),
-        legend.position = "top", legend.key.size = unit(2, "cm"))
-s13_b = ggplot(lr_results_cancers_comorbidity, aes(x = comorbidity_filter, y = nr_drugs)) +
-  geom_line(group = "comorbidity_filter", linewidth = 1.5) +
-  scale_x_discrete(expand = c(0, 0.5)) +
-  scale_y_continuous(breaks = seq(0, 700, 200), limits = c(0, 700)) +
-  xlab("Comorbidities per Mendelian disease") +
-  ylab("Number of drugs") +
-  labs(fill = "") +
-  theme_classic() +
-  theme(axis.title = element_text(size = 45, color = "black", family = "Arial"),
-        axis.title.x = element_text(margin = margin(t = 20)),
-        axis.title.y = element_text(margin = margin(r = 20)),
-        axis.text.x = element_text(size = 30, color = "black", family = "Arial", margin = margin(t = 10)),
-        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
-        axis.line = element_line(linewidth = 2),
-        axis.ticks = element_line(linewidth = 2),
-        axis.ticks.length = unit(0.3, "cm"))
-ggarrange(s13_a, s13_b,
-          ncol = 1, nrow = 2, heights = c(2,1), align = "v")
-ggsave(filename = "S13_MD_cancers_comorbidity.png",
-       path = "supplementary_figures/",
-       width = 25, height = 15, device = "png",
-       dpi = 300, type = type_compression)
-
-# comorbidity + genetic similarity
-## For permuted ORs: plot 5th, 50th and 95th percentiles
-lr_results_cancers_comorbidity_gensim_permutations = lr_results_cancers_comorbidity_gensim_permutations %>% arrange(comorbidity_filter)
-lr_results_cancers_comorbidity_gensim_permutations$comorbidity_filter = factor(lr_results_cancers_comorbidity_gensim_permutations$comorbidity_filter, levels = lr_results_cancers_comorbidity_gensim_permutations$comorbidity_filter, labels = lr_results_cancers_comorbidity_gensim_permutations$comorbidity_filter)
-lr_results_cancers_comorbidity_gensim_permutations_filt = lr_results_cancers_comorbidity_gensim_permutations %>% 
-  group_by(comorbidity_filter) %>%
-  mutate(percentile_5 = as.numeric(quantile(or_comorbidity_gensim_perm, 0.05)),
-         percentile_50 = as.numeric(quantile(or_comorbidity_gensim_perm, 0.50)),
-         percentile_95 = as.numeric(quantile(or_comorbidity_gensim_perm, 0.95))) %>%
-  filter(or_comorbidity_gensim_perm >= percentile_5 & or_comorbidity_gensim_perm <= percentile_95) %>%
-  ungroup() %>%
-  dplyr::select(comorbidity_filter, percentile_50, percentile_5,percentile_95) %>%
-  distinct() %>%
-  mutate(status = "permuted")
-# rename columns for rbind later --> will change them after that
-colnames(lr_results_cancers_comorbidity_gensim_permutations_filt) = c("comorbidity_filter", "or_obs_comorbidity_gensim", "or_obs_comorbidity_gensim_lower", "or_obs_comorbidity_gensim_upper", "status")
-
-comorbidity_gensim_obs_perm_combined = rbind(lr_results_cancers_comorbidity[, c(1,5,6,7,8)], lr_results_cancers_comorbidity_gensim_permutations_filt)
-colnames(comorbidity_gensim_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit", "status")
-comorbidity_gensim_obs_perm_combined$comorbidity_filter = rep(1:10, 2)
-comorbidity_gensim_obs_perm_combined$status = factor(comorbidity_gensim_obs_perm_combined$status, levels = comorbidity_gensim_obs_perm_combined$status, labels = comorbidity_gensim_obs_perm_combined$status)
-
-s14_a = ggplot(comorbidity_gensim_obs_perm_combined) +
-  geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
-              alpha = 0.3) +
-  scale_fill_manual(values = c("#00BFC4","#F8766D"))+
-  geom_hline(yintercept = 1, color = "black", linetype = "dashed", linewidth = 2) +
-  geom_line(aes(x = comorbidity_filter, y = OR, color = status), linewidth = 2, show.legend = FALSE) +
-  scale_color_manual(values = c("#00BFC4","#F8766D")) +
-  xlab("") +
-  scale_x_continuous(breaks = seq(1, 10, 1), labels = paste0("≤", seq(1, 10, 1)), expand = c(0, 0.5)) +
-  scale_y_continuous(breaks = seq(0, 6, 1), limits = c(0, 6)) +
-  ylab("Odds Ratio") +
-  labs(title = "Comorbidity + Genetic similarity", fill = "") +
   theme_classic() +
   theme(plot.title = element_text(size = 70, color = "black", family = "Arial", face = "bold"),
         axis.title = element_text(size = 45, color = "black", family = "Arial"),
@@ -2311,7 +2241,466 @@ s14_b = ggplot(lr_results_cancers_comorbidity, aes(x = comorbidity_filter, y = n
         axis.ticks.length = unit(0.3, "cm"))
 ggarrange(s14_a, s14_b,
           ncol = 1, nrow = 2, heights = c(2,1), align = "v")
-ggsave(filename = "S14_MD_cancers_comorbidity_genetic_similarity.png",
+ggsave(filename = "S14_MD_cancers_comorbidity.png",
        path = "supplementary_figures/",
        width = 25, height = 15, device = "png",
        dpi = 300, type = type_compression)
+
+# comorbidity + genetic similarity
+## For permuted ORs: plot 5th, 50th and 95th percentiles
+lr_results_cancers_comorbidity_gensim_permutations = lr_results_cancers_comorbidity_gensim_permutations %>% arrange(comorbidity_filter)
+lr_results_cancers_comorbidity_gensim_permutations$comorbidity_filter = factor(lr_results_cancers_comorbidity_gensim_permutations$comorbidity_filter, levels = lr_results_cancers_comorbidity_gensim_permutations$comorbidity_filter, labels = lr_results_cancers_comorbidity_gensim_permutations$comorbidity_filter)
+lr_results_cancers_comorbidity_gensim_permutations_filt = lr_results_cancers_comorbidity_gensim_permutations %>% 
+  group_by(comorbidity_filter) %>%
+  mutate(percentile_5 = as.numeric(quantile(or_comorbidity_gensim_perm, 0.05)),
+         percentile_50 = as.numeric(quantile(or_comorbidity_gensim_perm, 0.50)),
+         percentile_95 = as.numeric(quantile(or_comorbidity_gensim_perm, 0.95))) %>%
+  filter(or_comorbidity_gensim_perm >= percentile_5 & or_comorbidity_gensim_perm <= percentile_95) %>%
+  ungroup() %>%
+  dplyr::select(comorbidity_filter, percentile_50, percentile_5,percentile_95) %>%
+  distinct() %>%
+  mutate(status = "permuted")
+# rename columns for rbind later --> will change them after that
+colnames(lr_results_cancers_comorbidity_gensim_permutations_filt) = c("comorbidity_filter", "or_obs_comorbidity_gensim", "or_obs_comorbidity_gensim_lower", "or_obs_comorbidity_gensim_upper", "status")
+
+comorbidity_gensim_obs_perm_combined = rbind(lr_results_cancers_comorbidity[, c(1,5,6,7,9)], lr_results_cancers_comorbidity_gensim_permutations_filt)
+colnames(comorbidity_gensim_obs_perm_combined) = c("comorbidity_filter", "OR", "OR_lower_limit", "OR_upper_limit", "status")
+comorbidity_gensim_obs_perm_combined$comorbidity_filter = rep(1:10, 2)
+comorbidity_gensim_obs_perm_combined$status = factor(comorbidity_gensim_obs_perm_combined$status, levels = comorbidity_gensim_obs_perm_combined$status, labels = comorbidity_gensim_obs_perm_combined$status)
+
+s15_a = ggplot(comorbidity_gensim_obs_perm_combined) +
+  geom_ribbon(aes(x = comorbidity_filter, ymin = OR_lower_limit, ymax = OR_upper_limit, fill = status),
+              alpha = 0.3) +
+  scale_fill_manual(values = c("#00BFC4","#F8766D"))+
+  geom_hline(yintercept = 1, color = "black", linetype = "dashed", linewidth = 2) +
+  geom_line(aes(x = comorbidity_filter, y = OR, color = status), linewidth = 2, show.legend = FALSE) +
+  scale_color_manual(values = c("#00BFC4","#F8766D")) +
+  xlab("") +
+  scale_x_continuous(breaks = seq(1, 10, 1), labels = paste0("≤", seq(1, 10, 1)), expand = c(0, 0.5)) +
+  scale_y_continuous(breaks = seq(0, 6, 1), limits = c(0, 6)) +
+  ylab("Odds Ratio") +
+  labs(title = "Comorbidity + Genetic similarity", fill = "") +
+  theme_classic() +
+  theme(plot.title = element_text(size = 70, color = "black", family = "Arial", face = "bold"),
+        axis.title = element_text(size = 45, color = "black", family = "Arial"),
+        axis.title.x = element_text(margin = margin(t = 20)),
+        axis.title.y = element_text(margin = margin(r = 20)),
+        axis.text.x = element_text(size = 30, color = "black", family = "Arial", margin = margin(t = 10)),
+        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
+        axis.line = element_line(linewidth = 2),
+        axis.ticks = element_line(linewidth = 2),
+        axis.ticks.length = unit(0.3, "cm"),
+        legend.title = element_text(size = 23, color = "black", family = "Arial"),
+        legend.text = element_text(size = 40, family = "Arial"),
+        legend.position = "top", legend.key.size = unit(2, "cm"))
+s15_b = ggplot(lr_results_cancers_comorbidity, aes(x = comorbidity_filter, y = nr_drugs)) +
+  geom_line(group = "comorbidity_filter", linewidth = 1.5) +
+  scale_x_discrete(expand = c(0, 0.5)) +
+  scale_y_continuous(breaks = seq(0, 700, 200), limits = c(0, 700)) +
+  xlab("Comorbidities per Mendelian disease") +
+  ylab("Number of drugs") +
+  labs(fill = "") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 45, color = "black", family = "Arial"),
+        axis.title.x = element_text(margin = margin(t = 20)),
+        axis.title.y = element_text(margin = margin(r = 20)),
+        axis.text.x = element_text(size = 30, color = "black", family = "Arial", margin = margin(t = 10)),
+        axis.text.y = element_text(size = 40, color = "black", family = "Arial", margin = margin(r = 10)),
+        axis.line = element_line(linewidth = 2),
+        axis.ticks = element_line(linewidth = 2),
+        axis.ticks.length = unit(0.3, "cm"))
+ggarrange(s15_a, s15_b,
+          ncol = 1, nrow = 2, heights = c(2,1), align = "v")
+ggsave(filename = "S15_MD_cancers_comorbidity_genetic_similarity.png",
+       path = "supplementary_figures/",
+       width = 25, height = 15, device = "png",
+       dpi = 300, type = type_compression)
+
+rm(list = ls())
+
+## --- ##
+
+## Unweighted vs weighed logisitc regression
+
+## Set type for image compression based on operating system
+## For macOS, X11 installation is required (link: https://www.xquartz.org/)
+# if Windows OS
+if (Sys.info()['sysname'] == "Windows") {
+  type_compression = "windows"
+} 
+# if Linux
+if (Sys.info()['sysname'] == "Linux") {
+  type_compression = "windows"
+}
+# if macOS
+if (Sys.info()['sysname'] == "Darwin") {
+  type_compression = "cairo"
+} 
+
+#### --- all comorbidities --- ####
+### observed ###
+## load comorbidities
+md_cd_comorbidities = fread("processed_data/md_cd_comorbidities.txt") %>% 
+  dplyr::select(mendelian_disease, complex_disease) %>%
+  arrange(mendelian_disease)
+
+## comorbidity matrix
+md_cd_comorbidities_matrix = as.data.frame.matrix(table(md_cd_comorbidities[, 2:1]))
+md_cd_comorbidities_matrix = md_cd_comorbidities_matrix %>% mutate(complex_disease = rownames(md_cd_comorbidities_matrix), .before = Achromatopsia)
+rownames(md_cd_comorbidities_matrix) = NULL
+
+## load md genes
+md_genes = fread("processed_data/md_genes.txt")
+
+## load drug - targets
+db_drug_targets = fread("processed_data/drugbank_all_drugs_known_targets.txt") %>%
+  dplyr::select(db_id, drug_target) %>% 
+  distinct()
+
+## calculate number of targets per drug
+drugs_nr_targets = fread("processed_data/drugbank_all_drugs_known_targets.txt") %>%
+  dplyr::select(db_id, drug_target) %>%
+  group_by(db_id) %>% 
+  mutate(total_targets = length(drug_target)) %>%
+  dplyr::select(db_id, total_targets) %>% 
+  distinct() %>%
+  ungroup()
+
+## load complex disease categories
+complex_disease_categories = fread("raw_data/complex_disease_category.txt")
+
+## load indicated/investigated drugs
+investigated_indicated_drugs = fread("processed_data/drugs_inv_ind_per_disease.txt")
+investigated_indicated_drugs = reshape2::melt(investigated_indicated_drugs, "drugbank_id", colnames(investigated_indicated_drugs)[2:ncol(investigated_indicated_drugs)])
+investigated_indicated_drugs = na.omit(investigated_indicated_drugs)
+rownames(investigated_indicated_drugs) = NULL
+investigated_indicated_drugs = investigated_indicated_drugs %>% dplyr::select(drugbank_id, complex_disease = variable) %>% distinct()
+investigated_indicated_drugs$indicated_investigated = 1
+
+## run logistic regression - observed ##
+# unique Mendelian and complex diseases
+unique_cd = unique(md_cd_comorbidities$complex_disease)
+unique_md = unique(md_cd_comorbidities$mendelian_disease)
+# drugs targeting md genes
+drugs_targeting_md_genes = left_join(md_genes, db_drug_targets, by = c("causal_gene" = "drug_target")) %>%
+  na.omit() %>%
+  dplyr::select(db_id) %>%
+  distinct()
+# create logistic regression input - each row is a drug-complex disease pair 
+log_input_all = data.frame(db_id = rep(drugs_targeting_md_genes$db_id, each = length(unique_cd)))
+log_input_all$complex_disease = unique_cd
+# add information about disease category
+log_input_all = left_join(log_input_all, complex_disease_categories, by = "complex_disease")
+# add information about number of targets for each drug
+log_input_all = left_join(log_input_all, drugs_nr_targets, by = "db_id")  
+# add information about investigated/indicated drugs within each drug-cancer pair
+log_input_all = left_join(log_input_all, investigated_indicated_drugs, by = c("complex_disease" = "complex_disease", "db_id" = "drugbank_id"))
+log_input_all$indicated_investigated = ifelse(is.na(log_input_all$indicated_investigated), 0, 1)
+# add information about comorbidity
+x = left_join(md_cd_comorbidities, md_genes, by = "mendelian_disease")
+x = na.omit(x) ; rownames(x) = NULL
+x = x %>% dplyr::select(complex_disease, causal_gene) %>% distinct
+x = left_join(x, db_drug_targets, by = c("causal_gene" = "drug_target"))
+x = na.omit(x) ; rownames(x) = NULL
+x = x %>% dplyr::select(-causal_gene) %>% distinct()
+x$comorbidity = 1
+log_input_all = left_join(log_input_all, x, by = c("complex_disease", "db_id"))
+log_input_all$comorbidity = ifelse(is.na(log_input_all$comorbidity), 0, 1)
+## calculate weights - "balanced"
+# https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
+# class counts
+class_counts = table(log_input_all$indicated_investigated)
+# calculate class weights (inversely proportional to class frequencies in the input data)
+class_weights = 1 / (length(class_counts) * prop.table(class_counts))
+# Assign weights to each observation - minor class gets higher weights than major class
+log_input_all$class_weight = ifelse(log_input_all$indicated_investigated == 0, class_weights[1], class_weights[2])
+
+# logistic regression - no class weights
+log_reg_all = glm(indicated_investigated ~ total_targets + disease_category + comorbidity,
+                  data = log_input_all, 
+                  family = binomial())
+all_obs_pvalue = summary(log_reg_all)$coefficients[8, 4]
+all_obs_or = exp(summary(log_reg_all)$coefficients[8, 1])
+all_obs_ci = exp(confint(log_reg_all)[8, ])
+
+# logistic regression - class weights
+log_reg_all_cw = glm(indicated_investigated ~ total_targets + disease_category + comorbidity,
+                     data = log_input_all, 
+                     family = binomial(), 
+                     weights = class_weight)
+all_obs_pvalue_cw = summary(log_reg_all_cw)$coefficients[8, 4]
+all_obs_or_cw = exp(summary(log_reg_all_cw)$coefficients[8, 1])
+all_obs_ci_cw = exp(confint(log_reg_all_cw)[8, ])
+
+### permutations ###
+
+## define function to shuffle complex disease comorbidities for each Mendelian disease
+shuffle = function(comorbidity_matrix) {
+  comorbidity_matrix_shuffled = comorbidity_matrix
+  
+  ## shuffling
+  for (i in 2:ncol(comorbidity_matrix_shuffled)) {
+    # Exclude first column - complex disease name
+    comorbidity_matrix_shuffled[, i] = sample(comorbidity_matrix_shuffled[, i], replace = FALSE)
+  }
+  
+  ## convert to original format
+  comorbidity_matrix_shuffled = tidyr::gather(comorbidity_matrix_shuffled, key = "mendelian_disease", value = "comorbidity", -complex_disease) %>%
+    dplyr::relocate(mendelian_disease, .before = complex_disease) %>% 
+    filter(comorbidity == 1) %>% 
+    dplyr::select(-comorbidity) %>%
+    distinct()
+  
+  ## return
+  return(comorbidity_matrix_shuffled)
+}
+
+#### --- per disease category --- ####
+
+## observed ##
+## unique complex diseases
+cancers = complex_disease_categories %>% filter(disease_category == "cancer") ; cancers = unique(cancers$complex_disease)
+cardiovascular = complex_disease_categories %>% filter(disease_category == "cardiovascular") ; cardiovascular = unique(cardiovascular$complex_disease)
+hormonal = complex_disease_categories %>% filter(disease_category == "hormonal") ; hormonal = unique(hormonal$complex_disease)
+immune = complex_disease_categories %>% filter(disease_category == "immune") ; immune = unique(immune$complex_disease)
+neurological = complex_disease_categories %>% filter(disease_category == "neurological") ; neurological = unique(neurological$complex_disease)
+ophthalmological = complex_disease_categories %>% filter(disease_category == "ophthalmological") ; ophthalmological = unique(ophthalmological$complex_disease)
+
+## define function to run logistic regression per disease category
+logistic_regression_per_dis_cat = function(diseases_in_category, comorbidity_dataframe, nr_drug_targets) {
+  
+  dis_cat_specific_comorbidity = comorbidity_dataframe %>% 
+    filter(complex_disease %in% diseases_in_category) %>%
+    distinct()
+  
+  ## unique md and cd based on the comorbidity filter applied
+  unique_cds_temp = unique(dis_cat_specific_comorbidity$complex_disease)
+  unique_mds_temp = unique(dis_cat_specific_comorbidity$mendelian_disease)
+  
+  ## md genes
+  md_genes_temp = md_genes %>% filter(mendelian_disease %in% unique_mds_temp)
+  
+  ## drugs targeting md genes
+  drugs_targeting_md_genes_temp = left_join(md_genes_temp, db_drug_targets, by = c("causal_gene" = "drug_target")) %>%
+    na.omit() %>%
+    dplyr::select(db_id) %>%
+    distinct() 
+  cd_md_genes_drugs = left_join(md_genes_temp, db_drug_targets, by = c("causal_gene" = "drug_target")) %>% 
+    na.omit()
+  
+  # create logistic regression input - each row is a drug-complex disease pair 
+  log_input = data.frame(db_id = rep(drugs_targeting_md_genes_temp$db_id, each = length(unique_cds_temp)))
+  log_input$complex_disease = unique_cds_temp
+  # add information about number of targets for each drug
+  log_input = left_join(log_input, nr_drug_targets, by = "db_id")  
+  # add information about investigated/indicated drugs within each drug-cancer pair
+  log_input = left_join(log_input, investigated_indicated_drugs, by = c("complex_disease" = "complex_disease", 
+                                                                        "db_id" = "drugbank_id"))
+  # if indicated_investigated is NA --> this drug is not indicated/investigated for this cancer
+  log_input$indicated_investigated = ifelse(is.na(log_input$indicated_investigated), 0, 1)
+  
+  # add information about comorbidity
+  x = left_join(dis_cat_specific_comorbidity, cd_md_genes_drugs, by = "mendelian_disease")
+  x = na.omit(x) ; rownames(x) = NULL
+  x = x %>% dplyr::select(complex_disease, db_id) %>% distinct
+  x$comorbidity = 1
+  log_input = left_join(log_input, x, by = c("complex_disease", "db_id"))
+  log_input$comorbidity = ifelse(is.na(log_input$comorbidity), 0, 1)
+  
+  ## run logistic regression ##
+  glm_fits = glm(indicated_investigated ~ total_targets + comorbidity,
+                 data = log_input, 
+                 family = binomial())
+  
+  return(glm_fits)
+}
+
+logistic_regression_per_dis_cat_cw = function(diseases_in_category, comorbidity_dataframe, nr_drug_targets) {
+  
+  dis_cat_specific_comorbidity = comorbidity_dataframe %>% 
+    filter(complex_disease %in% diseases_in_category) %>%
+    distinct()
+  
+  ## unique md and cd based on the comorbidity filter applied
+  unique_cds_temp = unique(dis_cat_specific_comorbidity$complex_disease)
+  unique_mds_temp = unique(dis_cat_specific_comorbidity$mendelian_disease)
+  
+  ## md genes
+  md_genes_temp = md_genes %>% filter(mendelian_disease %in% unique_mds_temp)
+  
+  ## drugs targeting md genes
+  drugs_targeting_md_genes_temp = left_join(md_genes_temp, db_drug_targets, by = c("causal_gene" = "drug_target")) %>%
+    na.omit() %>%
+    dplyr::select(db_id) %>%
+    distinct() 
+  cd_md_genes_drugs = left_join(md_genes_temp, db_drug_targets, by = c("causal_gene" = "drug_target")) %>% 
+    na.omit()
+  
+  # create logistic regression input - each row is a drug-complex disease pair 
+  log_input = data.frame(db_id = rep(drugs_targeting_md_genes_temp$db_id, each = length(unique_cds_temp)))
+  log_input$complex_disease = unique_cds_temp
+  # add information about number of targets for each drug
+  log_input = left_join(log_input, nr_drug_targets, by = "db_id")  
+  # add information about investigated/indicated drugs within each drug-cancer pair
+  log_input = left_join(log_input, investigated_indicated_drugs, by = c("complex_disease" = "complex_disease", 
+                                                                        "db_id" = "drugbank_id"))
+  # if indicated_investigated is NA --> this drug is not indicated/investigated for this cancer
+  log_input$indicated_investigated = ifelse(is.na(log_input$indicated_investigated), 0, 1)
+  
+  # add information about comorbidity
+  x = left_join(dis_cat_specific_comorbidity, cd_md_genes_drugs, by = "mendelian_disease")
+  x = na.omit(x) ; rownames(x) = NULL
+  x = x %>% dplyr::select(complex_disease, db_id) %>% distinct
+  x$comorbidity = 1
+  log_input = left_join(log_input, x, by = c("complex_disease", "db_id"))
+  log_input$comorbidity = ifelse(is.na(log_input$comorbidity), 0, 1)
+  
+  # add class weights
+  # class counts
+  class_counts = table(log_input$indicated_investigated)
+  # calculate class weights (inversely proportional to class frequencies in the input data)
+  class_weights = 1 / (length(class_counts) * prop.table(class_counts))
+  # Assign weights to each observation - minor class gets higher weights than major class
+  log_input$class_weight = ifelse(log_input$indicated_investigated == 0, class_weights[1], class_weights[2])
+  
+  ## run logistic regression ##
+  glm_fits = glm(indicated_investigated ~ total_targets + comorbidity,
+                 data = log_input, 
+                 family = binomial(), weights = class_weight)
+  
+  return(glm_fits)
+}
+
+log_reg_cancer = logistic_regression_per_dis_cat(diseases_in_category = cancers, comorbidity_dataframe = md_cd_comorbidities, nr_drug_targets = drugs_nr_targets)
+log_reg_cancer_cw = logistic_regression_per_dis_cat_cw(diseases_in_category = cancers, comorbidity_dataframe = md_cd_comorbidities, nr_drug_targets = drugs_nr_targets)
+log_reg_cardiovascular = logistic_regression_per_dis_cat(diseases_in_category = cardiovascular, comorbidity_dataframe = md_cd_comorbidities, nr_drug_targets = drugs_nr_targets)
+log_reg_cardiovascular_cw = logistic_regression_per_dis_cat_cw(diseases_in_category = cardiovascular, comorbidity_dataframe = md_cd_comorbidities, nr_drug_targets = drugs_nr_targets)
+log_reg_hormonal = logistic_regression_per_dis_cat(diseases_in_category = hormonal, comorbidity_dataframe = md_cd_comorbidities, nr_drug_targets = drugs_nr_targets)
+log_reg_hormonal_cw = logistic_regression_per_dis_cat_cw(diseases_in_category = hormonal, comorbidity_dataframe = md_cd_comorbidities, nr_drug_targets = drugs_nr_targets)
+log_reg_immune = logistic_regression_per_dis_cat(diseases_in_category = immune, comorbidity_dataframe = md_cd_comorbidities, nr_drug_targets = drugs_nr_targets)
+log_reg_immune_cw = logistic_regression_per_dis_cat_cw(diseases_in_category = immune, comorbidity_dataframe = md_cd_comorbidities, nr_drug_targets = drugs_nr_targets)
+log_reg_neurological = logistic_regression_per_dis_cat(diseases_in_category = neurological, comorbidity_dataframe = md_cd_comorbidities, nr_drug_targets = drugs_nr_targets)
+log_reg_neurological_cw = logistic_regression_per_dis_cat_cw(diseases_in_category = neurological, comorbidity_dataframe = md_cd_comorbidities, nr_drug_targets = drugs_nr_targets)
+log_reg_ophthalmological = logistic_regression_per_dis_cat(diseases_in_category = ophthalmological, comorbidity_dataframe = md_cd_comorbidities, nr_drug_targets = drugs_nr_targets)
+log_reg_ophthalmological_cw = logistic_regression_per_dis_cat_cw(diseases_in_category = ophthalmological, comorbidity_dataframe = md_cd_comorbidities, nr_drug_targets = drugs_nr_targets)
+
+# observed odds ratios and pvalues
+cancers_obs_pvalue = summary(log_reg_cancer)$coefficients[3, 4]
+cancers_obs_or = exp(summary(log_reg_cancer)$coefficients[3, 1])
+cancers_obs_ci = exp(confint(log_reg_cancer)[3, ])
+cancers_obs_pvalue_cw = summary(log_reg_cancer_cw)$coefficients[3, 4]
+cancers_obs_or_cw = exp(summary(log_reg_cancer_cw)$coefficients[3, 1])
+cancers_obs_ci_cw = exp(confint(log_reg_cancer_cw)[3, ])
+
+cardiovascular_obs_pvalue = summary(log_reg_cardiovascular)$coefficients[3, 4]
+cardiovascular_obs_or = exp(summary(log_reg_cardiovascular)$coefficients[3, 1])
+cardiovascular_obs_ci = exp(confint(log_reg_cardiovascular)[3, ])
+cardiovascular_obs_pvalue_cw = summary(log_reg_cardiovascular_cw)$coefficients[3, 4]
+cardiovascular_obs_or_cw = exp(summary(log_reg_cardiovascular_cw)$coefficients[3, 1])
+cardiovascular_obs_ci_cw = exp(confint(log_reg_cardiovascular_cw)[3, ])
+
+hormonal_obs_pvalue = summary(log_reg_hormonal)$coefficients[3, 4]
+hormonal_obs_or = exp(summary(log_reg_hormonal)$coefficients[3, 1])
+hormonal_obs_ci = exp(confint(log_reg_hormonal)[3, ])
+hormonal_obs_pvalue_cw = summary(log_reg_hormonal_cw)$coefficients[3, 4]
+hormonal_obs_or_cw = exp(summary(log_reg_hormonal_cw)$coefficients[3, 1])
+hormonal_obs_ci_cw = exp(confint(log_reg_hormonal_cw)[3, ])
+
+immune_obs_pvalue = summary(log_reg_immune)$coefficients[3, 4]
+immune_obs_or = exp(summary(log_reg_immune)$coefficients[3, 1])
+immune_obs_ci = exp(confint(log_reg_immune)[3, ])
+immune_obs_pvalue_cw = summary(log_reg_immune_cw)$coefficients[3, 4]
+immune_obs_or_cw = exp(summary(log_reg_immune_cw)$coefficients[3, 1])
+immune_obs_ci_cw = exp(confint(log_reg_immune_cw)[3, ])
+
+neurological_obs_pvalue = summary(log_reg_neurological)$coefficients[3, 4]
+neurological_obs_or = exp(summary(log_reg_neurological)$coefficients[3, 1])
+neurological_obs_ci = exp(confint(log_reg_neurological)[3, ])
+neurological_obs_pvalue_cw = summary(log_reg_neurological_cw)$coefficients[3, 4]
+neurological_obs_or_cw = exp(summary(log_reg_neurological_cw)$coefficients[3, 1])
+neurological_obs_ci_cw = exp(confint(log_reg_neurological_cw)[3, ])
+
+ophthalmological_obs_pvalue = summary(log_reg_ophthalmological)$coefficients[3, 4]
+ophthalmological_obs_or = exp(summary(log_reg_ophthalmological)$coefficients[3, 1])
+ophthalmological_obs_ci = exp(confint(log_reg_ophthalmological)[3, ])
+ophthalmological_obs_pvalue_cw = summary(log_reg_ophthalmological_cw)$coefficients[3, 4]
+ophthalmological_obs_or_cw = exp(summary(log_reg_ophthalmological_cw)$coefficients[3, 1])
+ophthalmological_obs_ci_cw = exp(confint(log_reg_ophthalmological_cw)[3, ])
+
+## forestplot
+data = data.frame(category = c("Ophthalmological", "Ophthalmological",
+                               "Cardiovascular", "Cardiovascular",
+                               "Hormonal", "Hormonal",
+                               "Neoplasms", "Neoplasms",
+                               "Neurological", "Neurological",
+                               "Immune", "Immune",
+                               "All", "All"),
+                  lr_run = c("Weighted LR", "Non-weighted LR",
+                             "Weighted LR", "Non-weighted LR",
+                             "Weighted LR", "Non-weighted LR",
+                             "Weighted LR", "Non-weighted LR",
+                             "Weighted LR", "Non-weighted LR",
+                             "Weighted LR", "Non-weighted LR",
+                             "Weighted LR", "Non-weighted LR"),
+                  odds_ratio = c(ophthalmological_obs_or_cw, ophthalmological_obs_or, 
+                                 cardiovascular_obs_or_cw, cardiovascular_obs_or,
+                                 hormonal_obs_or_cw, hormonal_obs_or, 
+                                 cancers_obs_or_cw, cancers_obs_or, 
+                                 neurological_obs_or_cw, neurological_obs_or, 
+                                 immune_obs_or_cw, immune_obs_or, 
+                                 all_obs_or_cw, all_obs_or),
+                  ci_2.5 = c(ophthalmological_obs_ci_cw["2.5 %"], ophthalmological_obs_ci["2.5 %"], 
+                             cardiovascular_obs_ci_cw["2.5 %"], cardiovascular_obs_ci["2.5 %"], 
+                             hormonal_obs_ci_cw["2.5 %"], hormonal_obs_ci["2.5 %"], 
+                             cancers_obs_ci_cw["2.5 %"], cancers_obs_ci["2.5 %"], 
+                             neurological_obs_ci_cw["2.5 %"], neurological_obs_ci["2.5 %"], 
+                             immune_obs_ci_cw["2.5 %"], immune_obs_ci["2.5 %"], 
+                             all_obs_ci_cw["2.5 %"], all_obs_ci["2.5 %"]),
+                  ci_97.5 = c(ophthalmological_obs_ci_cw["97.5 %"], ophthalmological_obs_ci["97.5 %"],
+                              cardiovascular_obs_ci_cw["97.5 %"], cardiovascular_obs_ci["97.5 %"], 
+                              hormonal_obs_ci_cw["97.5 %"], hormonal_obs_ci["97.5 %"], 
+                              cancers_obs_ci_cw["97.5 %"], cancers_obs_ci["97.5 %"], 
+                              neurological_obs_ci_cw["97.5 %"], neurological_obs_ci["97.5 %"], 
+                              immune_obs_ci_cw["97.5 %"], immune_obs_ci["97.5 %"], 
+                              all_obs_ci_cw["97.5 %"], all_obs_ci["97.5 %"]))
+data$category_lr_run = paste(data$category, data$lr_run, sep = "_")
+data$category_lr_run = factor(data$category_lr_run, 
+                              levels = data$category_lr_run, 
+                              labels = data$category_lr_run)
+data$lr_run = factor(data$lr_run, 
+                     levels = c("Non-weighted LR", "Weighted LR"), 
+                     labels = c("Non-weighted LR", "Weighted LR"))
+
+s1 = ggplot(data, aes(y = category_lr_run, x = odds_ratio, xmin = ci_2.5, xmax = ci_97.5, color = lr_run)) +
+  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = 0, ymax = 2.5), fill="gray95", color = NA) +
+  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = 4.5, ymax = 6.5), fill="gray95", color = NA) + 
+  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = 8.5, ymax = 10.5), fill="gray95", color = NA) + 
+  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = 12.5, ymax = 14.5), fill="gray95", color = NA) + 
+  geom_point(size = 3) + 
+  geom_errorbarh(height = 0.4, linewidth = 1) +
+  ylab("") +
+  xlab("Odds Ratio") +
+  scale_x_continuous(breaks = seq(0, 8, 1)) +
+  scale_y_discrete(label = c("", "\nOphthalmological",
+                             "", "\nCardiovascular",
+                             "", "\nHormonal",
+                             "", "\nNeoplasms",
+                             "", "\nNeurological",
+                             "", "\nImmune",
+                             "", "\nAll")) +
+  scale_color_manual(values = c("#F8766D", "#00BFC4")) +
+  geom_vline(xintercept = 1, color = "black", linewidth = 1, linetype = 3) +
+  theme_classic() +
+  theme(axis.title = element_text(size = 25, family = "Arial", colour = "black"),
+        axis.text = element_text(size = 25, family = "Arial", colour = "black"),
+        axis.title.x = element_text(margin = margin(t = 15)),
+        axis.ticks.y = element_blank(),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 20, family = "Arial", color = "black"),
+        legend.key.size = unit(1, units = "cm"))
+s1
+ggsave(filename = "S1_LR_with_without_class_weights.png", 
+       path = "supplementary_figures/", 
+       width = 12, height = 8, device = "tiff",
+       dpi = 300, compression = "lzw", type = type_compression)
+dev.off()

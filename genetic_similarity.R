@@ -246,10 +246,10 @@ for (i in 1:1000) {
 # calculate permutation p-values and odds ratio 95% CIs
 # p-values
 pvalue_comorbidity_perm_pvalue = sum(pvalue_comorbidity >= pvalue_comorbidity_perm) / 1000
-pvalue_comorbidity_perm_pvalue # 0.007 (0.7%)
+pvalue_comorbidity_perm_pvalue
 # odds ratios
 or_comorbidity_perm_pvalue = sum(or_comorbidity <= or_comorbidity_perm) / 1000
-or_comorbidity_perm_pvalue # 0.007 (0.7%)
+or_comorbidity_perm_pvalue
 or_comorbidity_perm_95ci = quantile(or_comorbidity_perm, c(0.05, 0.5, 0.95))
 
 ## to assess the significance of the comorbidity * genetic similarity
@@ -759,7 +759,6 @@ rm(contingency_table, comorbid_pairs)
 ## -- logistic regression analyses -- ##
 
 ## create logistic regression input ##
-
 # unique Mendelian diseases and cancers in our sample
 mendelian_diseases
 unique_cancers

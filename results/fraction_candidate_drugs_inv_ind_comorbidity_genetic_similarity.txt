@@ -1,0 +1,19 @@
+category	nr_inv_ind_drugs	nr_candidate_drugs	fraction
+"Comorbidity 
+& 
+Genetic similarity"	183	2319	0.0789133247089263
+"Comorbidity
+
+"	284	4123	0.0688818821246665
+"Comorbidity 
+& 
+No genetic similarity"	101	1804	0.0559866962305987
+"No comorbidity 
+& 
+Genetic similarity"	78	1420	0.0549295774647887
+"No comorbidity
+
+"	109	2727	0.03997066373304
+"No comorbidity 
+& 
+No genetic similarity"	31	1307	0.0237184391736802

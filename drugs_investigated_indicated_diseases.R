@@ -15,7 +15,7 @@ library(ggplot2)
 ## - Drug targets for approved drugs in DrugBank: https://go.drugbank.com/releases/latest#external-links --> "External Drug Links" --> Drug Group "Approved"
 ## NOTE: download and place both files in the "raw_data" folder
 ## Moreover, you need an apiKey for the UMLS database. After obtaining it, define the following variable:
-umls_apiKey = "your_key"
+umls_apiKey = "8881fe0b-f54d-44b4-a248-984d6de51c5f"
 
 ##################
 ##              ##

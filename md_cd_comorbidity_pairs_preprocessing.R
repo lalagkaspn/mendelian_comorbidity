@@ -5,6 +5,7 @@ library(readxl)
 library(dplyr)
 library(stringr)
 library(reshape2)
+library(ggplot2)
 
 ## --- Mendelian and complex disease comorbidities --- ##
 

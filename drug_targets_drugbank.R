@@ -37,6 +37,11 @@ db_links = db_links %>% dplyr::select(db_id = "DrugBank ID", drug_name = "Name")
 # annotate with drug names
 db_drug_targets = left_join(db_drug_targets, db_links, by = "db_id")
 
+# remove DB IDs from molecules that are not actuall drugs
+db_drug_targets = db_drug_targets %>% filter(!db_id %in% c("DB00171", "DB00157", "DB09130", "DB01593", "DB14487", "DB14533", "DB14548", "DB02165", "DB03934", "DB02338",
+                                                           "DB00045", "DB04801")) 
+# ATP, Zinc forms, NADH, NADPH, vaccines
+
 fwrite(db_drug_targets, "processed_data/drugbank_all_drugs_known_targets.txt", sep = "\t", row.names = FALSE)
 
 ## -- visualizations -- ##
