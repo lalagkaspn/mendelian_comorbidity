@@ -1,4 +1,4 @@
-# Clinical associations of Mendelian and complex disease as a resource for drug discovery
+# Shared etiology of Mendelian and complex disease supports drug discovery
 
 ## Panagiotis N. Lalagkas & Rachel D. Melamed
 
@@ -11,9 +11,9 @@ There are eight scripts in this repository. The first three scripts preprocess a
 - `md_cd_comorbidity_pairs_preprocessing.R` is the script to preprocess the clinically associated pairs of Mendelian and complex diseases
 - `drugs_investigated_indicated_diseases.R` is the script to get all the drugs that are investigated or indicated for the 65 complex diseases
 - `drug_targets_drugbank.R` is the script to preprocess DrugBank files to get all the drugs with known drug targets
-- `main_analysis.R` is the script to reproduce the results and figures of the first section of the first section of the Results (*Mendelian disease comorbidity identifies drugs under current investigation or indication*)
-- `per_mendelian_disease_analysis.R` is the script to reproduce the results and figures of the second section of the Results (*Prioritizing Mendelian diseases targeted by high number of drugs*)
-- `genetic_similarity.R` is the script to reproduce the results and figures of the third section of the Results (*Combining comorbidity with genetic similarity enhances drug predictions*)
+- `main_analysis.R` is the script to reproduce the results and figures of the second section of the Results (*Mendelian disease comorbidity identifies drugs under current investigation or indication*)
+- `per_mendelian_disease_analysis.R` is the script to reproduce the results and figures of the third section of the Results (*Prioritizing Mendelian diseases targeted by high number of drugs*)
+- `genetic_similarity.R` is the script to reproduce the results and figures of the fourth section of the Results (*Combining comorbidity with genetic similarity enhances drug predictions*)
 - `supplementary_tables.R` is the script to reproduce the supplementary tables
 - `supplementary_figures.R` is the script to reproduce the supplementary figures
 
