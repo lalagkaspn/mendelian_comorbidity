@@ -9,7 +9,7 @@ library(ggplot2)
 
 ## --- Mendelian and complex disease comorbidities --- ##
 
-## load blair et al supplementary file Table 4
+## load Blair et al supplementary file Table 4
 ## Link: https://www.sciencedirect.com/science/article/pii/S0092867413010246?via%3Dihub
 md_cd_comorbidities = read_xls("raw_data/blair_mmc4_md_cd_comorbidities.xls", col_names = TRUE, skip = 1)
 md_cd_comorbidities = md_cd_comorbidities %>%
