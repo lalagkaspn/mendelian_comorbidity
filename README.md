@@ -1,6 +1,6 @@
 # Shared etiology of Mendelian and complex disease supports drug discovery
 
-## Panagiotis N. Lalagkas & Rachel D. Melamed
+## Lalagkas, P.N., Melamed, R.D. Shared etiology of Mendelian and complex disease supports drug discovery. BMC Med Genomics 17, 228 (2024). https://doi.org/10.1186/s12920-024-01988-3
 
 Link to the [article](https://bmcmedgenomics.biomedcentral.com/articles/10.1186/s12920-024-01988-3).
 
